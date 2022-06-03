@@ -19,9 +19,10 @@ public class FlipVerticalCommand implements ImageProcessingCommand {
    *
    * @param img the image to flip vertically
    * @return the vertically flipped image
+   * @throws IllegalArgumentException if the image is null
    */
   @Override
-  public Image process(Image img) {
+  public Image process(Image img) throws IllegalArgumentException {
     return null;
   }
 }

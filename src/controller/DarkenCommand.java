@@ -6,12 +6,12 @@ import model.Image;
  * This class represents a command that can darken images.
  */
 public class DarkenCommand implements ImageProcessingCommand {
-  private ImageProcessingCommand cmd;
+  private final ImageProcessingCommand cmd;
 
   /**
    * Creates a new command that darkens images by a certain increment.
    *
-   * @param increment
+   * @param increment amount to darken the images by
    */
   public DarkenCommand(int increment) {
     // TODO: should be non-negative?
@@ -23,9 +23,10 @@ public class DarkenCommand implements ImageProcessingCommand {
    *
    * @param img the image to darken
    * @return the darkened image
+   * @throws IllegalArgumentException if the image is null
    */
   @Override
-  public Image process(Image img) {
+  public Image process(Image img) throws IllegalArgumentException {
     return this.cmd.process(img);
   }
 }
