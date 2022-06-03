@@ -1,6 +1,7 @@
 package controller;
 
 import model.Image;
+import model.Pixel;
 
 /**
  * This class represents a command that can brighten images.
@@ -27,6 +28,17 @@ public class BrightenCommand implements ImageProcessingCommand {
    */
   @Override
   public Image process(Image img) throws IllegalArgumentException {
-    return null;
+    Pixel[][] pixelArray = new Pixel[img.getHeight()][img.getWidth()];
+    for (int row = 0; row < img.getHeight(); row++) {
+      for (int col = 0; col < img.getWidth(); col++) {
+        Pixel currentPixel = img.getPixelAt(row, col);
+        pixelArray[row][col] = new Pixel(img.getMaxValue(),
+                Math.max(currentPixel.getRed() + this.increment, img.getMaxValue()),
+                Math.max(currentPixel.getGreen() + this.increment, img.getMaxValue()),
+                Math.max(currentPixel.getBlue() + this.increment, img.getMaxValue()));
+      }
+    }
+
+    return new Image(pixelArray, img.getMaxValue(), img.getWidth(), img.getHeight());
   }
 }

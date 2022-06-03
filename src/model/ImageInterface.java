@@ -18,6 +18,12 @@ public interface ImageInterface {
   public int getHeight();
 
   /**
+   * Returns the max pixel value of the image.
+   * @returns the max pixel value of the image
+   */
+  public int getMaxValue();
+
+  /**
    * Returns the pixel at the specified location in the image.
    * @param row the row of the pixel
    * @param col the col of the pixel
