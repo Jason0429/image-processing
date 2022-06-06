@@ -37,6 +37,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.commands.put("darken", new DarkenCommand());
     this.commands.put("flip-horizontal", new FlipHorizontalCommand());
     this.commands.put("flip-vertical", new FlipVerticalCommand());
+    this.commands.put("red-component", new RedComponentGreyscaleCommand());
+    this.commands.put("green-component", new GreenComponentGreyscaleCommand());
+    this.commands.put("blue-component", new BlueComponentGreyscaleCommand());
   }
 
   @Override

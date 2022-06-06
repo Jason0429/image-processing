@@ -2,13 +2,13 @@ package controller;
 
 import model.Pixel;
 
-public class BlueComponentGreyscaleParamCommand
+public class BlueComponentGreyscaleCommand
         extends ImageProcessingNoParamCommand implements ImageProcessingCommand {
 
   /**
    * Creates a new command that creates greyscale images using the blue component.
    */
-  public BlueComponentGreyscaleParamCommand() {
+  public BlueComponentGreyscaleCommand() {
 
   }
 

@@ -1,19 +1,18 @@
 package controller;
 
-import model.Image;
 import model.Pixel;
 
 /**
  * This class represents a command that can create greyscale versions of images using their red
  * component.
  */
-public class RedComponentGreyscaleParamCommand
+public class RedComponentGreyscaleCommand
         extends ImageProcessingNoParamCommand implements ImageProcessingCommand {
 
   /**
    * Creates a new command that creates greyscale images using the red component.
    */
-  public RedComponentGreyscaleParamCommand() {
+  public RedComponentGreyscaleCommand() {
 
   }
 
