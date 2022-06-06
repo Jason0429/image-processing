@@ -15,5 +15,5 @@ public interface ImageProcessingCommand {
    * @return the processed image
    * @throws IllegalArgumentException if the image is null
    */
-  public Image process(Image img) throws IllegalArgumentException;
+  public Image process(Image img, int ...parameters) throws IllegalArgumentException;
 }

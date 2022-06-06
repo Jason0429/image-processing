@@ -12,18 +12,21 @@ public class FlipHorizontalCommand implements ImageProcessingCommand {
    * Creates a new command that flips images horizontally.
    */
   public FlipHorizontalCommand() {
-
   }
 
   /**
    * Produces the image flipped horizontally.
    *
-   * @param img the image to flip horizontally
+   * @param img        the image to flip horizontally
+   * @param parameters should not have any parameters
    * @return the horizontally flipped image
-   * @throws IllegalArgumentException if the image is null
+   * @throws IllegalArgumentException if the image is null, or if parameters are passed
    */
   @Override
-  public Image process(Image img) throws IllegalArgumentException {
+  public Image process(Image img, int... parameters) throws IllegalArgumentException {
+    if (parameters.length > 0) {
+      throw new IllegalArgumentException("This command does not accept parameters");
+    }
     Pixel[][] pixelArray = new Pixel[img.getHeight()][img.getWidth()];
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {

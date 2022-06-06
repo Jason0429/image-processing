@@ -16,6 +16,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private final ImageProcessingModel model;
   private final ImageProcessingView view;
   private final Appendable out;
+  private final Map<String, ImageProcessingCommand> commands;
 
   public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view)
           throws IllegalArgumentException {
@@ -30,6 +31,12 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.model = model;
     this.view = view;
     this.out = out;
+
+    this.commands = new HashMap<String, ImageProcessingCommand>();
+    this.commands.put("brighten", new BrightenParamCommand());
+    this.commands.put("darken", new DarkenCommand());
+    this.commands.put("flip-horizontal", new FlipHorizontalCommand());
+    this.commands.put("flip-vertical", new FlipVerticalCommand());
   }
 
   @Override

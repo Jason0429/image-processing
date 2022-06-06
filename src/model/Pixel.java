@@ -53,6 +53,14 @@ public class Pixel {
   }
 
   /**
+   * Returns the max value of the pixel.
+   * @returns the max value of the pixel
+   */
+  public int getMaxValue() {
+    return this.maxValue;
+  }
+
+  /**
    * Sets a new red value, within 0-maxValue. If value exceed maxValue, it will be set to
    * maxValue; if values are less than 0, it will be set to 0.
    */
