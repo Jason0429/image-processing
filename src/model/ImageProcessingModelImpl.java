@@ -27,6 +27,10 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
 
   @Override
   public Image getImage(String name) throws IllegalArgumentException {
-    return this.images.get(name);
+    if (this.images.containsKey(name)) {
+      return this.images.get(name);
+    } else {
+      throw new IllegalArgumentException("Image not found");
+    }
   }
 }
