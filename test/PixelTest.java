@@ -85,6 +85,13 @@ public class PixelTest {
   }
 
   @Test
+  public void testGetMaxValue() {
+    assertEquals(1, this.black.getMaxValue());
+    assertEquals(255, this.white.getMaxValue());
+    assertEquals(255, this.yellow.getMaxValue());
+  }
+
+  @Test
   public void testSetRed() {
     assertEquals(252, this.yellow.getRed());
     this.yellow.setRed(100);
