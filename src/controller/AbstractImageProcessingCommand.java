@@ -7,9 +7,9 @@ import model.Pixel;
  * This class represents an abstracted image processing command that handles image processing for
  * processing that keeps pixels in place.
  */
-public abstract class ImageProcessingParamCommand implements ImageProcessingCommand {
+public abstract class AbstractImageProcessingCommand implements ImageProcessingCommand {
   @Override
-  public Image process(Image img, int... parameters) throws IllegalArgumentException {
+  public Image process(Image img) throws IllegalArgumentException {
     Pixel[][] pixelArray = new Pixel[img.getHeight()][img.getWidth()];
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {
@@ -26,9 +26,8 @@ public abstract class ImageProcessingParamCommand implements ImageProcessingComm
    * processed vary by implementation.
    *
    * @param pixel the pixel to be processed
-   * @param parameters the parameters for processing the pixel, if needed
    * @return the processed pixel
-   * @throws IllegalArgumentException if the pixel is null, or invalid parameters are passed
+   * @throws IllegalArgumentException if the pixel is null
    */
-  abstract Pixel processPixel(Pixel pixel, int ...parameters) throws IllegalArgumentException;
+  abstract Pixel processPixel(Pixel pixel) throws IllegalArgumentException;
 }
