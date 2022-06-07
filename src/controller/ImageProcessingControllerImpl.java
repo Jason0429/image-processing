@@ -52,16 +52,18 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   }
 
   /**
-   * Processes an image with a specified processing method.
+   * Processes an image with a specified processing method and saves it with the specified name.
    *
    * @param imageName the image to be processed
+   * @param newImageName the name for the new image
    * @param command the processing method
+   * @param parameters the parameters for the processing method, if any
    */
-  private void process(String imageName, String newImageName, String command)
+  private void process(String imageName, String newImageName, String command, int ...parameters)
           throws IllegalArgumentException {
     ImageProcessingCommand cmd = this.commands.getOrDefault(command, null);
     if (cmd != null) {
-      Image processedImg = cmd.process(this.model.getImage(imageName));
+      Image processedImg = cmd.process(this.model.getImage(imageName), parameters);
       this.model.storeImage(newImageName, processedImg);
     }
   }
