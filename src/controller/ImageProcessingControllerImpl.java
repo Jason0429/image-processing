@@ -14,21 +14,14 @@ import java.io.IOException;
 public class ImageProcessingControllerImpl implements ImageProcessingController {
   private final ImageProcessingModel model;
   private final ImageProcessingView view;
-  private final Appendable out;
 
   public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view)
           throws IllegalArgumentException {
-    this(model, view, System.out);
-  }
-
-  public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view,
-                                       Appendable out) throws IllegalArgumentException {
-    if (model == null || view == null || out == null) {
+    if (model == null || view == null) {
       throw new IllegalArgumentException("Inputs cannot be null");
     }
     this.model = model;
     this.view = view;
-    this.out = out;
   }
 
   @Override
