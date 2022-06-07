@@ -6,7 +6,7 @@ import model.Pixel;
 /**
  * This class represents a command that can brighten images.
  */
-public class BrightenParamCommand
+public class BrightenCommand
         extends AbstractImageProcessingCommand implements ImageProcessingCommand {
 
   private final int increment;
@@ -14,7 +14,7 @@ public class BrightenParamCommand
   /**
    * Creates a new command that brightens images by a certain increment.
    */
-  public BrightenParamCommand(int increment) {
+  public BrightenCommand(int increment) {
     this.increment = increment;
   }
 
