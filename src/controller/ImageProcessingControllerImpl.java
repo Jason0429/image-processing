@@ -59,8 +59,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           case "save":
             try {
               this.exportImage(nextLine[1], nextLine[2]);
-            } catch (FileNotFoundException e) {
-              this.displayMessage("Invalid file location specified, please try again.\n");
+            } catch (ArrayIndexOutOfBoundsException|FileNotFoundException e) {
+              this.displayMessage("Invalid parameters specified, please try again.\n");
             } catch (IOException e) {
               throw new IllegalStateException("Unable to save image");
             }
@@ -115,6 +115,24 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
               imageName = nextLine[1];
               newImageName = nextLine[2];
               cmd = new IntensityComponentGreyscaleCommand();
+            } catch (ArrayIndexOutOfBoundsException e) {
+              this.displayMessage("Invalid parameters specified, please try again.\n");
+            }
+            break;
+          case "horizontal-flip":
+            try {
+              imageName = nextLine[1];
+              newImageName = nextLine[2];
+              cmd = new FlipHorizontalCommand();
+            } catch (ArrayIndexOutOfBoundsException e) {
+              this.displayMessage("Invalid parameters specified, please try again.\n");
+            }
+            break;
+          case "vertical-flip":
+            try {
+              imageName = nextLine[1];
+              newImageName = nextLine[2];
+              cmd = new FlipVerticalCommand();
             } catch (ArrayIndexOutOfBoundsException e) {
               this.displayMessage("Invalid parameters specified, please try again.\n");
             }
