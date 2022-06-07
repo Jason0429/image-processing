@@ -15,6 +15,7 @@ public class Image implements ImageInterface {
    * @param width the image width
    * @param height the image height
    */
+  // TODO: do we need error checking here?
   public Image(Pixel[][] pixelArray, int maxValue, int width, int height) {
     this.pixelArray = pixelArray;
     this.maxValue = maxValue;
@@ -59,9 +60,9 @@ public class Image implements ImageInterface {
     for (int row = 0; row < this.height; row++) {
       for (int col = 0; col < this.width; col++) {
         Pixel currentPixel = this.pixelArray[row][col];
-        sb.append(" ").append(currentPixel.getRed())
-          .append(" ").append(currentPixel.getGreen())
-          .append(" ").append(currentPixel.getBlue()).append(" ");
+        sb.append(currentPixel.getRed()).append(" ")
+          .append(currentPixel.getGreen()).append(" ")
+          .append(currentPixel.getBlue()).append(" ");
       }
       sb.append("\n");
     }

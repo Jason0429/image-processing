@@ -7,7 +7,6 @@ public class Pixel {
   private int red;
   private int green;
   private int blue;
-
   private int maxValue;
 
   /**
@@ -51,6 +50,14 @@ public class Pixel {
    */
   public int getBlue() {
     return this.blue;
+  }
+
+  /**
+   * Returns the max value of the pixel.
+   * @returns the max value of the pixel
+   */
+  public int getMaxValue() {
+    return this.maxValue;
   }
 
   /**

@@ -1,5 +1,6 @@
 package controller;
 
+import model.Image;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
@@ -16,6 +17,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private final ImageProcessingModel model;
   private final ImageProcessingView view;
   private final Appendable out;
+  private final Map<String, ImageProcessingCommand> commands;
 
   public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view)
           throws IllegalArgumentException {
@@ -30,6 +32,18 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.model = model;
     this.view = view;
     this.out = out;
+
+    this.commands = new HashMap<String, ImageProcessingCommand>();
+    this.commands.put("brighten", new BrightenParamCommand());
+    this.commands.put("darken", new DarkenCommand());
+    this.commands.put("flip-horizontal", new FlipHorizontalCommand());
+    this.commands.put("flip-vertical", new FlipVerticalCommand());
+    this.commands.put("red-component", new RedComponentGreyscaleCommand());
+    this.commands.put("green-component", new GreenComponentGreyscaleCommand());
+    this.commands.put("blue-component", new BlueComponentGreyscaleCommand());
+    this.commands.put("value-component", new ValueComponentGreyscaleCommand());
+    this.commands.put("luma-component", new LumaComponentGreyscaleCommand());
+    this.commands.put("intensity-component", new IntensityComponentGreyscaleCommand());
   }
 
   @Override
@@ -43,10 +57,13 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param imageName the image to be processed
    * @param command the processing method
    */
-  private void process(String imageName, String newImageName, String command) {
-    Map<String, ImageProcessingCommand> commands = new HashMap<String, ImageProcessingCommand>();
-    // TODO: need to make commands have abstract class with the same constructor, can't pass
-    //  arguments after instances have been created in the map
+  private void process(String imageName, String newImageName, String command)
+          throws IllegalArgumentException {
+    ImageProcessingCommand cmd = this.commands.getOrDefault(command, null);
+    if (cmd != null) {
+      Image processedImg = cmd.process(this.model.getImage(imageName));
+      this.model.storeImage(newImageName, processedImg);
+    }
   }
 
   /**

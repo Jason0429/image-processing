@@ -10,11 +10,16 @@ import java.util.Scanner;
 public class ImageLoader {
 
   /**
+   * Constructs a new ImageLoader.
+   */
+  public ImageLoader() { }
+
+  /**
    * Loads a .PPM file with 24-bit color and creates a new image.
    *
    * @param fileLocation the .PPM file location
    * @return a new Image object
-   * @throws IllegalArgumentException if the file cannot be found
+   * @throws IllegalArgumentException if the file cannot be found or is invalid
    */
   public Image getImage(String fileLocation) throws IllegalArgumentException {
     Scanner sc;
@@ -49,7 +54,7 @@ public class ImageLoader {
       int width = sc.nextInt();
       int height = sc.nextInt();
       int maxValue = sc.nextInt();
-      Pixel[][] pixelArray = new Pixel[width][height];
+      Pixel[][] pixelArray = new Pixel[height][width];
 
       for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
