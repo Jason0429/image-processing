@@ -1,7 +1,6 @@
 package controller;
 
-import model.Image;
-import model.ImageLoader;
+import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 import view.ImageProcessingTextView;
@@ -25,11 +24,11 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   }
 
   public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view,
-                                       Scanner in)
-          throws IllegalArgumentException {
+                                       Scanner in) throws IllegalArgumentException {
     if (model == null || view == null || in == null) {
-      throw new IllegalArgumentException("Inputs cannot be null");
+      throw new IllegalArgumentException(ExceptionMessage.NULL_VALUES.toString());
     }
+
     this.model = model;
     this.view = view;
     this.in = in;
@@ -179,10 +178,10 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param filePath the location to save the image
    * @param imgName  the image name
    */
-  private void exportImage(String filePath, String imgName) throws FileNotFoundException,
-          IOException {
+  private void exportImage(String filePath, String imgName)
+          throws FileNotFoundException, IOException {
 
-    String ppm = this.model.getImage(imgName).toPPM();
+    String ppm = this.model.getImage(imgName).toPPMString();
     FileOutputStream fos = new FileOutputStream(filePath);
     fos.write(ppm.getBytes());
     fos.close();

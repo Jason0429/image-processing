@@ -18,17 +18,16 @@ public class ImageLoader {
    * Loads a .PPM file with 24-bit color and creates a new image.
    *
    * @param fileLocation the .PPM file location
-   * @return a new Image object
-   * @throws IllegalArgumentException if the file cannot be found or is invalid
+   * @return a new {@code Image} object
+   * @throws IllegalArgumentException if the file cannot be found
    */
-  public Image getImage(String fileLocation) throws IllegalArgumentException {
+  public Image getImageFromPPM(String fileLocation) throws IllegalArgumentException {
     Scanner sc;
 
     try {
       sc = new Scanner(new FileInputStream(fileLocation));
-    }
-    catch (FileNotFoundException e) {
-      throw new IllegalArgumentException("Invalid file location");
+    } catch (FileNotFoundException e) {
+      throw new IllegalArgumentException(ExceptionMessage.INVALID_FILE_PATH.toString());
     }
 
     StringBuilder builder = new StringBuilder();
@@ -43,11 +42,10 @@ public class ImageLoader {
     // now set up the scanner to read from the string we just built
     sc = new Scanner(builder.toString());
 
-    String token;
-
-    token = sc.next();
+    // Check if file is a valid PPM file.
+    String token = sc.next();
     if (!token.equals("P3")) {
-      throw new IllegalArgumentException("Invalid PPM file: plain RAW file should begin with P3");
+      throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
     }
 
     try {
@@ -56,6 +54,7 @@ public class ImageLoader {
       int maxValue = sc.nextInt();
       Pixel[][] pixelArray = new Pixel[height][width];
 
+      // Configure pixels with RGB values from PPM file.
       for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
           pixelArray[i][j] = new Pixel(maxValue, sc.nextInt(), sc.nextInt(), sc.nextInt());
@@ -63,7 +62,7 @@ public class ImageLoader {
       }
       return new Image(pixelArray, maxValue, width, height);
     } catch (IllegalStateException e) {
-      throw new IllegalArgumentException("Invalid PPM file");
+      throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
     }
   }
 }
