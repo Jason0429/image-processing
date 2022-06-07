@@ -7,22 +7,21 @@ public class Pixel {
   private int red;
   private int green;
   private int blue;
-
-  private int maxValue;
+  private final int maxValue;
 
   /**
-   * Constructs a new pixel.
+   * Constructs a new pixel with specified RGB values.
    *
-   * @param red the red value, between 0-maxValue
-   * @param green the green value, between 0-maxValue
-   * @param blue the blue value, between 0-maxValue
+   * @param red      the red value, between 0-maxValue
+   * @param green    the green value, between 0-maxValue
+   * @param blue     the blue value, between 0-maxValue
    * @param maxValue the maximum value of the pixel
    * @throws IllegalArgumentException if any values are not between 0-maxValue
    */
   public Pixel(int maxValue, int red, int green, int blue) throws IllegalArgumentException {
     this.maxValue = maxValue;
     if (!this.withinBounds(red) || !this.withinBounds(green) || !this.withinBounds(blue)) {
-      throw new IllegalArgumentException("Values must be between 0 and the maximum value");
+      throw new IllegalArgumentException(ExceptionMessage.PIXEL_RGB_INVALID_RANGE.toString());
     }
     this.red = red;
     this.green = green;
@@ -31,6 +30,7 @@ public class Pixel {
 
   /**
    * Returns the red value of the pixel.
+   *
    * @return the red value
    */
   public int getRed() {
@@ -39,6 +39,7 @@ public class Pixel {
 
   /**
    * Returns the green value of the pixel.
+   *
    * @return the green value
    */
   public int getGreen() {
@@ -47,6 +48,7 @@ public class Pixel {
 
   /**
    * Returns the blue value of the pixel.
+   *
    * @return the blue value
    */
   public int getBlue() {
@@ -56,37 +58,51 @@ public class Pixel {
   /**
    * Sets a new red value, within 0-maxValue. If value exceed maxValue, it will be set to
    * maxValue; if values are less than 0, it will be set to 0.
+   *
+   * @param r the new red value.
+   * @return the updated {@code Pixel}.
    */
-  public void setRed(int newRed) {
-    this.red = Math.max(0, Math.min(newRed, this.maxValue));
+  public Pixel setRed(int r) {
+    this.red = Math.max(0, Math.min(r, this.maxValue));
+    return this;
   }
 
   /**
    * Sets a new green value, within 0-maxValue. If value exceed maxValue, it will be set to
    * maxValue; if values are less than 0, it will be set to 0.
+   *
+   * @param g the new green value.
+   * @return the updated {@code Pixel}.
    */
-  public void setGreen(int newGreen) {
-    this.green = Math.max(0, Math.min(newGreen, this.maxValue));
+  public Pixel setGreen(int g) {
+    this.green = Math.max(0, Math.min(g, this.maxValue));
+    return this;
   }
 
   /**
    * Sets a new blue value, within 0-maxValue. If value exceed maxValue, it will be set to
    * maxValue; if values are less than 0, it will be set to 0.
+   *
+   * @param b the new blue value.
+   * @return the updated {@code Pixel}.
    */
-  public void setBlue(int newBlue) {
-    this.blue = Math.max(0, Math.min(newBlue, this.maxValue));
+  public Pixel setBlue(int b) {
+    this.blue = Math.max(0, Math.min(b, this.maxValue));
+    return this;
   }
 
   /**
    * Returns the largest value between red, green, and blue of the pixel.
+   *
    * @return the largest RGB value
    */
-  public int getValue() {
+  public int getLargestRGBValue() {
     return Math.max(this.red, Math.max(this.green, this.blue));
   }
 
   /**
    * Returns the average value between red, green, and blue of the pixel.
+   *
    * @return the average of the RGB values
    */
   public double getIntensity() {
@@ -100,12 +116,22 @@ public class Pixel {
    * @return the luma value of the pixel
    */
   public double getLuma() {
-    return 0.2126 * this.red + 0.7152 * this.green + 0.0722 * this.blue;
+    return (0.2126 * this.red) + (0.7152 * this.green) + (0.0722 * this.blue);
+  }
+
+  /**
+   * Creates a copy this {@code Pixel} to avoid returning direct references.
+   *
+   * @return a new {@code Pixel} with the same configurations.
+   */
+  public Pixel copy() {
+    return new Pixel(this.maxValue, this.red, this.green, this.blue);
   }
 
 
   /**
    * Determines if a value is within 0 and maxValue.
+   *
    * @param value the value to be tested
    * @return true if the value is within bounds, otherwise false
    */

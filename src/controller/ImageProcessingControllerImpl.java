@@ -41,7 +41,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * Processes an image with a specified processing method.
    *
    * @param imageName the image to be processed
-   * @param command the processing method
+   * @param command   the processing method
    */
   private void process(String imageName, String newImageName, String command) {
     Map<String, ImageProcessingCommand> commands = new HashMap<String, ImageProcessingCommand>();
@@ -53,12 +53,12 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * Exports an image as a .PPM file.
    *
    * @param filePath the location to save the image
-   * @param imgName the image name
+   * @param imgName  the image name
    */
   private void exportImage(String filePath, String imgName) throws FileNotFoundException,
           IOException {
 
-    String ppm = this.model.getImage(imgName).toPPM();
+    String ppm = this.model.getImage(imgName).toPPMString();
     FileOutputStream fos = new FileOutputStream(filePath);
     fos.write(ppm.getBytes());
     fos.close();

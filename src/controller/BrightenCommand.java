@@ -15,7 +15,6 @@ public class BrightenCommand implements ImageProcessingCommand {
    * @param increment the amount to brighten images by
    */
   public BrightenCommand(int increment) {
-    // TODO: should be non-negative?
     this.increment = increment;
   }
 
@@ -28,17 +27,18 @@ public class BrightenCommand implements ImageProcessingCommand {
    */
   @Override
   public Image process(Image img) throws IllegalArgumentException {
-    Pixel[][] pixelArray = new Pixel[img.getHeight()][img.getWidth()];
-    for (int row = 0; row < img.getHeight(); row++) {
-      for (int col = 0; col < img.getWidth(); col++) {
-        Pixel currentPixel = img.getPixelAt(row, col);
-        pixelArray[row][col] = new Pixel(img.getMaxValue(),
-                Math.max(currentPixel.getRed() + this.increment, img.getMaxValue()),
-                Math.max(currentPixel.getGreen() + this.increment, img.getMaxValue()),
-                Math.max(currentPixel.getBlue() + this.increment, img.getMaxValue()));
+    Image processedImage = img.copy();
+    for (int row = 0; row < processedImage.getHeight(); row++) {
+      for (int col = 0; col < processedImage.getWidth(); col++) {
+        Pixel currentPixel = processedImage.getPixelAt(row, col);
+        int currentRed = currentPixel.getRed();
+        int currentGreen = currentPixel.getGreen();
+        int currentBlue = currentPixel.getBlue();
+        currentPixel.setRed(currentRed + this.increment)
+                .setGreen(currentGreen + this.increment)
+                .setBlue(currentBlue + this.increment);
       }
     }
-
-    return new Image(pixelArray, img.getMaxValue(), img.getWidth(), img.getHeight());
+    return processedImage;
   }
 }
