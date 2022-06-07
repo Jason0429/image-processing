@@ -41,4 +41,19 @@ public class BrightenCommand
     }
     return processedImage;
   }
+
+  /**
+   * Produces the pixel brightened by the specified amount.
+   *
+   * @param pixel the pixel to brighten
+   * @return a brightened pixel
+   * @throws IllegalArgumentException if the image is null, or parameters are invalid
+   */
+  @Override
+  Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
+    return new Pixel(pixel.getMaxValue(),
+            Math.max(pixel.getRed() + this.increment, pixel.getMaxValue()),
+            Math.max(pixel.getGreen() + this.increment, pixel.getMaxValue()),
+            Math.max(pixel.getBlue() + this.increment, pixel.getMaxValue()));
+  }
 }

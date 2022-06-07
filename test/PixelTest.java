@@ -207,9 +207,9 @@ public class PixelTest {
 
   @Test
   public void testGetValue() {
-    assertEquals(1, this.black.getValue());
-    assertEquals(0, this.white.getValue());
-    assertEquals(252, this.yellow.getValue());
+    assertEquals(1, this.black.getLargestRGBValue());
+    assertEquals(0, this.white.getLargestRGBValue());
+    assertEquals(252, this.yellow.getLargestRGBValue());
   }
 
   @Test

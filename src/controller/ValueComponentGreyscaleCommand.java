@@ -28,7 +28,8 @@ public class ValueComponentGreyscaleCommand
     if (pixel == null) {
       throw new IllegalArgumentException("Pixel cannot be null");
     }
-    return new Pixel(pixel.getMaxValue(), pixel.getValue(), pixel.getValue(), pixel.getValue());
+    return new Pixel(pixel.getMaxValue(), pixel.getLargestRGBValue(),
+            pixel.getLargestRGBValue(), pixel.getLargestRGBValue());
   }
 }
 

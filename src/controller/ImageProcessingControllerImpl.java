@@ -1,9 +1,9 @@
 package controller;
 
 import model.ExceptionMessage;
+import model.Image;
+import model.ImageLoader;
 import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
-import view.ImageProcessingTextView;
 import view.ImageProcessingView;
 
 import java.io.FileNotFoundException;
@@ -50,7 +50,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           case "load":
             try {
               ImageLoader loader = new ImageLoader();
-              this.model.storeImage(nextLine[2], loader.getImage(nextLine[1]));
+              this.model.storeImage(nextLine[2], loader.getImageFromPPM(nextLine[1]));
             } catch (ArrayIndexOutOfBoundsException|IllegalArgumentException e) {
               this.displayMessage("Invalid parameters specified, please try again.\n");
             }

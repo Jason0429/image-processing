@@ -13,8 +13,8 @@ public class ImageTest {
   @Before
   public void init() {
     ImageLoader loader = new ImageLoader();
-    this.image1 = loader.getImage("images/test3x4.ppm");
-    this.image2 = loader.getImage("images/Koala.ppm");
+    this.image1 = loader.getImageFromPPM("images/test3x4.ppm");
+    this.image2 = loader.getImageFromPPM("images/Koala.ppm");
   }
 
   @Test
@@ -63,6 +63,6 @@ public class ImageTest {
                       + "252 186 3 252 227 3 161 252 3 \n"
                       + "252 186 3 252 227 3 161 252 3 \n"
                       + "252 186 3 252 227 3 161 252 3 \n";
-    assertEquals(image1PPM, this.image1.toPPM());
+    assertEquals(image1PPM, this.image1.toPPMString());
   }
 }
