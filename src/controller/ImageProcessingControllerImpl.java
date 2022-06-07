@@ -7,8 +7,6 @@ import view.ImageProcessingView;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * This class represents the controller that handles interactions for the image processing program.
@@ -35,15 +33,14 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
 
   @Override
   public void start() {
-    
   }
 
   /**
    * Processes an image with a specified processing method.
    *
-   * @param imageName the name of the image to process
+   * @param imageName    the name of the image to process
    * @param newImageName the name for the processed image
-   * @param cmd the processing command
+   * @param cmd          the processing command
    * @throws IllegalArgumentException if the image name is invalid
    */
   private void process(String imageName, String newImageName, ImageProcessingCommand cmd)
@@ -66,5 +63,20 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     FileOutputStream fos = new FileOutputStream(filePath);
     fos.write(ppm.getBytes());
     fos.close();
+  }
+
+  private void displayMenu() throws IOException {
+    this.view.renderMessage("Options:\n");
+    this.view.renderMessage("load [image-path] [image-name]\n");
+    this.view.renderMessage("save [image-path] [image-name]\n");
+    this.view.renderMessage("red-component [image-name] [dest-image-name]\n");
+    this.view.renderMessage("green-component [image-name] [dest-image-name]\n");
+    this.view.renderMessage("blue-component [image-name] [dest-image-name]\n");
+    this.view.renderMessage("value-component [image-name] [dest-image-name]\n");
+    this.view.renderMessage("luma-component [image-name] [dest-image-name]\n");
+    this.view.renderMessage("intensity-component [image-name] [dest-image-name]\n");
+    this.view.renderMessage("horizontal-flip [image-name] [dest-image-name]\n");
+    this.view.renderMessage("vertical-flip [image-name] [dest-image-name]\n");
+    this.view.renderMessage("brighten [image-name] [dest-image-name] [increment]");
   }
 }

@@ -27,7 +27,7 @@ public abstract class AbstractImageProcessingCommand implements ImageProcessingC
    *
    * @param pixel the pixel to be processed
    * @return the processed pixel
-   * @throws IllegalArgumentException if the pixel is null, or invalid parameters are passed
+   * @throws IllegalArgumentException if the pixel is null
    */
   abstract Pixel processPixel(Pixel pixel) throws IllegalArgumentException;
 }
