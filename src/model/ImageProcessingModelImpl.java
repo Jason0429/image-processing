@@ -8,10 +8,11 @@ import java.util.Map;
  * .PMM images.
  */
 public class ImageProcessingModelImpl implements ImageProcessingModel {
-  private Map<String, Image> images;
+  private final Map<String, Image> images;
 
   /**
-   * Constructs a new ImageProcessingModel.
+   * Constructs a new ImageProcessingModel with an empty map responsible for holding
+   * the name of the image and their corresponding {@code Image} object.
    */
   public ImageProcessingModelImpl() {
     this.images = new HashMap<String, Image>();
@@ -19,8 +20,13 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
 
   @Override
   public void storeImage(String name, Image img) throws IllegalArgumentException {
+    if (name.trim().equals("")) {
+      throw new IllegalArgumentException(
+              String.format(ExceptionMessage.STRING_CANNOT_BE_EMPTY.toString(), "Name of image"));
+    }
     if (img == null) {
-      throw new IllegalArgumentException("Image cannot be null");
+      throw new IllegalArgumentException(
+              String.format(ExceptionMessage.SPECIFIC_NULL_ARGUMENT.toString(), "Image"));
     }
     this.images.put(name, img);
   }

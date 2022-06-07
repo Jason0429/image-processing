@@ -27,24 +27,18 @@ public class BrightenCommand
    */
   @Override
   public Image process(Image img) throws IllegalArgumentException {
-    return super.process(img);
-  }
-
-  /**
-   * Produces the pixel brightened by the specified amount.
-   *
-   * @param pixel the pixel to brighten
-   * @return a brightened pixel
-   * @throws IllegalArgumentException if the image is null
-   */
-  @Override
-  Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
-    if (pixel == null) {
-      throw new IllegalArgumentException("Pixel cannot be null");
+    Image processedImage = img.copy();
+    for (int row = 0; row < processedImage.getHeight(); row++) {
+      for (int col = 0; col < processedImage.getWidth(); col++) {
+        Pixel currentPixel = processedImage.getPixelAt(row, col);
+        int currentRed = currentPixel.getRed();
+        int currentGreen = currentPixel.getGreen();
+        int currentBlue = currentPixel.getBlue();
+        currentPixel.setRed(currentRed + this.increment)
+                .setGreen(currentGreen + this.increment)
+                .setBlue(currentBlue + this.increment);
+      }
     }
-    return new Pixel(pixel.getMaxValue(),
-            Math.max(pixel.getRed() + this.increment, pixel.getMaxValue()),
-            Math.max(pixel.getGreen() + this.increment, pixel.getMaxValue()),
-            Math.max(pixel.getBlue() + this.increment, pixel.getMaxValue()));
+    return processedImage;
   }
 }
