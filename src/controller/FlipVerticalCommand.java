@@ -19,15 +19,11 @@ public class FlipVerticalCommand implements ImageProcessingCommand {
    * Produces the image flipped vertically.
    *
    * @param img        the image to flip vertically
-   * @param parameters should not have any parameters
    * @return the vertically flipped image
    * @throws IllegalArgumentException if the image is null, or if parameters are passed
    */
   @Override
-  public Image process(Image img, int... parameters) throws IllegalArgumentException {
-    if (parameters.length > 0) {
-      throw new IllegalArgumentException("This command does not accept parameters");
-    }
+  public Image process(Image img) throws IllegalArgumentException {
     Pixel[][] pixelArray = new Pixel[img.getHeight()][img.getWidth()];
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {
