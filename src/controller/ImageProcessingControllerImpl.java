@@ -1,5 +1,6 @@
 package controller;
 
+import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
@@ -25,8 +26,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view,
                                        Appendable out) throws IllegalArgumentException {
     if (model == null || view == null || out == null) {
-      throw new IllegalArgumentException("Inputs cannot be null");
+      throw new IllegalArgumentException(ExceptionMessage.NULL_VALUES.toString());
     }
+
     this.model = model;
     this.view = view;
     this.out = out;
@@ -55,8 +57,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param filePath the location to save the image
    * @param imgName  the image name
    */
-  private void exportImage(String filePath, String imgName) throws FileNotFoundException,
-          IOException {
+  private void exportImage(String filePath, String imgName)
+          throws FileNotFoundException, IOException {
 
     String ppm = this.model.getImage(imgName).toPPMString();
     FileOutputStream fos = new FileOutputStream(filePath);

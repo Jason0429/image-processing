@@ -5,6 +5,7 @@ package model;
  */
 public enum ExceptionMessage {
   NULL_VALUE("Value cannot be null."),
+  NULL_VALUES("Values cannot be null."),
   SPECIFIC_NULL_ARGUMENT("%s cannot be null."),
   PIXEL_RGB_INVALID_RANGE("Values must be between 0 and the maximum value."),
   INVALID_FILE_PATH("Invalid file path."),
