@@ -41,7 +41,7 @@ public class BrightenParamCommand extends ImageProcessingParamCommand implements
    * @throws IllegalArgumentException if the image is null, or parameters are invalid
    */
   @Override
-  Pixel processPixel(Pixel pixel, int ...parameters) throws IllegalArgumentException {
+  Pixel processPixel(Pixel pixel, int... parameters) throws IllegalArgumentException {
     // TODO: should the increment be positive only? or can it be negative?
     if (parameters.length != 1) {
       throw new IllegalArgumentException("This command must accept one parameter");

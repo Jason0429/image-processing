@@ -30,5 +30,5 @@ public abstract class ImageProcessingParamCommand implements ImageProcessingComm
    * @return the processed pixel
    * @throws IllegalArgumentException if the pixel is null, or invalid parameters are passed
    */
-  abstract Pixel processPixel(Pixel pixel, int ...parameters) throws IllegalArgumentException;
+  abstract Pixel processPixel(Pixel pixel, int... parameters) throws IllegalArgumentException;
 }
