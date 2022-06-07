@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * This class represents an image stored in 8-bit RGB format.
  */
@@ -15,8 +18,16 @@ public class Image implements ImageInterface {
    * @param pixelMatrix the 2-D array of pixels in the image
    * @param width       the image width
    * @param height      the image height
+   * @throws IllegalArgumentException if values are less than one and if the pixel matrix
+   *                                  corresponds with the given dimensions
    */
-  public Image(Pixel[][] pixelMatrix, int maxValue, int width, int height) {
+  public Image(Pixel[][] pixelMatrix, int maxValue, int width, int height)
+          throws IllegalArgumentException {
+    if (maxValue < 1 || width < 1 || height < 1
+            || pixelMatrix.length != height || pixelMatrix[0].length != width) {
+      throw new IllegalArgumentException("Arguments cannot be less than one, and matrix must " +
+              "match dimensions");
+    }
     this.pixelMatrix = pixelMatrix;
     this.maxValue = maxValue;
     this.width = width;
@@ -81,5 +92,23 @@ public class Image implements ImageInterface {
       }
     }
     return new Image(pixelMatrix, this.maxValue, this.width, this.height);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof Image) {
+      Image thatImage = (Image) obj;
+      return Arrays.deepEquals(this.pixelMatrix, thatImage.pixelMatrix)
+              && this.maxValue == thatImage.maxValue
+              && this.height == thatImage.height
+              && this.width == thatImage.width;
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(Arrays.deepHashCode(this.pixelMatrix),
+            this.maxValue, this.height, this.width);
   }
 }

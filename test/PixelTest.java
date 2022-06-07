@@ -2,7 +2,7 @@ import model.Pixel;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * This class tests the Pixel class and its methods.
@@ -224,5 +224,30 @@ public class PixelTest {
     assertEquals(1, this.black.getLuma(), 0.001);
     assertEquals(0, this.white.getLuma(), 0.001);
     assertEquals(198.2622, this.yellow.getLuma(), 0.001);
+  }
+
+  @Test
+  public void testCopy() {
+    assertTrue(this.black.copy().equals(this.black));
+  }
+
+  @Test
+  public void testEquals() {
+    Pixel pixelA = new Pixel(255, 1, 2, 3);
+    Pixel pixelB = new Pixel(255, 1, 2, 3);
+    Pixel pixelC = new Pixel(255, 1, 2, 255);
+    Pixel pixelD = new Pixel(255, 1, 255, 3);
+    Pixel pixelE = new Pixel(100, 1, 2, 3);
+    assertTrue(pixelA.equals(pixelB));
+    assertFalse(pixelA.equals(pixelC));
+    assertFalse(pixelA.equals(pixelD));
+    assertFalse(pixelA.equals(pixelE));
+  }
+
+  @Test
+  public void testHashcode() {
+    assertEquals(954305, this.black.hashCode());
+    assertEquals(923776, this.white.hashCode());
+    assertEquals(8625323, this.yellow.hashCode());
   }
 }

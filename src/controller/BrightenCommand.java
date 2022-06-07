@@ -34,9 +34,12 @@ public class BrightenCommand
         int currentRed = currentPixel.getRed();
         int currentGreen = currentPixel.getGreen();
         int currentBlue = currentPixel.getBlue();
-        currentPixel.setRed(currentRed + this.increment)
-                .setGreen(currentGreen + this.increment)
-                .setBlue(currentBlue + this.increment);
+        currentPixel.setRed(Math.max(0, Math.min(currentPixel.getMaxValue(),
+                        currentRed + this.increment)))
+                .setGreen(Math.max(0, Math.min(currentPixel.getMaxValue(),
+                        currentGreen + this.increment)))
+                .setBlue(Math.max(0, Math.min(currentPixel.getMaxValue(),
+                        currentBlue + this.increment)));
       }
     }
     return processedImage;

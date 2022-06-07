@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * This class represents a pixel in an image in RGB values.
  */
@@ -57,6 +59,7 @@ public class Pixel {
 
   /**
    * Returns the max value of the pixel.
+   *
    * @returns the max value of the pixel
    */
   public int getMaxValue() {
@@ -136,6 +139,20 @@ public class Pixel {
     return new Pixel(this.maxValue, this.red, this.green, this.blue);
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof Pixel) {
+      Pixel thatPixel = (Pixel) obj;
+      return this.red == thatPixel.red && this.green == thatPixel.green
+              && this.blue == thatPixel.blue && this.maxValue == thatPixel.maxValue;
+    }
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.red, this.green, this.blue, this.maxValue);
+  }
 
   /**
    * Determines if a value is within 0 and maxValue.
@@ -146,4 +163,6 @@ public class Pixel {
   private boolean withinBounds(int value) {
     return value >= 0 && value <= this.maxValue;
   }
+
+
 }

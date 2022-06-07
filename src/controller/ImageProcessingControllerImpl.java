@@ -51,14 +51,14 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             try {
               ImageLoader loader = new ImageLoader();
               this.model.storeImage(nextLine[2], loader.getImageFromPPM(nextLine[1]));
-            } catch (ArrayIndexOutOfBoundsException|IllegalArgumentException e) {
+            } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
               this.displayMessage("Invalid parameters specified, please try again.\n");
             }
             break;
           case "save":
             try {
               this.exportImage(nextLine[1], nextLine[2]);
-            } catch (ArrayIndexOutOfBoundsException|FileNotFoundException e) {
+            } catch (ArrayIndexOutOfBoundsException | FileNotFoundException e) {
               this.displayMessage("Invalid parameters specified, please try again.\n");
             } catch (IOException e) {
               throw new IllegalStateException("Unable to save image");
@@ -141,7 +141,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
               imageName = nextLine[1];
               newImageName = nextLine[2];
               cmd = new BrightenCommand(Integer.parseInt(nextLine[3]));
-            } catch (ArrayIndexOutOfBoundsException|NumberFormatException e) {
+            } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
               this.displayMessage("Invalid parameters specified, please try again.\n");
             }
             break;
