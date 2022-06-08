@@ -4,7 +4,8 @@ import model.Image;
 import model.Pixel;
 
 /**
- * This class represents an abstracted image processing command that handles image processing for
+ * This class represents an abstracted image processing command that handles
+ * image processing for
  * processing that keeps pixels in place.
  */
 public abstract class AbstractImageProcessingCommand implements ImageProcessingCommand {
@@ -22,7 +23,8 @@ public abstract class AbstractImageProcessingCommand implements ImageProcessingC
   }
 
   /**
-   * Produces a new pixel that has been processed. Specific details about how the image has been
+   * Produces a new pixel that has been processed. Specific details about how the
+   * image has been
    * processed vary by implementation.
    *
    * @param pixel the pixel to be processed

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import model.ExceptionMessage;
@@ -33,8 +34,12 @@ public class ImageLoader {
     // read the file line by line, and populate a string. This will throw away any comment lines
     while (sc.hasNextLine()) {
       String s = sc.nextLine();
-      if (s.charAt(0) != '#') {
-        builder.append(s).append(System.lineSeparator());
+      try {
+        if (s.charAt(0) != '#') {
+          builder.append(s).append(System.lineSeparator());
+        }
+      } catch (StringIndexOutOfBoundsException e) {
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
       }
     }
 
@@ -53,14 +58,19 @@ public class ImageLoader {
       int maxValue = sc.nextInt();
       Pixel[][] pixelArray = new Pixel[height][width];
 
+
       // Configure pixels with RGB values from PPM file.
       for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
           pixelArray[i][j] = new Pixel(maxValue, sc.nextInt(), sc.nextInt(), sc.nextInt());
         }
       }
-      return new Image(pixelArray, maxValue, width, height);
-    } catch (IllegalStateException e) {
+      if (!sc.hasNext()) {
+        return new Image(pixelArray, maxValue, width, height);
+      } else {
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
+      }
+    } catch (ArrayIndexOutOfBoundsException | NoSuchElementException | IllegalStateException e) {
       throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
     }
   }

@@ -33,7 +33,6 @@ public class MockImageProcessingModel implements ImageProcessingModel {
   public Image getImage(String name) throws IllegalArgumentException {
     try {
       this.log.append(String.format("Get Image: %s\n", name));
-      // TODO: might not be able to set this to null
       return null;
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write to log");

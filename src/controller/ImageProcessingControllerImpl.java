@@ -19,7 +19,8 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
- * This class represents the controller that handles interactions for the image processing program.
+ * This class represents the controller that handles interactions for the image
+ * processing program.
  */
 public class ImageProcessingControllerImpl implements ImageProcessingController {
   private final ImageProcessingModel model;
@@ -27,7 +28,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private final Readable readable;
 
   /**
-   * Constructs a {@code ImageProcessingControllerImpl} with a specified model, view,
+   * Constructs a {@code ImageProcessingControllerImpl} with a specified model,
+   * view,
    * and readable defaulted to {@code InputStreamReader}.
    *
    * @param model the model to be used in the controller.
@@ -38,7 +40,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   }
 
   /**
-   * Constructs a {@code ImageProcessingControllerImpl} with a specified model, view,
+   * Constructs a {@code ImageProcessingControllerImpl} with a specified model,
+   * view,
    * and readable.
    *
    * @param model    the model to be used in the controller.
@@ -47,7 +50,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @throws IllegalArgumentException if any argument is null.
    */
   public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view,
-                                       Readable readable) throws IllegalArgumentException {
+      Readable readable) throws IllegalArgumentException {
     if (model == null || view == null || readable == null) {
       throw new IllegalArgumentException(ExceptionMessage.NULL_VALUES.toString());
     }
@@ -139,7 +142,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new BrightenCommand(change).process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully brightened image and stored as: " + destImageName + "\n");
+          "Successfully brightened image and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
@@ -163,7 +166,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new FlipVerticalCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully flipped image vertically and stored as: " + destImageName + "\n");
+          "Successfully flipped image vertically and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
@@ -187,7 +190,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new FlipHorizontalCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully flipped image horizontally and stored as: " + destImageName + "\n");
+          "Successfully flipped image horizontally and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
@@ -211,7 +214,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new IntensityComponentGreyscaleCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully applied intensity component and stored as: " + destImageName + "\n");
+          "Successfully applied intensity component and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
@@ -235,7 +238,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new LumaComponentGreyscaleCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully applied luma component and stored as: " + destImageName + "\n");
+          "Successfully applied luma component and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
@@ -259,14 +262,15 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new ValueComponentGreyscaleCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully applied value component and stored as: " + destImageName + "\n");
+          "Successfully applied value component and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
   }
 
   /**
-   * Handles creating and storing a new image with blue greyscale component applied.
+   * Handles creating and storing a new image with blue greyscale component
+   * applied.
    *
    * @param query the command line query.
    */
@@ -283,14 +287,15 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new BlueComponentGreyscaleCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully applied blue component and stored as: " + destImageName + "\n");
+          "Successfully applied blue component and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
   }
 
   /**
-   * Handles creating and storing a new image with green greyscale component applied.
+   * Handles creating and storing a new image with green greyscale component
+   * applied.
    *
    * @param query the command line query.
    */
@@ -307,14 +312,15 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new GreenComponentGreyscaleCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully applied green component and stored as: " + destImageName + "\n");
+          "Successfully applied green component and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
   }
 
   /**
-   * Handles creating and storing a new image with red greyscale component applied.
+   * Handles creating and storing a new image with red greyscale component
+   * applied.
    *
    * @param query the command line query.
    */
@@ -331,7 +337,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       Image processedImage = new RedComponentGreyscaleCommand().process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
       this.displayMessage(
-              "Successfully applied red component and stored as: " + destImageName + "\n");
+          "Successfully applied red component and stored as: " + destImageName + "\n");
     } catch (IllegalArgumentException e) {
       this.displayInvalidCommandParametersError();
     }
