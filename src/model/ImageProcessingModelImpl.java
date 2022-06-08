@@ -22,7 +22,8 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
   public void storeImage(String name, Image img) throws IllegalArgumentException {
     if (name.trim().equals("")) {
       throw new IllegalArgumentException(
-              String.format(ExceptionMessage.STRING_CANNOT_BE_EMPTY.toString(), "Name of image"));
+              String.format(ExceptionMessage.SPECIFIC_STRING_CANNOT_BE_EMPTY.toString(),
+                      "Name of image"));
     }
     if (img == null) {
       throw new IllegalArgumentException(
@@ -35,8 +36,18 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
   public Image getImage(String name) throws IllegalArgumentException {
     if (this.images.containsKey(name)) {
       return this.images.get(name);
-    } else {
-      throw new IllegalArgumentException("Image not found");
     }
+    throw new IllegalArgumentException(ExceptionMessage.IMAGE_NOT_FOUND.toString());
+  }
+
+  @Override
+  public String[] getImageNames() {
+    String[] imageNames = new String[this.images.keySet().size()];
+    int i = 0;
+    for (String name : this.images.keySet()) {
+      imageNames[i] = name;
+      i++;
+    }
+    return imageNames;
   }
 }

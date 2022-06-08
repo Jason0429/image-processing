@@ -1,5 +1,6 @@
 import model.Image;
-import model.ImageLoader;
+import controller.ImageLoader;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,13 +13,13 @@ public class ImageTest {
 
   @Before
   public void init() {
-    ImageLoader loader = new ImageLoader();
-    this.image1 = loader.getImageFromPPM("images/test3x4.ppm");
-    this.image2 = loader.getImageFromPPM("images/Koala.ppm");
+    this.image1 = ImageLoader.load("images/test3x4.ppm");
+    this.image2 = ImageLoader.load("images/Koala.ppm");
   }
 
   @Test
-  public void testConstructor() { }
+  public void testConstructor() {
+  }
 
   // test invalid constructor cases?
 
@@ -40,29 +41,34 @@ public class ImageTest {
   }
 
   @Test
-  public void testGetPixelAt() { }
+  public void testGetPixelAt() {
+  }
 
   @Test
-  public void testGetPixelAtNegativeRow() { }
+  public void testGetPixelAtNegativeRow() {
+  }
 
   @Test
-  public void testGetPixelAtTooLargeRow() { }
+  public void testGetPixelAtTooLargeRow() {
+  }
 
   @Test
-  public void testGetPixelAtNegativeCol() { }
+  public void testGetPixelAtNegativeCol() {
+  }
 
   @Test
-  public void testGetPixelAtTooLargeCol() { }
+  public void testGetPixelAtTooLargeCol() {
+  }
 
   @Test
   public void testToPPM() {
-    String image1PPM =  "P3\n"
-                      + "3 4\n"
-                      + "255\n"
-                      + "252 186 3 252 227 3 161 252 3 \n"
-                      + "252 186 3 252 227 3 161 252 3 \n"
-                      + "252 186 3 252 227 3 161 252 3 \n"
-                      + "252 186 3 252 227 3 161 252 3 \n";
+    String image1PPM = "P3\n"
+            + "3 4\n"
+            + "255\n"
+            + "252 186 3 252 227 3 161 252 3 \n"
+            + "252 186 3 252 227 3 161 252 3 \n"
+            + "252 186 3 252 227 3 161 252 3 \n"
+            + "252 186 3 252 227 3 161 252 3 \n";
     assertEquals(image1PPM, this.image1.toPPMString());
   }
 }
