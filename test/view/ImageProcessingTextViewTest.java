@@ -2,10 +2,9 @@ package view;
 
 import org.junit.Test;
 
-import view.ImageProcessingTextView;
-import view.ImageProcessingView;
-
 import java.io.IOException;
+
+import controller.CorruptedAppendable;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
