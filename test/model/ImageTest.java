@@ -1,9 +1,6 @@
 package model;
 
-import model.Image;
 import controller.ImageLoader;
-
-import model.Pixel;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +9,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Tests the {@code Image} class.
+ */
 public class ImageTest {
   private Image image1;
   private Image image2;
@@ -144,7 +144,7 @@ public class ImageTest {
 
   @Test
   public void testCopy() {
-    assertTrue(this.image1.copy().equals(this.image1));
+    assertEquals(this.image1.copy(), this.image1);
   }
 
   @Test

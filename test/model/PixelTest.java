@@ -1,14 +1,12 @@
 package model;
 
-import model.Pixel;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * This class tests the Pixel class and its methods.
+ * This class tests the {@code Pixel} class and its methods.
  */
 public class PixelTest {
 
@@ -231,7 +229,7 @@ public class PixelTest {
 
   @Test
   public void testCopy() {
-    assertTrue(this.black.copy().equals(this.black));
+    assertEquals(this.black.copy(), this.black);
   }
 
   @Test
@@ -241,10 +239,10 @@ public class PixelTest {
     Pixel pixelC = new Pixel(255, 1, 2, 255);
     Pixel pixelD = new Pixel(255, 1, 255, 3);
     Pixel pixelE = new Pixel(100, 1, 2, 3);
-    assertTrue(pixelA.equals(pixelB));
-    assertFalse(pixelA.equals(pixelC));
-    assertFalse(pixelA.equals(pixelD));
-    assertFalse(pixelA.equals(pixelE));
+    assertEquals(pixelA, pixelB);
+    assertNotEquals(pixelA, pixelC);
+    assertNotEquals(pixelA, pixelD);
+    assertNotEquals(pixelA, pixelE);
   }
 
   @Test

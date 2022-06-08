@@ -1,9 +1,6 @@
 package model;
 
 import controller.ImageLoader;
-import model.Image;
-import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +9,9 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the {@code ImageProcessingModelImpl} class.
+ */
 public class ImageProcessingModelImplTest {
   private ImageProcessingModel model1;
 

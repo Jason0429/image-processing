@@ -3,11 +3,12 @@ package controller;
 import java.io.IOException;
 
 /**
- * This class is a subclass of Appendable that always throws an IOException for testing.
+ * This class is a subclass of {@code Appendable} that always throws an {@code IOException} for
+ * testing.
  */
 public class CorruptedAppendable implements Appendable {
   /**
-   * Throws an IOException to test the view.
+   * Throws an {@code IOException} to test the view.
    *
    * @return n/a
    * @throws IOException always
@@ -18,7 +19,7 @@ public class CorruptedAppendable implements Appendable {
   }
 
   /**
-   * Throws an IOException to test the view.
+   * Throws an {@code IOException} to test the view.
    *
    * @param csq   The character sequence from which a subsequence will be
    *              appended.  If {@code csq} is {@code null}, then characters
@@ -36,7 +37,7 @@ public class CorruptedAppendable implements Appendable {
   }
 
   /**
-   * Throws an IOException to test the view.
+   * Throws an {@code IOException} to test the view.
    *
    * @param c The character to append
    * @return n/a
