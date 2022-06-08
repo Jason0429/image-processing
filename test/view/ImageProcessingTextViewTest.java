@@ -9,6 +9,9 @@ import controller.CorruptedAppendable;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+/**
+ * Tests the {@code ImageProcessingTextView} class.
+ */
 public class ImageProcessingTextViewTest {
 
   @Test

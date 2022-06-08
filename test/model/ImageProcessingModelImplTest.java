@@ -1,5 +1,7 @@
 package model;
 
+import controller.ImageLoader;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -7,6 +9,9 @@ import controller.ImageLoader;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests the {@code ImageProcessingModelImpl} class.
+ */
 public class ImageProcessingModelImplTest {
   private ImageProcessingModel model1;
 
