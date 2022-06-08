@@ -5,6 +5,8 @@ import model.ImageProcessingModelImpl;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 public class ImageProcessingModelImplTest {
@@ -18,44 +20,52 @@ public class ImageProcessingModelImplTest {
   @Test
   public void testConstructor() {
     ImageProcessingModel test = new ImageProcessingModelImpl();
-    Image img = ImageLoader.load("images/test3x3.ppm");
+    Image img = ImageLoader.load("test-images/test3x3.ppm");
     test.storeImage("square", img);
     test.getImage("square");
   }
 
   @Test
   public void testStoreImage() {
-    Image img = ImageLoader.load("images/test3x3.ppm");
-    model1.storeImage("square", img);
-    assertEquals(img, model1.getImage("square"));
+    Image img = ImageLoader.load("test-images/test3x3.ppm");
+    this.model1.storeImage("square", img);
+    assertEquals(img, this.model1.getImage("square"));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStoreImageEmptyName() {
-    Image img = ImageLoader.load("images/test3x3.ppm");
-    model1.storeImage("", img);
+    Image img = ImageLoader.load("test-images/test3x3.ppm");
+    this.model1.storeImage("", img);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStoreImageWhiteSpaceName() {
-    Image img = ImageLoader.load("images/test3x3.ppm");
-    model1.storeImage(" \n ", img);
+    Image img = ImageLoader.load("test-images/test3x3.ppm");
+    this.model1.storeImage(" \n ", img);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStoreImageNullImg() {
-    model1.storeImage("square", null);
+    this.model1.storeImage("square", null);
   }
 
   @Test
   public void testGetImage() {
-    Image img = ImageLoader.load("images/test3x3.ppm");
-    model1.storeImage("square", img);
-    assertEquals(img, model1.getImage("square"));
+    Image img = ImageLoader.load("test-images/test3x3.ppm");
+    this.model1.storeImage("square", img);
+    assertEquals(img, this.model1.getImage("square"));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testGetImageInvalidName() {
-    model1.getImage("circle");
+    this.model1.getImage("circle");
+  }
+
+  @Test
+  public void testGetImageNames() {
+    Image img = ImageLoader.load("test-images/test3x3.ppm");
+    assertEquals("[]", Arrays.toString(this.model1.getImageNames()));
+    this.model1.storeImage("square", img);
+    assertEquals("[square]", Arrays.toString(this.model1.getImageNames()));
   }
 }
