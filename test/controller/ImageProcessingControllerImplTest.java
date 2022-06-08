@@ -6,8 +6,6 @@ import view.ImageProcessingTextView;
 
 import java.io.StringReader;
 
-import static org.junit.Assert.*;
-
 public class ImageProcessingControllerImplTest {
 
   /**

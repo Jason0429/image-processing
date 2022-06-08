@@ -7,7 +7,7 @@ import model.Pixel;
  */
 public class BlueComponentGreyscaleCommand
         extends AbstractImageProcessingCommand implements ImageProcessingCommand {
-  
+
   /**
    * Produces the greyscale version of the pixel using the blue component.
    *
@@ -16,7 +16,7 @@ public class BlueComponentGreyscaleCommand
    * @throws IllegalArgumentException if the pixel is null
    */
   @Override
-  Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
+  protected Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
     return new Pixel(pixel.getMaxValue(), pixel.getBlue(), pixel.getBlue(), pixel.getBlue());
   }
 }

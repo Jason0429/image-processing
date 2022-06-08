@@ -60,7 +60,7 @@ public class Pixel {
   /**
    * Returns the max value of the pixel.
    *
-   * @returns the max value of the pixel
+   * @return the max value of the pixel
    */
   public int getMaxValue() {
     return this.maxValue;

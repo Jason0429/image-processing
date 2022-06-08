@@ -1,9 +1,9 @@
 package controller;
 
+import java.io.IOException;
+
 import model.Image;
 import model.ImageProcessingModel;
-
-import java.io.IOException;
 
 /**
  * This class is a mock implementation of the ImageProcessingModel for testing.

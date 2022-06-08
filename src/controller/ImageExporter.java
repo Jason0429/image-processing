@@ -1,10 +1,10 @@
 package controller;
 
-import model.Image;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import model.Image;
 
 /**
  * Represents the class that exports {@code Image}s to .ppm files.

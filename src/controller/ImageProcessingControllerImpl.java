@@ -1,5 +1,12 @@
 package controller;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+import model.ExceptionMessage;
+import model.Image;
+import model.ImageProcessingModel;
 import model.commands.BlueComponentGreyscaleCommand;
 import model.commands.BrightenCommand;
 import model.commands.FlipHorizontalCommand;
@@ -9,14 +16,7 @@ import model.commands.IntensityComponentGreyscaleCommand;
 import model.commands.LumaComponentGreyscaleCommand;
 import model.commands.RedComponentGreyscaleCommand;
 import model.commands.ValueComponentGreyscaleCommand;
-import model.ExceptionMessage;
-import model.Image;
-import model.ImageProcessingModel;
 import view.ImageProcessingView;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Scanner;
 
 /**
  * This class represents the controller that handles interactions for the image

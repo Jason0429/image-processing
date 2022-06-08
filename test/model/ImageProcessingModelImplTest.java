@@ -1,14 +1,9 @@
 package model;
 
-import controller.ImageLoader;
-import model.Image;
-import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
+import controller.ImageLoader;
 
 import static org.junit.Assert.assertEquals;
 
