@@ -14,13 +14,6 @@ import model.Pixel;
 public class ImageLoader {
 
   /**
-   * Constructs a new {@code ImageLoader}.
-   */
-  public ImageLoader() {
-  }
-
-
-  /**
    * Loads a .PPM file with 24-bit color and creates a new image.
    *
    * @param fileLocation the .PPM file location

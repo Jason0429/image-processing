@@ -1,5 +1,5 @@
+import controller.ImageLoader;
 import model.Image;
-import model.ImageLoader;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 import org.junit.Before;
@@ -18,27 +18,27 @@ public class ImageProcessingModelImplTest {
   @Test
   public void testConstructor() {
     ImageProcessingModel test = new ImageProcessingModelImpl();
-    Image img = (new ImageLoader()).getImageFromPPM("images/test3x3.ppm");
+    Image img = ImageLoader.load("images/test3x3.ppm");
     test.storeImage("square", img);
     test.getImage("square");
   }
 
   @Test
   public void testStoreImage() {
-    Image img = (new ImageLoader()).getImageFromPPM("images/test3x3.ppm");
+    Image img = ImageLoader.load("images/test3x3.ppm");
     model1.storeImage("square", img);
     assertEquals(img, model1.getImage("square"));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStoreImageEmptyName() {
-    Image img = (new ImageLoader()).getImageFromPPM("images/test3x3.ppm");
+    Image img = ImageLoader.load("images/test3x3.ppm");
     model1.storeImage("", img);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStoreImageWhiteSpaceName() {
-    Image img = (new ImageLoader()).getImageFromPPM("images/test3x3.ppm");
+    Image img = ImageLoader.load("images/test3x3.ppm");
     model1.storeImage(" \n ", img);
   }
 
@@ -49,7 +49,7 @@ public class ImageProcessingModelImplTest {
 
   @Test
   public void testGetImage() {
-    Image img = (new ImageLoader()).getImageFromPPM("images/test3x3.ppm");
+    Image img = ImageLoader.load("images/test3x3.ppm");
     model1.storeImage("square", img);
     assertEquals(img, model1.getImage("square"));
   }

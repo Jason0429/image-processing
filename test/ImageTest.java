@@ -1,6 +1,7 @@
 import model.Image;
 import controller.ImageLoader;
 
+import model.Pixel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,13 +16,12 @@ public class ImageTest {
   @Before
   public void init() {
     this.image1 = ImageLoader.load("images/test3x4.ppm");
-    this.image2 = ImageLoader.load("images/Koala.ppm");
+    this.image2 = ImageLoader.load("images/test3x3.ppm");
   }
 
   @Test
   public void testConstructor() {
-    ImageLoader loader = new ImageLoader();
-    Image test = loader.getImageFromPPM("images/test3x4.ppm");
+    Image test = ImageLoader.load("images/test3x4.ppm");
     Pixel topLeft = new Pixel(255, 252, 186, 3);
     assertEquals(3, test.getWidth());
     assertEquals(4, test.getHeight());
