@@ -8,10 +8,11 @@ import java.util.Map;
  * .PMM images.
  */
 public class ImageProcessingModelImpl implements ImageProcessingModel {
-  private Map<String, Image> images;
+  private final Map<String, Image> images;
 
   /**
-   * Constructs a new ImageProcessingModel.
+   * Constructs a new ImageProcessingModel with an empty map responsible for holding
+   * the name of the image and their corresponding {@code Image} object.
    */
   public ImageProcessingModelImpl() {
     this.images = new HashMap<String, Image>();
@@ -19,8 +20,14 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
 
   @Override
   public void storeImage(String name, Image img) throws IllegalArgumentException {
+    if (name.trim().equals("")) {
+      throw new IllegalArgumentException(
+              String.format(ExceptionMessage.SPECIFIC_STRING_CANNOT_BE_EMPTY.toString(),
+                      "Name of image"));
+    }
     if (img == null) {
-      throw new IllegalArgumentException("Image cannot be null");
+      throw new IllegalArgumentException(
+              String.format(ExceptionMessage.SPECIFIC_NULL_ARGUMENT.toString(), "Image"));
     }
     this.images.put(name, img);
   }
@@ -29,8 +36,18 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
   public Image getImage(String name) throws IllegalArgumentException {
     if (this.images.containsKey(name)) {
       return this.images.get(name);
-    } else {
-      throw new IllegalArgumentException("Image not found");
     }
+    throw new IllegalArgumentException(ExceptionMessage.IMAGE_NOT_FOUND.toString());
+  }
+
+  @Override
+  public String[] getImageNames() {
+    String[] imageNames = new String[this.images.keySet().size()];
+    int i = 0;
+    for (String name : this.images.keySet()) {
+      imageNames[i] = name;
+      i++;
+    }
+    return imageNames;
   }
 }

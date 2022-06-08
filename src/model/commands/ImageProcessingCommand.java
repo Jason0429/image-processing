@@ -1,4 +1,4 @@
-package controller;
+package model.commands;
 
 import model.Image;
 
@@ -8,13 +8,14 @@ import model.Image;
 public interface ImageProcessingCommand {
 
   /**
-   * Produces a new image that has been processed. Specific details about how the image has been
+   * Produces a new image that has been processed. Specific details about how the
+   * image has been
    * processed vary by implementation.
    *
-   * @param img the image to be processed
+   * @param img        the image to be processed
    * @param parameters the parameters for the command
    * @return the processed image
    * @throws IllegalArgumentException if the image is null
    */
-  public Image process(Image img, int... parameters) throws IllegalArgumentException;
+  Image process(Image img) throws IllegalArgumentException;
 }

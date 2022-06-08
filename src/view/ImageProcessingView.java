@@ -9,7 +9,8 @@ public interface ImageProcessingView {
 
   /**
    * Renders a specified message to the output.
+   *
    * @param msg the message to be rendered
    */
-  public void renderMessage(String msg) throws IOException;
+  void renderMessage(String msg) throws IOException;
 }
