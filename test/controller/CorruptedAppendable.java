@@ -1,3 +1,5 @@
+package controller;
+
 import java.io.IOException;
 
 /**
@@ -6,6 +8,7 @@ import java.io.IOException;
 public class CorruptedAppendable implements Appendable {
   /**
    * Throws an IOException to test the view.
+   *
    * @return n/a
    * @throws IOException always
    */
@@ -16,6 +19,7 @@ public class CorruptedAppendable implements Appendable {
 
   /**
    * Throws an IOException to test the view.
+   *
    * @param csq   The character sequence from which a subsequence will be
    *              appended.  If {@code csq} is {@code null}, then characters
    *              will be appended as if {@code csq} contained the four

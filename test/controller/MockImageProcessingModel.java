@@ -1,14 +1,15 @@
+package controller;
+
 import model.Image;
 import model.ImageProcessingModel;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * This class is a mock implementation of the ImageProcessingModel for testing.
  */
 public class MockImageProcessingModel implements ImageProcessingModel {
-  private Appendable log;
+  private final Appendable log;
 
   /**
    * Constructs a new mock ImageProcessingModel.
@@ -28,7 +29,6 @@ public class MockImageProcessingModel implements ImageProcessingModel {
     }
   }
 
-
   @Override
   public Image getImage(String name) throws IllegalArgumentException {
     try {
@@ -42,7 +42,7 @@ public class MockImageProcessingModel implements ImageProcessingModel {
   @Override
   public String[] getImageNames() {
     try {
-      this.log.append(String.format("Get Image Names\n"));
+      this.log.append("Get Image Names\n");
       return null;
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write to log");

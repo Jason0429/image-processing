@@ -2,16 +2,12 @@ package model.commands;
 
 import model.Pixel;
 
+/**
+ * Represents the command to apply a blue component greyscale to an image.
+ */
 public class BlueComponentGreyscaleCommand
         extends AbstractImageProcessingCommand implements ImageProcessingCommand {
-
-  /**
-   * Creates a new command that creates greyscale images using the blue component.
-   */
-  public BlueComponentGreyscaleCommand() {
-
-  }
-
+  
   /**
    * Produces the greyscale version of the pixel using the blue component.
    *

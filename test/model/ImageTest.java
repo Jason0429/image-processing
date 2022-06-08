@@ -1,7 +1,10 @@
+package model;
+
 import model.Image;
 import controller.ImageLoader;
 
 import model.Pixel;
+
 import org.junit.Before;
 import org.junit.Test;
 
