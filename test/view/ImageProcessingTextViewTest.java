@@ -1,4 +1,7 @@
+package view;
+
 import org.junit.Test;
+
 import view.ImageProcessingTextView;
 import view.ImageProcessingView;
 

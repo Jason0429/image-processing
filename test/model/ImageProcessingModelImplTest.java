@@ -1,7 +1,10 @@
+package model;
+
 import controller.ImageLoader;
 import model.Image;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
+
 import org.junit.Before;
 import org.junit.Test;
 
