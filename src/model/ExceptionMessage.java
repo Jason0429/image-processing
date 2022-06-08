@@ -11,7 +11,8 @@ public enum ExceptionMessage {
   INVALID_FILE_PATH("Invalid file path."),
   INVALID_PPM_FILE("Invalid PPM file: plain RAW file should begin with P3."),
   OUT_OF_BOUNDS("Value out of bounds"),
-  STRING_CANNOT_BE_EMPTY("%s cannot be empty.");
+  STRING_CANNOT_BE_EMPTY("%s cannot be empty."),
+  SPECIFIC_NOT_FOUND("%s could not be found");
 
   private final String message;
 

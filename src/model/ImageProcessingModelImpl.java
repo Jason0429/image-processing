@@ -36,7 +36,8 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
     if (this.images.containsKey(name)) {
       return this.images.get(name);
     } else {
-      throw new IllegalArgumentException("Image not found");
+      throw new IllegalArgumentException(
+              String.format(ExceptionMessage.SPECIFIC_NOT_FOUND.toString(), "Image"));
     }
   }
 }
