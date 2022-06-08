@@ -6,13 +6,13 @@ import model.ImageProcessingModel;
 import java.io.IOException;
 
 /**
- * This class is a mock implementation of the ImageProcessingModel for testing.
+ * This class is a mock implementation of the {@code ImageProcessingModel} for testing.
  */
 public class MockImageProcessingModel implements ImageProcessingModel {
   private final Appendable log;
 
   /**
-   * Constructs a new mock ImageProcessingModel.
+   * Constructs a new mock {@code ImageProcessingModel}.
    *
    * @param log the log output
    */

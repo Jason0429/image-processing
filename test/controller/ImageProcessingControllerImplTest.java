@@ -11,6 +11,9 @@ import java.io.StringReader;
 
 import static org.junit.Assert.*;
 
+/**
+ * Tests the {@code ImageProcessingControllerImpl} class.
+ */
 public class ImageProcessingControllerImplTest {
 
   /**
