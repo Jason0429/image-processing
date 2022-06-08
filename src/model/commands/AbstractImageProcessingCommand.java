@@ -1,5 +1,6 @@
 package model.commands;
 
+import model.ExceptionMessage;
 import model.Image;
 import model.Pixel;
 
@@ -10,6 +11,10 @@ import model.Pixel;
 public abstract class AbstractImageProcessingCommand implements ImageProcessingCommand {
   @Override
   public Image process(Image img) throws IllegalArgumentException {
+    if (img == null) {
+      throw new IllegalArgumentException(
+              String.format(ExceptionMessage.SPECIFIC_NULL_ARGUMENT.toString(), "Image"));
+    }
     Pixel[][] pixelArray = new Pixel[img.getHeight()][img.getWidth()];
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {
@@ -29,5 +34,5 @@ public abstract class AbstractImageProcessingCommand implements ImageProcessingC
    * @return the processed pixel
    * @throws IllegalArgumentException if the pixel is null
    */
-  abstract Pixel processPixel(Pixel pixel) throws IllegalArgumentException;
+  protected abstract Pixel processPixel(Pixel pixel) throws IllegalArgumentException;
 }

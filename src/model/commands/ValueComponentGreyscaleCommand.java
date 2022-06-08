@@ -17,10 +17,7 @@ public class ValueComponentGreyscaleCommand
    * @throws IllegalArgumentException if the pixel is null
    */
   @Override
-  Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
-    if (pixel == null) {
-      throw new IllegalArgumentException("Pixel cannot be null");
-    }
+  protected Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
     return new Pixel(pixel.getMaxValue(), pixel.getLargestRGBValue(),
             pixel.getLargestRGBValue(), pixel.getLargestRGBValue());
   }

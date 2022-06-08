@@ -1,12 +1,9 @@
 package model;
 
-import model.Image;
-import controller.ImageLoader;
-
-import model.Pixel;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import controller.ImageLoader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

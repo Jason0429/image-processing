@@ -1,16 +1,41 @@
 package model.commands;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import controller.ImageLoader;
+import model.Image;
+import model.Pixel;
 
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Testing for {@code RedComponentGreyscaleCommand}.
+ */
 public class RedComponentGreyscaleCommandTest {
+  private Image unprocessedImage;
 
-  @Test
-  public void process() {
+  @Before
+  public void init() {
+    this.unprocessedImage = ImageLoader.load("test/test-images/test3x4.ppm");
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void processNullImage() {
+    ImageProcessingCommand cmd = new RedComponentGreyscaleCommand();
+    Image processedImage = cmd.process(null);
   }
 
   @Test
-  public void processPixel() {
+  public void process() {
+    ImageProcessingCommand cmd = new RedComponentGreyscaleCommand();
+    Image processedImage = cmd.process(this.unprocessedImage);
+    for (int i = 0; i < processedImage.getHeight(); i++) {
+      for (int j = 0; j < processedImage.getWidth(); j++) {
+        Pixel px = processedImage.getPixelAt(i, j);
+        assertEquals(px.getRed(), px.getBlue());
+        assertEquals(px.getRed(), px.getGreen());
+      }
+    }
   }
 }
