@@ -407,20 +407,6 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   }
 
   /**
-   * Exports an image as a .PPM file.
-   *
-   * @param filePath the location to save the image
-   * @param imgName  the image name
-   */
-  private void exportImage(String filePath, String imgName)
-          throws FileNotFoundException, IOException {
-    String ppm = this.model.getImage(imgName).toPPMString();
-    FileOutputStream fos = new FileOutputStream(filePath);
-    fos.write(ppm.getBytes());
-    fos.close();
-  }
-
-  /**
    * Displays the options.
    *
    * @throws IllegalStateException if the message cannot be displayed

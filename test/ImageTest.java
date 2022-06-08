@@ -13,9 +13,8 @@ public class ImageTest {
 
   @Before
   public void init() {
-    ImageLoader loader = new ImageLoader();
-    this.image1 = loader.load("images/test3x4.ppm");
-    this.image2 = loader.load("images/Koala.ppm");
+    this.image1 = ImageLoader.load("images/test3x4.ppm");
+    this.image2 = ImageLoader.load("images/Koala.ppm");
   }
 
   @Test
