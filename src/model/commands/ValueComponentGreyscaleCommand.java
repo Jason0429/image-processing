@@ -10,13 +10,6 @@ public class ValueComponentGreyscaleCommand
         extends AbstractImageProcessingCommand implements ImageProcessingCommand {
 
   /**
-   * Creates a new command that creates greyscale images using the value of each pixel.
-   */
-  public ValueComponentGreyscaleCommand() {
-
-  }
-
-  /**
    * Produces the greyscale version of the pixel using the value of each pixel.
    *
    * @param pixel the pixel to be processed

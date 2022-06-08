@@ -1,4 +1,7 @@
+package model;
+
 import model.Pixel;
+
 import org.junit.Before;
 import org.junit.Test;
 

@@ -4,7 +4,7 @@ import model.Image;
 import model.Pixel;
 
 /**
- * This class represents a command that can brighten images.
+ * Represents a command to brighten (or darken) images.
  */
 public class BrightenCommand
         extends AbstractImageProcessingCommand implements ImageProcessingCommand {

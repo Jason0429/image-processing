@@ -1,3 +1,5 @@
+package controller;
+
 import model.Image;
 import model.ImageProcessingModel;
 
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * This class is a mock implementation of the ImageProcessingModel for testing.
  */
 public class MockImageProcessingModel implements ImageProcessingModel {
-  private Appendable log;
+  private final Appendable log;
 
   /**
    * Constructs a new mock ImageProcessingModel.

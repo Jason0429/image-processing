@@ -7,13 +7,7 @@ import model.Pixel;
  * This class represents a command that can flip images horizontally.
  */
 public class FlipHorizontalCommand implements ImageProcessingCommand {
-
-  /**
-   * Creates a new command that flips images horizontally.
-   */
-  public FlipHorizontalCommand() {
-  }
-
+  
   /**
    * Produces the image flipped horizontally.
    *

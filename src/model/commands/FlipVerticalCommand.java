@@ -9,13 +9,6 @@ import model.Pixel;
 public class FlipVerticalCommand implements ImageProcessingCommand {
 
   /**
-   * Creates a new command that flips images vertically.
-   */
-  public FlipVerticalCommand() {
-
-  }
-
-  /**
    * Produces the image flipped vertically.
    *
    * @param img the image to flip vertically
