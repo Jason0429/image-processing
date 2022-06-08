@@ -1,4 +1,4 @@
-package controller;
+package model.commands;
 
 import model.Pixel;
 
@@ -19,7 +19,7 @@ public class RedComponentGreyscaleCommand
   /**
    * Produces the greyscale version of the pixel using the red component.
    *
-   * @param pixel      the pixel to be processed
+   * @param pixel the pixel to be processed
    * @return the greyscale version of the pixel using the red component
    * @throws IllegalArgumentException if the pixel is null
    */

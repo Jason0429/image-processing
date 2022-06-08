@@ -1,8 +1,12 @@
-package model;
+package controller;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import model.ExceptionMessage;
+import model.Image;
+import model.Pixel;
 
 /**
  * This class reads .PPM files and produces new Image objects.
@@ -10,9 +14,11 @@ import java.util.Scanner;
 public class ImageLoader {
 
   /**
-   * Constructs a new ImageLoader.
+   * Constructs a new {@code ImageLoader}.
    */
-  public ImageLoader() { }
+  public ImageLoader() {
+  }
+
 
   /**
    * Loads a .PPM file with 24-bit color and creates a new image.
@@ -21,7 +27,7 @@ public class ImageLoader {
    * @return a new {@code Image} object
    * @throws IllegalArgumentException if the file cannot be found
    */
-  public Image getImageFromPPM(String fileLocation) throws IllegalArgumentException {
+  public static Image load(String fileLocation) throws IllegalArgumentException {
     Scanner sc;
 
     try {
