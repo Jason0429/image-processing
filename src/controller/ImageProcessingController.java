@@ -9,5 +9,5 @@ public interface ImageProcessingController {
   /**
    * Starts the image processing program.
    */
-  public void start() throws IllegalStateException;
+  void start() throws IllegalStateException;
 }

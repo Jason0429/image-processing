@@ -39,4 +39,15 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
     }
     throw new IllegalArgumentException(ExceptionMessage.IMAGE_NOT_FOUND.toString());
   }
+
+  @Override
+  public String[] getImageNames() {
+    String[] imageNames = new String[this.images.keySet().size()];
+    int i = 0;
+    for (String name : this.images.keySet()) {
+      imageNames[i] = name;
+      i++;
+    }
+    return imageNames;
+  }
 }

@@ -75,6 +75,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         case "menu":
           this.displayMenu();
           break;
+        case "list":
+          this.handleList();
+          break;
         case "load":
           this.handleLoad(query);
           break;
@@ -109,6 +112,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           this.handleBrighten(query);
           break;
         case "quit":
+        case "q":
           quit = true;
           break;
         default:
@@ -354,6 +358,21 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       this.displayMessage("Successfully saved " + imageName + " at " + filePath + "\n");
     } catch (IOException e) {
       this.displayInvalidCommandParametersError();
+    }
+  }
+
+  /**
+   * Handles listing the currently stored images names.
+   */
+  private void handleList() {
+    String[] imageNames = this.model.getImageNames();
+    if (imageNames.length == 0) {
+      this.displayMessage("There are no images stored at the moment.li\n");
+      return;
+    }
+
+    for (String imageName : this.model.getImageNames()) {
+      this.displayMessage(imageName + "\n");
     }
   }
 
