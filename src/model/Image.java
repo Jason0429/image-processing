@@ -25,8 +25,8 @@ public class Image implements ImageInterface {
           throws IllegalArgumentException {
     if (maxValue < 1 || width < 1 || height < 1
             || pixelMatrix.length != height || pixelMatrix[0].length != width) {
-      throw new IllegalArgumentException("Arguments cannot be less than one, and matrix must " +
-              "match dimensions");
+      throw new IllegalArgumentException("Arguments cannot be less than one, and matrix must "
+              + "match dimensions");
     }
     this.pixelMatrix = pixelMatrix;
     this.maxValue = maxValue;

@@ -8,7 +8,6 @@ import model.Image;
 import model.commands.FlipVerticalCommand;
 import model.commands.ImageProcessingCommand;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**

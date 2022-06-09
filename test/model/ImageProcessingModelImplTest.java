@@ -25,7 +25,7 @@ public class ImageProcessingModelImplTest {
     ImageProcessingModel test = new ImageProcessingModelImpl();
     Image img = ImageLoader.load("test/test-images/test3x3.ppm");
     test.storeImage("square", img);
-    test.getImage("square");
+    assertEquals(img, test.getImage("square"));
   }
 
   @Test
