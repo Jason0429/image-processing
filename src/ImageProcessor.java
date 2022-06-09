@@ -13,7 +13,7 @@ public class ImageProcessor {
   /**
    * Starts the program.
    *
-   * @param args TODO: NEEDS TO BE COMPLETED
+   * @param args takes no arguments
    */
   public static void main(String[] args) {
     ImageProcessingModel model = new ImageProcessingModelImpl();
