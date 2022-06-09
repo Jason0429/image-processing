@@ -1,13 +1,13 @@
 package controller;
 
-import model.Image;
-import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
 import org.junit.Test;
-import view.ImageProcessingTextView;
-import view.ImageProcessingView;
 
 import java.io.StringReader;
+
+import model.ImageProcessingModel;
+import model.ImageProcessingModelImpl;
+import view.ImageProcessingTextView;
+import view.ImageProcessingView;
 
 import static org.junit.Assert.assertEquals;
 
@@ -59,7 +59,7 @@ public class ImageProcessingControllerImplTest {
     StringReader input = new StringReader(fakeInput.toString());
     StringBuilder actualOutput = new StringBuilder();
     ImageProcessingController controller = new ImageProcessingControllerImpl(
-        model, new ImageProcessingTextView(actualOutput), input);
+            model, new ImageProcessingTextView(actualOutput), input);
     controller.start();
     assertEquals(expectedOutput.toString(), actualOutput.toString());
     return true;

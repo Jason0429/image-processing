@@ -1,9 +1,9 @@
 package controller;
 
-import controller.ImageLoader;
+import org.junit.Test;
+
 import model.Image;
 import model.Pixel;
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,7 +19,7 @@ public class ImageLoaderTest {
     assertEquals(4, test.getHeight());
     assertEquals(255, test.getMaxValue());
     assertEquals(new Pixel(255, 252, 186, 3),
-        test.getPixelAt(0, 0));
+            test.getPixelAt(0, 0));
   }
 
   @Test(expected = IllegalArgumentException.class)

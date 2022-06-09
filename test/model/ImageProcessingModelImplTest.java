@@ -1,7 +1,5 @@
 package model;
 
-import controller.ImageLoader;
-
 import org.junit.Before;
 import org.junit.Test;
 

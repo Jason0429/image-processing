@@ -1,7 +1,5 @@
 package model;
 
-import controller.ImageLoader;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +7,6 @@ import controller.ImageLoader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Tests the {@code Image} class.
@@ -77,7 +74,7 @@ public class ImageTest {
   @Test
   public void testGetPixelAt() {
     assertEquals(new Pixel(255, 252, 186, 3),
-        this.image1.getPixelAt(0, 0));
+            this.image1.getPixelAt(0, 0));
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -103,44 +100,44 @@ public class ImageTest {
   @Test
   public void testToPPM() {
     String image1PPM = "P3\n" +
-        "3 4\n" +
-        "255\n" +
-        "252\n" +
-        "186\n" +
-        "3\n" +
-        "252\n" +
-        "227\n" +
-        "3\n" +
-        "161\n" +
-        "252\n" +
-        "3\n" +
-        "252\n" +
-        "186\n" +
-        "3\n" +
-        "252\n" +
-        "227\n" +
-        "3\n" +
-        "161\n" +
-        "252\n" +
-        "3\n" +
-        "252\n" +
-        "186\n" +
-        "3\n" +
-        "252\n" +
-        "227\n" +
-        "3\n" +
-        "161\n" +
-        "252\n" +
-        "3\n" +
-        "252\n" +
-        "186\n" +
-        "3\n" +
-        "252\n" +
-        "227\n" +
-        "3\n" +
-        "161\n" +
-        "252\n" +
-        "3\n";
+            "3 4\n" +
+            "255\n" +
+            "252\n" +
+            "186\n" +
+            "3\n" +
+            "252\n" +
+            "227\n" +
+            "3\n" +
+            "161\n" +
+            "252\n" +
+            "3\n" +
+            "252\n" +
+            "186\n" +
+            "3\n" +
+            "252\n" +
+            "227\n" +
+            "3\n" +
+            "161\n" +
+            "252\n" +
+            "3\n" +
+            "252\n" +
+            "186\n" +
+            "3\n" +
+            "252\n" +
+            "227\n" +
+            "3\n" +
+            "161\n" +
+            "252\n" +
+            "3\n" +
+            "252\n" +
+            "186\n" +
+            "3\n" +
+            "252\n" +
+            "227\n" +
+            "3\n" +
+            "161\n" +
+            "252\n" +
+            "3\n";
     assertEquals(image1PPM, this.image1.toPPMString());
   }
 
