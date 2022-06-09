@@ -129,14 +129,14 @@ public class ImageTest {
             "161\n" +
             "252\n" +
             "3\n" +
+            "50\n" +
+            "100\n" +
+            "2\n" +
             "252\n" +
-            "186\n" +
-            "3\n" +
-            "252\n" +
-            "227\n" +
+            "100\n" +
             "3\n" +
             "161\n" +
-            "252\n" +
+            "100\n" +
             "3\n";
     assertEquals(image1PPM, this.image1.toPPMString());
   }
@@ -152,15 +152,15 @@ public class ImageTest {
     pixelMatrix[0][0] = new Pixel(255, 252, 186, 3);
     pixelMatrix[1][0] = new Pixel(255, 252, 186, 3);
     pixelMatrix[2][0] = new Pixel(255, 252, 186, 3);
-    pixelMatrix[3][0] = new Pixel(255, 252, 186, 3);
+    pixelMatrix[3][0] = new Pixel(255, 50, 100, 2);
     pixelMatrix[0][1] = new Pixel(255, 252, 227, 3);
     pixelMatrix[1][1] = new Pixel(255, 252, 227, 3);
     pixelMatrix[2][1] = new Pixel(255, 252, 227, 3);
-    pixelMatrix[3][1] = new Pixel(255, 252, 227, 3);
+    pixelMatrix[3][1] = new Pixel(255, 252, 100, 3);
     pixelMatrix[0][2] = new Pixel(255, 161, 252, 3);
     pixelMatrix[1][2] = new Pixel(255, 161, 252, 3);
     pixelMatrix[2][2] = new Pixel(255, 161, 252, 3);
-    pixelMatrix[3][2] = new Pixel(255, 161, 252, 3);
+    pixelMatrix[3][2] = new Pixel(255, 161, 100, 3);
     Image copy = new Image(pixelMatrix, 255, 3, 4);
     assertEquals(this.image1, copy);
     assertNotEquals(this.image1, this.image2);
@@ -168,7 +168,7 @@ public class ImageTest {
 
   @Test
   public void testHashCode() {
-    assertEquals(-1080619362, this.image1.hashCode());
+    assertEquals(1702110722, this.image1.hashCode());
     assertEquals(-218450216, this.image2.hashCode());
   }
 }

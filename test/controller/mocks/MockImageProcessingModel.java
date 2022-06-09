@@ -43,7 +43,7 @@ public class MockImageProcessingModel implements ImageProcessingModel {
   public String[] getImageNames() {
     try {
       this.log.append("Get Image Names\n");
-      return null;
+      return new String[0];
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write to log");
     }

@@ -1,5 +1,6 @@
 package controller;
 
+import controller.mocks.MockImageProcessingModel;
 import org.junit.Test;
 
 import java.io.StringReader;
@@ -68,5 +69,20 @@ public class ImageProcessingControllerImplTest {
     ImageProcessingModel model = new ImageProcessingModelImpl();
     ImageProcessingView view = new ImageProcessingTextView();
     ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, null);
+  }
+
+  @Test
+  public void testControllerPassingInputsToModel() {
+    Appendable log = new StringBuilder();
+    Readable in = new StringReader("load test/test-images/test3x4.ppm test\n"
+            + "brighten 10 test test-brighten\n"
+            + "list\n"
+            + "q\n");
+    ImageProcessingModel model = new MockImageProcessingModel(log);
+    ImageProcessingView view = new ImageProcessingTextView();
+    ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, in);
+    controller.start();
+    assertEquals("Store Image: test\nGet Image: test\n" +
+            "Get Image Names\n", log.toString());
   }
 }

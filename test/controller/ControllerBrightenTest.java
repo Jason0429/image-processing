@@ -38,7 +38,7 @@ public class ControllerBrightenTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load test/test-images/test3x4.ppm test\n"),
             IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
-            IPCTester.inputs("brighten -10 test test-brighten-10\n"),
+            IPCTester.inputs("brighten -10 test test-darken-10\n"),
             IPCTester.prints("Successfully brightened image and stored as: test-darken-10"),
             IPCTester.inputs("q\n")));
   }
