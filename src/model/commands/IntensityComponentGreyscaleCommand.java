@@ -2,6 +2,9 @@ package model.commands;
 
 import model.Pixel;
 
+/**
+ * Represents a command that uses the intensity of each pixel to greyscale an image.
+ */
 public class IntensityComponentGreyscaleCommand
         extends AbstractImageProcessingCommand implements ImageProcessingCommand {
 

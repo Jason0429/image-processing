@@ -12,8 +12,7 @@ public interface ImageProcessingCommand {
    * image has been
    * processed vary by implementation.
    *
-   * @param img        the image to be processed
-   * @param parameters the parameters for the command
+   * @param img the image to be processed
    * @return the processed image
    * @throws IllegalArgumentException if the image is null
    */
