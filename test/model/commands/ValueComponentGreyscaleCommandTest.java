@@ -9,6 +9,9 @@ import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for {@code ValueComponentGreyscaleCommand}.
+ */
 public class ValueComponentGreyscaleCommandTest {
   private Image unprocessedImage;
 
