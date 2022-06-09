@@ -122,6 +122,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
           break;
       }
     }
+    sc.close();
   }
 
   /**
