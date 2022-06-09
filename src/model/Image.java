@@ -84,17 +84,6 @@ public class Image implements ImageInterface {
   }
 
   @Override
-  public Image copy() {
-    Pixel[][] pixelMatrix = new Pixel[this.height][this.width];
-    for (int i = 0; i < this.height; i++) {
-      for (int j = 0; j < this.width; j++) {
-        pixelMatrix[i][j] = this.getPixelAt(i, j).copy();
-      }
-    }
-    return new Image(pixelMatrix, this.maxValue, this.width, this.height);
-  }
-
-  @Override
   public boolean equals(Object obj) {
     if (obj instanceof Image) {
       Image thatImage = (Image) obj;

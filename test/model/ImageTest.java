@@ -142,11 +142,6 @@ public class ImageTest {
   }
 
   @Test
-  public void testCopy() {
-    assertEquals(this.image1.copy(), this.image1);
-  }
-
-  @Test
   public void testEquals() {
     Pixel[][] pixelMatrix = new Pixel[4][3];
     pixelMatrix[0][0] = new Pixel(255, 252, 186, 3);
