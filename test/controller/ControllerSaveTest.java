@@ -11,98 +11,95 @@ import view.ImageProcessingTextView;
 import view.ImageProcessingView;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests for save command in controller.
  */
 public class ControllerSaveTest {
-  private Appendable appendable;
   private ImageProcessingModel model;
-  private ImageProcessingView view;
 
   @Before
   public void init() {
-    this.appendable = new StringBuilder();
     this.model = new ImageProcessingModelImpl();
-    this.view = new ImageProcessingTextView(this.appendable);
   }
 
   @Test
   public void testValid() {
-    Readable readable = new StringReader(
-            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm test-vertical-flip" +
-                    System.lineSeparator() + "q");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
-    assertEquals(appendable.toString(),
-            "*** Image Processing Program ***\n" +
-                    "Enter a command to start.\n" +
-                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-                    "Successfully flipped image vertically and stored as: test-vertical-flip\n" +
-                    "Successfully saved test-vertical-flip at " +
-                    "test/test-images/test3x4-flipped-vertical.ppm\n");
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("vertical-flip test test-vertical-flip"),
+            IPCTester.prints(
+                    "Successfully flipped image vertically and stored as: test-vertical-flip"),
+            IPCTester.inputs(
+                    "save test/test-images/test3x4-flipped-vertical.ppm test-vertical-flip"),
+            IPCTester.prints("Successfully saved test-vertical-flip at " +
+                    "test/test-images/test3x4-flipped-vertical.ppm"),
+            IPCTester.inputs("q")));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testImageNotFound() {
-    Readable readable = new StringReader(
-            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm does-not-exist" +
-                    System.lineSeparator() + "q");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("vertical-flip test test-vertical-flip"),
+            IPCTester.prints(
+                    "Successfully flipped image vertically and stored as: test-vertical-flip"),
+            IPCTester.inputs(
+                    "save test/test-images/test3x4-flipped-vertical.ppm does-not-exist"),
+            IPCTester.inputs("q")));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testInvalid() {
-    Readable readable = new StringReader(
-            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save 1 2" +
-                    System.lineSeparator() + "q");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("vertical-flip test test-vertical-flip"),
+            IPCTester.prints(
+                    "Successfully flipped image vertically and stored as: test-vertical-flip"),
+            IPCTester.inputs(
+                    "save 1 2"),
+            IPCTester.inputs("q")));
   }
 
   @Test
   public void testLessArgs() {
-    Readable readable = new StringReader(
-            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm" +
-                    System.lineSeparator() + "q");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
-    assertEquals(appendable.toString(),
-            "*** Image Processing Program ***\n" +
-                    "Enter a command to start.\n" +
-                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-                    "Successfully flipped image vertically and stored as: test-vertical-flip\n" +
-                    "Invalid parameters specified, please try again.\n");
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("vertical-flip test test-vertical-flip"),
+            IPCTester.prints(
+                    "Successfully flipped image vertically and stored as: test-vertical-flip"),
+            IPCTester.inputs(
+                    "save test/test-images/test3x4-flipped-vertical.ppm"),
+            IPCTester.prints("Invalid parameters specified, please try again."),
+            IPCTester.inputs("q")));
   }
 
   @Test
   public void testMoreArgs() {
-    Readable readable = new StringReader(
-            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm test-vertical-flip extra" +
-                    System.lineSeparator() + "q");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
-    assertEquals(appendable.toString(),
-            "*** Image Processing Program ***\n" +
-                    "Enter a command to start.\n" +
-                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-                    "Successfully flipped image vertically and stored as: test-vertical-flip\n" +
-                    "Invalid parameters specified, please try again.\n");
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("vertical-flip test test-vertical-flip"),
+            IPCTester.prints(
+                    "Successfully flipped image vertically and stored as: test-vertical-flip"),
+            IPCTester.inputs(
+                    "save test/test-images/test3x4-flipped-vertical.ppm test-vertical-flip extra"),
+            IPCTester.prints("Invalid parameters specified, please try again."),
+            IPCTester.inputs("q")));
   }
 }

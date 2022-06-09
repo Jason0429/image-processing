@@ -1,9 +1,9 @@
 package controller;
 
+import java.io.StringReader;
+
 import model.ImageProcessingModel;
 import view.ImageProcessingTextView;
-
-import java.io.StringReader;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,7 +16,7 @@ public class IPCTester {
    * @return the new interaction
    */
   static Interaction inputs(String in) {
-    return (input, output) -> input.append(in);
+    return (input, output) -> input.append(in).append('\n');
   }
 
   /**
