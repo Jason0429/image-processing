@@ -9,6 +9,9 @@ import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for {@code FlipHorizontalCommand}.
+ */
 public class FlipHorizontalCommandTest {
   private Image unprocessedImage;
 

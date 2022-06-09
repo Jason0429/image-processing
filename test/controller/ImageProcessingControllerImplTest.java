@@ -118,8 +118,4 @@ public class ImageProcessingControllerImplTest {
     ImageProcessingView view = new ImageProcessingTextView();
     ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, null);
   }
-
-  @Test
-  public void start() {
-  }
 }
