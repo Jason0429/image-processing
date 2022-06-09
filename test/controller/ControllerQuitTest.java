@@ -11,41 +11,48 @@ import view.ImageProcessingTextView;
 import view.ImageProcessingView;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests quit command for controller.
  */
 public class ControllerQuitTest {
-  private Appendable appendable;
   private ImageProcessingModel model;
-  private ImageProcessingView view;
 
   @Before
   public void init() {
-    this.appendable = new StringBuilder();
     this.model = new ImageProcessingModelImpl();
-    this.view = new ImageProcessingTextView(this.appendable);
   }
 
   @Test
   public void testValidQ() {
-    Readable readable = new StringReader("q");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
-    assertEquals(appendable.toString(),
-            "*** Image Processing Program ***\n" +
-                    "Enter a command to start.\n");
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("q")));
   }
 
   @Test
   public void testValidQuit() {
-    Readable readable = new StringReader("quit");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
-    assertEquals(appendable.toString(),
-            "*** Image Processing Program ***\n" +
-                    "Enter a command to start.\n");
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("quit")));
+  }
+
+  @Test
+  public void testAlsoValidQ() {
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("q 1 2 3")));
+  }
+
+  @Test
+  public void testAlsoValidQuit() {
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("quit 1 2 3")));
   }
 }

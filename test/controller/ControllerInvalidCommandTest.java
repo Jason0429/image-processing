@@ -11,32 +11,26 @@ import view.ImageProcessingTextView;
 import view.ImageProcessingView;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests invalid commands for controller.
  */
 public class ControllerInvalidCommandTest {
-  private Appendable appendable;
   private ImageProcessingModel model;
-  private ImageProcessingView view;
 
   @Before
   public void init() {
-    this.appendable = new StringBuilder();
     this.model = new ImageProcessingModelImpl();
-    this.view = new ImageProcessingTextView(this.appendable);
   }
 
   @Test
   public void testInvalidCommandEntered() {
-    Readable readable = new StringReader(
-            "invalid-command" + System.lineSeparator() + "q");
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
-            this.model, this.view, readable);
-    controller.start();
-    assertEquals(appendable.toString(),
-            "*** Image Processing Program ***\n" +
-                    "Enter a command to start.\n" +
-                    "Invalid parameters specified, please try again.\n");
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("invalid-command"),
+            IPCTester.prints("Invalid parameters specified, please try again."),
+            IPCTester.inputs("q")));
   }
 }
