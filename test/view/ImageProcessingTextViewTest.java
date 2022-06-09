@@ -1,10 +1,9 @@
 package view;
 
+import controller.mocks.CorruptedAppendable;
 import org.junit.Test;
 
 import java.io.IOException;
-
-import controller.mocks.CorruptedAppendable;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -16,12 +15,25 @@ public class ImageProcessingTextViewTest {
 
   @Test
   public void testConstructor() {
-    ImageProcessingView view = new ImageProcessingTextView();
+    try {
+      ImageProcessingView view = new ImageProcessingTextView();
+    } catch (IllegalArgumentException e) {
+      fail();
+    }
   }
 
   @Test
   public void testAlternateConstructor() {
-    ImageProcessingView view = new ImageProcessingTextView(new StringBuilder());
+    try {
+      ImageProcessingView view = new ImageProcessingTextView(new StringBuilder());
+    } catch (IllegalArgumentException e) {
+      fail();
+    }
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAlternateConstructorNullAppendable() {
+    ImageProcessingView view = new ImageProcessingTextView(null);
   }
 
   @Test
