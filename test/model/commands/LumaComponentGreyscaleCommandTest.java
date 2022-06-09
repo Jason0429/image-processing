@@ -9,6 +9,9 @@ import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for {@code LumaComponentGreyscaleCommand}.
+ */
 public class LumaComponentGreyscaleCommandTest {
   private Image unprocessedImage;
 
