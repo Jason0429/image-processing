@@ -419,6 +419,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    */
   private void displayMenu() throws IllegalStateException {
     this.displayMessage("Options:\n");
+    this.displayMessage("menu (loads this menu)\n");
+    this.displayMessage("list (lists all loaded images)\n");
     this.displayMessage("load [image-path] [image-name]\n");
     this.displayMessage("save [image-path] [image-name]\n");
     this.displayMessage("red-component [image-name] [dest-image-name]\n");
@@ -430,6 +432,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.displayMessage("horizontal-flip [image-name] [dest-image-name]\n");
     this.displayMessage("vertical-flip [image-name] [dest-image-name]\n");
     this.displayMessage("brighten [increment] [image-name] [dest-image-name]\n");
+    this.displayMessage("quit/q (quit the program)\n");
   }
 
   /**
