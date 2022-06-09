@@ -42,6 +42,7 @@ public class ImageLoader {
         throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
       }
     }
+    sc.close();
 
     // now set up the scanner to read from the string we just built
     sc = new Scanner(builder.toString());
@@ -66,6 +67,7 @@ public class ImageLoader {
         }
       }
       if (!sc.hasNext()) {
+        sc.close();
         return new Image(pixelArray, maxValue, width, height);
       } else {
         throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
