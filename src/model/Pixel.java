@@ -6,9 +6,9 @@ import java.util.Objects;
  * This class represents a pixel in an image in RGB values.
  */
 public class Pixel {
-  private int red;
-  private int green;
-  private int blue;
+  private final int red;
+  private final int green;
+  private final int blue;
   private final int maxValue;
 
   /**
@@ -22,7 +22,7 @@ public class Pixel {
    */
   public Pixel(int maxValue, int red, int green, int blue) throws IllegalArgumentException {
     this.maxValue = maxValue;
-    if (!this.withinBounds(red) || !this.withinBounds(green) || !this.withinBounds(blue)) {
+    if (this.notWithinBounds(red) || this.notWithinBounds(green) || this.notWithinBounds(blue)) {
       throw new IllegalArgumentException(ExceptionMessage.PIXEL_RGB_INVALID_RANGE.toString());
     }
     this.red = red;
@@ -67,42 +67,6 @@ public class Pixel {
   }
 
   /**
-   * Sets a new red value, within 0-maxValue. If value exceed maxValue, it will be set to
-   * maxValue; if values are less than 0, it will be set to 0.
-   *
-   * @param r the new red value.
-   * @return the updated {@code Pixel}.
-   */
-  public Pixel setRed(int r) {
-    this.red = Math.max(0, Math.min(r, this.maxValue));
-    return this;
-  }
-
-  /**
-   * Sets a new green value, within 0-maxValue. If value exceed maxValue, it will be set to
-   * maxValue; if values are less than 0, it will be set to 0.
-   *
-   * @param g the new green value.
-   * @return the updated {@code Pixel}.
-   */
-  public Pixel setGreen(int g) {
-    this.green = Math.max(0, Math.min(g, this.maxValue));
-    return this;
-  }
-
-  /**
-   * Sets a new blue value, within 0-maxValue. If value exceed maxValue, it will be set to
-   * maxValue; if values are less than 0, it will be set to 0.
-   *
-   * @param b the new blue value.
-   * @return the updated {@code Pixel}.
-   */
-  public Pixel setBlue(int b) {
-    this.blue = Math.max(0, Math.min(b, this.maxValue));
-    return this;
-  }
-
-  /**
    * Returns the largest value between red, green, and blue of the pixel.
    *
    * @return the largest RGB value
@@ -130,15 +94,6 @@ public class Pixel {
     return (0.2126 * this.red) + (0.7152 * this.green) + (0.0722 * this.blue);
   }
 
-  /**
-   * Creates a copy this {@code Pixel} to avoid returning direct references.
-   *
-   * @return a new {@code Pixel} with the same configurations.
-   */
-  public Pixel copy() {
-    return new Pixel(this.maxValue, this.red, this.green, this.blue);
-  }
-
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof Pixel) {
@@ -160,8 +115,8 @@ public class Pixel {
    * @param value the value to be tested
    * @return true if the value is within bounds, otherwise false
    */
-  private boolean withinBounds(int value) {
-    return value >= 0 && value <= this.maxValue;
+  private boolean notWithinBounds(int value) {
+    return value < 0 || value > this.maxValue;
   }
 
 

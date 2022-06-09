@@ -94,120 +94,6 @@ public class PixelTest {
   }
 
   @Test
-  public void testSetRed() {
-    assertEquals(252, this.yellow.getRed());
-    this.yellow.setRed(100);
-    assertEquals(100, this.yellow.getRed());
-    assertEquals(1, this.black.getRed());
-    this.black.setRed(0);
-    assertEquals(0, this.black.getRed());
-  }
-
-  @Test
-  public void testSetRedZero() {
-    assertEquals(252, this.yellow.getRed());
-    this.yellow.setRed(0);
-    assertEquals(0, this.yellow.getRed());
-  }
-
-  @Test
-  public void testSetRedMax() {
-    assertEquals(252, this.yellow.getRed());
-    this.yellow.setRed(255);
-    assertEquals(255, this.yellow.getRed());
-  }
-
-  @Test
-  public void testSetRedNegative() {
-    assertEquals(252, this.yellow.getRed());
-    this.yellow.setRed(-10);
-    assertEquals(0, this.yellow.getRed());
-  }
-
-  @Test
-  public void testSetRedOverMax() {
-    assertEquals(252, this.yellow.getRed());
-    this.yellow.setRed(300);
-    assertEquals(255, this.yellow.getRed());
-  }
-
-  @Test
-  public void testSetGreen() {
-    assertEquals(202, this.yellow.getGreen());
-    this.yellow.setGreen(100);
-    assertEquals(100, this.yellow.getGreen());
-    assertEquals(1, this.black.getGreen());
-    this.black.setGreen(0);
-    assertEquals(0, this.black.getGreen());
-  }
-
-  @Test
-  public void testSetGreenZero() {
-    assertEquals(202, this.yellow.getGreen());
-    this.yellow.setGreen(0);
-    assertEquals(0, this.yellow.getGreen());
-  }
-
-  @Test
-  public void testSetGreenMax() {
-    assertEquals(202, this.yellow.getGreen());
-    this.yellow.setGreen(255);
-    assertEquals(255, this.yellow.getGreen());
-  }
-
-  @Test
-  public void testSetGreenNegative() {
-    assertEquals(202, this.yellow.getGreen());
-    this.yellow.setGreen(-10);
-    assertEquals(0, this.yellow.getGreen());
-  }
-
-  @Test
-  public void testSetGreenOverMax() {
-    assertEquals(202, this.yellow.getGreen());
-    this.yellow.setGreen(300);
-    assertEquals(255, this.yellow.getGreen());
-  }
-
-  @Test
-  public void testSetBlue() {
-    assertEquals(3, this.yellow.getBlue());
-    this.yellow.setBlue(100);
-    assertEquals(100, this.yellow.getBlue());
-    assertEquals(1, this.black.getBlue());
-    this.black.setBlue(0);
-    assertEquals(0, this.black.getBlue());
-  }
-
-  @Test
-  public void testSetBlueZero() {
-    assertEquals(3, this.yellow.getBlue());
-    this.yellow.setBlue(0);
-    assertEquals(0, this.yellow.getBlue());
-  }
-
-  @Test
-  public void testSetBlueMax() {
-    assertEquals(3, this.yellow.getBlue());
-    this.yellow.setBlue(255);
-    assertEquals(255, this.yellow.getBlue());
-  }
-
-  @Test
-  public void testSetBlueNegative() {
-    assertEquals(3, this.yellow.getBlue());
-    this.yellow.setBlue(-10);
-    assertEquals(0, this.yellow.getBlue());
-  }
-
-  @Test
-  public void testSetBlueOverMax() {
-    assertEquals(3, this.yellow.getBlue());
-    this.yellow.setBlue(300);
-    assertEquals(255, this.yellow.getBlue());
-  }
-
-  @Test
   public void testGetValue() {
     assertEquals(1, this.black.getLargestRGBValue());
     assertEquals(0, this.white.getLargestRGBValue());
@@ -227,12 +113,7 @@ public class PixelTest {
     assertEquals(0, this.white.getLuma(), 0.001);
     assertEquals(198.2622, this.yellow.getLuma(), 0.001);
   }
-
-  @Test
-  public void testCopy() {
-    assertEquals(this.black.copy(), this.black);
-  }
-
+  
   @Test
   public void testEquals() {
     Pixel pixelA = new Pixel(255, 1, 2, 3);
