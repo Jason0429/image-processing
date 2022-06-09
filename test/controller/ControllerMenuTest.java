@@ -1,15 +1,11 @@
 package controller;
 
-import model.ImageProcessingModel;
-import model.ImageProcessingModelImpl;
 import org.junit.Before;
 import org.junit.Test;
-import view.ImageProcessingTextView;
-import view.ImageProcessingView;
 
-import java.io.StringReader;
+import model.ImageProcessingModel;
+import model.ImageProcessingModelImpl;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -26,48 +22,48 @@ public class ControllerMenuTest {
   @Test
   public void testValid() {
     assertTrue(IPCTester.testRun(this.model,
-        IPCTester.prints("*** Image Processing Program ***"),
-        IPCTester.prints("Enter a command to start."),
-        IPCTester.inputs("menu"),
-        IPCTester.prints("Options:"),
-        IPCTester.prints("menu (loads this menu)"),
-        IPCTester.prints("list (lists all loaded images)"),
-        IPCTester.prints("load [image-path] [image-name]"),
-        IPCTester.prints("save [image-path] [image-name]"),
-        IPCTester.prints("red-component [image-name] [dest-image-name]"),
-        IPCTester.prints("green-component [image-name] [dest-image-name]"),
-        IPCTester.prints("blue-component [image-name] [dest-image-name]"),
-        IPCTester.prints("value-component [image-name] [dest-image-name]"),
-        IPCTester.prints("luma-component [image-name] [dest-image-name]"),
-        IPCTester.prints("intensity-component [image-name] [dest-image-name]"),
-        IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
-        IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
-        IPCTester.prints("brighten [increment] [image-name] [dest-image-name]"),
-        IPCTester.prints("quit/q (quit the program)"),
-        IPCTester.inputs("q")));
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("menu"),
+            IPCTester.prints("Options:"),
+            IPCTester.prints("menu (loads this menu)"),
+            IPCTester.prints("list (lists all loaded images)"),
+            IPCTester.prints("load [image-path] [image-name]"),
+            IPCTester.prints("save [image-path] [image-name]"),
+            IPCTester.prints("red-component [image-name] [dest-image-name]"),
+            IPCTester.prints("green-component [image-name] [dest-image-name]"),
+            IPCTester.prints("blue-component [image-name] [dest-image-name]"),
+            IPCTester.prints("value-component [image-name] [dest-image-name]"),
+            IPCTester.prints("luma-component [image-name] [dest-image-name]"),
+            IPCTester.prints("intensity-component [image-name] [dest-image-name]"),
+            IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
+            IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
+            IPCTester.prints("brighten [increment] [image-name] [dest-image-name]"),
+            IPCTester.prints("quit/q (quit the program)"),
+            IPCTester.inputs("q")));
   }
 
   @Test
   public void testAlsoValid() {
     assertTrue(IPCTester.testRun(this.model,
-        IPCTester.prints("*** Image Processing Program ***"),
-        IPCTester.prints("Enter a command to start."),
-        IPCTester.inputs("menu 1 2 3"),
-        IPCTester.prints("Options:"),
-        IPCTester.prints("menu (loads this menu)"),
-        IPCTester.prints("list (lists all loaded images)"),
-        IPCTester.prints("load [image-path] [image-name]"),
-        IPCTester.prints("save [image-path] [image-name]"),
-        IPCTester.prints("red-component [image-name] [dest-image-name]"),
-        IPCTester.prints("green-component [image-name] [dest-image-name]"),
-        IPCTester.prints("blue-component [image-name] [dest-image-name]"),
-        IPCTester.prints("value-component [image-name] [dest-image-name]"),
-        IPCTester.prints("luma-component [image-name] [dest-image-name]"),
-        IPCTester.prints("intensity-component [image-name] [dest-image-name]"),
-        IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
-        IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
-        IPCTester.prints("brighten [increment] [image-name] [dest-image-name]"),
-        IPCTester.prints("quit/q (quit the program)"),
-        IPCTester.inputs("q")));
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("menu 1 2 3"),
+            IPCTester.prints("Options:"),
+            IPCTester.prints("menu (loads this menu)"),
+            IPCTester.prints("list (lists all loaded images)"),
+            IPCTester.prints("load [image-path] [image-name]"),
+            IPCTester.prints("save [image-path] [image-name]"),
+            IPCTester.prints("red-component [image-name] [dest-image-name]"),
+            IPCTester.prints("green-component [image-name] [dest-image-name]"),
+            IPCTester.prints("blue-component [image-name] [dest-image-name]"),
+            IPCTester.prints("value-component [image-name] [dest-image-name]"),
+            IPCTester.prints("luma-component [image-name] [dest-image-name]"),
+            IPCTester.prints("intensity-component [image-name] [dest-image-name]"),
+            IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
+            IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
+            IPCTester.prints("brighten [increment] [image-name] [dest-image-name]"),
+            IPCTester.prints("quit/q (quit the program)"),
+            IPCTester.inputs("q")));
   }
 }
