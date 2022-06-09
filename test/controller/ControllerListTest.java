@@ -37,6 +37,20 @@ public class ControllerListTest {
   }
 
   @Test
+  public void testValidMultipleImages() {
+    assertTrue(IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."),
+            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load test/test-images/test3x4.ppm test1"),
+            IPCTester.prints("Successfully loaded test1 from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("list"),
+            IPCTester.prints("test\ntest1"),
+            IPCTester.inputs("q")));
+  }
+
+  @Test
   public void testEmptyList() {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
