@@ -8,6 +8,7 @@ import model.Image;
 import model.commands.FlipVerticalCommand;
 import model.commands.ImageProcessingCommand;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
@@ -24,6 +25,7 @@ public class ImageExporterTest {
     try {
       ImageExporter.export(processedImage, exportFilePath);
       Image exportedImage = ImageLoader.load(exportFilePath);
+      assertEquals(processedImage, exportedImage);
     } catch (IOException e) {
       // If export does not work, fail test.
       fail("Export failed");
