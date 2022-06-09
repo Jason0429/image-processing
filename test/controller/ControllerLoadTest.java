@@ -1,14 +1,9 @@
 package controller;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import java.io.StringReader;
-
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
-import view.ImageProcessingTextView;
-import view.ImageProcessingView;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -32,6 +27,8 @@ public class ControllerLoadTest {
             IPCTester.inputs("load test/test-images/test3x4.ppm test"),
             IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
             IPCTester.inputs("q")));
+    assertEquals(ImageLoader.load("test/test-images/test3x4.ppm"),
+            this.model.getImage("test"));
   }
 
   @Test

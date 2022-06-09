@@ -35,6 +35,8 @@ public class ControllerValueComponentTest {
             IPCTester.prints(
                     "Successfully applied value component and stored as: test-value"),
             IPCTester.inputs("q")));
+    assertEquals(ImageLoader.load("test/test-images/test-value.ppm"),
+            this.model.getImage("test-value"));
   }
 
   @Test

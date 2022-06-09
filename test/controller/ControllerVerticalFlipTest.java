@@ -31,10 +31,12 @@ public class ControllerVerticalFlipTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load test/test-images/test3x4.ppm test"),
             IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
-            IPCTester.inputs("vertical-flip test test-vertical-flip"),
+            IPCTester.inputs("vertical-flip test test-vertical"),
             IPCTester.prints(
-                    "Successfully flipped image vertically and stored as: test-vertical-flip"),
+                    "Successfully flipped image vertically and stored as: test-vertical"),
             IPCTester.inputs("q")));
+    assertEquals(ImageLoader.load("test/test-images/test-vertical.ppm"),
+            this.model.getImage("test-vertical"));
   }
 
   @Test
@@ -44,7 +46,7 @@ public class ControllerVerticalFlipTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load test/test-images/test3x4.ppm test"),
             IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
-            IPCTester.inputs("vertical-flip does-not-exist test-vertical-flip"),
+            IPCTester.inputs("vertical-flip does-not-exist test-vertical"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
   }

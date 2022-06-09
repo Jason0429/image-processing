@@ -35,6 +35,8 @@ public class ControllerIntensityComponentTest {
             IPCTester.prints(
                     "Successfully applied intensity component and stored as: test-intensity"),
             IPCTester.inputs("q")));
+    assertEquals(ImageLoader.load("test/test-images/test-intensity.ppm"),
+            this.model.getImage("test-intensity"));
   }
 
   @Test

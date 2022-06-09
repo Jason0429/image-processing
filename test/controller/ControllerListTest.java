@@ -33,7 +33,6 @@ public class ControllerListTest {
             IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
             IPCTester.inputs("list"),
             IPCTester.prints("test"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
   }
 

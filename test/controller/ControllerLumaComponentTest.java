@@ -34,6 +34,8 @@ public class ControllerLumaComponentTest {
             IPCTester.inputs("luma-component test test-luma"),
             IPCTester.prints("Successfully applied luma component and stored as: test-luma"),
             IPCTester.inputs("q")));
+    assertEquals(ImageLoader.load("test/test-images/test-luma.ppm"),
+            this.model.getImage("test-luma"));
   }
 
   @Test

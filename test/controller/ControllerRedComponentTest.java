@@ -34,6 +34,8 @@ public class ControllerRedComponentTest {
             IPCTester.inputs("red-component test test-red"),
             IPCTester.prints("Successfully applied red component and stored as: test-red"),
             IPCTester.inputs("q")));
+    assertEquals(ImageLoader.load("test/test-images/test-red.ppm"),
+            this.model.getImage("test-red"));
   }
 
   @Test
