@@ -7,6 +7,9 @@ import view.ImageProcessingTextView;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * A helper class to facilitate checking inputs and outputs in controller.
+ */
 public class IPCTester {
 
   /**
