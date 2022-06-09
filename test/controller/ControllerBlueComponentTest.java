@@ -6,6 +6,7 @@ import org.junit.Test;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -29,6 +30,8 @@ public class ControllerBlueComponentTest {
             IPCTester.inputs("blue-component test test-blue\n"),
             IPCTester.prints("Successfully applied blue component and stored as: test-blue"),
             IPCTester.inputs("q\n")));
+    assertEquals(ImageLoader.load("test/test-images/test-blue.ppm"),
+            this.model.getImage("test-blue"));
   }
 
   @Test

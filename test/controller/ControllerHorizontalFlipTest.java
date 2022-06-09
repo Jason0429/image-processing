@@ -17,15 +17,11 @@ import static org.junit.Assert.assertTrue;
  * Tests horizontal-component for controller.
  */
 public class ControllerHorizontalFlipTest {
-  //  private Appendable appendable;
   private ImageProcessingModel model;
-//  private ImageProcessingView view;
 
   @Before
   public void init() {
-//    this.appendable = new StringBuilder();
     this.model = new ImageProcessingModelImpl();
-//    this.view = new ImageProcessingTextView(this.appendable);
   }
 
   @Test
@@ -39,18 +35,8 @@ public class ControllerHorizontalFlipTest {
             IPCTester.prints(
                     "Successfully flipped image horizontally and stored as: test-horizontal"),
             IPCTester.inputs("q\n")));
-
-//    Readable readable = new StringReader(
-//            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-//                    "horizontal-flip test test-horizontal" + System.lineSeparator() + "q");
-//    ImageProcessingController controller = new ImageProcessingControllerImpl(
-//            this.model, this.view, readable);
-//    controller.start();
-//    assertEquals(appendable.toString(),
-//            "*** Image Processing Program ***\n" +
-//                    "Enter a command to start.\n" +
-//                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-//                    "Successfully flipped image horizontally and stored as: test-horizontal\n");
+    assertEquals(ImageLoader.load("test/test-images/test-horizontal.ppm"),
+            this.model.getImage("test-horizontal"));
   }
 
   @Test
@@ -63,18 +49,6 @@ public class ControllerHorizontalFlipTest {
             IPCTester.inputs("horizontal-flip does-not-exist test-horizontal\n"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q\n")));
-
-//    Readable readable = new StringReader(
-//            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-//                    "horizontal-flip does-not-exist test-horizontal" + System.lineSeparator() + "q");
-//    ImageProcessingController controller = new ImageProcessingControllerImpl(
-//            this.model, this.view, readable);
-//    controller.start();
-//    assertEquals(appendable.toString(),
-//            "*** Image Processing Program ***\n" +
-//                    "Enter a command to start.\n" +
-//                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-//                    "Invalid parameters specified, please try again.\n");
   }
 
   @Test
@@ -87,18 +61,6 @@ public class ControllerHorizontalFlipTest {
             IPCTester.inputs("horizontal-flip 1 2\n"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q\n")));
-
-//    Readable readable = new StringReader(
-//            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-//                    "horizontal-flip 1 2" + System.lineSeparator() + "q");
-//    ImageProcessingController controller = new ImageProcessingControllerImpl(
-//            this.model, this.view, readable);
-//    controller.start();
-//    assertEquals(appendable.toString(),
-//            "*** Image Processing Program ***\n" +
-//                    "Enter a command to start.\n" +
-//                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-//                    "Invalid parameters specified, please try again.\n");
   }
 
   @Test
@@ -111,18 +73,6 @@ public class ControllerHorizontalFlipTest {
             IPCTester.inputs("horizontal-flip test\n"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q\n")));
-
-//    Readable readable = new StringReader(
-//            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-//                    "horizontal-flip test" + System.lineSeparator() + "q");
-//    ImageProcessingController controller = new ImageProcessingControllerImpl(
-//            this.model, this.view, readable);
-//    controller.start();
-//    assertEquals(appendable.toString(),
-//            "*** Image Processing Program ***\n" +
-//                    "Enter a command to start.\n" +
-//                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-//                    "Invalid parameters specified, please try again.\n");
   }
 
   @Test
@@ -135,17 +85,5 @@ public class ControllerHorizontalFlipTest {
             IPCTester.inputs("horizontal-flip test test-horizontal extra\n"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q\n")));
-
-//    Readable readable = new StringReader(
-//            "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-//                    "horizontal-flip test test-horizontal extra" + System.lineSeparator() + "q");
-//    ImageProcessingController controller = new ImageProcessingControllerImpl(
-//            this.model, this.view, readable);
-//    controller.start();
-//    assertEquals(appendable.toString(),
-//            "*** Image Processing Program ***\n" +
-//                    "Enter a command to start.\n" +
-//                    "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-//                    "Invalid parameters specified, please try again.\n");
   }
 }

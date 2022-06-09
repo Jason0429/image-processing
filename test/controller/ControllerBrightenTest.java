@@ -6,6 +6,7 @@ import org.junit.Test;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -29,6 +30,8 @@ public class ControllerBrightenTest {
             IPCTester.inputs("brighten 10 test test-brighten-10\n"),
             IPCTester.prints("Successfully brightened image and stored as: test-brighten-10"),
             IPCTester.inputs("q\n")));
+    assertEquals(ImageLoader.load("test/test-images/test-brighten.ppm"),
+            this.model.getImage("test-brighten-10"));
   }
 
   @Test

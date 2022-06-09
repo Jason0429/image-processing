@@ -34,6 +34,8 @@ public class ControllerGreenComponentTest {
             IPCTester.inputs("green-component test test-green\n"),
             IPCTester.prints("Successfully applied green component and stored as: test-green"),
             IPCTester.inputs("q\n")));
+    assertEquals(ImageLoader.load("test/test-images/test-green.ppm"),
+            this.model.getImage("test-green"));
   }
 
   @Test

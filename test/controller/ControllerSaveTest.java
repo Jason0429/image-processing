@@ -31,8 +31,8 @@ public class ControllerSaveTest {
   public void testValid() {
     Readable readable = new StringReader(
             "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm test-vertical-flip" +
+                    "vertical-flip test test-vertical" + System.lineSeparator() +
+                    "save test/test-images/test-vertical.ppm test-vertical" +
                     System.lineSeparator() + "q");
     ImageProcessingController controller = new ImageProcessingControllerImpl(
             this.model, this.view, readable);
@@ -41,17 +41,17 @@ public class ControllerSaveTest {
             "*** Image Processing Program ***\n" +
                     "Enter a command to start.\n" +
                     "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-                    "Successfully flipped image vertically and stored as: test-vertical-flip\n" +
-                    "Successfully saved test-vertical-flip at " +
-                    "test/test-images/test3x4-flipped-vertical.ppm\n");
+                    "Successfully flipped image vertically and stored as: test-vertical\n" +
+                    "Successfully saved test-vertical at " +
+                    "test/test-images/test-vertical.ppm\n");
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testImageNotFound() {
     Readable readable = new StringReader(
             "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm does-not-exist" +
+                    "vertical-flip test test-vertical" + System.lineSeparator() +
+                    "save test/test-images/test-vertical.ppm does-not-exist" +
                     System.lineSeparator() + "q");
     ImageProcessingController controller = new ImageProcessingControllerImpl(
             this.model, this.view, readable);
@@ -62,7 +62,7 @@ public class ControllerSaveTest {
   public void testInvalid() {
     Readable readable = new StringReader(
             "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
+                    "vertical-flip test test-vertical" + System.lineSeparator() +
                     "save 1 2" +
                     System.lineSeparator() + "q");
     ImageProcessingController controller = new ImageProcessingControllerImpl(
@@ -74,8 +74,8 @@ public class ControllerSaveTest {
   public void testLessArgs() {
     Readable readable = new StringReader(
             "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm" +
+                    "vertical-flip test test-vertical" + System.lineSeparator() +
+                    "save test/test-images/test-vertical.ppm" +
                     System.lineSeparator() + "q");
     ImageProcessingController controller = new ImageProcessingControllerImpl(
             this.model, this.view, readable);
@@ -84,7 +84,7 @@ public class ControllerSaveTest {
             "*** Image Processing Program ***\n" +
                     "Enter a command to start.\n" +
                     "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-                    "Successfully flipped image vertically and stored as: test-vertical-flip\n" +
+                    "Successfully flipped image vertically and stored as: test-vertical\n" +
                     "Invalid parameters specified, please try again.\n");
   }
 
@@ -92,8 +92,8 @@ public class ControllerSaveTest {
   public void testMoreArgs() {
     Readable readable = new StringReader(
             "load test/test-images/test3x4.ppm test" + System.lineSeparator() +
-                    "vertical-flip test test-vertical-flip" + System.lineSeparator() +
-                    "save test/test-images/test3x4-flipped-vertical.ppm test-vertical-flip extra" +
+                    "vertical-flip test test-vertical" + System.lineSeparator() +
+                    "save test/test-images/test-vertical.ppm test-vertical extra" +
                     System.lineSeparator() + "q");
     ImageProcessingController controller = new ImageProcessingControllerImpl(
             this.model, this.view, readable);
@@ -102,7 +102,7 @@ public class ControllerSaveTest {
             "*** Image Processing Program ***\n" +
                     "Enter a command to start.\n" +
                     "Successfully loaded test from test/test-images/test3x4.ppm\n" +
-                    "Successfully flipped image vertically and stored as: test-vertical-flip\n" +
+                    "Successfully flipped image vertically and stored as: test-vertical\n" +
                     "Invalid parameters specified, please try again.\n");
   }
 }

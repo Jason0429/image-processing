@@ -21,7 +21,7 @@ public class ImageExporterTest {
     Image unprocessedImage = ImageLoader.load("test/test-images/test3x4.ppm");
     ImageProcessingCommand cmd = new FlipVerticalCommand();
     Image processedImage = cmd.process(unprocessedImage);
-    String exportFilePath = "test/test-images/test3x4-flipped-vertical.ppm";
+    String exportFilePath = "test/test-images/test-vertical.ppm";
     try {
       ImageExporter.export(processedImage, exportFilePath);
       Image exportedImage = ImageLoader.load(exportFilePath);
