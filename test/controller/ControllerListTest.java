@@ -41,4 +41,16 @@ public class ControllerListTest {
                     "Successfully loaded test from test/test-images/test3x4.ppm\n" +
                     "test\n");
   }
+
+  @Test
+  public void testEmptyList() {
+    Readable readable = new StringReader("list" + System.lineSeparator() + "q");
+    ImageProcessingController controller = new ImageProcessingControllerImpl(
+            this.model, this.view, readable);
+    controller.start();
+    assertEquals(appendable.toString(),
+            "*** Image Processing Program ***\n" +
+                    "Enter a command to start.\n" +
+                    "There are no images stored at the moment.\n");
+  }
 }

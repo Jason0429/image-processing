@@ -373,7 +373,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
   private void handleList() {
     String[] imageNames = this.model.getImageNames();
     if (imageNames.length == 0) {
-      this.displayMessage("There are no images stored at the moment.li\n");
+      this.displayMessage("There are no images stored at the moment.\n");
       return;
     }
 
