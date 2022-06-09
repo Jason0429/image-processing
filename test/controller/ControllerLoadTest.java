@@ -24,10 +24,10 @@ public class ControllerLoadTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("q")));
-    assertEquals(ImageLoader.load("test/test-images/test3x4.ppm"),
+    assertEquals(ImageLoader.load("res/test3x4.ppm"),
             this.model.getImage("test"));
   }
 
@@ -56,7 +56,7 @@ public class ControllerLoadTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
   }
@@ -66,7 +66,7 @@ public class ControllerLoadTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test extra"),
+            IPCTester.inputs("load res/test3x4.ppm test extra"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
   }

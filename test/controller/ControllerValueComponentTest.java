@@ -29,13 +29,13 @@ public class ControllerValueComponentTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("value-component test test-value"),
             IPCTester.prints(
                     "Successfully applied value component and stored as: test-value"),
             IPCTester.inputs("q")));
-    assertEquals(ImageLoader.load("test/test-images/test-value.ppm"),
+    assertEquals(ImageLoader.load("res/test-value.ppm"),
             this.model.getImage("test-value"));
   }
 
@@ -44,8 +44,8 @@ public class ControllerValueComponentTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("value-component does-not-exist test-value"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
@@ -56,8 +56,8 @@ public class ControllerValueComponentTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("value-component 1 2"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
@@ -68,8 +68,8 @@ public class ControllerValueComponentTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("value-component test"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
@@ -80,8 +80,8 @@ public class ControllerValueComponentTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("value-component test test-value extra"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));

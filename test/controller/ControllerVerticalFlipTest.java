@@ -29,13 +29,13 @@ public class ControllerVerticalFlipTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("vertical-flip test test-vertical"),
             IPCTester.prints(
                     "Successfully flipped image vertically and stored as: test-vertical"),
             IPCTester.inputs("q")));
-    assertEquals(ImageLoader.load("test/test-images/test-vertical.ppm"),
+    assertEquals(ImageLoader.load("res/test-vertical.ppm"),
             this.model.getImage("test-vertical"));
   }
 
@@ -44,8 +44,8 @@ public class ControllerVerticalFlipTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("vertical-flip does-not-exist test-vertical"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
@@ -56,8 +56,8 @@ public class ControllerVerticalFlipTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("vertical-flip 1 2"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
@@ -68,8 +68,8 @@ public class ControllerVerticalFlipTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("vertical-flip test"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
@@ -80,8 +80,8 @@ public class ControllerVerticalFlipTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("load test/test-images/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from test/test-images/test3x4.ppm"),
+            IPCTester.inputs("load res/test3x4.ppm test"),
+            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
             IPCTester.inputs("vertical-flip test test-vertical-flip extra"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));

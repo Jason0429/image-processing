@@ -78,7 +78,7 @@ public class ImageProcessingControllerImplTest {
   @Test
   public void testControllerPassingInputsToModel() {
     Appendable log = new StringBuilder();
-    Readable in = new StringReader("load test/test-images/test3x4.ppm test\n"
+    Readable in = new StringReader("load res/test3x4.ppm test\n"
             + "brighten 10 test test-brighten\n"
             + "list\n"
             + "q\n");
