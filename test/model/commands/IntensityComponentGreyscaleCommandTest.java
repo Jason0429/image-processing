@@ -17,7 +17,7 @@ public class IntensityComponentGreyscaleCommandTest {
 
   @Before
   public void init() {
-    this.unprocessedImage = ImageLoader.load("test/test-images/test3x4.ppm");
+    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)

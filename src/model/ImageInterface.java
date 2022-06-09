@@ -42,11 +42,4 @@ public interface ImageInterface {
    * @return the PPM representation of the image as a String.
    */
   String toPPMString();
-
-  /**
-   * Returns a copy of the current image to avoid returning direct references.
-   *
-   * @return a new {@code Image} with the same configurations.
-   */
-  Image copy();
 }

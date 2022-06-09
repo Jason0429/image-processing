@@ -17,13 +17,13 @@ public class ImageTest {
 
   @Before
   public void init() {
-    this.image1 = ImageLoader.load("test/test-images/test3x4.ppm");
-    this.image2 = ImageLoader.load("test/test-images/test3x3.ppm");
+    this.image1 = ImageLoader.load("res/test3x4.ppm");
+    this.image2 = ImageLoader.load("res/test3x3.ppm");
   }
 
   @Test
   public void testConstructor() {
-    Image test = ImageLoader.load("test/test-images/test3x4.ppm");
+    Image test = ImageLoader.load("res/test3x4.ppm");
     Pixel topLeft = new Pixel(255, 252, 186, 3);
     assertEquals(3, test.getWidth());
     assertEquals(4, test.getHeight());
@@ -139,11 +139,6 @@ public class ImageTest {
             "100\n" +
             "3\n";
     assertEquals(image1PPM, this.image1.toPPMString());
-  }
-
-  @Test
-  public void testCopy() {
-    assertEquals(this.image1.copy(), this.image1);
   }
 
   @Test

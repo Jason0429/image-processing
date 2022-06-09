@@ -44,10 +44,14 @@ public class ImageProcessingControllerImplTest {
 
   @Test
   public void testConstructorSpecifiedReadable() {
+    String expectedOutput = "*** Image Processing Program ***\nEnter a command to start.\n";
     ImageProcessingModel model = new ImageProcessingModelImpl();
-    ImageProcessingView view = new ImageProcessingTextView();
-    Readable in = new StringReader("");
+    Appendable out = new StringBuilder();
+    ImageProcessingView view = new ImageProcessingTextView(out);
+    Readable in = new StringReader("q\n");
     ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, in);
+    controller.start();
+    assertEquals(expectedOutput, out.toString());
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -74,7 +78,7 @@ public class ImageProcessingControllerImplTest {
   @Test
   public void testControllerPassingInputsToModel() {
     Appendable log = new StringBuilder();
-    Readable in = new StringReader("load test/test-images/test3x4.ppm test\n"
+    Readable in = new StringReader("load res/test3x4.ppm test\n"
             + "brighten 10 test test-brighten\n"
             + "list\n"
             + "q\n");

@@ -17,7 +17,7 @@ public class ValueComponentGreyscaleCommandTest {
 
   @Before
   public void init() {
-    this.unprocessedImage = ImageLoader.load("test/test-images/test3x4.ppm");
+    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -34,9 +34,9 @@ public class ValueComponentGreyscaleCommandTest {
       for (int j = 0; j < processedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);
         Pixel processedPx = processedImage.getPixelAt(i, j);
-        assertEquals((int) unprocessedPx.getLargestRGBValue(), processedPx.getRed());
-        assertEquals((int) unprocessedPx.getLargestRGBValue(), processedPx.getGreen());
-        assertEquals((int) unprocessedPx.getLargestRGBValue(), processedPx.getBlue());
+        assertEquals(unprocessedPx.getLargestRGBValue(), processedPx.getRed());
+        assertEquals(unprocessedPx.getLargestRGBValue(), processedPx.getGreen());
+        assertEquals(unprocessedPx.getLargestRGBValue(), processedPx.getBlue());
       }
     }
   }
