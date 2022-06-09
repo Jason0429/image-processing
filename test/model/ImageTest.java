@@ -1,7 +1,5 @@
 package model;
 
-import controller.ImageLoader;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +7,6 @@ import controller.ImageLoader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Tests the {@code Image} class.
