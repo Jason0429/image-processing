@@ -1,6 +1,5 @@
 package controller;
 
-import controller.ImageLoader;
 import model.Image;
 import model.Pixel;
 import org.junit.Test;
