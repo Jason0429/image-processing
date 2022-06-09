@@ -1,10 +1,10 @@
 package controller;
 
-import controller.mocks.MockImageProcessingModel;
 import org.junit.Test;
 
 import java.io.StringReader;
 
+import controller.mocks.MockImageProcessingModel;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 import view.ImageProcessingTextView;

@@ -3,12 +3,8 @@ package controller;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.StringReader;
-
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
-import view.ImageProcessingTextView;
-import view.ImageProcessingView;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
