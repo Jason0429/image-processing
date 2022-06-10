@@ -10,20 +10,20 @@ import java.util.function.Function;
 
 abstract class ProcessImageQueryCommand implements QueryCommand {
   private final ImageProcessingModel model;
-  private final Function<Integer, Boolean> validQuery;
+  private final Function<Integer, Boolean> invalidQuery;
   private final Runnable displayInvalidCommand;
   private final BiFunction<String[], Image, Image> createProcessedImage;
   private final Consumer<String> displayMessage;
   private final String successMessage;
 
   public ProcessImageQueryCommand(ImageProcessingModel model,
-                                  Function<Integer, Boolean> validQuery,
+                                  Function<Integer, Boolean> invalidQuery,
                                   Runnable displayInvalidCommand,
                                   BiFunction<String[], Image, Image> createProcessedImage,
                                   Consumer<String> displayMessage,
                                   String successMessage) {
     this.model = model;
-    this.validQuery = validQuery;
+    this.invalidQuery = invalidQuery;
     this.displayInvalidCommand = displayInvalidCommand;
     this.createProcessedImage = createProcessedImage;
     this.displayMessage = displayMessage;
@@ -32,7 +32,7 @@ abstract class ProcessImageQueryCommand implements QueryCommand {
 
   @Override
   public void execute(String[] query) {
-    if (this.validQuery.apply(query.length)) {
+    if (this.invalidQuery.apply(query.length)) {
       this.displayInvalidCommand.run();
       return;
     }
