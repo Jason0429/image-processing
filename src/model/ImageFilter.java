@@ -24,9 +24,9 @@ public class ImageFilter {
           }
         }
         pixelMatrix[row][col] = new Pixel(img.getMaxValue(),
-                (int) red,
-                (int) green,
-                (int) blue);
+                (int) Math.max(0, Math.min(img.getMaxValue(), red)),
+                (int) Math.max(0, Math.min(img.getMaxValue(), green)),
+                (int) Math.max(0, Math.min(img.getMaxValue(), blue)));
       }
     }
     return new Image(pixelMatrix, img.getMaxValue(), img.getWidth(), img.getHeight());

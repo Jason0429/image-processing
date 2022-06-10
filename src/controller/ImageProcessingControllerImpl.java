@@ -78,6 +78,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             this::displayInvalidCommandParametersError, this::displayMessage));
     queries.put("gaussian-blur", new GaussianBlurQuery(this.model,
             this::displayInvalidCommandParametersError, this::displayMessage));
+    queries.put("sepia", new SepiaQuery(this.model, this::displayInvalidCommandParametersError,
+            this::displayMessage));
     queries.put("quit", new QuitQuery(() -> this.quit = true));
     queries.put("q", new QuitQuery(() -> this.quit = true));
     this.quit = false;
