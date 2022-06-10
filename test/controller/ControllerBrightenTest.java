@@ -26,7 +26,7 @@ public class ControllerBrightenTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
             IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
-            IPCTester.inputs("brighten 10 test test-brighten-10"),
+            IPCTester.inputs("brighten test test-brighten-10 10"),
             IPCTester.prints("Successfully brightened image and stored as: test-brighten-10"),
             IPCTester.inputs("q")));
   }
@@ -38,7 +38,7 @@ public class ControllerBrightenTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
             IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
-            IPCTester.inputs("brighten -10 test test-darken-10"),
+            IPCTester.inputs("brighten test test-darken-10 -10"),
             IPCTester.prints("Successfully brightened image and stored as: test-darken-10"),
             IPCTester.inputs("q")));
   }

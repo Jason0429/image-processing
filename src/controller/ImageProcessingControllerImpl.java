@@ -137,9 +137,9 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     }
 
     try {
-      int change = Integer.parseInt(query[1]);
-      String imageName = query[2];
-      String destImageName = query[3];
+      int change = Integer.parseInt(query[3]);
+      String imageName = query[1];
+      String destImageName = query[2];
       Image unprocessedImage = this.model.getImage(imageName);
       Image processedImage = new BrightenCommand(change).process(unprocessedImage);
       this.model.storeImage(destImageName, processedImage);
@@ -431,7 +431,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.displayMessage("intensity-component [image-name] [dest-image-name]\n");
     this.displayMessage("horizontal-flip [image-name] [dest-image-name]\n");
     this.displayMessage("vertical-flip [image-name] [dest-image-name]\n");
-    this.displayMessage("brighten [increment] [image-name] [dest-image-name]\n");
+    this.displayMessage("brighten [image-name] [dest-image-name] [increment]\n");
     this.displayMessage("quit/q (quit the program)\n");
   }
 

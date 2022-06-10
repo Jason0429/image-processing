@@ -79,7 +79,7 @@ public class ImageProcessingControllerImplTest {
   public void testControllerPassingInputsToModel() {
     Appendable log = new StringBuilder();
     Readable in = new StringReader("load res/test3x4.ppm test\n"
-            + "brighten 10 test test-brighten\n"
+            + "brighten test test-brighten 10\n"
             + "list\n"
             + "q\n");
     ImageProcessingModel model = new MockImageProcessingModel(log);
