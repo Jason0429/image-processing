@@ -7,7 +7,7 @@ import model.Pixel;
  * of each pixel.
  */
 public class ValueComponentGreyscaleCommand
-        extends AbstractImageProcessingCommand implements ImageProcessingCommand {
+        extends PixelInPlaceProcessingCommand implements ImageProcessingCommand {
 
   /**
    * Produces the greyscale version of the pixel using the value of each pixel.

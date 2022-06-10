@@ -9,7 +9,7 @@ import model.Pixel;
  * image processing for
  * processing that keeps pixels in place.
  */
-public abstract class AbstractImageProcessingCommand implements ImageProcessingCommand {
+public abstract class PixelInPlaceProcessingCommand implements ImageProcessingCommand {
   @Override
   public Image process(Image img) throws IllegalArgumentException {
     if (img == null) {

@@ -5,7 +5,7 @@ import model.Pixel;
 /**
  * Represents a command that produces a sepia version.
  */
-public class SepiaProcessingCommand extends AbstractImageProcessingCommand implements ImageProcessingCommand {
+public class SepiaProcessingCommand extends PixelInPlaceProcessingCommand implements ImageProcessingCommand {
 
   /**
    * Produces the sepia version of the pixel.
