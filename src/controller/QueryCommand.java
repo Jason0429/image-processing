@@ -8,5 +8,5 @@ public interface QueryCommand {
   /**
    * Executes the query.
    */
-  void execute();
+  void execute(String[] query);
 }
