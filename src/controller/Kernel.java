@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 public class Kernel {
   // INVARIANT: ALL KERNELS MUST HAVE ODD DIMENSIONS

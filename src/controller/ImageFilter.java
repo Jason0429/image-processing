@@ -1,4 +1,7 @@
-package model;
+package controller;
+
+import model.Image;
+import model.Pixel;
 
 public class ImageFilter {
 

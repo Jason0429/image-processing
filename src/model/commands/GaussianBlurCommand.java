@@ -1,8 +1,8 @@
 package model.commands;
 
 import model.Image;
-import model.ImageFilter;
-import model.Kernel;
+import controller.ImageFilter;
+import controller.Kernel;
 
 public class GaussianBlurCommand implements ImageProcessingCommand {
 
