@@ -32,7 +32,7 @@ class SaveQuery implements QueryCommand {
       Image image = this.model.getImage(imageName);
       ImageExporter.export(image, filePath);
       this.displayMessage.accept("Successfully saved " + imageName + " at " + filePath + "\n");
-    } catch (IOException e) {
+    } catch (IllegalArgumentException | IOException e) {
       this.displayInvalidCommand.run();
     }
   }
