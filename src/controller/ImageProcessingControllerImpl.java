@@ -41,8 +41,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
 
   /**
    * Constructs a {@code ImageProcessingControllerImpl} with a specified model,
-   * view,
-   * and readable.
+   * view, and readable.
    *
    * @param model    the model to be used in the controller.
    * @param view     the view to be used in the controller.

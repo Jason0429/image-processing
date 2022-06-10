@@ -3,6 +3,8 @@ package controller;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 
@@ -27,5 +29,12 @@ public class ControllerInvalidCommandTest {
             IPCTester.inputs("invalid-command"),
             IPCTester.prints("Invalid parameters specified, please try again."),
             IPCTester.inputs("q")));
+  }
+
+  @Test(expected = NoSuchElementException.class)
+  public void testNoInputGiven() {
+    IPCTester.testRun(this.model,
+            IPCTester.prints("*** Image Processing Program ***"),
+            IPCTester.prints("Enter a command to start."));
   }
 }
