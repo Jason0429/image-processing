@@ -6,7 +6,7 @@ import model.commands.ValueComponentGreyscaleCommand;
 
 import java.util.function.Consumer;
 
-public class ValueQuery extends ProcessImageQueryCommand implements QueryCommand {
+class ValueQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public ValueQuery(ImageProcessingModel model,
                     Runnable displayInvalidCommand,

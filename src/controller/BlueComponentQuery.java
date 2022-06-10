@@ -6,7 +6,7 @@ import model.commands.BlueComponentGreyscaleCommand;
 
 import java.util.function.Consumer;
 
-public class BlueComponentQuery extends ProcessImageQueryCommand implements QueryCommand {
+class BlueComponentQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public BlueComponentQuery(ImageProcessingModel model,
                             Runnable displayInvalidCommand,

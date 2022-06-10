@@ -6,7 +6,7 @@ import model.commands.FlipHorizontalCommand;
 
 import java.util.function.Consumer;
 
-public class HorizontalFlipQuery extends ProcessImageQueryCommand implements QueryCommand {
+class HorizontalFlipQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public HorizontalFlipQuery(ImageProcessingModel model,
                              Runnable displayInvalidCommand,

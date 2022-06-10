@@ -4,7 +4,7 @@ import model.ImageProcessingModel;
 
 import java.util.function.Consumer;
 
-public class ListQuery implements QueryCommand {
+class ListQuery implements QueryCommand {
   private final ImageProcessingModel model;
   private final Consumer<String> displayMessage;
 

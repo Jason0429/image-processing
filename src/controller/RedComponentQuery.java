@@ -2,12 +2,11 @@ package controller;
 
 import model.Image;
 import model.ImageProcessingModel;
-import model.commands.BlueComponentGreyscaleCommand;
 import model.commands.RedComponentGreyscaleCommand;
 
 import java.util.function.Consumer;
 
-public class RedComponentQuery extends ProcessImageQueryCommand implements QueryCommand {
+class RedComponentQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public RedComponentQuery(ImageProcessingModel model,
                            Runnable displayInvalidCommand,

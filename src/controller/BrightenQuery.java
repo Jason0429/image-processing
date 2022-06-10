@@ -6,7 +6,7 @@ import model.commands.BrightenCommand;
 
 import java.util.function.Consumer;
 
-public class BrightenQuery extends ProcessImageQueryCommand implements QueryCommand {
+class BrightenQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public BrightenQuery(ImageProcessingModel model,
                        Runnable displayInvalidCommand,

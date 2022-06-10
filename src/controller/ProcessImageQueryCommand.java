@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public abstract class ProcessImageQueryCommand implements QueryCommand {
+abstract class ProcessImageQueryCommand implements QueryCommand {
   private final ImageProcessingModel model;
   private final Function<Integer, Boolean> validQuery;
   private final Runnable displayInvalidCommand;

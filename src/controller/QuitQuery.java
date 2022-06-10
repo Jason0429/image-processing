@@ -1,6 +1,6 @@
 package controller;
 
-public class QuitQuery implements QueryCommand {
+class QuitQuery implements QueryCommand {
 
   private final Runnable quit;
 

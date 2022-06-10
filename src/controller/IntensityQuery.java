@@ -6,7 +6,7 @@ import model.commands.IntensityComponentGreyscaleCommand;
 
 import java.util.function.Consumer;
 
-public class IntensityQuery extends ProcessImageQueryCommand implements QueryCommand {
+class IntensityQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public IntensityQuery(ImageProcessingModel model,
                         Runnable displayInvalidCommand,

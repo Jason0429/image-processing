@@ -6,7 +6,7 @@ import model.commands.LumaComponentGreyscaleCommand;
 
 import java.util.function.Consumer;
 
-public class LumaQuery extends ProcessImageQueryCommand implements QueryCommand {
+class LumaQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public LumaQuery(ImageProcessingModel model,
                    Runnable displayInvalidCommand,

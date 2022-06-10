@@ -1,8 +1,6 @@
 package controller;
 
-import model.ImageProcessingModel;
-
-public class MenuQuery implements QueryCommand {
+class MenuQuery implements QueryCommand {
   private final Runnable displayMenu;
 
   public MenuQuery(Runnable displayMenu) {

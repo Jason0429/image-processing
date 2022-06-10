@@ -5,7 +5,7 @@ import model.ImageProcessingModel;
 
 import java.util.function.Consumer;
 
-public class LoadQuery implements QueryCommand {
+class LoadQuery implements QueryCommand {
   private final ImageProcessingModel model;
   private final Runnable displayInvalidCommand;
   private final Consumer<String> displayMessage;

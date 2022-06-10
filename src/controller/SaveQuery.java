@@ -6,7 +6,7 @@ import model.ImageProcessingModel;
 import java.io.IOException;
 import java.util.function.Consumer;
 
-public class SaveQuery implements QueryCommand {
+class SaveQuery implements QueryCommand {
   private final ImageProcessingModel model;
   private final Runnable displayInvalidCommand;
   private final Consumer<String> displayMessage;
