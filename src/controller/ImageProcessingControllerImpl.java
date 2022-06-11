@@ -67,6 +67,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     while (!quit) {
       String[] query = sc.nextLine().split(" ");
 
+      // Do nothing if query is empty.
       if (query.length == 0) {
         continue;
       }
