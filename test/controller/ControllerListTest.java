@@ -25,11 +25,14 @@ public class ControllerListTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("list"),
+            IPCTester.prints("List of images stored:"),
             IPCTester.prints("test"),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
+
 
   @Test
   public void testValidMultipleImages() {
@@ -37,12 +40,14 @@ public class ControllerListTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("load res/test3x4.ppm test1"),
-            IPCTester.prints("Successfully loaded test1 from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test1."),
             IPCTester.inputs("list"),
+            IPCTester.prints("List of images stored:"),
             IPCTester.prints("test\ntest1"),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -51,7 +56,9 @@ public class ControllerListTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("list"),
+            IPCTester.prints("List of images stored:"),
             IPCTester.prints("There are no images stored at the moment."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 }

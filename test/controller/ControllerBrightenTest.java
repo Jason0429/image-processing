@@ -25,10 +25,11 @@ public class ControllerBrightenTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("brighten test test-brighten-10 10"),
-            IPCTester.prints("Successfully brightened image and stored as: test-brighten-10"),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Successfully brightened image and stored as: test-brighten-10."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -37,10 +38,11 @@ public class ControllerBrightenTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("brighten test test-darken-10 -10"),
-            IPCTester.prints("Successfully brightened image and stored as: test-darken-10"),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Successfully brightened image and stored as: test-darken-10."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -49,10 +51,11 @@ public class ControllerBrightenTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
-            IPCTester.inputs("brighten 10 does-not-exist test-brighten-10"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
+            IPCTester.inputs("brighten does-not-exist test-brighten-10 10"),
+            IPCTester.prints("Image not found."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -61,10 +64,11 @@ public class ControllerBrightenTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
-            IPCTester.inputs("brighten 1 -h la"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
+            IPCTester.inputs("brighten -h la 1"),
+            IPCTester.prints("Image not found."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -73,10 +77,11 @@ public class ControllerBrightenTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("brighten 1"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -85,9 +90,10 @@ public class ControllerBrightenTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
-            IPCTester.inputs("brighten 10 test test-brighten-10 extra"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
+            IPCTester.inputs("brighten test test-brighten-10 extra 10"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 }
