@@ -15,6 +15,12 @@ public class ListQuery extends AbstractQueryCommand {
   @Override
   protected void executeCommand(String[] query) throws IllegalArgumentException {
     String[] storedImageNames = this.model.getImageNames();
+
+    if (storedImageNames.length == 0) {
+      this.writeMessage("No images stored.");
+      return;
+    }
+
     this.writeMessage("List of images stored:\n");
     for (String name : storedImageNames) {
       this.writeMessage(name + "\n");
