@@ -6,7 +6,9 @@ package controller.query;
 public interface QueryCommand {
 
   /**
-   * Executes the query.
+   * Executes the command given a query.
+   *
+   * @param query the query to be processed.
    */
   void execute(String[] query);
 }

@@ -1,7 +1,9 @@
 package controller;
 
-import controller.query.BlueComponentImageProcessingQuery;
+import controller.query.BlueComponentQuery;
 import controller.query.BrightenQuery;
+import controller.query.FlipHorizontalQuery;
+import controller.query.FlipVerticalQuery;
 import controller.query.GaussianBlurQuery;
 import controller.query.GreenComponentQuery;
 import controller.query.IntensityQuery;
@@ -16,14 +18,12 @@ import controller.query.SaveQuery;
 import controller.query.SepiaQuery;
 import controller.query.SharpenQuery;
 import controller.query.ValueQuery;
-import controller.query.VerticalFlipQuery;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -68,47 +68,36 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.model = model;
     this.view = view;
     this.readable = readable;
-    this.queries = new HashMap<String, QueryCommand>();
-    queries.put("menu", new MenuQuery(this::displayMenu));
-    queries.put("list", new ListQuery(this.model, this::displayMessage));
-    queries.put("load", new LoadQuery(this.model, this::displayInvalidCommandParametersError,
-            this::displayMessage));
-    queries.put("save", new SaveQuery(this.model, this::displayInvalidCommandParametersError,
-            this::displayMessage));
-    queries.put("red-component", new RedComponentQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("green-component", new GreenComponentQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("blue-component", new BlueComponentImageProcessingQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("value-component", new ValueQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("luma-component", new LumaQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("intensity-component", new IntensityQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("horizontal-flip", new HorizontalFlipQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("vertical-flip", new VerticalFlipQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("brighten", new BrightenQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("gaussian-blur", new GaussianBlurQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("sepia", new SepiaQuery(this.model, this::displayInvalidCommandParametersError,
-            this::displayMessage));
-    queries.put("sharpen", new SharpenQuery(this.model,
-            this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("quit", new QuitQuery(() -> this.quit = true));
-    queries.put("q", new QuitQuery(() -> this.quit = true));
     this.quit = false;
+    this.queries = new HashMap<String, QueryCommand>() {{
+      put("menu", new MenuQuery(model, view));
+      put("list", new ListQuery(model, view));
+      put("load", new LoadQuery(model, view));
+      put("save", new SaveQuery(model, view));
+      put("red-component", new RedComponentQuery(model, view));
+      put("green-component", new GreenComponentQuery(model, view));
+      put("blue-component", new BlueComponentQuery(model, view));
+      put("value-component", new ValueQuery(model, view));
+      put("luma-component", new LumaQuery(model, view));
+      put("intensity-component", new IntensityQuery(model, view));
+      put("horizontal-flip", new FlipHorizontalQuery(model, view));
+      put("vertical-flip", new FlipVerticalQuery(model, view));
+      put("brighten", new BrightenQuery(model, view));
+      put("gaussian-blur", new GaussianBlurQuery(model, view));
+      put("sharpen", new SharpenQuery(model, view));
+      put("sepia", new SepiaQuery(model, view));
+    }};
+    this.queries.put("quit", new QuitQuery(model, view, () -> this.quit = true));
+    this.queries.put("q", new QuitQuery(model, view, () -> this.quit = true));
   }
 
   @Override
   public void start() throws IllegalStateException {
     Scanner sc = new Scanner(this.readable);
 
-    this.displayMessage("*** Image Processing Program ***\nEnter a command to start.\n");
+    this.displayMessage("*** Image Processing Program ***\n");
+    this.displayMessage("Enter a command to start.\n");
+
     while (!this.quit) {
       String[] query = sc.nextLine().split(" ");
 
@@ -116,47 +105,17 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
         continue;
       }
 
-      String cmdType = query[0].toLowerCase();
+      String cmd = query[0].toLowerCase();
+      QueryCommand queryCmd = this.queries.getOrDefault(cmd, null);
 
-      QueryCommand cmd = this.queries.getOrDefault(cmdType, null);
-      if (cmd != null) {
-        cmd.execute(query.length > 1 ? Arrays.copyOfRange(query, 1, query.length) : new String[0]);
-      } else {
+      if (queryCmd == null) {
         this.displayMessage(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString() + "\n");
+        continue;
       }
+
+      queryCmd.execute(query);
     }
     sc.close();
-  }
-
-  /**
-   * Provides feedback to user informing them they have entered
-   * an invalid command or parameters.
-   */
-  private void displayInvalidCommandParametersError() {
-    this.displayMessage(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString() + "\n");
-  }
-
-  /**
-   * Displays the options.
-   *
-   * @throws IllegalStateException if the message cannot be displayed
-   */
-  private void displayMenu() throws IllegalStateException {
-    this.displayMessage("Options:\n");
-    this.displayMessage("menu (loads this menu)\n");
-    this.displayMessage("list (lists all loaded images)\n");
-    this.displayMessage("load [image-path] [image-name]\n");
-    this.displayMessage("save [image-path] [image-name]\n");
-    this.displayMessage("red-component [image-name] [dest-image-name]\n");
-    this.displayMessage("green-component [image-name] [dest-image-name]\n");
-    this.displayMessage("blue-component [image-name] [dest-image-name]\n");
-    this.displayMessage("value-component [image-name] [dest-image-name]\n");
-    this.displayMessage("luma-component [image-name] [dest-image-name]\n");
-    this.displayMessage("intensity-component [image-name] [dest-image-name]\n");
-    this.displayMessage("horizontal-flip [image-name] [dest-image-name]\n");
-    this.displayMessage("vertical-flip [image-name] [dest-image-name]\n");
-    this.displayMessage("brighten [image-name] [dest-image-name] [increment]\n");
-    this.displayMessage("quit/q (quit the program)\n");
   }
 
   /**

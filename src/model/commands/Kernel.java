@@ -1,4 +1,4 @@
-package controller.query;
+package model.commands;
 
 public class Kernel {
   // INVARIANT: ALL KERNELS MUST HAVE ODD DIMENSIONS

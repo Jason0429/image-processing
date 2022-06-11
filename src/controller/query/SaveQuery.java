@@ -1,40 +1,31 @@
 package controller.query;
 
-import controller.ImageExporter;
-import model.Image;
-import model.ImageProcessingModel;
-
 import java.io.IOException;
-import java.util.function.Consumer;
 
-public class SaveQuery implements QueryCommand {
-  private final ImageProcessingModel model;
-  private final Runnable displayInvalidCommand;
-  private final Consumer<String> displayMessage;
+import controller.ImageExporter;
+import model.ImageInterface;
+import model.ImageProcessingModel;
+import view.ImageProcessingView;
 
-  public SaveQuery(ImageProcessingModel model,
-                   Runnable displayInvalidCommand,
-                   Consumer<String> displayMessage) {
-    this.model = model;
-    this.displayInvalidCommand = displayInvalidCommand;
-    this.displayMessage = displayMessage;
+/**
+ * Represents the save query command.
+ */
+public class SaveQuery extends AbstractQueryCommand {
+
+  public SaveQuery(ImageProcessingModel model, ImageProcessingView view) {
+    super(model, view);
   }
 
   @Override
-  public void execute(String[] query) {
-    if (query.length != 2) {
-      this.displayInvalidCommand.run();
-      return;
-    }
-
+  protected void executeCommand(String[] query) throws IllegalArgumentException {
+    this.checkQueryLength(query, 3);
+    String filePath = query[1];
+    String imageName = query[2];
+    ImageInterface imageToExport = this.model.getImage(imageName);
     try {
-      String filePath = query[0];
-      String imageName = query[1];
-      Image image = this.model.getImage(imageName);
-      ImageExporter.export(image, filePath);
-      this.displayMessage.accept("Successfully saved " + imageName + " at " + filePath + "\n");
-    } catch (IllegalArgumentException | IOException e) {
-      this.displayInvalidCommand.run();
+      ImageExporter.export(imageToExport, filePath);
+    } catch (IOException e) {
+      throw new IllegalArgumentException(e.getMessage());
     }
   }
 }

@@ -1,15 +1,23 @@
 package controller.query;
 
-public class QuitQuery implements QueryCommand {
+import controller.ImageLoader;
+import model.ImageInterface;
+import model.ImageProcessingModel;
+import view.ImageProcessingView;
 
-  private final Runnable quit;
+/**
+ * Represents the quit query command.
+ */
+public class QuitQuery extends AbstractQueryCommand {
+  private final Runnable runnable;
 
-  public QuitQuery(Runnable quit) {
-    this.quit = quit;
+  public QuitQuery(ImageProcessingModel model, ImageProcessingView view, Runnable runnable) {
+    super(model, view);
+    this.runnable = runnable;
   }
 
   @Override
-  public void execute(String[] query) {
-    this.quit.run();
+  protected void executeCommand(String[] query) throws IllegalArgumentException {
+    this.runnable.run();
   }
 }

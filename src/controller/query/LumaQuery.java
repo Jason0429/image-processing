@@ -1,25 +1,28 @@
 package controller.query;
 
-import model.Image;
+import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.LumaComponentGreyscaleCommand;
+import view.ImageProcessingView;
 
-import java.util.function.Consumer;
+/**
+ * Represents the luma component query command.
+ */
+public class LumaQuery extends AbstractQueryCommand {
 
-public class LumaQuery extends ProcessImageQueryCommand implements QueryCommand {
+  public LumaQuery(ImageProcessingModel model, ImageProcessingView view) {
+    super(model, view);
+  }
 
-  public LumaQuery(ImageProcessingModel model,
-                   Runnable displayInvalidCommand,
-                   Consumer<String> displayMessage) {
-    super(model,
-            (Integer numParams) -> numParams != 2,
-            displayInvalidCommand,
-            (String[] params, Image unprocessedImg) -> {
-              if (params.length != 0) {
-                displayInvalidCommand.run();
-              }
-              return new LumaComponentGreyscaleCommand().process(unprocessedImg);
-            },
-            displayMessage, "Successfully applied luma component and stored as: ");
+  @Override
+  protected void executeCommand(String[] query) throws IllegalArgumentException {
+    this.checkQueryLength(query, 3);
+    String unprocessedImageName = query[1];
+    String processedImageName = query[2];
+    ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
+    ImageInterface processedImage = new LumaComponentGreyscaleCommand().process(unprocessedImage);
+    this.model.storeImage(processedImageName, processedImage);
+    this.writeMessage(
+            "Successfully applied luma component and stored as: " + processedImageName + "\n");
   }
 }

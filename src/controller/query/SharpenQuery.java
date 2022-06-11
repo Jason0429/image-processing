@@ -1,25 +1,28 @@
 package controller.query;
 
-import model.Image;
+import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.SharpenCommand;
+import view.ImageProcessingView;
 
-import java.util.function.Consumer;
+/**
+ * Represents the sharpen query command.
+ */
+public class SharpenQuery extends AbstractQueryCommand {
 
-public class SharpenQuery extends ProcessImageQueryCommand {
+  public SharpenQuery(ImageProcessingModel model, ImageProcessingView view) {
+    super(model, view);
+  }
 
-  public SharpenQuery(ImageProcessingModel model,
-                      Runnable displayInvalidCommand,
-                      Consumer<String> displayMessage) {
-    super(model,
-            (Integer numParams) -> numParams != 2,
-            displayInvalidCommand,
-            (String[] params, Image unprocessedImg) -> {
-              if (params.length != 0) {
-                displayInvalidCommand.run();
-              }
-              return new SharpenCommand().process(unprocessedImg);
-            },
-            displayMessage, "Successfully sharpened image and stored as: ");
+  @Override
+  protected void executeCommand(String[] query) throws IllegalArgumentException {
+    this.checkQueryLength(query, 3);
+    String unprocessedImageName = query[1];
+    String processedImageName = query[2];
+    ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
+    ImageInterface processedImage = new SharpenCommand().process(unprocessedImage);
+    this.model.storeImage(processedImageName, processedImage);
+    this.writeMessage(
+            "Successfully sharpened image and stored as: " + processedImageName + "\n");
   }
 }

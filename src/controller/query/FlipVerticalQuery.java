@@ -2,15 +2,15 @@ package controller.query;
 
 import model.ImageInterface;
 import model.ImageProcessingModel;
-import model.commands.IntensityComponentGreyscaleCommand;
+import model.commands.FlipVerticalCommand;
 import view.ImageProcessingView;
 
 /**
- * Represents the intensity query command.
+ * Represents the flip vertical query command.
  */
-public class IntensityQuery extends AbstractQueryCommand {
+public class FlipVerticalQuery extends AbstractQueryCommand {
 
-  public IntensityQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public FlipVerticalQuery(ImageProcessingModel model, ImageProcessingView view) {
     super(model, view);
   }
 
@@ -20,10 +20,9 @@ public class IntensityQuery extends AbstractQueryCommand {
     String unprocessedImageName = query[1];
     String processedImageName = query[2];
     ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
-    ImageInterface processedImage =
-            new IntensityComponentGreyscaleCommand().process(unprocessedImage);
+    ImageInterface processedImage = new FlipVerticalCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully applied intensity component and stored as: " + processedImageName + "\n");
+            "Successfully flipped image vertically and stored as: " + processedImageName + "\n");
   }
 }
