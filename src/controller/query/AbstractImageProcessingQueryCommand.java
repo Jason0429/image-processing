@@ -1,16 +1,17 @@
 package controller.query;
 
 import java.io.IOException;
-import java.util.function.Consumer;
+import java.util.Arrays;
 
 import model.ExceptionMessage;
+import model.ImageInterface;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 
 /**
- * Represents the abstract class for a query command.
+ * Represents the abstract class for an image processing query command.
  */
-public abstract class AbstractQueryCommand implements QueryCommand {
+public abstract class AbstractImageProcessingQueryCommand implements QueryCommand {
   protected ImageProcessingModel model;
   protected ImageProcessingView view;
 
@@ -20,7 +21,8 @@ public abstract class AbstractQueryCommand implements QueryCommand {
    * @param model the image processing model for image storage.
    * @param view  the image processing view responsible for rendering output.
    */
-  public AbstractQueryCommand(ImageProcessingModel model, ImageProcessingView view) {
+  public AbstractImageProcessingQueryCommand(
+          ImageProcessingModel model, ImageProcessingView view) {
     this.model = model;
     this.view = view;
   }
@@ -28,12 +30,18 @@ public abstract class AbstractQueryCommand implements QueryCommand {
   @Override
   public void execute(String[] query) {
     try {
-      this.executeCommand(query);
+      if (query.length < 3) {
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
+      }
+      ImageInterface unprocessedImage = this.model.getImage(query[1]);
+      String processedImageName = query[2];
+      ImageInterface processedImage = this.getProcessedImage(
+              unprocessedImage, Arrays.copyOfRange(query, 3, query.length));
+      this.model.storeImage(processedImageName, processedImage);
     } catch (IllegalArgumentException e) {
       this.writeMessage(e.getMessage());
     }
   }
-
 
   /**
    * Wrapper method for rendering message to view.
@@ -62,9 +70,14 @@ public abstract class AbstractQueryCommand implements QueryCommand {
   }
 
   /**
-   * Executes the proper command.
+   * Takes in query and produces processed image.
    *
-   * @param query the query to be processed and executed.
+   * @param unprocessedImage the unprocessed image to be processed.
+   * @param processParams    the parameters needed (or not needed) to process an image.
+   * @return the processed image.
+   * @throws IllegalArgumentException if query is invalid.
    */
-  protected abstract void executeCommand(String[] query) throws IllegalArgumentException;
+  protected abstract ImageInterface getProcessedImage(
+          ImageInterface unprocessedImage, String[] processParams)
+          throws IllegalArgumentException;
 }

@@ -1,11 +1,12 @@
 package controller;
 
 import model.Image;
+import model.ImageInterface;
 import model.Pixel;
 
 public class ImageFilter {
 
-  public static Image filter(double[][] kernelMatrix, Image img) {
+  public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img) {
     int height = kernelMatrix.length;
     int width = kernelMatrix[0].length;
     Pixel[][] pixelMatrix = new Pixel[img.getHeight()][img.getWidth()];
@@ -35,7 +36,7 @@ public class ImageFilter {
     return new Image(pixelMatrix, img.getMaxValue(), img.getWidth(), img.getHeight());
   }
 
-  private static Pixel getPixelOrNull(int row, int col, Image img) {
+  private static Pixel getPixelOrNull(int row, int col, ImageInterface img) {
     try {
       return img.getPixelAt(row, col);
     } catch (IllegalArgumentException e) {

@@ -3,11 +3,12 @@ package model.commands;
 import model.Image;
 import controller.ImageFilter;
 import controller.query.Kernel;
+import model.ImageInterface;
 
 public class GaussianBlurCommand extends FilterProcessingCommand implements ImageProcessingCommand {
 
   @Override
-  public Image process(Image img) throws IllegalArgumentException {
+  public ImageInterface process(ImageInterface img) throws IllegalArgumentException {
     return ImageFilter.filter(Kernel.gaussianBlur(), img);
   }
 

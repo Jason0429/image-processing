@@ -1,6 +1,6 @@
 package controller;
 
-import controller.query.BlueComponentQuery;
+import controller.query.BlueComponentImageProcessingQuery;
 import controller.query.BrightenQuery;
 import controller.query.GaussianBlurQuery;
 import controller.query.GreenComponentQuery;
@@ -79,7 +79,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
             this::displayInvalidCommandParametersError, this::displayMessage));
     queries.put("green-component", new GreenComponentQuery(this.model,
             this::displayInvalidCommandParametersError, this::displayMessage));
-    queries.put("blue-component", new BlueComponentQuery(this.model,
+    queries.put("blue-component", new BlueComponentImageProcessingQuery(this.model,
             this::displayInvalidCommandParametersError, this::displayMessage));
     queries.put("value-component", new ValueQuery(this.model,
             this::displayInvalidCommandParametersError, this::displayMessage));

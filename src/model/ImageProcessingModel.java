@@ -13,7 +13,7 @@ public interface ImageProcessingModel {
    * @param img  the image
    * @throws IllegalArgumentException if the image is null
    */
-  void storeImage(String name, Image img) throws IllegalArgumentException;
+  void storeImage(String name, ImageInterface img) throws IllegalArgumentException;
 
   /**
    * Returns the image associated with the specified name.
@@ -22,7 +22,7 @@ public interface ImageProcessingModel {
    * @return the image of that name
    * @throws IllegalArgumentException if the image cannot be found
    */
-  Image getImage(String name) throws IllegalArgumentException;
+  ImageInterface getImage(String name) throws IllegalArgumentException;
 
   /**
    * Returns an array of the image names stored in the model.
