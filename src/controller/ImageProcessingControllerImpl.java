@@ -1,5 +1,22 @@
 package controller;
 
+import controller.query.BlueComponentQuery;
+import controller.query.BrightenQuery;
+import controller.query.GaussianBlurQuery;
+import controller.query.GreenComponentQuery;
+import controller.query.IntensityQuery;
+import controller.query.ListQuery;
+import controller.query.LoadQuery;
+import controller.query.LumaQuery;
+import controller.query.MenuQuery;
+import controller.query.QueryCommand;
+import controller.query.QuitQuery;
+import controller.query.RedComponentQuery;
+import controller.query.SaveQuery;
+import controller.query.SepiaQuery;
+import controller.query.SharpenQuery;
+import controller.query.ValueQuery;
+import controller.query.VerticalFlipQuery;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;

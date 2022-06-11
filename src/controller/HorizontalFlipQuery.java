@@ -1,12 +1,14 @@
 package controller;
 
+import controller.query.ProcessImageQueryCommand;
+import controller.query.QueryCommand;
 import model.Image;
 import model.ImageProcessingModel;
 import model.commands.FlipHorizontalCommand;
 
 import java.util.function.Consumer;
 
-class HorizontalFlipQuery extends ProcessImageQueryCommand implements QueryCommand {
+public class HorizontalFlipQuery extends ProcessImageQueryCommand implements QueryCommand {
 
   public HorizontalFlipQuery(ImageProcessingModel model,
                              Runnable displayInvalidCommand,

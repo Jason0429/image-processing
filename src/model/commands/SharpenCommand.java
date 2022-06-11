@@ -2,7 +2,7 @@ package model.commands;
 
 import model.Image;
 import controller.ImageFilter;
-import controller.Kernel;
+import controller.query.Kernel;
 
 public class SharpenCommand extends FilterProcessingCommand implements ImageProcessingCommand {
 
