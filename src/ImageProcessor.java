@@ -1,6 +1,7 @@
 import controller.ImageProcessingControllerImpl;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
+import model.commands.ImageProcessingCommand;
 import view.ImageProcessingTextView;
 import view.ImageProcessingView;
 
