@@ -23,7 +23,7 @@ public class ValueQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new ValueComponentGreyscaleCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully applied value component and stored as: " + processedImageName + "\n");
+            "Successfully applied value component and stored as: " + processedImageName + ".\n");
   }
 }
 

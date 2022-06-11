@@ -8,18 +8,18 @@ import java.util.Map;
  * .PMM images.
  */
 public class ImageProcessingModelImpl implements ImageProcessingModel {
-  private final Map<String, Image> images;
+  private final Map<String, ImageInterface> images;
 
   /**
    * Constructs a new ImageProcessingModel with an empty map responsible for holding
    * the name of the image and their corresponding {@code Image} object.
    */
   public ImageProcessingModelImpl() {
-    this.images = new HashMap<String, Image>();
+    this.images = new HashMap<String, ImageInterface>();
   }
 
   @Override
-  public void storeImage(String name, Image img) throws IllegalArgumentException {
+  public void storeImage(String name, ImageInterface img) throws IllegalArgumentException {
     if (name.trim().equals("")) {
       throw new IllegalArgumentException(
               String.format(ExceptionMessage.SPECIFIC_STRING_CANNOT_BE_EMPTY.toString(),
@@ -33,7 +33,7 @@ public class ImageProcessingModelImpl implements ImageProcessingModel {
   }
 
   @Override
-  public Image getImage(String name) throws IllegalArgumentException {
+  public ImageInterface getImage(String name) throws IllegalArgumentException {
     if (this.images.containsKey(name)) {
       return this.images.get(name);
     }

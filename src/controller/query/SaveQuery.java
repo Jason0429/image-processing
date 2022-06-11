@@ -24,6 +24,7 @@ public class SaveQuery extends AbstractQueryCommand {
     ImageInterface imageToExport = this.model.getImage(imageName);
     try {
       ImageExporter.export(imageToExport, filePath);
+      this.writeMessage("Successfully saved " + imageName + " to " + filePath + ".\n");
     } catch (IOException e) {
       throw new IllegalArgumentException(e.getMessage());
     }

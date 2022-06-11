@@ -23,6 +23,6 @@ public class FlipVerticalQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new FlipVerticalCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully flipped image vertically and stored as: " + processedImageName + "\n");
+            "Successfully flipped image vertically and stored as: " + processedImageName + ".\n");
   }
 }

@@ -23,6 +23,6 @@ public class LumaQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new LumaComponentGreyscaleCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully applied luma component and stored as: " + processedImageName + "\n");
+            "Successfully applied luma component and stored as: " + processedImageName + ".\n");
   }
 }

@@ -19,5 +19,6 @@ public class QuitQuery extends AbstractQueryCommand {
   @Override
   protected void executeCommand(String[] query) throws IllegalArgumentException {
     this.runnable.run();
+    this.writeMessage("Quitting Image Processing...\n");
   }
 }

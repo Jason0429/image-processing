@@ -23,6 +23,6 @@ public class SepiaQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new SepiaProcessingCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully applied sepia and stored as: " + processedImageName + "\n");
+            "Successfully applied sepia and stored as: " + processedImageName + ".\n");
   }
 }

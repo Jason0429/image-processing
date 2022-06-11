@@ -23,6 +23,6 @@ public class SharpenQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new SharpenCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully sharpened image and stored as: " + processedImageName + "\n");
+            "Successfully sharpened image and stored as: " + processedImageName + ".\n");
   }
 }

@@ -23,6 +23,6 @@ public class RedComponentQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new RedComponentGreyscaleCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully applied red component and stored as: " + processedImageName + "\n");
+            "Successfully applied red component and stored as: " + processedImageName + ".\n");
   }
 }

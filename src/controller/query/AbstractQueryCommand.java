@@ -31,7 +31,7 @@ public abstract class AbstractQueryCommand implements QueryCommand {
     try {
       this.executeCommand(query);
     } catch (IllegalArgumentException e) {
-      this.writeMessage(e.getMessage());
+      this.writeMessage(e.getMessage() + "\n");
     }
   }
 

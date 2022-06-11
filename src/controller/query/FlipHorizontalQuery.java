@@ -23,6 +23,6 @@ public class FlipHorizontalQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new FlipHorizontalCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully flipped image horizontally and stored as: " + processedImageName + "\n");
+            "Successfully flipped image horizontally and stored as: " + processedImageName + ".\n");
   }
 }

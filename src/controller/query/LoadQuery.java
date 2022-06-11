@@ -21,5 +21,6 @@ public class LoadQuery extends AbstractQueryCommand {
     String imageName = query[2];
     ImageInterface loadedImage = ImageLoader.load(filePath);
     this.model.storeImage(imageName, loadedImage);
+    this.writeMessage("Successfully stored " + filePath + " as: " + imageName + ".\n");
   }
 }

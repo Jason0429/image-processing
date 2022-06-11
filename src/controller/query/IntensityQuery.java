@@ -24,6 +24,7 @@ public class IntensityQuery extends AbstractQueryCommand {
             new IntensityComponentGreyscaleCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully applied intensity component and stored as: " + processedImageName + "\n");
+            "Successfully applied intensity component and stored as: "
+                    + processedImageName + ".\n");
   }
 }

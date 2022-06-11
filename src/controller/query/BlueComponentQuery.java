@@ -22,6 +22,7 @@ public class BlueComponentQuery extends AbstractQueryCommand {
     ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
     ImageInterface processedImage = new BlueComponentGreyscaleCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
-    this.writeMessage("Successfully applied blue component and stored as: " + query[2] + "\n");
+    this.writeMessage(
+            "Successfully applied blue component and stored as: " + processedImageName + ".\n");
   }
 }

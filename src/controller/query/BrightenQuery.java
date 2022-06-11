@@ -23,6 +23,6 @@ public class BrightenQuery extends AbstractQueryCommand {
     ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
     ImageInterface processedImage = new BrightenCommand(brightenLevel).process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
-    this.writeMessage("Successfully brightened image and stored as: " + processedImageName + "\n");
+    this.writeMessage("Successfully brightened image and stored as: " + processedImageName + ".\n");
   }
 }

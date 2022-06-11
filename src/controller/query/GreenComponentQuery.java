@@ -23,6 +23,6 @@ public class GreenComponentQuery extends AbstractQueryCommand {
     ImageInterface processedImage = new GreenComponentGreyscaleCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
-            "Successfully applied green component and stored as: " + processedImageName + "\n");
+            "Successfully applied green component and stored as: " + processedImageName + ".\n");
   }
 }

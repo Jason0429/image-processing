@@ -22,6 +22,6 @@ public class GaussianBlurQuery extends AbstractQueryCommand {
     ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
     ImageInterface processedImage = new GaussianBlurCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
-    this.writeMessage("Successfully blurred image and stored as: " + processedImageName + "\n");
+    this.writeMessage("Successfully blurred image and stored as: " + processedImageName + ".\n");
   }
 }
