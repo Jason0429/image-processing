@@ -7,7 +7,7 @@ import model.Pixel;
  * component.
  */
 public class GreenComponentGreyscaleCommand
-        extends AbstractImageProcessingCommand implements ImageProcessingCommand {
+        extends PixelInPlaceProcessingCommand implements ImageProcessingCommand {
 
   /**
    * Produces the greyscale version of the pixel using the green component.

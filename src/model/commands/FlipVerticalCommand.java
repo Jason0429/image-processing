@@ -2,6 +2,7 @@ package model.commands;
 
 import model.ExceptionMessage;
 import model.Image;
+import model.ImageInterface;
 import model.Pixel;
 
 /**
@@ -17,7 +18,7 @@ public class FlipVerticalCommand implements ImageProcessingCommand {
    * @throws IllegalArgumentException if the image is null
    */
   @Override
-  public Image process(Image img) throws IllegalArgumentException {
+  public ImageInterface process(ImageInterface img) throws IllegalArgumentException {
     if (img == null) {
       throw new IllegalArgumentException(
               String.format(ExceptionMessage.SPECIFIC_NULL_ARGUMENT.toString(), "Image"));

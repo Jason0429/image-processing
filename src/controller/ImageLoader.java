@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import model.ExceptionMessage;
 import model.Image;
+import model.ImageInterface;
 import model.Pixel;
 
 /**
@@ -21,7 +22,7 @@ public class ImageLoader {
    * @return a new {@code Image} object
    * @throws IllegalArgumentException if the file cannot be found
    */
-  public static Image load(String fileLocation) throws IllegalArgumentException {
+  public static ImageInterface load(String fileLocation) throws IllegalArgumentException {
     Scanner sc;
 
     try {

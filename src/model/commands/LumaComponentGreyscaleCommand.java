@@ -6,7 +6,7 @@ import model.Pixel;
  * Represents a command that uses each pixel's luma to produce a greyscale version.
  */
 public class LumaComponentGreyscaleCommand
-        extends AbstractImageProcessingCommand implements ImageProcessingCommand {
+        extends PixelInPlaceProcessingCommand implements ImageProcessingCommand {
 
   /**
    * Produces the greyscale version of the pixel using the luma of each pixel.

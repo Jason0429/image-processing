@@ -1,6 +1,7 @@
 package model.commands;
 
 import model.Image;
+import model.ImageInterface;
 
 /**
  * This interface contains the methods for the commands that process images.
@@ -16,5 +17,5 @@ public interface ImageProcessingCommand {
    * @return the processed image
    * @throws IllegalArgumentException if the image is null
    */
-  Image process(Image img) throws IllegalArgumentException;
+  ImageInterface process(ImageInterface img) throws IllegalArgumentException;
 }

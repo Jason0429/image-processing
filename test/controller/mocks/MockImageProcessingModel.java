@@ -3,6 +3,7 @@ package controller.mocks;
 import java.io.IOException;
 
 import model.Image;
+import model.ImageInterface;
 import model.ImageProcessingModel;
 
 /**
@@ -21,7 +22,7 @@ public class MockImageProcessingModel implements ImageProcessingModel {
   }
 
   @Override
-  public void storeImage(String name, Image img) throws IllegalArgumentException {
+  public void storeImage(String name, ImageInterface img) throws IllegalArgumentException {
     try {
       this.log.append(String.format("Store Image: %s\n", name));
     } catch (IOException e) {

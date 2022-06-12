@@ -38,7 +38,7 @@ public class ControllerMenuTest {
             IPCTester.prints("intensity-component [image-name] [dest-image-name]"),
             IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
             IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
-            IPCTester.prints("brighten [increment] [image-name] [dest-image-name]"),
+            IPCTester.prints("brighten [image-name] [dest-image-name] [increment]"),
             IPCTester.prints("quit/q (quit the program)"),
             IPCTester.inputs("q")));
   }
@@ -62,7 +62,7 @@ public class ControllerMenuTest {
             IPCTester.prints("intensity-component [image-name] [dest-image-name]"),
             IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
             IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
-            IPCTester.prints("brighten [increment] [image-name] [dest-image-name]"),
+            IPCTester.prints("brighten [image-name] [dest-image-name] [increment]"),
             IPCTester.prints("quit/q (quit the program)"),
             IPCTester.inputs("q")));
   }

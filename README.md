@@ -22,8 +22,8 @@ images.
 * `intensity-component test test-intensity`
 * `horizontal-flip test test-horizontal`
 * `vertical-flip test test-vertical`
-* `brighten 10 test test-brighten`
-* `brighten -10 test test-darken`
+* `brighten test test-brighten 10`
+* `brighten test test-darken -10`
 * `save res/test-red.ppm test-red`
 * `save res/test-green.ppm test-green`
 * `save res/test-blue.ppm test-blue`

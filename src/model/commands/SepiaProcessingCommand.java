@@ -5,7 +5,7 @@ import model.Pixel;
 /**
  * Represents a command that produces a sepia version.
  */
-public class SepiaProcessingCommand extends AbstractImageProcessingCommand implements ImageProcessingCommand {
+public class SepiaProcessingCommand extends PixelInPlaceProcessingCommand implements ImageProcessingCommand {
 
   /**
    * Produces the sepia version of the pixel.
@@ -19,6 +19,9 @@ public class SepiaProcessingCommand extends AbstractImageProcessingCommand imple
     int red = (int) (0.393 * pixel.getRed() + 0.769 * pixel.getGreen() + 0.189 * pixel.getBlue());
     int green = (int) (0.349 * pixel.getRed() + 0.686 * pixel.getGreen() + 0.168 * pixel.getBlue());
     int blue = (int) (0.272 * pixel.getRed() + 0.534 * pixel.getGreen() + 0.131 * pixel.getBlue());
-    return new Pixel(pixel.getMaxValue(), red, green, blue);
+    return new Pixel(pixel.getMaxValue(),
+            Math.max(0, Math.min(pixel.getMaxValue(), red)),
+            Math.max(0, Math.min(pixel.getMaxValue(), green)),
+            Math.max(0, Math.min(pixel.getMaxValue(), blue)));
   }
 }

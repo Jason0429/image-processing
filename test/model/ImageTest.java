@@ -12,8 +12,8 @@ import static org.junit.Assert.assertNotEquals;
  * Tests the {@code Image} class.
  */
 public class ImageTest {
-  private Image image1;
-  private Image image2;
+  private ImageInterface image1;
+  private ImageInterface image2;
 
   @Before
   public void init() {
@@ -23,7 +23,7 @@ public class ImageTest {
 
   @Test
   public void testConstructor() {
-    Image test = ImageLoader.load("res/test3x4.ppm");
+    ImageInterface test = ImageLoader.load("res/test3x4.ppm");
     Pixel topLeft = new Pixel(255, 252, 186, 3);
     assertEquals(3, test.getWidth());
     assertEquals(4, test.getHeight());

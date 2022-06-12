@@ -23,27 +23,27 @@ public class ImageProcessingModelImplTest {
   @Test
   public void testConstructor() {
     ImageProcessingModel test = new ImageProcessingModelImpl();
-    Image img = ImageLoader.load("res/test3x3.ppm");
+    ImageInterface img = ImageLoader.load("res/test3x3.ppm");
     test.storeImage("square", img);
     assertEquals(img, test.getImage("square"));
   }
 
   @Test
   public void testStoreImage() {
-    Image img = ImageLoader.load("res/test3x3.ppm");
+    ImageInterface img = ImageLoader.load("res/test3x3.ppm");
     this.model1.storeImage("square", img);
     assertEquals(img, this.model1.getImage("square"));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStoreImageEmptyName() {
-    Image img = ImageLoader.load("res/test3x3.ppm");
+    ImageInterface img = ImageLoader.load("res/test3x3.ppm");
     this.model1.storeImage("", img);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testStoreImageWhiteSpaceName() {
-    Image img = ImageLoader.load("test-images/test3x3.ppm");
+    ImageInterface img = ImageLoader.load("test-images/test3x3.ppm");
     this.model1.storeImage(" \n ", img);
   }
 
@@ -54,7 +54,7 @@ public class ImageProcessingModelImplTest {
 
   @Test
   public void testGetImage() {
-    Image img = ImageLoader.load("res/test3x3.ppm");
+    ImageInterface img = ImageLoader.load("res/test3x3.ppm");
     this.model1.storeImage("square", img);
     assertEquals(img, this.model1.getImage("square"));
   }
@@ -66,7 +66,7 @@ public class ImageProcessingModelImplTest {
 
   @Test
   public void testGetImageNames() {
-    Image img = ImageLoader.load("res/test3x3.ppm");
+    ImageInterface img = ImageLoader.load("res/test3x3.ppm");
     assertEquals("[]", Arrays.toString(this.model1.getImageNames()));
     this.model1.storeImage("square", img);
     assertEquals("[square]", Arrays.toString(this.model1.getImageNames()));
