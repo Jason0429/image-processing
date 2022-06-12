@@ -28,7 +28,8 @@ public class ControllerInvalidCommandTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("invalid-command"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test(expected = NoSuchElementException.class)

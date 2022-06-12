@@ -1,5 +1,6 @@
 package model.commands;
 
+import model.ImageInterface;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ import static org.junit.Assert.assertEquals;
  * Tests for {@code FlipHorizontalCommand}.
  */
 public class FlipHorizontalCommandTest {
-  private Image unprocessedImage;
+  private ImageInterface unprocessedImage;
 
   @Before
   public void init() {
@@ -23,13 +24,13 @@ public class FlipHorizontalCommandTest {
   @Test(expected = IllegalArgumentException.class)
   public void processNullImage() {
     ImageProcessingCommand cmd = new FlipHorizontalCommand();
-    Image processedImage = cmd.process(null);
+    ImageInterface processedImage = cmd.process(null);
   }
 
   @Test
   public void process() {
     ImageProcessingCommand cmd = new FlipHorizontalCommand();
-    Image processedImage = cmd.process(this.unprocessedImage);
+    ImageInterface processedImage = cmd.process(this.unprocessedImage);
     for (int i = 0; i < this.unprocessedImage.getHeight(); i++) {
       for (int j = 0; j < this.unprocessedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);

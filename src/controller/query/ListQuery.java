@@ -22,8 +22,12 @@ public class ListQuery extends AbstractQueryCommand {
     }
 
     this.writeMessage("List of images stored:\n");
-    for (String name : storedImageNames) {
-      this.writeMessage(name + "\n");
+    if (storedImageNames.length == 0) {
+      this.writeMessage("There are no images stored at the moment.\n");
+    } else {
+      for (String name : storedImageNames) {
+        this.writeMessage(name + "\n");
+      }
     }
   }
 }

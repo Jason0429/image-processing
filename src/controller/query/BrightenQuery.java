@@ -19,10 +19,14 @@ public class BrightenQuery extends AbstractQueryCommand {
     this.checkQueryLength(query, 4);
     String unprocessedImageName = query[1];
     String processedImageName = query[2];
-    int brightenLevel = Integer.parseInt(query[3]);
-    ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
-    ImageInterface processedImage = new BrightenCommand(brightenLevel).process(unprocessedImage);
-    this.model.storeImage(processedImageName, processedImage);
-    this.writeMessage("Successfully brightened image and stored as: " + processedImageName + ".\n");
+    try {
+      int brightenLevel = Integer.parseInt(query[3]);
+      ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
+      ImageInterface processedImage = new BrightenCommand(brightenLevel).process(unprocessedImage);
+      this.model.storeImage(processedImageName, processedImage);
+      this.writeMessage("Successfully brightened image and stored as: " + processedImageName + ".\n");
+    } catch (NumberFormatException e) {
+      throw new IllegalArgumentException("Invalid parameters specified, please try again.");
+    }
   }
 }

@@ -1,5 +1,6 @@
 package model.commands;
 
+import model.ImageInterface;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ import static org.junit.Assert.assertEquals;
  * Testing for {@code BrightenCommand}.
  */
 public class BrightenCommandTest {
-  private Image unprocessedImage;
+  private ImageInterface unprocessedImage;
 
   @Before
   public void init() {
@@ -23,7 +24,7 @@ public class BrightenCommandTest {
   @Test(expected = IllegalArgumentException.class)
   public void processNullImage() {
     ImageProcessingCommand cmd = new BrightenCommand(10);
-    Image processedImage = cmd.process(null);
+    ImageInterface processedImage = cmd.process(null);
   }
 
 
@@ -31,7 +32,7 @@ public class BrightenCommandTest {
   public void testBrightenProcess() {
     int increment = 10;
     ImageProcessingCommand cmd = new BrightenCommand(increment);
-    Image processedImage = cmd.process(this.unprocessedImage);
+    ImageInterface processedImage = cmd.process(this.unprocessedImage);
     for (int i = 0; i < processedImage.getHeight(); i++) {
       for (int j = 0; j < processedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);
@@ -56,7 +57,7 @@ public class BrightenCommandTest {
   public void testDarkenProcess() {
     int decrement = 10;
     ImageProcessingCommand cmd = new BrightenCommand(-decrement);
-    Image processedImage = cmd.process(this.unprocessedImage);
+    ImageInterface processedImage = cmd.process(this.unprocessedImage);
     for (int i = 0; i < processedImage.getHeight(); i++) {
       for (int j = 0; j < processedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);

@@ -1,5 +1,6 @@
 package controller;
 
+import model.ImageInterface;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,13 +19,13 @@ public class ImageExporterTest {
 
   @Test
   public void export() {
-    Image unprocessedImage = ImageLoader.load("res/test3x4.ppm");
+    ImageInterface unprocessedImage = ImageLoader.load("res/test3x4.ppm");
     ImageProcessingCommand cmd = new FlipVerticalCommand();
-    Image processedImage = cmd.process(unprocessedImage);
+    ImageInterface processedImage = cmd.process(unprocessedImage);
     String exportFilePath = "res/test-vertical.ppm";
     try {
       ImageExporter.export(processedImage, exportFilePath);
-      Image exportedImage = ImageLoader.load(exportFilePath);
+      ImageInterface exportedImage = ImageLoader.load(exportFilePath);
       assertEquals(processedImage, exportedImage);
     } catch (IOException e) {
       // If export does not work, fail test.
