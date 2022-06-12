@@ -4,8 +4,18 @@ import model.Image;
 import model.ImageInterface;
 import model.Pixel;
 
+/**
+ * Represents an image filter that can apply filters given a specific kernel.
+ */
 public class ImageFilter {
 
+  /**
+   * Filters and returns a new image given an image and kernel matrix.
+   *
+   * @param kernelMatrix the kernel for filtering.
+   * @param img          the image to be filtered.
+   * @return a new filtered image.
+   */
   public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img) {
     int height = kernelMatrix.length;
     int width = kernelMatrix[0].length;
@@ -36,6 +46,14 @@ public class ImageFilter {
     return new Image(pixelMatrix, img.getMaxValue(), img.getWidth(), img.getHeight());
   }
 
+  /**
+   * Returns the pixel at a location if it exists, and null otherwise.
+   *
+   * @param row the row index of the pixel.
+   * @param col the column index of the pixel.
+   * @param img the image reference.
+   * @return the pixel at the specified location, or null.
+   */
   private static Pixel getPixelOrNull(int row, int col, ImageInterface img) {
     try {
       return img.getPixelAt(row, col);
