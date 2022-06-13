@@ -17,7 +17,8 @@ public class ImageProcessor {
   /**
    * Starts the program.
    *
-   * @param args takes no arguments
+   * @param args possible command line arguments including:
+   *             [script-file-path] a file containing commands to run the program.
    */
   public static void main(String[] args) {
     Readable in = args.length == 1
