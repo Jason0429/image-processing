@@ -83,6 +83,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
       put("horizontal-flip", new FlipHorizontalQuery(model, view));
       put("vertical-flip", new FlipVerticalQuery(model, view));
       put("brighten", new BrightenQuery(model, view));
+      put("greyscale", new LumaQuery(model, view));
       put("gaussian-blur", new GaussianBlurQuery(model, view));
       put("sharpen", new SharpenQuery(model, view));
       put("sepia", new SepiaQuery(model, view));

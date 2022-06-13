@@ -25,8 +25,8 @@ public class ImageProcessor {
       try {
         Scanner scn = new Scanner(new FileReader(filePath));
         StringBuilder sb = new StringBuilder();
-        while (scn.hasNext()) {
-          sb.append(scn.next());
+        while (scn.hasNextLine()) {
+          sb.append(scn.nextLine()).append("\n");
         }
         in = new StringReader(sb.toString());
       } catch (FileNotFoundException e) {
