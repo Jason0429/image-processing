@@ -24,14 +24,14 @@ public abstract class TransformationProcessingCommand
   @Override
   protected Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
     int red = (int) (this.transformationMatrix[0][0] * pixel.getRed()
-            + (int) (this.transformationMatrix[0][1] * pixel.getGreen())
-            + (int) (this.transformationMatrix[0][2] * pixel.getBlue()));
+            + (this.transformationMatrix[0][1] * pixel.getGreen())
+            + (this.transformationMatrix[0][2] * pixel.getBlue()));
     int green = (int) (this.transformationMatrix[1][0] * pixel.getRed()
-            + (int) (this.transformationMatrix[1][1] * pixel.getGreen())
-            + (int) (this.transformationMatrix[1][2] * pixel.getBlue()));
+            + (this.transformationMatrix[1][1] * pixel.getGreen())
+            + (this.transformationMatrix[1][2] * pixel.getBlue()));
     int blue = (int) (this.transformationMatrix[2][0] * pixel.getRed()
-            + (int) (this.transformationMatrix[2][1] * pixel.getGreen())
-            + (int) (this.transformationMatrix[2][2] * pixel.getBlue()));
+            + (this.transformationMatrix[2][1] * pixel.getGreen())
+            + (this.transformationMatrix[2][2] * pixel.getBlue()));
     return new Pixel(pixel.getMaxValue(),
             Math.max(0, Math.min(pixel.getMaxValue(), red)),
             Math.max(0, Math.min(pixel.getMaxValue(), green)),

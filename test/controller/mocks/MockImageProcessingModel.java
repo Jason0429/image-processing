@@ -31,7 +31,7 @@ public class MockImageProcessingModel implements ImageProcessingModel {
   }
 
   @Override
-  public Image getImage(String name) throws IllegalArgumentException {
+  public ImageInterface getImage(String name) throws IllegalArgumentException {
     try {
       this.log.append(String.format("Get Image: %s\n", name));
       return null;

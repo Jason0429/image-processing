@@ -2,7 +2,7 @@ package controller.query;
 
 import model.ImageInterface;
 import model.ImageProcessingModel;
-import model.commands.LumaComponentGreyscaleCommand;
+import model.commands.LumaProcessingCommand;
 import view.ImageProcessingView;
 
 /**
@@ -20,7 +20,7 @@ public class LumaQuery extends AbstractQueryCommand {
     String unprocessedImageName = query[1];
     String processedImageName = query[2];
     ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
-    ImageInterface processedImage = new LumaComponentGreyscaleCommand().process(unprocessedImage);
+    ImageInterface processedImage = new LumaProcessingCommand().process(unprocessedImage);
     this.model.storeImage(processedImageName, processedImage);
     this.writeMessage(
             "Successfully applied luma component and stored as: " + processedImageName + ".\n");

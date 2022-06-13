@@ -1,12 +1,10 @@
 package model.commands;
 
+import controller.ImageLoader;
 import model.ImageInterface;
+import model.Pixel;
 import org.junit.Before;
 import org.junit.Test;
-
-import controller.ImageLoader;
-import model.Image;
-import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
 
@@ -35,9 +33,12 @@ public class IntensityComponentGreyscaleCommandTest {
       for (int j = 0; j < processedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);
         Pixel processedPx = processedImage.getPixelAt(i, j);
-        assertEquals((int) unprocessedPx.getIntensity(), processedPx.getRed());
-        assertEquals((int) unprocessedPx.getIntensity(), processedPx.getGreen());
-        assertEquals((int) unprocessedPx.getIntensity(), processedPx.getBlue());
+        int intensity = (int) ((unprocessedPx.getRed()
+                + unprocessedPx.getGreen()
+                + unprocessedPx.getBlue()) / 3.0);
+        assertEquals(intensity, processedPx.getRed());
+        assertEquals(intensity, processedPx.getGreen());
+        assertEquals(intensity, processedPx.getBlue());
       }
     }
   }

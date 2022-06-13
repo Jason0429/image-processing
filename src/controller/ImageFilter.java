@@ -6,9 +6,13 @@ import model.Pixel;
 
 public class ImageFilter {
 
-  public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img) {
+  public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img) throws IllegalArgumentException {
     int height = kernelMatrix.length;
     int width = kernelMatrix[0].length;
+    if (height % 2 == 0 || width % 2 == 0) {
+      throw new IllegalArgumentException("Kernel must have odd dimensions");
+    }
+
     Pixel[][] pixelMatrix = new Pixel[img.getHeight()][img.getWidth()];
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {

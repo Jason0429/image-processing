@@ -66,34 +66,6 @@ public class Pixel {
     return this.maxValue;
   }
 
-  /**
-   * Returns the largest value between red, green, and blue of the pixel.
-   *
-   * @return the largest RGB value
-   */
-  public int getLargestRGBValue() {
-    return Math.max(this.red, Math.max(this.green, this.blue));
-  }
-
-  /**
-   * Returns the average value between red, green, and blue of the pixel.
-   *
-   * @return the average of the RGB values
-   */
-  public double getIntensity() {
-    return (this.red + this.green + this.blue) / 3.0;
-  }
-
-  /**
-   * Returns the luma value of the pixel.
-   * The luma is calculated using 0.2126r + 0.7152g + 0.0722b.
-   *
-   * @return the luma value of the pixel
-   */
-  public double getLuma() {
-    return (0.2126 * this.red) + (0.7152 * this.green) + (0.0722 * this.blue);
-  }
-
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof Pixel) {
