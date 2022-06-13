@@ -94,27 +94,6 @@ public class PixelTest {
   }
 
   @Test
-  public void testGetValue() {
-    assertEquals(1, this.black.getLargestRGBValue());
-    assertEquals(0, this.white.getLargestRGBValue());
-    assertEquals(252, this.yellow.getLargestRGBValue());
-  }
-
-  @Test
-  public void testGetIntensity() {
-    assertEquals(1, this.black.getIntensity(), 0.001);
-    assertEquals(0, this.white.getIntensity(), 0.001);
-    assertEquals(152.333, this.yellow.getIntensity(), 0.001);
-  }
-
-  @Test
-  public void testGetLuma() {
-    assertEquals(1, this.black.getLuma(), 0.001);
-    assertEquals(0, this.white.getLuma(), 0.001);
-    assertEquals(198.2622, this.yellow.getLuma(), 0.001);
-  }
-  
-  @Test
   public void testEquals() {
     Pixel pixelA = new Pixel(255, 1, 2, 3);
     Pixel pixelB = new Pixel(255, 1, 2, 3);

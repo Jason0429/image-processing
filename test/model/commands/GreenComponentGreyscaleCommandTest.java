@@ -13,19 +13,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Testing for {@code GreenComponentGreyscaleCommand}.
  */
-public class GreenComponentGreyscaleCommandTest {
-  private ImageInterface unprocessedImage;
-
-  @Before
-  public void init() {
-    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void processNullImage() {
-    ImageProcessingCommand cmd = new GreenComponentGreyscaleCommand();
-    ImageInterface processedImage = cmd.process(null);
-  }
+public class GreenComponentGreyscaleCommandTest extends AbstractProcessingCommandTest {
 
   @Test
   public void process() {

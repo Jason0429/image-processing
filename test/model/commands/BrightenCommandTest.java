@@ -13,20 +13,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Testing for {@code BrightenCommand}.
  */
-public class BrightenCommandTest {
-  private ImageInterface unprocessedImage;
-
-  @Before
-  public void init() {
-    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void processNullImage() {
-    ImageProcessingCommand cmd = new BrightenCommand(10);
-    ImageInterface processedImage = cmd.process(null);
-  }
-
+public class BrightenCommandTest extends AbstractProcessingCommandTest {
 
   @Test
   public void testBrightenProcess() {
@@ -37,9 +24,6 @@ public class BrightenCommandTest {
       for (int j = 0; j < processedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);
         Pixel processedPx = processedImage.getPixelAt(i, j);
-        int oldRed = unprocessedPx.getRed();
-        int oldGreen = unprocessedPx.getGreen();
-        int oldBlue = unprocessedPx.getBlue();
         assertEquals(
                 Math.min(unprocessedPx.getRed() + increment, unprocessedPx.getMaxValue()),
                 processedPx.getRed());

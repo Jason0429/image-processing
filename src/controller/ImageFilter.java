@@ -9,16 +9,14 @@ import model.Pixel;
  */
 public class ImageFilter {
 
-  /**
-   * Filters and returns a new image given an image and kernel matrix.
-   *
-   * @param kernelMatrix the kernel for filtering.
-   * @param img          the image to be filtered.
-   * @return a new filtered image.
-   */
-  public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img) {
+  public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img)
+      throws IllegalArgumentException {
     int height = kernelMatrix.length;
     int width = kernelMatrix[0].length;
+    if (height % 2 == 0 || width % 2 == 0) {
+      throw new IllegalArgumentException("Kernel must have odd dimensions");
+    }
+
     Pixel[][] pixelMatrix = new Pixel[img.getHeight()][img.getWidth()];
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {
@@ -38,9 +36,9 @@ public class ImageFilter {
           }
         }
         pixelMatrix[row][col] = new Pixel(img.getMaxValue(),
-                (int) Math.max(0, Math.min(img.getMaxValue(), red)),
-                (int) Math.max(0, Math.min(img.getMaxValue(), green)),
-                (int) Math.max(0, Math.min(img.getMaxValue(), blue)));
+            (int) Math.max(0, Math.min(img.getMaxValue(), red)),
+            (int) Math.max(0, Math.min(img.getMaxValue(), green)),
+            (int) Math.max(0, Math.min(img.getMaxValue(), blue)));
       }
     }
     return new Image(pixelMatrix, img.getMaxValue(), img.getWidth(), img.getHeight());

@@ -1,0 +1,29 @@
+load res/test3x4.ppm test
+red-component test test-red
+green-component test test-green
+blue-component test test-blue
+value-component test test-value
+luma-component test test-luma
+intensity-component test test-intensity
+horizontal-flip test test-horizontal
+vertical-flip test test-vertical
+brighten test test-brighten 10
+brighten test test-darken -10
+greyscale test test-greyscale
+gaussian-blur test test-gaussian
+sharpen test test-sharpen
+sepia test test-sepia
+save res/test-red.ppm test-red
+save res/test-green.ppm test-green
+save res/test-blue.ppm test-blue
+save res/test-value.ppm test-value
+save res/test-intensity.ppm test-intensity
+save res/test-horizontal.ppm test-horizontal
+save res/test-vertical.ppm test-vertical
+save res/test-brighten.ppm test-brighten
+save res/test-darken.ppm test-darken
+save res/test-greyscale.ppm test-greyscale
+save res/test-gaussian.ppm test-gaussian
+save res/test-sharpen.ppm test-sharpen
+save res/test-sepia.ppm test-sepia
+quit
