@@ -12,19 +12,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Tests for {@code FlipVerticalCommand}.
  */
-public class FlipVerticalCommandTest {
-  private ImageInterface unprocessedImage;
-
-  @Before
-  public void init() {
-    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void processNullImage() {
-    ImageProcessingCommand cmd = new FlipVerticalCommand();
-    ImageInterface processedImage = cmd.process(null);
-  }
+public class FlipVerticalCommandTest extends AbstractProcessingCommandTest {
 
   @Test
   public void process() {

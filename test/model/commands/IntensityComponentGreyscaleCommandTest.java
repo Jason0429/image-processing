@@ -11,19 +11,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Testing for {@code IntensityComponentGreyscaleCommand}.
  */
-public class IntensityComponentGreyscaleCommandTest {
-  private ImageInterface unprocessedImage;
-
-  @Before
-  public void init() {
-    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void processNullImage() {
-    ImageProcessingCommand cmd = new IntensityComponentGreyscaleCommand();
-    ImageInterface processedImage = cmd.process(null);
-  }
+public class IntensityComponentGreyscaleCommandTest extends AbstractProcessingCommandTest {
 
   @Test
   public void process() {
@@ -36,6 +24,7 @@ public class IntensityComponentGreyscaleCommandTest {
         int intensity = (int) ((unprocessedPx.getRed()
                 + unprocessedPx.getGreen()
                 + unprocessedPx.getBlue()) / 3.0);
+        intensity = Math.max(0, Math.min(unprocessedPx.getMaxValue(), intensity));
         assertEquals(intensity, processedPx.getRed());
         assertEquals(intensity, processedPx.getGreen());
         assertEquals(intensity, processedPx.getBlue());

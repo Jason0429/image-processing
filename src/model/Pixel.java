@@ -90,6 +90,4 @@ public class Pixel {
   private boolean notWithinBounds(int value) {
     return value < 0 || value > this.maxValue;
   }
-
-
 }
