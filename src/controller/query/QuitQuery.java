@@ -1,7 +1,5 @@
 package controller.query;
 
-import controller.ImageLoader;
-import model.ImageInterface;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 

@@ -7,8 +7,7 @@ import model.Pixel;
 
 /**
  * This class represents an abstracted image processing command that handles
- * image processing for
- * processing that keeps pixels in place.
+ * image processing for processing that keeps pixels in place.
  */
 public abstract class PixelInPlaceProcessingCommand implements ImageProcessingCommand {
   @Override
@@ -30,8 +29,7 @@ public abstract class PixelInPlaceProcessingCommand implements ImageProcessingCo
 
   /**
    * Produces a new pixel that has been processed. Specific details about how the
-   * image has been
-   * processed vary by implementation.
+   * image has been processed vary by implementation.
    *
    * @param pixel the pixel to be processed
    * @return the processed pixel

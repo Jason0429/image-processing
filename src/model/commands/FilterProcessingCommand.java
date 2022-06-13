@@ -1,9 +1,11 @@
 package model.commands;
 
 import controller.ImageFilter;
-import model.Image;
 import model.ImageInterface;
 
+/**
+ * This abstract class represents commands that filter images.
+ */
 public abstract class FilterProcessingCommand implements ImageProcessingCommand {
 
   @Override
@@ -11,5 +13,10 @@ public abstract class FilterProcessingCommand implements ImageProcessingCommand 
     return ImageFilter.filter(this.getKernel(), img);
   }
 
+  /**
+   * Gets the appropriate kernel for the filter, depending on the implementation.
+   *
+   * @return a kernel
+   */
   abstract protected double[][] getKernel();
 }

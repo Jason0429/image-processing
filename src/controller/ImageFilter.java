@@ -4,8 +4,19 @@ import model.Image;
 import model.ImageInterface;
 import model.Pixel;
 
+/**
+ * This class represents an image filter that can be applied to {@code Images}.
+ */
 public class ImageFilter {
 
+  /**
+   * Filter an image using a specified kernel.
+   * The kernel must have odd dimensions.
+   *
+   * @param kernelMatrix the kernel
+   * @param img          the image to filter
+   * @return the filtered image
+   */
   public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img) {
     int height = kernelMatrix.length;
     int width = kernelMatrix[0].length;

@@ -3,6 +3,9 @@ package model.commands;
 import controller.ImageFilter;
 import model.ImageInterface;
 
+/**
+ * This class represents a command that applies a gaussian blur to an image.
+ */
 public class GaussianBlurCommand extends FilterProcessingCommand implements ImageProcessingCommand {
 
   @Override

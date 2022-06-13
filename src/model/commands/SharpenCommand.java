@@ -3,6 +3,9 @@ package model.commands;
 import controller.ImageFilter;
 import model.ImageInterface;
 
+/**
+ * This class represents a command that sharpens images.
+ */
 public class SharpenCommand extends FilterProcessingCommand implements ImageProcessingCommand {
 
   @Override
