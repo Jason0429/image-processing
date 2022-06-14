@@ -1,6 +1,6 @@
 package controller.query;
 
-import controller.ImageLoader;
+import controller.loader.ImageLoaderFactory;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
@@ -19,7 +19,7 @@ public class LoadQuery extends AbstractQueryCommand {
     this.checkQueryLength(query, 3);
     String filePath = query[1];
     String imageName = query[2];
-    ImageInterface loadedImage = ImageLoader.load(filePath);
+    ImageInterface loadedImage = ImageLoaderFactory.getImageLoader(filePath).load();
     this.model.storeImage(imageName, loadedImage);
     this.writeMessage("Successfully stored " + filePath + " as: " + imageName + ".\n");
   }

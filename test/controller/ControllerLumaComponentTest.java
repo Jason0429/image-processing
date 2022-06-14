@@ -3,6 +3,8 @@ package controller;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.loader.ImageLoader;
+import controller.loader.PPMLoader;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 
@@ -30,7 +32,7 @@ public class ControllerLumaComponentTest {
             IPCTester.inputs("luma-component test test-luma"),
             IPCTester.prints("Successfully applied luma component and stored as: test-luma"),
             IPCTester.inputs("q")));
-    assertEquals(ImageLoader.load("res/test-luma.ppm"),
+    assertEquals(new PPMLoader("res/test-luma.ppm").load(),
             this.model.getImage("test-luma"));
   }
 

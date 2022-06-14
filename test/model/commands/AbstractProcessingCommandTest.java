@@ -1,7 +1,8 @@
 package model.commands;
 
-import controller.ImageLoader;
+import controller.loader.ImageLoader;
 import model.ImageInterface;
+
 import org.junit.Before;
 import org.junit.Test;
 

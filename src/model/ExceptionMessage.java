@@ -13,7 +13,9 @@ public enum ExceptionMessage {
   OUT_OF_BOUNDS("Value out of bounds"),
   SPECIFIC_STRING_CANNOT_BE_EMPTY("%s cannot be empty."),
   INVALID_COMMAND_PARAMETERS("Invalid parameters specified, please try again."),
-  IMAGE_NOT_FOUND("Image not found.");
+  IMAGE_NOT_FOUND("Image not found."),
+  UNSUPPORTED_FILE_TYPE("Unsupported file type."),
+  UNABLE_TO_SAVE_FILE("Unable to save file");
 
   private final String message;
 

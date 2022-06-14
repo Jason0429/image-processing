@@ -1,9 +1,10 @@
 package controller;
 
+import controller.loader.ImageLoader;
 import model.ImageInterface;
+
 import org.junit.Test;
 
-import model.Image;
 import model.Pixel;
 
 import static org.junit.Assert.assertEquals;

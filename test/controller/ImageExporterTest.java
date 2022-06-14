@@ -1,11 +1,13 @@
 package controller;
 
+import controller.exporter.ImageExporter;
+import controller.loader.ImageLoader;
 import model.ImageInterface;
+
 import org.junit.Test;
 
 import java.io.IOException;
 
-import model.Image;
 import model.commands.FlipVerticalCommand;
 import model.commands.ImageProcessingCommand;
 

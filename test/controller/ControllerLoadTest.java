@@ -3,6 +3,7 @@ package controller;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.loader.ImageLoader;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 

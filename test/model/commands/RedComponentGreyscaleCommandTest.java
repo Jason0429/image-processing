@@ -1,11 +1,9 @@
 package model.commands;
 
 import model.ImageInterface;
-import org.junit.Before;
+
 import org.junit.Test;
 
-import controller.ImageLoader;
-import model.Image;
 import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
