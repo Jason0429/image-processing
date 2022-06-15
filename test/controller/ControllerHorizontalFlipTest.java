@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import controller.loader.ImageLoader;
+import controller.loader.PPMLoader;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 
@@ -33,7 +34,7 @@ public class ControllerHorizontalFlipTest {
                     "Successfully flipped image horizontally and stored as: test-horizontal."),
             IPCTester.inputs("q"),
             IPCTester.prints("Quitting Image Processing...")));
-    assertEquals(ImageLoader.load("res/test-horizontal.ppm"),
+    assertEquals(new PPMLoader("res/test-horizontal.ppm").load(),
             this.model.getImage("test-horizontal"));
   }
 

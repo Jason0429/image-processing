@@ -17,17 +17,13 @@ public class ListQuery extends AbstractQueryCommand {
     String[] storedImageNames = this.model.getImageNames();
 
     if (storedImageNames.length == 0) {
-      this.writeMessage("No images stored.");
+      this.writeMessage("No images stored.\n");
       return;
     }
 
     this.writeMessage("List of images stored:\n");
-    if (storedImageNames.length == 0) {
-      this.writeMessage("There are no images stored at the moment.\n");
-    } else {
-      for (String name : storedImageNames) {
-        this.writeMessage(name + "\n");
-      }
+    for (String name : storedImageNames) {
+      this.writeMessage(name + "\n");
     }
   }
 }

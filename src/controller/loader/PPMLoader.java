@@ -2,6 +2,7 @@ package controller.loader;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -13,8 +14,7 @@ import model.Pixel;
 /**
  * Represents an image loader for .ppm files.
  */
-public class PPMLoader implements ImageLoader {
-  private final String filePath;
+public class PPMLoader extends AbstractImageLoader {
 
   /**
    * Constructs a .ppm image loader with specified file path.
@@ -22,11 +22,11 @@ public class PPMLoader implements ImageLoader {
    * @param filePath the image file path.
    */
   public PPMLoader(String filePath) {
-    this.filePath = filePath;
+    super(filePath);
   }
 
   @Override
-  public ImageInterface load() throws IllegalArgumentException {
+  public ImageInterface loadHelper() throws IOException {
     try {
       Scanner sc = new Scanner(new FileInputStream(this.filePath));
       StringBuilder builder = new StringBuilder();
@@ -70,8 +70,6 @@ public class PPMLoader implements ImageLoader {
       return new Image(pixelMatrix, maxValue, width, height);
     } catch (NoSuchElementException e) {
       throw new IllegalArgumentException(ExceptionMessage.INVALID_PPM_FILE.toString());
-    } catch (FileNotFoundException e) {
-      throw new IllegalArgumentException(ExceptionMessage.INVALID_FILE_PATH.toString());
     }
   }
 }

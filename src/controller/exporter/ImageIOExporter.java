@@ -7,16 +7,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import model.ExceptionMessage;
 import model.ImageInterface;
 import model.Pixel;
 
 /**
  * Represents an image exporter using {@code ImageIO}.
  */
-public class ImageIOExporter implements ImageExporter {
-  private final ImageInterface image;
-  private final String filePath;
+public class ImageIOExporter extends AbstractImageExporter {
 
   /**
    * Constructs an image exporter using {@code ImageIO} that
@@ -26,12 +23,11 @@ public class ImageIOExporter implements ImageExporter {
    * @param filePath the file path.
    */
   public ImageIOExporter(ImageInterface image, String filePath) {
-    this.image = image;
-    this.filePath = filePath;
+    super(image, filePath);
   }
 
   @Override
-  public void export() throws IllegalArgumentException {
+  public void exportHelper() throws IOException {
     String fileExtension = this.filePath.substring(this.filePath.lastIndexOf('.') + 1);
     BufferedImage img = new BufferedImage(this.image.getWidth(), this.image.getHeight(),
             BufferedImage.TYPE_INT_RGB);
@@ -42,10 +38,6 @@ public class ImageIOExporter implements ImageExporter {
                 currentPixel.getBlue()).getRGB());
       }
     }
-    try {
-      ImageIO.write(img, fileExtension, new File(this.filePath));
-    } catch (IOException e) {
-      throw new IllegalArgumentException(ExceptionMessage.UNABLE_TO_SAVE_FILE.toString());
-    }
+    ImageIO.write(img, fileExtension, new File(this.filePath));
   }
 }
