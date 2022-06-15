@@ -39,8 +39,11 @@ public class ControllerMenuTest {
             IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
             IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
             IPCTester.prints("brighten [image-name] [dest-image-name] [increment]"),
+            IPCTester.prints("gaussian-blur [image-name] [dest-image-name]"),
+            IPCTester.prints("sharpen [image-name] [dest-image-name]"),
             IPCTester.prints("quit/q (quit the program)"),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -63,7 +66,10 @@ public class ControllerMenuTest {
             IPCTester.prints("horizontal-flip [image-name] [dest-image-name]"),
             IPCTester.prints("vertical-flip [image-name] [dest-image-name]"),
             IPCTester.prints("brighten [image-name] [dest-image-name] [increment]"),
+            IPCTester.prints("gaussian-blur [image-name] [dest-image-name]"),
+            IPCTester.prints("sharpen [image-name] [dest-image-name]"),
             IPCTester.prints("quit/q (quit the program)"),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 }

@@ -24,7 +24,8 @@ public class ControllerQuitTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -32,7 +33,8 @@ public class ControllerQuitTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("quit")));
+            IPCTester.inputs("quit"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -40,7 +42,8 @@ public class ControllerQuitTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("q 1 2 3")));
+            IPCTester.inputs("q 1 2 3"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -48,6 +51,7 @@ public class ControllerQuitTest {
     assertTrue(IPCTester.testRun(this.model,
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
-            IPCTester.inputs("quit 1 2 3")));
+            IPCTester.inputs("quit 1 2 3"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 }

@@ -27,10 +27,11 @@ public class ControllerRedComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("red-component test test-red"),
-            IPCTester.prints("Successfully applied red component and stored as: test-red"),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Successfully applied red component and stored as: test-red."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
     assertEquals(ImageLoader.load("res/test-red.ppm"),
             this.model.getImage("test-red"));
   }
@@ -41,10 +42,11 @@ public class ControllerRedComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("red-component does-not-exist test-red"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Image not found."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -53,10 +55,11 @@ public class ControllerRedComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("red-component 1 2"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Image not found."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -65,10 +68,11 @@ public class ControllerRedComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("red-component test"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -77,9 +81,10 @@ public class ControllerRedComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("red-component test test-red extra"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 }

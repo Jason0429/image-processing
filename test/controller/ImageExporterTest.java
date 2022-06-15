@@ -29,7 +29,7 @@ public class ImageExporterTest {
       ImageExporter.export(processedImage, exportFilePath);
       ImageInterface exportedImage = ImageLoader.load(exportFilePath);
       assertEquals(processedImage, exportedImage);
-    } catch (IOException e) {
+    } catch (IllegalArgumentException e) {
       // If export does not work, fail test.
       fail("Export failed");
     }
