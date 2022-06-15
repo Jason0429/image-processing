@@ -21,7 +21,6 @@ public abstract class AbstractImageLoader {
     this.filePath = filePath;
   }
 
-
   /**
    * Produces a new {@code ImageInterface} object from a file.
    *
