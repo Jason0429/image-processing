@@ -63,4 +63,49 @@ public class ImageLoaderTest {
   public void testLoadTooManyIntsPPM() {
     ImageInterface test = ImageLoader.load("res/tooManyInts.ppm");
   }
+
+  @Test
+  public void testLoadBMP() {
+    ImageInterface test = ImageLoader.load("res/test3x4.bmp");
+    assertEquals(3, test.getWidth());
+    assertEquals(4, test.getHeight());
+    assertEquals(255, test.getMaxValue());
+    assertEquals(new Pixel(255, 252, 186, 3),
+            test.getPixelAt(0, 0));
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testLoadCorruptBMP() {
+    // TODO: test
+  }
+
+  @Test
+  public void testLoadPNG() {
+    ImageInterface test = ImageLoader.load("res/test3x4.png");
+    assertEquals(3, test.getWidth());
+    assertEquals(4, test.getHeight());
+    assertEquals(255, test.getMaxValue());
+    assertEquals(new Pixel(255, 252, 186, 3),
+            test.getPixelAt(0, 0));
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testLoadCorruptPNG() {
+    // TODO: test
+  }
+
+  @Test
+  public void testLoadJPEG() {
+    ImageInterface test = ImageLoader.load("res/test3x4.jpeg");
+    assertEquals(3, test.getWidth());
+    assertEquals(4, test.getHeight());
+    assertEquals(255, test.getMaxValue());
+    assertEquals(new Pixel(255, 252, 186, 3),
+            test.getPixelAt(0, 0));
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testLoadCorruptJPEG() {
+    // TODO: test
+  }
 }
