@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class ImageLoaderTest {
 
   @Test
-  public void testLoad() {
+  public void testLoadPPM() {
     ImageInterface test = ImageLoader.load("res/test3x4.ppm");
     assertEquals(3, test.getWidth());
     assertEquals(4, test.getHeight());
@@ -25,42 +25,42 @@ public class ImageLoaderTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadInvalidLocation() {
+  public void testLoadInvalidLocationPPM() {
     ImageInterface test = ImageLoader.load("res/imagenotfound.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadNotP3() {
+  public void testLoadNotP3PPM() {
     ImageInterface test = ImageLoader.load("res/notP3.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadNotEnoughInts() {
+  public void testLoadNotEnoughIntsPPM() {
     ImageInterface test = ImageLoader.load("res/notEnoughInts.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadWidthTooSmall() {
+  public void testLoadWidthTooSmallPPM() {
     ImageInterface test = ImageLoader.load("res/widthTooSmall.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadWidthTooLarge() {
+  public void testLoadWidthTooLargePPM() {
     ImageInterface test = ImageLoader.load("res/widthTooLarge.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadHeightTooSmall() {
+  public void testLoadHeightTooSmallPPM() {
     ImageInterface test = ImageLoader.load("res/heightTooSmall.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadHeightTooLarge() {
+  public void testLoadHeightTooLargePPM() {
     ImageInterface test = ImageLoader.load("res/heightTooLarge.ppm");
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void testLoadTooManyInts() {
+  public void testLoadTooManyIntsPPM() {
     ImageInterface test = ImageLoader.load("res/tooManyInts.ppm");
   }
 }

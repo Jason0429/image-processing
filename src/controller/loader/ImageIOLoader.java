@@ -32,6 +32,7 @@ public class ImageIOLoader extends AbstractImageLoader {
     int maxValue = 255;
     int width = bufferedImage.getWidth();
     int height = bufferedImage.getHeight();
+    System.out.print(String.format("Width: %s, Height: %s", width, height));
     Pixel[][] pixelMatrix = new Pixel[height][width];
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
