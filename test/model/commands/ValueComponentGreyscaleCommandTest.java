@@ -1,11 +1,11 @@
 package model.commands;
 
 import model.ImageInterface;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.ImageLoader;
-import model.Image;
+import controller.loader.ImageLoader;
 import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
@@ -35,9 +35,11 @@ public class ValueComponentGreyscaleCommandTest {
       for (int j = 0; j < processedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);
         Pixel processedPx = processedImage.getPixelAt(i, j);
-        assertEquals(unprocessedPx.getLargestRGBValue(), processedPx.getRed());
-        assertEquals(unprocessedPx.getLargestRGBValue(), processedPx.getGreen());
-        assertEquals(unprocessedPx.getLargestRGBValue(), processedPx.getBlue());
+        int maxValue = Math.max(unprocessedPx.getRed(), Math.max(unprocessedPx.getGreen(),
+                unprocessedPx.getBlue()));
+        assertEquals(maxValue, processedPx.getRed());
+        assertEquals(maxValue, processedPx.getGreen());
+        assertEquals(maxValue, processedPx.getBlue());
       }
     }
   }

@@ -28,8 +28,8 @@ public class MenuQuery extends AbstractQueryCommand {
     this.writeMessage("horizontal-flip [image-name] [dest-image-name]\n");
     this.writeMessage("vertical-flip [image-name] [dest-image-name]\n");
     this.writeMessage("brighten [image-name] [dest-image-name] [increment]\n");
-    this.writeMessage("gaussian-blur [image-name] [dest-image-name]");
-    this.writeMessage("sharpen [image-name] [dest-image-name]");
+    this.writeMessage("gaussian-blur [image-name] [dest-image-name]\n");
+    this.writeMessage("sharpen [image-name] [dest-image-name]\n");
     this.writeMessage("quit/q (quit the program)\n");
   }
 }

@@ -1,11 +1,13 @@
 package controller;
 
+import controller.exporter.ImageExporter;
+import controller.loader.ImageLoader;
 import model.ImageInterface;
+
 import org.junit.Test;
 
 import java.io.IOException;
 
-import model.Image;
 import model.commands.FlipVerticalCommand;
 import model.commands.ImageProcessingCommand;
 
@@ -27,7 +29,7 @@ public class ImageExporterTest {
       ImageExporter.export(processedImage, exportFilePath);
       ImageInterface exportedImage = ImageLoader.load(exportFilePath);
       assertEquals(processedImage, exportedImage);
-    } catch (IOException e) {
+    } catch (IllegalArgumentException e) {
       // If export does not work, fail test.
       fail("Export failed");
     }

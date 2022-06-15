@@ -1,6 +1,5 @@
 package model.commands;
 
-import model.Image;
 import model.ImageInterface;
 
 /**

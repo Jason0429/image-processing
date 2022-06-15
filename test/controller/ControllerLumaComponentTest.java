@@ -3,6 +3,8 @@ package controller;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.loader.ImageLoader;
+import controller.loader.PPMLoader;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 
@@ -26,10 +28,11 @@ public class ControllerLumaComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("luma-component test test-luma"),
-            IPCTester.prints("Successfully applied luma component and stored as: test-luma"),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Successfully applied luma component and stored as: test-luma."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
     assertEquals(ImageLoader.load("res/test-luma.ppm"),
             this.model.getImage("test-luma"));
   }
@@ -40,10 +43,11 @@ public class ControllerLumaComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("luma-component does-not-exist test-luma"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Image not found."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -52,10 +56,11 @@ public class ControllerLumaComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("luma-component 1 2"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Image not found."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -64,10 +69,11 @@ public class ControllerLumaComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("luma-component test"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -76,9 +82,10 @@ public class ControllerLumaComponentTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("luma-component test test-luma extra"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 }

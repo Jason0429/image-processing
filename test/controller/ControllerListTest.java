@@ -56,8 +56,7 @@ public class ControllerListTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("list"),
-            IPCTester.prints("List of images stored:"),
-            IPCTester.prints("There are no images stored at the moment."),
+            IPCTester.prints("No images stored."),
             IPCTester.inputs("q"),
             IPCTester.prints("Quitting Image Processing...")));
   }

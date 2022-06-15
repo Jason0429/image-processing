@@ -20,7 +20,9 @@ public class ImageProcessingControllerImplTest {
   @Test
   public void testConstructor() {
     Readable input = new StringReader("q\n");
-    String expectedOutput = "*** Image Processing Program ***\nEnter a command to start.\n";
+    String expectedOutput = "*** Image Processing Program ***\n" +
+            "Enter a command to start.\n" +
+            "Quitting Image Processing...\n";
     Appendable output = new StringBuilder();
 
     ImageProcessingModel model = new ImageProcessingModelImpl();
@@ -44,7 +46,9 @@ public class ImageProcessingControllerImplTest {
 
   @Test
   public void testConstructorSpecifiedReadable() {
-    String expectedOutput = "*** Image Processing Program ***\nEnter a command to start.\n";
+    String expectedOutput = "*** Image Processing Program ***\n" +
+            "Enter a command to start.\n" +
+            "Quitting Image Processing...\n";
     ImageProcessingModel model = new ImageProcessingModelImpl();
     Appendable out = new StringBuilder();
     ImageProcessingView view = new ImageProcessingTextView(out);

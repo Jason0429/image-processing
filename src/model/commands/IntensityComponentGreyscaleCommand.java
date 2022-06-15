@@ -17,7 +17,17 @@ public class IntensityComponentGreyscaleCommand
    */
   @Override
   protected Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
-    return new Pixel(pixel.getMaxValue(), (int) pixel.getIntensity(),
-            (int) pixel.getIntensity(), (int) pixel.getIntensity());
+    return new Pixel(pixel.getMaxValue(), (int) this.getIntensity(pixel),
+            (int) this.getIntensity(pixel), (int) this.getIntensity(pixel));
+  }
+
+  /**
+   * Returns the average value between red, green, and blue of the pixel.
+   *
+   * @param p the pixel
+   * @return the average of the RGB values
+   */
+  private double getIntensity(Pixel p) {
+    return (p.getRed() + p.getGreen() + p.getBlue()) / 3.0;
   }
 }

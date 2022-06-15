@@ -5,7 +5,7 @@ import model.ImageInterface;
 import model.Pixel;
 
 /**
- * This class represents an image filter that can be applied to {@code Images}.
+ * Represents an image filter that can apply filters given a specific kernel.
  */
 public class ImageFilter {
 
@@ -17,9 +17,14 @@ public class ImageFilter {
    * @param img          the image to filter
    * @return the filtered image
    */
-  public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img) {
+  public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img)
+      throws IllegalArgumentException {
     int height = kernelMatrix.length;
     int width = kernelMatrix[0].length;
+    if (height % 2 == 0 || width % 2 == 0) {
+      throw new IllegalArgumentException("Kernel must have odd dimensions");
+    }
+
     Pixel[][] pixelMatrix = new Pixel[img.getHeight()][img.getWidth()];
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {
@@ -39,14 +44,22 @@ public class ImageFilter {
           }
         }
         pixelMatrix[row][col] = new Pixel(img.getMaxValue(),
-                (int) Math.max(0, Math.min(img.getMaxValue(), red)),
-                (int) Math.max(0, Math.min(img.getMaxValue(), green)),
-                (int) Math.max(0, Math.min(img.getMaxValue(), blue)));
+            (int) Math.max(0, Math.min(img.getMaxValue(), red)),
+            (int) Math.max(0, Math.min(img.getMaxValue(), green)),
+            (int) Math.max(0, Math.min(img.getMaxValue(), blue)));
       }
     }
     return new Image(pixelMatrix, img.getMaxValue(), img.getWidth(), img.getHeight());
   }
 
+  /**
+   * Returns the pixel at a location if it exists, and null otherwise.
+   *
+   * @param row the row index of the pixel.
+   * @param col the column index of the pixel.
+   * @param img the image reference.
+   * @return the pixel at the specified location, or null.
+   */
   private static Pixel getPixelOrNull(int row, int col, ImageInterface img) {
     try {
       return img.getPixelAt(row, col);

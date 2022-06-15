@@ -6,6 +6,9 @@ images.
 ## <u>A Note About Our Images</u>
 
 * We created and processed our own .ppm files.
+* https://freepngimg.com/png/20698-mario-transparent-background
+* https://unsplash.com/photos/H1cuGOjk8d8
+*
 
 ## <u>Type each of these lines followed by `Enter`</u>
 

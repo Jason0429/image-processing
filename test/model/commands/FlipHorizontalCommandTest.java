@@ -1,11 +1,9 @@
 package model.commands;
 
 import model.ImageInterface;
-import org.junit.Before;
+
 import org.junit.Test;
 
-import controller.ImageLoader;
-import model.Image;
 import model.Pixel;
 
 import static org.junit.Assert.assertEquals;
@@ -13,19 +11,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Tests for {@code FlipHorizontalCommand}.
  */
-public class FlipHorizontalCommandTest {
-  private ImageInterface unprocessedImage;
-
-  @Before
-  public void init() {
-    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void processNullImage() {
-    ImageProcessingCommand cmd = new FlipHorizontalCommand();
-    ImageInterface processedImage = cmd.process(null);
-  }
+public class FlipHorizontalCommandTest extends AbstractProcessingCommandTest {
 
   @Test
   public void process() {

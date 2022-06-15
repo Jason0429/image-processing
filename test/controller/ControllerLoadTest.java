@@ -3,6 +3,7 @@ package controller;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.loader.ImageLoader;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
 
@@ -26,8 +27,9 @@ public class ControllerLoadTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test"),
-            IPCTester.prints("Successfully loaded test from res/test3x4.ppm"),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
     assertEquals(ImageLoader.load("res/test3x4.ppm"),
             this.model.getImage("test"));
   }
@@ -38,8 +40,9 @@ public class ControllerLoadTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load test/invalid.ppm invalid"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Invalid file path."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -48,8 +51,9 @@ public class ControllerLoadTest {
             IPCTester.prints("*** Image Processing Program ***"),
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load 1 23"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.prints("Unsupported file type."),
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -59,7 +63,8 @@ public class ControllerLoadTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 
   @Test
@@ -69,6 +74,7 @@ public class ControllerLoadTest {
             IPCTester.prints("Enter a command to start."),
             IPCTester.inputs("load res/test3x4.ppm test extra"),
             IPCTester.prints("Invalid parameters specified, please try again."),
-            IPCTester.inputs("q")));
+            IPCTester.inputs("q"),
+            IPCTester.prints("Quitting Image Processing...")));
   }
 }

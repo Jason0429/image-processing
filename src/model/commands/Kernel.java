@@ -1,15 +1,15 @@
 package model.commands;
 
 /**
- * This class represents a Kernel used for image filtering. The kernel must have odd dimensions.
+ * This class produces different types of kernels for image filtering.
  */
 public class Kernel {
   // INVARIANT: ALL KERNELS MUST HAVE ODD DIMENSIONS
 
   /**
-   * Returns a kernel for gaussian blur.
+   * Produces a gaussian blur kernel.
    *
-   * @return gaussian blur kernel
+   * @return 2-D array of values for gaussian blur
    */
   public static double[][] gaussianBlur() {
     double[][] kernel = new double[3][3];
@@ -20,9 +20,9 @@ public class Kernel {
   }
 
   /**
-   * Returns a kernel for sharpening.
+   * Produces a sharpening kernel.
    *
-   * @return sharpening kernel
+   * @return 2-D array of values for sharpening
    */
   public static double[][] sharpen() {
     double[][] kernel = new double[5][5];

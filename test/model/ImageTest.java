@@ -3,7 +3,7 @@ package model;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.ImageLoader;
+import controller.loader.ImageLoader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

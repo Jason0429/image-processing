@@ -1,31 +1,16 @@
 package model.commands;
 
 import model.ImageInterface;
-import org.junit.Before;
-import org.junit.Test;
-
-import controller.ImageLoader;
-import model.Image;
 import model.Pixel;
+
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 /**
  * Testing for {@code IntensityComponentGreyscaleCommand}.
  */
-public class IntensityComponentGreyscaleCommandTest {
-  private ImageInterface unprocessedImage;
-
-  @Before
-  public void init() {
-    this.unprocessedImage = ImageLoader.load("res/test3x4.ppm");
-  }
-
-  @Test(expected = IllegalArgumentException.class)
-  public void processNullImage() {
-    ImageProcessingCommand cmd = new IntensityComponentGreyscaleCommand();
-    ImageInterface processedImage = cmd.process(null);
-  }
+public class IntensityComponentGreyscaleCommandTest extends AbstractProcessingCommandTest {
 
   @Test
   public void process() {
@@ -35,9 +20,13 @@ public class IntensityComponentGreyscaleCommandTest {
       for (int j = 0; j < processedImage.getWidth(); j++) {
         Pixel unprocessedPx = this.unprocessedImage.getPixelAt(i, j);
         Pixel processedPx = processedImage.getPixelAt(i, j);
-        assertEquals((int) unprocessedPx.getIntensity(), processedPx.getRed());
-        assertEquals((int) unprocessedPx.getIntensity(), processedPx.getGreen());
-        assertEquals((int) unprocessedPx.getIntensity(), processedPx.getBlue());
+        int intensity = (int) ((unprocessedPx.getRed()
+                + unprocessedPx.getGreen()
+                + unprocessedPx.getBlue()) / 3.0);
+        intensity = Math.max(0, Math.min(unprocessedPx.getMaxValue(), intensity));
+        assertEquals(intensity, processedPx.getRed());
+        assertEquals(intensity, processedPx.getGreen());
+        assertEquals(intensity, processedPx.getBlue());
       }
     }
   }

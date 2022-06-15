@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import controller.ImageLoader;
+import controller.loader.ImageLoader;
 
 import static org.junit.Assert.assertEquals;
 

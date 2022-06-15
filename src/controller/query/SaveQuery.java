@@ -1,8 +1,6 @@
 package controller.query;
 
-import java.io.IOException;
-
-import controller.ImageExporter;
+import controller.exporter.ImageExporter;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
@@ -22,11 +20,7 @@ public class SaveQuery extends AbstractQueryCommand {
     String filePath = query[1];
     String imageName = query[2];
     ImageInterface imageToExport = this.model.getImage(imageName);
-    try {
-      ImageExporter.export(imageToExport, filePath);
-      this.writeMessage("Successfully saved " + imageName + " to " + filePath + ".\n");
-    } catch (IOException e) {
-      throw new IllegalArgumentException(e.getMessage());
-    }
+    ImageExporter.export(imageToExport, filePath);
+    this.writeMessage("Successfully saved " + imageName + " to " + filePath + ".\n");
   }
 }
