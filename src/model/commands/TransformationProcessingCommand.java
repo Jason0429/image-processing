@@ -35,6 +35,7 @@ public abstract class TransformationProcessingCommand
     return new Pixel(pixel.getMaxValue(),
             Math.max(0, Math.min(pixel.getMaxValue(), red)),
             Math.max(0, Math.min(pixel.getMaxValue(), green)),
-            Math.max(0, Math.min(pixel.getMaxValue(), blue)));
+            Math.max(0, Math.min(pixel.getMaxValue(), blue)),
+            pixel.getAlpha());
   }
 }

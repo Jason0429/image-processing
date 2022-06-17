@@ -28,7 +28,8 @@ public class FlipHorizontalCommand implements ImageProcessingCommand {
       for (int col = 0; col < img.getWidth(); col++) {
         Pixel currentPixel = img.getPixelAt(row, col);
         Pixel processedPixel = new Pixel(img.getMaxValue(),
-                currentPixel.getRed(), currentPixel.getGreen(), currentPixel.getBlue());
+                currentPixel.getRed(), currentPixel.getGreen(), currentPixel.getBlue(),
+                currentPixel.getAlpha());
         pixelArray[row][img.getWidth() - col - 1] = processedPixel;
       }
     }

@@ -18,7 +18,7 @@ public class ImageFilter {
    * @return the filtered image
    */
   public static ImageInterface filter(double[][] kernelMatrix, ImageInterface img)
-      throws IllegalArgumentException {
+          throws IllegalArgumentException {
     int height = kernelMatrix.length;
     int width = kernelMatrix[0].length;
     if (height % 2 == 0 || width % 2 == 0) {
@@ -31,6 +31,7 @@ public class ImageFilter {
         double red = 0;
         double green = 0;
         double blue = 0;
+        double alpha = getPixelOrNull(row, col, img).getAlpha();
         for (int i = 0; i < height; i++) {
           for (int j = 0; j < width; j++) {
             int y = row - height / 2 + i;
@@ -44,9 +45,9 @@ public class ImageFilter {
           }
         }
         pixelMatrix[row][col] = new Pixel(img.getMaxValue(),
-            (int) Math.max(0, Math.min(img.getMaxValue(), red)),
-            (int) Math.max(0, Math.min(img.getMaxValue(), green)),
-            (int) Math.max(0, Math.min(img.getMaxValue(), blue)));
+                (int) Math.max(0, Math.min(img.getMaxValue(), red)),
+                (int) Math.max(0, Math.min(img.getMaxValue(), green)),
+                (int) Math.max(0, Math.min(img.getMaxValue(), blue)), (int) alpha);
       }
     }
     return new Image(pixelMatrix, img.getMaxValue(), img.getWidth(), img.getHeight());

@@ -18,7 +18,7 @@ public class IntensityComponentGreyscaleCommand
   @Override
   protected Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
     return new Pixel(pixel.getMaxValue(), (int) this.getIntensity(pixel),
-            (int) this.getIntensity(pixel), (int) this.getIntensity(pixel));
+            (int) this.getIntensity(pixel), (int) this.getIntensity(pixel), pixel.getAlpha());
   }
 
   /**
