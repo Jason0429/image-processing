@@ -76,7 +76,7 @@ public class ImageLoaderTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testLoadCorruptBMP() {
-    // TODO: test
+    ImageLoader.load("res/test3x4-corrupted.bmp");
   }
 
   @Test
@@ -91,7 +91,7 @@ public class ImageLoaderTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testLoadCorruptPNG() {
-    // TODO: test
+    ImageLoader.load("res/test3x4-corrupted.png");
   }
 
   @Test
@@ -100,12 +100,20 @@ public class ImageLoaderTest {
     assertEquals(3, test.getWidth());
     assertEquals(4, test.getHeight());
     assertEquals(255, test.getMaxValue());
-    assertEquals(new Pixel(255, 252, 186, 3),
-            test.getPixelAt(0, 0));
+    assertEquals(new Pixel(255, 223, 203, 0), test.getPixelAt(0, 0));
+  }
+
+  @Test
+  public void testLoadJPG() {
+    ImageInterface test = ImageLoader.load("res/test3x4.jpg");
+    assertEquals(3, test.getWidth());
+    assertEquals(4, test.getHeight());
+    assertEquals(255, test.getMaxValue());
+    assertEquals(new Pixel(255, 223, 203, 0), test.getPixelAt(0, 0));
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void testLoadCorruptJPEG() {
-    // TODO: test
+    ImageLoader.load("res/test3x4-corrupted.jpeg");
   }
 }

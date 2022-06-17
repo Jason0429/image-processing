@@ -23,6 +23,7 @@ public final class ImageExporter {
       case "bmp":
       case "png":
       case "jpeg":
+      case "jpg":
         new ImageIOExporter(image, filePath).export();
         break;
       default:

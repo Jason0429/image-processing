@@ -25,6 +25,7 @@ public final class ImageLoader {
       case "bmp":
       case "png":
       case "jpeg":
+      case "jpg":
         return new ImageIOLoader(filePath).load();
       default:
         throw new IllegalArgumentException(ExceptionMessage.UNSUPPORTED_FILE_TYPE.toString());

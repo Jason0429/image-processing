@@ -2,12 +2,9 @@ package controller;
 
 import controller.exporter.ImageExporter;
 import controller.loader.ImageLoader;
-import model.ExceptionMessage;
 import model.ImageInterface;
 
 import org.junit.Test;
-
-import java.io.IOException;
 
 import model.commands.FlipVerticalCommand;
 import model.commands.ImageProcessingCommand;
@@ -21,7 +18,7 @@ import static org.junit.Assert.fail;
 public class ImageExporterTest {
 
   private void testExport(String extension) {
-    ImageInterface unprocessedImage = ImageLoader.load("res/test3x4.ppm");
+    ImageInterface unprocessedImage = ImageLoader.load("res/test3x4." + extension);
     ImageProcessingCommand cmd = new FlipVerticalCommand();
     ImageInterface processedImage = cmd.process(unprocessedImage);
     String exportFilePath = "res/test-vertical." + extension;
@@ -37,7 +34,7 @@ public class ImageExporterTest {
 
   @Test
   public void testExportPPM() {
-    this.testExport(".ppm");
+    this.testExport("ppm");
   }
 
   @Test
@@ -47,12 +44,17 @@ public class ImageExporterTest {
 
   @Test
   public void testExportPNG() {
-    this.testExport(".png");
+    this.testExport("png");
   }
 
   @Test
   public void testExportJPEG() {
-    this.testExport(".jpeg");
+    this.testExport("jpeg");
+  }
+
+  @Test
+  public void testExportJPG() {
+    this.testExport("jpg");
   }
 
   @Test(expected = IllegalArgumentException.class)

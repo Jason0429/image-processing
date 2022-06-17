@@ -15,7 +15,8 @@ public enum ExceptionMessage {
   INVALID_COMMAND_PARAMETERS("Invalid parameters specified, please try again."),
   IMAGE_NOT_FOUND("Image not found."),
   UNSUPPORTED_FILE_TYPE("Unsupported file type."),
-  UNABLE_TO_SAVE_FILE("Unable to save file");
+  UNABLE_TO_SAVE_FILE("Unable to save file."),
+  CORRUPTED_FILE("The specified file is corrupted.");
 
   private final String message;
 

@@ -32,6 +32,8 @@ public abstract class AbstractImageLoader {
       return this.loadHelper();
     } catch (IOException e) {
       throw new IllegalArgumentException(ExceptionMessage.INVALID_FILE_PATH.toString());
+    } catch (RuntimeException e) {
+      throw new IllegalArgumentException(ExceptionMessage.CORRUPTED_FILE.toString());
     }
   }
 

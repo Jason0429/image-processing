@@ -5,10 +5,11 @@ images.
 
 ## <u>A Note About Our Images</u>
 
-* We created and processed our own .ppm files.
+* We created and processed our own test .ppm files.
 * https://freepngimg.com/png/20698-mario-transparent-background
 * https://unsplash.com/photos/H1cuGOjk8d8
-*
+* https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg
+* https://images.unsplash.com/photo-1623063921261-5a9914c19548?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Ym1wJTIwcGhvdG98ZW58MHx8MHx8&w=1000&q=80
 
 ## <u>Type each of these lines followed by `Enter`</u>
 

@@ -1,6 +1,7 @@
 package controller.exporter;
 
 import java.awt.*;
+import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -34,8 +35,9 @@ public class ImageIOExporter extends AbstractImageExporter {
     for (int row = 0; row < this.image.getHeight(); row++) {
       for (int col = 0; col < this.image.getWidth(); col++) {
         Pixel currentPixel = this.image.getPixelAt(row, col);
-        img.setRGB(col, row, new Color(currentPixel.getRed(), currentPixel.getGreen(),
-                currentPixel.getBlue()).getRGB());
+        int rgb = new Color(currentPixel.getRed(), currentPixel.getGreen(),
+                currentPixel.getBlue()).getRGB();
+        img.setRGB(col, row, rgb);
       }
     }
     ImageIO.write(img, fileExtension, new File(this.filePath));
