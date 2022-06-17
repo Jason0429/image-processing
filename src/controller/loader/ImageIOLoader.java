@@ -33,11 +33,11 @@ public class ImageIOLoader extends AbstractImageLoader {
     int width = bufferedImage.getWidth();
     int height = bufferedImage.getHeight();
     Pixel[][] pixelMatrix = new Pixel[height][width];
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
-        Color rgb = new Color(bufferedImage.getRGB(j, i));
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < width; col++) {
+        Color rgb = new Color(bufferedImage.getRGB(col, row));
         Pixel pixel = new Pixel(maxValue, rgb.getRed(), rgb.getGreen(), rgb.getBlue());
-        pixelMatrix[i][j] = pixel;
+        pixelMatrix[row][col] = pixel;
       }
     }
 
