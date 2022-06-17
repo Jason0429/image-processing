@@ -35,7 +35,8 @@ public class Pixel {
    * @param maxValue the maximum value of the pixel
    * @throws IllegalArgumentException if any values are not between 0-maxValue
    */
-  public Pixel(int maxValue, int red, int green, int blue, int alpha) throws IllegalArgumentException {
+  public Pixel(int maxValue, int red, int green, int blue, int alpha)
+          throws IllegalArgumentException {
     this.maxValue = maxValue;
     if (this.notWithinBounds(red) || this.notWithinBounds(green)
             || this.notWithinBounds(blue) || this.notWithinBounds(alpha)) {

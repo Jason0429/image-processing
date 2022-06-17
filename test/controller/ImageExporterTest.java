@@ -28,7 +28,7 @@ public class ImageExporterTest {
       assertEquals(processedImage, exportedImage);
     } catch (IllegalArgumentException e) {
       // If export does not work, fail test.
-      fail("Export failed");
+      fail(e.getMessage());
     }
   }
 
@@ -48,13 +48,43 @@ public class ImageExporterTest {
   }
 
   @Test
+  public void testExportTransparentPNG() {
+    ImageInterface unprocessedImage = ImageLoader.load("res/mario.png");
+    ImageProcessingCommand cmd = new FlipVerticalCommand();
+    ImageInterface processedImage = cmd.process(unprocessedImage);
+    String exportFilePath = "res/mario-vertical.png";
+    try {
+      ImageExporter.export(processedImage, exportFilePath);
+      ImageInterface exportedImage = ImageLoader.load(exportFilePath);
+      assertEquals(processedImage, exportedImage);
+    } catch (IllegalArgumentException e) {
+      // If export does not work, fail test.
+      fail(e.getMessage());
+    }
+  }
+
+  @Test
   public void testExportJPEG() {
-    this.testExport("jpeg");
+    try {
+      ImageInterface loadedImage = ImageLoader.load("res/test3x4.jpeg");
+      ImageProcessingCommand cmd = new FlipVerticalCommand();
+      ImageInterface processedImage = cmd.process(loadedImage);
+      ImageExporter.export(processedImage, "res/test-vertical.jpeg");
+    } catch (IllegalArgumentException e) {
+      fail(e.getMessage());
+    }
   }
 
   @Test
   public void testExportJPG() {
-    this.testExport("jpg");
+    try {
+      ImageInterface loadedImage = ImageLoader.load("res/test3x4.jpg");
+      ImageProcessingCommand cmd = new FlipVerticalCommand();
+      ImageInterface processedImage = cmd.process(loadedImage);
+      ImageExporter.export(processedImage, "res/test-vertical.jpg");
+    } catch (IllegalArgumentException e) {
+      fail(e.getMessage());
+    }
   }
 
   @Test(expected = IllegalArgumentException.class)

@@ -11,8 +11,7 @@ import model.ImageInterface;
 public class PPMExporter extends AbstractImageExporter implements ImageExporterInterface {
 
   /**
-   * Constructs an image exporter using {@code ImageIO} that
-   * takes in an {@code ImageInterface} and file path.
+   * Constructs an image exporter with given image and specified file path.
    *
    * @param image    the image to export.
    * @param filePath the file path.
