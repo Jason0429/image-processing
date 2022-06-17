@@ -1,11 +1,19 @@
 package controller.exporter;
 
-import java.awt.image.BufferedImage;
-
 import model.ImageInterface;
 
+/**
+ * Represents the image exporter for .bmp files.
+ */
 public class BMPExporter extends AbstractImageExporter {
+
+  /**
+   * Constructs an exporter with given image and specified file path.
+   *
+   * @param image    the image object.
+   * @param filePath the image file path.
+   */
   public BMPExporter(ImageInterface image, String filePath) {
-    super(image, filePath, BufferedImage.TYPE_4BYTE_ABGR);
+    super(image, filePath);
   }
 }

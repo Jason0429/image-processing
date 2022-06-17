@@ -29,6 +29,14 @@ public abstract class AbstractImageExporter implements ImageExporterInterface {
     this(image, filePath, BufferedImage.TYPE_INT_RGB);
   }
 
+  /**
+   * Constructs an image exporter with the image to be exported and specified file path
+   * and the image type.
+   *
+   * @param image     the image to be exported.
+   * @param filePath  the image file path.
+   * @param imageType the image type.
+   */
   public AbstractImageExporter(ImageInterface image, String filePath, int imageType) {
     this.image = image;
     this.filePath = filePath;
