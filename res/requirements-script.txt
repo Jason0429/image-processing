@@ -1,47 +1,55 @@
-load mario.png mario
+load res/mario.png mario
+load res/ladybug.bmp ladybug
+load res/van.jpeg vanjpeg
+load res/van.jpg vanjpg
+load res/dog.ppm dog
 
 gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
-gaussian-blur mario mario-blur
+gaussian-blur ladybug ladybug-blur
+gaussian-blur vanjpeg vanjpeg-blur
+gaussian-blur vanjpg vanjpg-blur
+gaussian-blur dog dog-blur
 
-save mario-blur.png mario-blur
+save res/mario-blur.png mario-blur
+save res/ladybug-blur.bmp ladybug-blur
+save res/van-blur.jpeg vanjpeg-blur
+save res/van-blur.jpg vanjpg-blur
+save res/dog-blur.ppm dog-blur
+
+sharpen mario mario-sharpen
+sharpen ladybug ladybug-sharpen
+sharpen vanjpeg vanjpeg-sharpen
+sharpen vanjpg vanjpg-sharpen
+sharpen dog dog-sharpen
+
+save res/mario-sharpen.png mario-sharpen
+save res/ladybug-sharpen.bmp ladybug-sharpen
+save res/van-sharpen.jpeg vanjpeg-sharpen
+save res/van-sharpen.jpg vanjpg-sharpen
+save res/dog-sharpen.ppm dog-sharpen
+
+greyscale mario mario-greyscale
+greyscale ladybug ladybug-greyscale
+greyscale vanjpeg vanjpeg-greyscale
+greyscale vanjpg vanjpg-greyscale
+greyscale dog dog-greyscale
+
+save res/mario-greyscale.png mario-greyscale
+save res/ladybug-greyscale.bmp ladybug-greyscale
+save res/van-greyscale.jpeg vanjpeg-greyscale
+save res/van-greyscale.jpg vanjpg-greyscale
+save res/dog-greyscale.ppm dog-greyscale
+
+sepia mario mario-sepia
+sepia ladybug ladybug-sepia
+sepia vanjpeg vanjpeg-sepia
+sepia vanjpg vanjpg-sepia
+sepia dog dog-sepia
+
+save res/mario-sepia.png mario-sepia
+save res/ladybug-sepia.bmp ladybug-sepia
+save res/van-sepia.jpeg vanjpeg-sepia
+save res/van-sepia.jpg vanjpg-sepia
+save res/dog-sepia.ppm dog-sepia
 
 quit
