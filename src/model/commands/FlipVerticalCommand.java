@@ -28,7 +28,8 @@ public class FlipVerticalCommand implements ImageProcessingCommand {
       for (int col = 0; col < img.getWidth(); col++) {
         Pixel currentPixel = img.getPixelAt(row, col);
         Pixel processedPx = new Pixel(img.getMaxValue(),
-                currentPixel.getRed(), currentPixel.getGreen(), currentPixel.getBlue());
+                currentPixel.getRed(), currentPixel.getGreen(), currentPixel.getBlue(),
+                currentPixel.getAlpha());
         pixelArray[img.getHeight() - row - 1][col] = processedPx;
       }
     }

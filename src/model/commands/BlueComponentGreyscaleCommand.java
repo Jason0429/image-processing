@@ -17,7 +17,8 @@ public class BlueComponentGreyscaleCommand
    */
   @Override
   protected Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
-    return new Pixel(pixel.getMaxValue(), pixel.getBlue(), pixel.getBlue(), pixel.getBlue());
+    return new Pixel(pixel.getMaxValue(), pixel.getBlue(), pixel.getBlue(), pixel.getBlue(),
+            pixel.getAlpha());
   }
 }
 
