@@ -43,7 +43,7 @@ public class Image implements ImageInterface {
   public int getHeight() {
     return this.height;
   }
-
+  
   @Override
   public int getMaxValue() {
     return this.maxValue;

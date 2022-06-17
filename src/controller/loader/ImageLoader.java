@@ -1,7 +1,5 @@
 package controller.loader;
 
-import controller.exporter.ImageIOExporter;
-import controller.exporter.PPMExporter;
 import model.ExceptionMessage;
 import model.ImageInterface;
 

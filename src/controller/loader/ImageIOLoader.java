@@ -1,6 +1,6 @@
 package controller.loader;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -40,6 +40,7 @@ public class ImageIOLoader extends AbstractImageLoader {
         pixelMatrix[i][j] = pixel;
       }
     }
+
     return new Image(pixelMatrix, maxValue, width, height);
   }
 }

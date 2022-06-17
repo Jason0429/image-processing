@@ -1,7 +1,6 @@
 package controller.loader;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -55,8 +54,7 @@ public class PPMLoader extends AbstractImageLoader {
       // Configure pixels with RGB values from PPM file.
       for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-          pixelMatrix[i][j] = new Pixel(
-                  maxValue, sc.nextInt(), sc.nextInt(), sc.nextInt());
+          pixelMatrix[i][j] = new Pixel(maxValue, sc.nextInt(), sc.nextInt(), sc.nextInt());
         }
       }
 
