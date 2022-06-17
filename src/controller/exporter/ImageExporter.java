@@ -16,21 +16,23 @@ public final class ImageExporter {
    */
   public static void export(ImageInterface image, String filePath) throws IllegalArgumentException {
     String fileExtension = filePath.substring(filePath.lastIndexOf('.') + 1);
-    ImageExporterInterface exporter;
     switch (fileExtension) {
       case "ppm":
-        exporter = new PPMExporter(image, filePath);
+        new PPMExporter(image, filePath).export();
         break;
       case "bmp":
+        new BMPExporter(image, filePath).export();
+        break;
       case "png":
+        new PNGExporter(image, filePath).export();
+        break;
       case "jpeg":
       case "jpg":
-        exporter = new ImageIOExporter(image, filePath);
+        new JPEGExporter(image, filePath).export();
         break;
       default:
         throw new IllegalArgumentException(ExceptionMessage.UNSUPPORTED_FILE_TYPE.toString());
     }
-    exporter.export();
   }
 }
 
