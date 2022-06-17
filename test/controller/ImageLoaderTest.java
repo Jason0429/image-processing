@@ -92,12 +92,12 @@ public class ImageLoaderTest {
   @Test
   public void testTransparentPNG() {
     ImageInterface loadedImage = ImageLoader.load("res/mario.png");
-    assertEquals(1473, loadedImage.getWidth());
-    assertEquals(1854, loadedImage.getHeight());
+    assertEquals(92, loadedImage.getWidth());
+    assertEquals(116, loadedImage.getHeight());
     assertEquals(255, loadedImage.getMaxValue());
-    assertEquals(255, loadedImage.getPixelAt(0, 0).getRed());
-    assertEquals(255, loadedImage.getPixelAt(0, 0).getGreen());
-    assertEquals(255, loadedImage.getPixelAt(0, 0).getBlue());
+    assertEquals(0, loadedImage.getPixelAt(0, 0).getRed());
+    assertEquals(0, loadedImage.getPixelAt(0, 0).getGreen());
+    assertEquals(0, loadedImage.getPixelAt(0, 0).getBlue());
     assertEquals(0, loadedImage.getPixelAt(0, 0).getAlpha());
   }
 
