@@ -37,6 +37,6 @@ public class BrightenCommand
             Math.min(pixel.getRed() + this.increment, pixel.getMaxValue()),
             Math.min(pixel.getGreen() + this.increment, pixel.getMaxValue()),
             Math.min(pixel.getBlue() + this.increment, pixel.getMaxValue()),
-            Math.max(pixel.getAlpha() + this.increment, 0));
+            Math.min(pixel.getAlpha() + this.increment, 0));
   }
 }

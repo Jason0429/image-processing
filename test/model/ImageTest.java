@@ -163,7 +163,7 @@ public class ImageTest {
 
   @Test
   public void testHashCode() {
-    assertEquals(1702110722, this.image1.hashCode());
-    assertEquals(-218450216, this.image2.hashCode());
+    assertEquals(-1488258182, this.image1.hashCode());
+    assertEquals(-1982934707, this.image2.hashCode());
   }
 }

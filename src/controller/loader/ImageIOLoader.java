@@ -15,7 +15,7 @@ import model.Pixel;
  * Represents an image loader class using {@code ImageIO} to
  * handle common image file loading functionalities.
  */
-public class ImageIOLoader extends AbstractImageLoader implements ImageLoaderInterface {
+public class ImageIOLoader extends AbstractImageLoader {
 
   /**
    * Constructs an image loader with specified file path.
@@ -36,8 +36,8 @@ public class ImageIOLoader extends AbstractImageLoader implements ImageLoaderInt
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         Color rgb = new Color(bufferedImage.getRGB(j, i), true);
-        Pixel pixel = new Pixel(
-            maxValue, rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha());
+        Pixel pixel = new Pixel(maxValue, rgb.getRed(), rgb.getGreen(),
+                rgb.getBlue(), rgb.getAlpha());
         pixelMatrix[i][j] = pixel;
       }
     }

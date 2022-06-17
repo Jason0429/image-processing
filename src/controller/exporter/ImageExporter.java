@@ -1,5 +1,7 @@
 package controller.exporter;
 
+import java.awt.image.BufferedImage;
+
 import model.ExceptionMessage;
 import model.ImageInterface;
 
@@ -20,15 +22,13 @@ public final class ImageExporter {
       case "ppm":
         new PPMExporter(image, filePath).export();
         break;
-      case "bmp":
-        new BMPExporter(image, filePath).export();
-        break;
       case "png":
-        new PNGExporter(image, filePath).export();
+        new ImageIOExporter(image, filePath, BufferedImage.TYPE_INT_ARGB).export();
         break;
+      case "bmp":
       case "jpeg":
       case "jpg":
-        new JPEGExporter(image, filePath).export();
+        new ImageIOExporter(image, filePath).export();
         break;
       default:
         throw new IllegalArgumentException(ExceptionMessage.UNSUPPORTED_FILE_TYPE.toString());
