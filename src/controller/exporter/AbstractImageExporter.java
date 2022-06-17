@@ -8,7 +8,7 @@ import model.ImageInterface;
 /**
  * Represents the abstract class for image exporters
  */
-public abstract class AbstractImageExporter {
+public abstract class AbstractImageExporter implements ImageExporterInterface {
   protected final ImageInterface image;
   protected final String filePath;
 
@@ -23,11 +23,7 @@ public abstract class AbstractImageExporter {
     this.filePath = filePath;
   }
 
-  /**
-   * Handles exporting the image to the specified file path.
-   *
-   * @throws IllegalArgumentException if it is unable to save file.
-   */
+  @Override
   public void export() throws IllegalArgumentException {
     try {
       this.exportHelper();

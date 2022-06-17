@@ -8,7 +8,7 @@ import model.ImageInterface;
 /**
  * Represents an image exporter for .ppm files.
  */
-public class PPMExporter extends AbstractImageExporter {
+public class PPMExporter extends AbstractImageExporter implements ImageExporterInterface {
 
   /**
    * Constructs an image exporter using {@code ImageIO} that

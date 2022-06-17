@@ -14,7 +14,7 @@ import model.Pixel;
 /**
  * Represents an image exporter using {@code ImageIO}.
  */
-public class ImageIOExporter extends AbstractImageExporter {
+public class ImageIOExporter extends AbstractImageExporter implements ImageExporterInterface {
 
   /**
    * Constructs an image exporter using {@code ImageIO} that

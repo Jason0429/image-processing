@@ -13,7 +13,7 @@ import model.Pixel;
 /**
  * Represents an image loader for .ppm files.
  */
-public class PPMLoader extends AbstractImageLoader {
+public class PPMLoader extends AbstractImageLoader implements ImageLoaderInterface {
 
   /**
    * Constructs a .ppm image loader with specified file path.

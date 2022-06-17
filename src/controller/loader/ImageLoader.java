@@ -17,16 +17,20 @@ public final class ImageLoader {
    */
   public static ImageInterface load(String filePath) throws IllegalArgumentException {
     String fileExtension = filePath.substring(filePath.lastIndexOf('.') + 1);
+    ImageLoaderInterface loader;
     switch (fileExtension) {
       case "ppm":
-        return new PPMLoader(filePath).load();
+        loader = new PPMLoader(filePath);
+        break;
       case "bmp":
       case "png":
       case "jpeg":
       case "jpg":
-        return new ImageIOLoader(filePath).load();
+        loader = new ImageIOLoader(filePath);
+        break;
       default:
         throw new IllegalArgumentException(ExceptionMessage.UNSUPPORTED_FILE_TYPE.toString());
     }
+    return loader.load();
   }
 }

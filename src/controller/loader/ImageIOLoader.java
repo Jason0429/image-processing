@@ -15,7 +15,7 @@ import model.Pixel;
  * Represents an image loader class using {@code ImageIO} to
  * handle common image file loading functionalities.
  */
-public class ImageIOLoader extends AbstractImageLoader {
+public class ImageIOLoader extends AbstractImageLoader implements ImageLoaderInterface {
 
   /**
    * Constructs an image loader with specified file path.
