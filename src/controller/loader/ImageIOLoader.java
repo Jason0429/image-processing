@@ -36,7 +36,8 @@ public class ImageIOLoader extends AbstractImageLoader implements ImageLoaderInt
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         Color rgb = new Color(bufferedImage.getRGB(j, i));
-        Pixel pixel = new Pixel(maxValue, rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+        Pixel pixel = new Pixel(
+                maxValue, rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha());
         pixelMatrix[i][j] = pixel;
       }
     }

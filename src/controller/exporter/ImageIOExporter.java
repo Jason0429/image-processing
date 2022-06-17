@@ -36,7 +36,7 @@ public class ImageIOExporter extends AbstractImageExporter implements ImageExpor
       for (int col = 0; col < this.image.getWidth(); col++) {
         Pixel currentPixel = this.image.getPixelAt(row, col);
         int rgb = new Color(currentPixel.getRed(), currentPixel.getGreen(),
-                currentPixel.getBlue()).getRGB();
+                currentPixel.getBlue(), currentPixel.getAlpha()).getRGB();
         img.setRGB(col, row, rgb);
       }
     }

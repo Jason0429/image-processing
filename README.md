@@ -3,6 +3,44 @@
 This is a program that processes .ppm files and has the ability to load, manipulate, and export
 images.
 
+## <u>Updates</u>
+
+### Model
+
+* `Commands`
+    * Added new abstract classes `FilterProcessingCommand` and `TransformationProcessingCommand`
+      to handle kernel image filtering and image matrix processing.
+    * Created `Kernel` class with static methods that produce specific kernels
+    * Created `Transformation` class with static methods that produce specific 3x3 matrices for
+      image transformations
+    * Added support for gaussian blur, sepia, sharpen
+* `Pixel`
+    * Added support for aRGB to support transparency in .png images
+
+### Controller
+
+* `Exporter`
+    * Created an `ImageExporterInterface` interface and abstracted the image exporter to allow for
+      other formats of image export
+    * Added new `ImageIOExporter` to handle .png, .bmp, .jpeg/jpg files
+    * Created static export method in new final `ImageExporter`
+* `Loader`
+    * Created an `ImageLoaderInterface` interface and abstracted the image importer to allow for
+      other formats of image imports
+    * Added new `ImageIOLoader` to handle .png, .bmp, .jpeg/jpg files
+    * Created static import method in new final `ImageLoader`
+* `Query`
+    * Created new `QueryCommand` interface to handle queries from the controller that executes
+      actions given arguments and abstracted it in `AbstractQueryCommand`
+    * Created queries for each type of query a user can provide to the program
+* `ImageFilter`
+    * Created new class `ImageFilter` with static filter method to handle image kernel processing
+      with support for kernels of varying odd dimensions.
+* `ImageProcessingControllerImpl`
+    * Rewrote the `start` method to take advantage of new `QueryCommands` and utilizes a command
+      pattern with a mapping of queries. This allows the controller to have more flexibility to
+      add more command support in the future.
+
 ## <u>A Note About Our Images</u>
 
 * We created and processed our own test .ppm files.
@@ -28,6 +66,10 @@ images.
 * `vertical-flip test test-vertical`
 * `brighten test test-brighten 10`
 * `brighten test test-darken -10`
+* `gaussian-blur test test-gaussian`
+* `sepia test test-sepia`
+* `sharpen test test-sharpen`
+* `greyscale test test-greyscale`
 * `save res/test-red.ppm test-red`
 * `save res/test-green.ppm test-green`
 * `save res/test-blue.ppm test-blue`
