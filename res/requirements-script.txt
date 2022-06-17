@@ -6,8 +6,8 @@ load res/dog.ppm dog
 
 gaussian-blur mario mario-blur
 gaussian-blur ladybug ladybug-blur
-gaussian-blur vanjpeg vanjpeg-blur  
-gaussian-blur vanjpg vanjpg-blur 
+gaussian-blur vanjpeg vanjpeg-blur
+gaussian-blur vanjpg vanjpg-blur
 gaussian-blur dog dog-blur
 
 save res/mario-blur.png mario-blur

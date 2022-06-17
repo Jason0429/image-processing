@@ -1,7 +1,8 @@
 Options:
-menu (loads this menu)
 
-`list` (lists all loaded images)
+`menu` (loads this menu)
+
+`list` (lists all loaded image names)
 
 `load` [`image-path`] [`image-name`]
 
