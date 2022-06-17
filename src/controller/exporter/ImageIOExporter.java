@@ -29,12 +29,12 @@ public class ImageIOExporter extends AbstractImageExporter implements ImageExpor
   public void exportHelper() throws IOException {
     String fileExtension = this.filePath.substring(this.filePath.lastIndexOf('.') + 1);
     BufferedImage img = new BufferedImage(this.image.getWidth(), this.image.getHeight(),
-            BufferedImage.TYPE_INT_ARGB);
+        BufferedImage.TYPE_4BYTE_ABGR);
     for (int row = 0; row < this.image.getHeight(); row++) {
       for (int col = 0; col < this.image.getWidth(); col++) {
         Pixel currentPixel = this.image.getPixelAt(row, col);
-        int rgb = (currentPixel.getAlpha() << 24) | (currentPixel.getRed() << 16) |
-                (currentPixel.getGreen() << 8) | currentPixel.getBlue();
+        int rgb = new Color(currentPixel.getRed(), currentPixel.getGreen(),
+            currentPixel.getBlue(), currentPixel.getAlpha()).getRGB();
         img.setRGB(col, row, rgb);
       }
     }
