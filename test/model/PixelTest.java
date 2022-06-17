@@ -18,7 +18,7 @@ public class PixelTest {
   @Before
   public void init() {
     this.black = new Pixel(1, 1, 1, 1);
-    this.white = new Pixel(255, 0, 0, 0);
+    this.white = new Pixel(255, 0, 0, 0, 100);
     this.yellow = new Pixel(255, 252, 202, 3);
   }
 
@@ -28,6 +28,12 @@ public class PixelTest {
     assertEquals(100, testPixel.getRed());
     assertEquals(200, testPixel.getGreen());
     assertEquals(255, testPixel.getBlue());
+    assertEquals(255, testPixel.getAlpha());
+    Pixel testPixelAlternate = new Pixel(255, 100, 200, 255, 100);
+    assertEquals(100, testPixelAlternate.getRed());
+    assertEquals(200, testPixelAlternate.getGreen());
+    assertEquals(255, testPixelAlternate.getBlue());
+    assertEquals(100, testPixelAlternate.getAlpha());
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -51,6 +57,11 @@ public class PixelTest {
   }
 
   @Test(expected = IllegalArgumentException.class)
+  public void testConstructorNegativeAlpha() {
+    new Pixel(255, 100, 200, 255, -255);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
   public void testConstructorTooLargeRed() {
     new Pixel(255, 256, 200, 255);
   }
@@ -63,6 +74,11 @@ public class PixelTest {
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorTooLargeBlue() {
     new Pixel(255, 100, 200, 256);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testConstructorTooLargeAlpha() {
+    new Pixel(255, 100, 200, 255, 256);
   }
 
   @Test
@@ -87,6 +103,13 @@ public class PixelTest {
   }
 
   @Test
+  public void testGetAlpha() {
+    assertEquals(1, this.black.getAlpha());
+    assertEquals(100, this.white.getAlpha());
+    assertEquals(255, this.yellow.getAlpha());
+  }
+
+  @Test
   public void testGetMaxValue() {
     assertEquals(1, this.black.getMaxValue());
     assertEquals(255, this.white.getMaxValue());
@@ -95,8 +118,8 @@ public class PixelTest {
 
   @Test
   public void testEquals() {
-    Pixel pixelA = new Pixel(255, 1, 2, 3);
-    Pixel pixelB = new Pixel(255, 1, 2, 3);
+    Pixel pixelA = new Pixel(255, 1, 2, 3, 100);
+    Pixel pixelB = new Pixel(255, 1, 2, 3, 100);
     Pixel pixelC = new Pixel(255, 1, 2, 255);
     Pixel pixelD = new Pixel(255, 1, 255, 3);
     Pixel pixelE = new Pixel(100, 1, 2, 3);
@@ -108,8 +131,8 @@ public class PixelTest {
 
   @Test
   public void testHashcode() {
-    assertEquals(954305, this.black.hashCode());
-    assertEquals(923776, this.white.hashCode());
-    assertEquals(8625323, this.yellow.hashCode());
+    assertEquals(29583456, this.black.hashCode());
+    assertEquals(28632506, this.white.hashCode());
+    assertEquals(267385268, this.yellow.hashCode());
   }
 }

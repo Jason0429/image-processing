@@ -9,7 +9,7 @@ import model.ImageInterface;
 /**
  * Represents the abstract class for image loaders.
  */
-public abstract class AbstractImageLoader {
+public abstract class AbstractImageLoader implements ImageLoaderInterface {
   protected final String filePath;
 
   /**
@@ -21,12 +21,7 @@ public abstract class AbstractImageLoader {
     this.filePath = filePath;
   }
 
-  /**
-   * Produces a new {@code ImageInterface} object from a file.
-   *
-   * @return a new {@code ImageInterface} object.
-   * @throws IllegalArgumentException if the file cannot be found or is corrupted.
-   */
+  @Override
   public ImageInterface load() throws IllegalArgumentException {
     try {
       return this.loadHelper();
