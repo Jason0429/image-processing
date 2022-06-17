@@ -6,11 +6,13 @@ import model.ExceptionMessage;
 import model.ImageInterface;
 
 /**
- * Represents the class that exports {@code ImageInterface} objects to image files.
+ * Represents the class that exports {@code ImageInterface} objects to image
+ * files.
  */
 public final class ImageExporter {
   /**
-   * Exports the {@code ImageInterface} to a formatted file to a specific file path destination.
+   * Exports the {@code ImageInterface} to a formatted file to a specific file
+   * path destination.
    *
    * @param image    image the image to be exported.
    * @param filePath the image file path.
@@ -37,4 +39,3 @@ public final class ImageExporter {
     exporter.export();
   }
 }
-

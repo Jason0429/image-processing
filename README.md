@@ -91,12 +91,13 @@ images.
 * `ImageProcessingModel`: an interface that represents a model that handles storing/loading images.
     * `ImageProcessingModelImpl`: holds a map of images corresponding to their names.
 * `Pixel`: represents a pixel with RGB values.
+* `Kernel`: represents an image processing kernel.
+* `Transformation`: represents a transformation to be applied on an image
 * `ImageProcessingCommand`: an interface that represents different types of processing that can be
   performed on images
     * `BrightenCommand`: takes in an `Image` and produces a new brightened/darkened `Image`.
-    * `AbstractImageProcessingCommand`: an abstract class that represents image processing commands
-      that do not alter the
-      location of pixels.
+    * `PixelInPlaceProcessingCommand`: an abstract class that represents image processing commands
+      that do not alter the location of pixels.
         * `BlueComponentGreyscaleCommand`: takes in an `Image` and produces a new greyscale `Image`
           based on the blue component of the pixels.
         * `GreenComponentGreyscaleCommand`: takes in an `Image` and produces a new greyscale `Image`
@@ -107,12 +108,19 @@ images.
           version of the image.
         * `FlipVerticalCommand`: takes in an `Image` and produces a new vertically flipped version
           of the image.
-        * `LumaComponentCommand`: takes in an `Image` and produces a new greyscale `Image` based on
-          the luma component of the pixels.
         * `IntensityComponentGreyscaleCommand`: takes in an `Image` and produces creates greyscale
           versions of images based on the intensity of each pixel.
         * `ValueComponentGreyscaleCommand`: takes in an `Image` and produces a new greyscale `Image`
           based on the value component of the pixels.
+    * `FilterProcessingCommand`: an abstract class that represents image processing commands
+      that apply a filter
+        * `GaussianBlurCommand`: takes in an `Image` and produces a version with gaussian blur
+        * `SharpenCommand`: takes in an `Image` and produces a sharpened version
+    * `TransformationProcessingCommand`: an abstract class that represents image processing
+      commands that apply a transformation
+        * `SepiaProcessingCommand`: takes in an `Image` and produces a sepia version
+        * `LumaComponentCommand`: takes in an `Image` and produces a new greyscale `Image` based on
+          the luma component of the pixels.
 
 ### View
 
@@ -121,12 +129,33 @@ images.
 
 ### Controller
 
-* `ImageLoader`: loads .ppm images as `Image` objects.
+* `ImageLoader`: loads images of type PPM, PNG, BMP, JPEG, and JPG as `Image` objects.
 * `ImageExporter`: converts `Image` objects to their `String` PPM representation and saves them as
-  .ppm files.
+  type PPM, PNG, BMP, JPEG, or JPG files.
 * `ImageProcessingController`: represents a controller for the image processing program.
     * `ImageProcessingControllerImpl`: implementation of the controller that interacts with a
       text-based view.
+* `QueryCommand`: interface that represents a potential query a user might make
+    * `AbstractQueryCommand`: an abstract class that represents the queries used for the
+      text-based controller
+        * `BlueComponentQuery`: handles queries for blue-component processing
+        * `BrightenQuery`: handles queries for brightening/darkening processing
+        * `FlipHorizontalQuery`: handles queries for horizontal flip
+        * `FlipVerticalQuery`: handles queries for vertical flip
+        * `GaussianBlurQuery`: handles queries for gaussian blur
+        * `GreenComponentQuery`: handles queries for green-component processing
+        * `IntensityQuery`: handles queries for intensity processing
+        * `ListQuery`: handles queries to list all images
+        * `LoadQuery`: handles queries to load an image
+        * `LumaQuery`: handles queries for luma component processing
+        * `MenuQuery`: handles queries to return the menu
+        * `QuitQuery`: handles queries to quit
+        * `RedComponentQuery`: handles queries for red-component processing
+        * `SaveQuery`: handles queries to save images
+        * `SepiaQuery`: handles queries to apply sepia
+        * `SharpenQuery`: handles queries to sharpen images
+        * `ValueQuery`: handles queries for value component processing
+* `ImageFilter`: handles applying filters to images
 
 ### Other
 
@@ -139,3 +168,5 @@ images.
   implementation for our models as immutable as possible.
 * We did not want our command implementations to take in models or `Scanner`s and wanted it to
   solely handle manipulating a given `Image` and producing a new processed version.
+* We had to rewrite a majority of our controller to make it more versatile for more
+  functionality down the line.
