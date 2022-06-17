@@ -6,6 +6,9 @@ import model.ImageInterface;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This class tests the common methods in the commands.
+ */
 public abstract class AbstractProcessingCommandTest {
   protected ImageInterface unprocessedImage;
 

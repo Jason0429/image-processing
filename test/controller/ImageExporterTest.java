@@ -9,15 +9,14 @@ import org.junit.Test;
 import model.commands.FlipVerticalCommand;
 import model.commands.ImageProcessingCommand;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
  * Tests the {@code ImageExporter} class.
  */
 public class ImageExporterTest {
 
-  private void testExport(String extension) {
+  private boolean testExport(String extension) {
     ImageInterface unprocessedImage = ImageLoader.load("res/test3x4." + extension);
     ImageProcessingCommand cmd = new FlipVerticalCommand();
     ImageInterface processedImage = cmd.process(unprocessedImage);
@@ -30,21 +29,22 @@ public class ImageExporterTest {
       // If export does not work, fail test.
       fail(e.getMessage());
     }
+    return true;
   }
 
   @Test
   public void testExportPPM() {
-    this.testExport("ppm");
+    assertTrue(this.testExport("ppm"));
   }
 
   @Test
   public void testExportBMP() {
-    this.testExport("bmp");
+    assertTrue(this.testExport("bmp"));
   }
 
   @Test
   public void testExportPNG() {
-    this.testExport("png");
+    assertTrue(this.testExport("png"));
   }
 
   @Test

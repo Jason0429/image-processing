@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * This class tests the sharpen command.
+ */
 public class SharpenCommandTest extends AbstractProcessingCommandTest {
 
   @Test
@@ -16,6 +19,7 @@ public class SharpenCommandTest extends AbstractProcessingCommandTest {
     Pixel[][] pixelArray = new Pixel[4][3];
     pixelArray[0] = new Pixel[]{
             new Pixel(255, 255, 255, 4),
+
             new Pixel(255, 255, 255, 5),
             new Pixel(255, 181, 255, 3)};
     pixelArray[1] = new Pixel[]{

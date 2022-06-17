@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * This class tests the gaussian blur command.
+ */
 public class GaussianBlurCommandTest extends AbstractProcessingCommandTest {
 
   @Test

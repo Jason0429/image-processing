@@ -2,7 +2,6 @@ package controller.mocks;
 
 import java.io.IOException;
 
-import model.Image;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 

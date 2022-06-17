@@ -19,7 +19,8 @@ public class ValueComponentGreyscaleCommand
   @Override
   protected Pixel processPixel(Pixel pixel) throws IllegalArgumentException {
     int largestValue = this.pixelLargestRGBValue(pixel);
-    return new Pixel(pixel.getMaxValue(), largestValue, largestValue, largestValue, pixel.getAlpha());
+    return new Pixel(pixel.getMaxValue(),
+            largestValue, largestValue, largestValue, pixel.getAlpha());
   }
 
   /**
