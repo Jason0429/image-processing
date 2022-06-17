@@ -15,10 +15,23 @@ import model.Pixel;
  * handle common image file loading functionalities.
  */
 public class ImageIOExporter extends AbstractImageExporter {
+  /**
+   * Constructs an image exporter given an image and specified file path.
+   *
+   * @param image    the image object.
+   * @param filePath the image file path.
+   */
   public ImageIOExporter(ImageInterface image, String filePath) {
     super(image, filePath);
   }
 
+  /**
+   * Constructs an image exporter given an image and specified file path and image type.
+   *
+   * @param image     the image object.
+   * @param filePath  the image file path.
+   * @param imageType the image type.
+   */
   public ImageIOExporter(ImageInterface image, String filePath, int imageType) {
     super(image, filePath, imageType);
   }

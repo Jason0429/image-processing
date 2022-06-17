@@ -48,6 +48,22 @@ public class ImageExporterTest {
   }
 
   @Test
+  public void testExportTransparentPNG() {
+    ImageInterface unprocessedImage = ImageLoader.load("res/mario.png");
+    ImageProcessingCommand cmd = new FlipVerticalCommand();
+    ImageInterface processedImage = cmd.process(unprocessedImage);
+    String exportFilePath = "res/mario-vertical.png";
+    try {
+      ImageExporter.export(processedImage, exportFilePath);
+      ImageInterface exportedImage = ImageLoader.load(exportFilePath);
+      assertEquals(processedImage, exportedImage);
+    } catch (IllegalArgumentException e) {
+      // If export does not work, fail test.
+      fail(e.getMessage());
+    }
+  }
+
+  @Test
   public void testExportJPEG() {
     try {
       ImageInterface loadedImage = ImageLoader.load("res/test3x4.jpeg");

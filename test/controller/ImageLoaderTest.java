@@ -89,6 +89,18 @@ public class ImageLoaderTest {
             test.getPixelAt(0, 0));
   }
 
+  @Test
+  public void testTransparentPNG() {
+    ImageInterface loadedImage = ImageLoader.load("res/mario.png");
+    assertEquals(1473, loadedImage.getWidth());
+    assertEquals(1854, loadedImage.getHeight());
+    assertEquals(255, loadedImage.getMaxValue());
+    assertEquals(255, loadedImage.getPixelAt(0, 0).getRed());
+    assertEquals(255, loadedImage.getPixelAt(0, 0).getGreen());
+    assertEquals(255, loadedImage.getPixelAt(0, 0).getBlue());
+    assertEquals(0, loadedImage.getPixelAt(0, 0).getAlpha());
+  }
+
   @Test(expected = IllegalArgumentException.class)
   public void testLoadCorruptPNG() {
     ImageLoader.load("res/test3x4-corrupted.png");
