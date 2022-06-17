@@ -2,10 +2,18 @@ package model.commands;
 
 import model.Pixel;
 
+/**
+ * Represents a processing command applies a transformation to an image.
+ */
 public abstract class TransformationProcessingCommand
         extends PixelInPlaceProcessingCommand implements ImageProcessingCommand {
-  private double[][] transformationMatrix;
+  private final double[][] transformationMatrix;
 
+  /**
+   * Constructs a transformation processing command given a transformation matrix.
+   *
+   * @param transformationMatrix the transformation matrix.
+   */
   public TransformationProcessingCommand(double[][] transformationMatrix) {
     if (transformationMatrix.length == 3 && transformationMatrix[0].length == 3) {
       this.transformationMatrix = transformationMatrix;

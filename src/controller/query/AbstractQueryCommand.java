@@ -3,7 +3,6 @@ package controller.query;
 import java.io.IOException;
 
 import model.ExceptionMessage;
-import model.ImageInterface;
 import model.ImageProcessingModel;
 import view.ImageProcessingView;
 

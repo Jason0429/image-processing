@@ -1,7 +1,5 @@
 package model.commands;
 
-import model.Pixel;
-
 /**
  * Represents a command that uses each pixel's luma to produce a greyscale version.
  */

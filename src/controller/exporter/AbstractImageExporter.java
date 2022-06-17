@@ -1,18 +1,13 @@
 package controller.exporter;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import model.ExceptionMessage;
 import model.ImageInterface;
-import model.Pixel;
 
 /**
- * Represents the abstract class for image exporters
+ * Represents the abstract class for image exporters.
  */
 public abstract class AbstractImageExporter implements ImageExporterInterface {
   protected final ImageInterface image;

@@ -18,5 +18,5 @@ public abstract class FilterProcessingCommand implements ImageProcessingCommand 
    *
    * @return a kernel
    */
-  abstract protected double[][] getKernel();
+  protected abstract double[][] getKernel();
 }

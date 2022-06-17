@@ -68,31 +68,31 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
     this.view = view;
     this.readable = readable;
     this.quit = false;
-    this.queries = new HashMap<String, QueryCommand>() {{
-      put("menu", new MenuQuery(model, view));
-      put("list", new ListQuery(model, view));
-      put("load", new LoadQuery(model, view));
-      put("save", new SaveQuery(model, view));
-      put("red-component", new RedComponentQuery(model, view));
-      put("green-component", new GreenComponentQuery(model, view));
-      put("blue-component", new BlueComponentQuery(model, view));
-      put("value-component", new ValueQuery(model, view));
-      put("luma-component", new LumaQuery(model, view));
-      put("intensity-component", new IntensityQuery(model, view));
-      put("horizontal-flip", new FlipHorizontalQuery(model, view));
-      put("vertical-flip", new FlipVerticalQuery(model, view));
-      put("brighten", new BrightenQuery(model, view));
-      put("greyscale", new LumaQuery(model, view));
-      put("gaussian-blur", new GaussianBlurQuery(model, view));
-      put("sharpen", new SharpenQuery(model, view));
-      put("sepia", new SepiaQuery(model, view));
-    }};
-    this.queries.put("quit", new QuitQuery(model, view, () -> this.quit = true));
-    this.queries.put("q", new QuitQuery(model, view, () -> this.quit = true));
+    this.queries = new HashMap<String, QueryCommand>();
   }
 
   @Override
   public void start() throws IllegalStateException {
+    this.queries.put("menu", new MenuQuery(model, view));
+    this.queries.put("list", new ListQuery(model, view));
+    this.queries.put("load", new LoadQuery(model, view));
+    this.queries.put("save", new SaveQuery(model, view));
+    this.queries.put("red-component", new RedComponentQuery(model, view));
+    this.queries.put("green-component", new GreenComponentQuery(model, view));
+    this.queries.put("blue-component", new BlueComponentQuery(model, view));
+    this.queries.put("value-component", new ValueQuery(model, view));
+    this.queries.put("luma-component", new LumaQuery(model, view));
+    this.queries.put("intensity-component", new IntensityQuery(model, view));
+    this.queries.put("horizontal-flip", new FlipHorizontalQuery(model, view));
+    this.queries.put("vertical-flip", new FlipVerticalQuery(model, view));
+    this.queries.put("brighten", new BrightenQuery(model, view));
+    this.queries.put("greyscale", new LumaQuery(model, view));
+    this.queries.put("gaussian-blur", new GaussianBlurQuery(model, view));
+    this.queries.put("sharpen", new SharpenQuery(model, view));
+    this.queries.put("sepia", new SepiaQuery(model, view));
+    this.queries.put("quit", new QuitQuery(model, view, () -> this.quit = true));
+    this.queries.put("q", new QuitQuery(model, view, () -> this.quit = true));
+
     Scanner sc = new Scanner(this.readable);
 
     this.displayMessage("*** Image Processing Program ***\n");
