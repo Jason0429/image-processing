@@ -19,6 +19,9 @@ public class GUIView extends JFrame implements IView {
 
 
   public GUIView() {
+    this.setTitle("Image Processing");
+    this.setSize(1000, 1000);
+
     Map<Color, Function<Pixel, Integer>> types = new HashMap<Color, Function<Pixel, Integer>>();
     types.put(Color.red, PixelReader::getRed);
     types.put(Color.green, PixelReader::getGreen);
@@ -29,6 +32,7 @@ public class GUIView extends JFrame implements IView {
     this.setLayout(new GridLayout(1, 3));
     this.add(histogram);
     this.add(imagePreview);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.makeVisible();
   }
 

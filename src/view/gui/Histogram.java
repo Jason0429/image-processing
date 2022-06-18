@@ -36,8 +36,8 @@ public class Histogram extends JPanel {
   @Override
   public void paint(Graphics g) {
 
+    Graphics2D g2 = (Graphics2D) g;
     if (this.img != null) {
-      Graphics2D g2 = (Graphics2D) g;
       int width = 1;
       g2.setStroke(new BasicStroke(width));
 
@@ -60,6 +60,8 @@ public class Histogram extends JPanel {
           g2.draw(new Line2D.Float(i * width, 200, i * width, Math.max(200 - value, 0)));
         }
       }
+    } else {
+      g2.drawString("No image loaded!", 100, 100);
     }
   }
 }
