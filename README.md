@@ -1,7 +1,6 @@
 # Image Processing by Jason & Elvin
 
-This is a program that processes .ppm files and has the ability to load, manipulate, and export
-images.
+This is a program that processes .ppm, .bmp, .png, and .jpeg files and has the ability to load, manipulate, and export images.
 
 ## <u>Updates</u>
 

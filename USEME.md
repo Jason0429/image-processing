@@ -26,8 +26,8 @@ Options:
 
 `brighten` [`image-name`] [`dest-image-name`] [`increment`]
 
-`gaussian-blur` [image-name] [dest-image-name]
+`gaussian-blur` [`image-name`] [`dest-image-name`]
 
-`sharpen` [image-name] [dest-image-name]
+`sharpen` [`image-name`] [`dest-image-name`]
 
 `quit`/`q` (quit the program)
