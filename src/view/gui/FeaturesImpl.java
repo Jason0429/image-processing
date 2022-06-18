@@ -1,6 +1,8 @@
 package view.gui;
 
 import controller.exporter.ImageExporter;
+import controller.loader.ImageLoader;
+import model.Image;
 import model.ImageInterface;
 
 public class FeaturesImpl implements Features {
@@ -18,7 +20,8 @@ public class FeaturesImpl implements Features {
   }
 
   @Override
-  public void update() {
+  public void update(String imgPath) {
+    this.model = ImageLoader.load(imgPath);
     this.view.update(this.model);
   }
 

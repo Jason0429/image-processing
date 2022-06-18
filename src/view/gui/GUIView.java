@@ -5,6 +5,7 @@ import model.Pixel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -29,9 +30,12 @@ public class GUIView extends JFrame implements IView {
     types.put(Color.gray, PixelReader::getIntensity);
     this.histogram = new Histogram(types);
     this.imagePreview = new ImagePreview();
+    this.loadBtn = new JButton();
+    this.loadBtn.setText("Load");
     this.setLayout(new GridLayout(1, 3));
     this.add(histogram);
     this.add(imagePreview);
+    this.add(loadBtn);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.makeVisible();
   }
@@ -55,6 +59,13 @@ public class GUIView extends JFrame implements IView {
 
   @Override
   public void addFeatures(Features features) {
-
+    this.loadBtn.addActionListener((event) -> {
+      JFileChooser fileChooser = new JFileChooser();
+      int returnValue = fileChooser.showOpenDialog(null);
+      if (returnValue == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        features.update(selectedFile.getAbsolutePath());
+      }
+    });
   }
 }

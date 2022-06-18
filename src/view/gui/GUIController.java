@@ -14,10 +14,9 @@ public class GUIController {
     this.view = view;
     this.features = new FeaturesImpl(view, model);
     this.view.addFeatures(this.features);
-    this.view.update(this.model);
   }
 
   public static void main(String[] args) {
-    GUIController controller = new GUIController(ImageLoader.load("res/mario.png"), new GUIView());
+    GUIController controller = new GUIController(null, new GUIView());
   }
 }

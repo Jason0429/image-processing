@@ -1,5 +1,7 @@
 package view.gui;
 
+import model.ImageInterface;
+
 public interface Features {
 
   /**
@@ -11,7 +13,7 @@ public interface Features {
   /**
    * Update the current image in the view.
    */
-  void update();
+  void update(String imgPath);
 
   /**
    * Get the current selected processing query, if any.
