@@ -3,7 +3,7 @@ package controller;
 import java.io.StringReader;
 
 import model.ImageProcessingModel;
-import view.ImageProcessingTextView;
+import view.text.ImageProcessingTextView;
 
 import static org.junit.Assert.assertEquals;
 

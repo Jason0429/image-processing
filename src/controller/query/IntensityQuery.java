@@ -3,7 +3,7 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.IntensityComponentGreyscaleCommand;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 /**
  * Represents the intensity query command.

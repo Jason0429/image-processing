@@ -2,6 +2,8 @@ package view;
 
 import controller.mocks.CorruptedAppendable;
 import org.junit.Test;
+import view.text.ImageProcessingTextView;
+import view.text.ImageProcessingView;
 
 import java.io.IOException;
 

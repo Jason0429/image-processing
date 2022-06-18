@@ -3,7 +3,7 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.FlipHorizontalCommand;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 /**
  * Represents the flip horizontal query command.

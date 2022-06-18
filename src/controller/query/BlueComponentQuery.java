@@ -3,7 +3,7 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.BlueComponentGreyscaleCommand;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 /**
  * Represents the blue component query command.

@@ -3,7 +3,7 @@ package controller.query;
 import controller.loader.ImageLoader;
 import model.ImageInterface;
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 /**
  * Represents the load query command.

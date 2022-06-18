@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 /**
  * Represents the abstract class for an image processing query command.

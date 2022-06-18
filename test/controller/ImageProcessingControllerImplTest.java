@@ -7,8 +7,8 @@ import java.io.StringReader;
 import controller.mocks.MockImageProcessingModel;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
-import view.ImageProcessingTextView;
-import view.ImageProcessingView;
+import view.text.ImageProcessingTextView;
+import view.text.ImageProcessingView;
 
 import static org.junit.Assert.assertEquals;
 

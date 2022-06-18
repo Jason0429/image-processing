@@ -2,8 +2,8 @@ import controller.ImageProcessingControllerImpl;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
-import view.ImageProcessingTextView;
-import view.ImageProcessingView;
+import view.text.ImageProcessingTextView;
+import view.text.ImageProcessingView;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

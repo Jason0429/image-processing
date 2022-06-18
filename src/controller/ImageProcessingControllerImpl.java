@@ -20,7 +20,7 @@ import controller.query.SharpenQuery;
 import controller.query.ValueQuery;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

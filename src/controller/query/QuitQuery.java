@@ -1,7 +1,7 @@
 package controller.query;
 
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 /**
  * Represents the quit query command.

@@ -3,7 +3,7 @@ package controller.query;
 import controller.exporter.ImageExporter;
 import model.ImageInterface;
 import model.ImageProcessingModel;
-import view.ImageProcessingView;
+import view.text.ImageProcessingView;
 
 /**
  * Represents the save query command.
