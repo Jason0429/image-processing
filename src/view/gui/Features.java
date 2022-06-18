@@ -11,12 +11,7 @@ public interface Features {
   /**
    * Update the current image in the view.
    */
-  void updateImage();
-
-  /**
-   * Update the histogram in the view.
-   */
-  void updateHistogram();
+  void update();
 
   /**
    * Get the current selected processing query, if any.
@@ -26,7 +21,7 @@ public interface Features {
   /**
    * Exports the current image.
    */
-  void exportImage();
+  void exportImage(String filePath);
 
   /**
    * Quit the program.
