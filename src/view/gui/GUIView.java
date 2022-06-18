@@ -30,11 +30,14 @@ public class GUIView extends JFrame implements IView {
     types.put(Color.gray, PixelReader::getIntensity);
     this.histogram = new Histogram(types);
     this.imagePreview = new ImagePreview();
+    this.exportBtn = new JButton();
+    this.exportBtn.setText("Export");
     this.loadBtn = new JButton();
     this.loadBtn.setText("Load");
-    this.setLayout(new GridLayout(1, 3));
+    this.setLayout(new GridLayout(1, 4));
     this.add(histogram);
     this.add(imagePreview);
+    this.add(exportBtn);
     this.add(loadBtn);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.makeVisible();
@@ -59,6 +62,19 @@ public class GUIView extends JFrame implements IView {
 
   @Override
   public void addFeatures(Features features) {
+    this.exportBtn.addActionListener((event) -> {
+      JFileChooser fileChooser = new JFileChooser();
+      fileChooser.setDialogTitle("Choose a save location");
+      int returnValue = fileChooser.showSaveDialog(null);
+      if (returnValue == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        try {
+          features.exportImage(selectedFile.getAbsolutePath());
+        } catch (IllegalArgumentException e) {
+          JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+      }
+    });
     this.loadBtn.addActionListener((event) -> {
       JFileChooser fileChooser = new JFileChooser();
       int returnValue = fileChooser.showOpenDialog(null);

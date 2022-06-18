@@ -31,7 +31,7 @@ public class FeaturesImpl implements Features {
   }
 
   @Override
-  public void exportImage(String filePath) {
+  public void exportImage(String filePath) throws IllegalArgumentException {
     ImageExporter.export(model, filePath);
   }
 
