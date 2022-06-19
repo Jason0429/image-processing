@@ -2,17 +2,14 @@ package view.gui;
 
 import controller.exporter.ImageExporter;
 import controller.loader.ImageLoader;
-import controller.query.*;
-import model.Image;
 import model.ImageInterface;
-import model.Pixel;
 import model.commands.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class FeaturesImpl implements Features {
-  private IView view;
+  private final IView view;
   private ImageInterface model;
 
   public FeaturesImpl(IView view, ImageInterface model) {
@@ -26,9 +23,9 @@ public class FeaturesImpl implements Features {
   }
 
   @Override
-  public void update(String imgPath) {
+  public void update(String imgPath) throws IllegalArgumentException {
     this.model = ImageLoader.load(imgPath);
-    this.view.update(this.model);
+    this.view.update(ImageExporter.convertBuffered(this.model));
   }
 
   @Override
@@ -62,7 +59,7 @@ public class FeaturesImpl implements Features {
     ImageProcessingCommand cmd = commandMap.getOrDefault(cmdName, null);
     if (cmd != null) {
       this.model = cmd.process(this.model);
-      this.view.update(this.model);
+      this.view.update(ImageExporter.convertBuffered(this.model));
     }
   }
 

@@ -1,20 +1,18 @@
 package view.gui;
 
-import controller.exporter.ImageExporter;
-import model.ImageInterface;
-
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
-public class ImagePreview extends JPanel {
-  private JLabel label;
+public class ImagePreview extends JScrollPane {
+  private final JLabel label;
 
   public ImagePreview() {
     ImageIcon icon = new ImageIcon();
     this.label = new JLabel(icon);
-    this.add(this.label);
+    this.setViewportView(this.label);
   }
 
-  public void updateImage(ImageInterface img) {
-    this.label.setIcon(new ImageIcon(ImageExporter.convertBuffered(img)));
+  public void updateImage(BufferedImage img) {
+    this.label.setIcon(new ImageIcon(img));
   }
 }

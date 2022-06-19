@@ -6,6 +6,7 @@ import model.Pixel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +14,11 @@ import java.util.function.Function;
 
 public class GUIView extends JFrame implements IView {
   private final Histogram histogram;
-  private ImagePreview imagePreview;
-  private JComboBox<String> commandDropdown;
-  private JButton exportBtn;
-  private JButton loadBtn;
-  private JButton applyBtn;
+  private final ImagePreview imagePreview;
+  private final JComboBox<String> commandDropdown;
+  private final JButton exportBtn;
+  private final JButton loadBtn;
+  private final JButton applyBtn;
 
 
   public GUIView() {
@@ -57,7 +58,7 @@ public class GUIView extends JFrame implements IView {
   }
 
   @Override
-  public void update(ImageInterface img) {
+  public void update(BufferedImage img) {
     this.histogram.updateImage(img);
     this.imagePreview.updateImage(img);
   }
@@ -87,7 +88,11 @@ public class GUIView extends JFrame implements IView {
       int returnValue = fileChooser.showOpenDialog(null);
       if (returnValue == JFileChooser.APPROVE_OPTION) {
         File selectedFile = fileChooser.getSelectedFile();
-        features.update(selectedFile.getAbsolutePath());
+        try {
+          features.update(selectedFile.getAbsolutePath());
+        } catch (IllegalArgumentException e) {
+          JOptionPane.showMessageDialog(null, e.getMessage());
+        }
       }
     });
     this.applyBtn.addActionListener((event) -> {

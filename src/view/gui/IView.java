@@ -1,12 +1,12 @@
 package view.gui;
 
-import model.ImageInterface;
+import java.awt.image.BufferedImage;
 
 public interface IView {
 
   void makeVisible();
 
-  void update(ImageInterface img);
+  void update(BufferedImage img);
 
   String getSelectedQuery();
 

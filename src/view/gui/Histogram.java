@@ -9,29 +9,24 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.BasicStroke;
 import java.awt.geom.Line2D;
+import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.function.Function;
 
 public class Histogram extends JPanel {
-  private Map<Color, Function<Pixel, Integer>> types;
-  private ImageInterface img;
+  private final Map<Color, Function<Pixel, Integer>> types;
+  private BufferedImage img;
 
   public Histogram(Map<Color, Function<Pixel, Integer>> types) {
     this.types = types;
     this.img = null;
   }
 
-  public void updateImage(ImageInterface img) {
+  public void updateImage(BufferedImage img) {
     this.img = img;
     this.invalidate();
     this.repaint();
   }
-
-//  @Override
-//  public void update(Graphics g) {
-//    super.update(g);
-//    this.paint(g);
-//  }
 
   @Override
   public void paint(Graphics g) {
@@ -47,7 +42,10 @@ public class Histogram extends JPanel {
         Map<Integer, Integer> frequency = new HashMap<Integer, Integer>();
         for (int row = 0; row < img.getHeight(); row++) {
           for (int col = 0; col < img.getWidth(); col++) {
-            int value = type.apply(img.getPixelAt(row, col));
+            Color rgb = new Color(img.getRGB(col, row), true);
+            Pixel pixel = new Pixel(255, rgb.getRed(), rgb.getGreen(),
+                    rgb.getBlue(), rgb.getAlpha());
+            int value = type.apply(pixel);
             if (frequency.containsKey(value)) {
               frequency.put(value, frequency.get(value) + 1);
             } else {
