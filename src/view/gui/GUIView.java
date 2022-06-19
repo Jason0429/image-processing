@@ -1,5 +1,6 @@
 package view.gui;
 
+import controller.query.*;
 import model.ImageInterface;
 import model.Pixel;
 
@@ -30,15 +31,22 @@ public class GUIView extends JFrame implements IView {
     types.put(Color.gray, PixelReader::getIntensity);
     this.histogram = new Histogram(types);
     this.imagePreview = new ImagePreview();
+    this.commandDropdown = new JComboBox<String>(new String[]{"red-component", "green-component",
+            "blue-component", "value-component", "luma-component", "intensity-component", "horizontal" +
+            "-flip", "vertical-flip", "brighten", "gaussian-blur", "sharpen", "sepia"});
     this.exportBtn = new JButton();
     this.exportBtn.setText("Export");
     this.loadBtn = new JButton();
     this.loadBtn.setText("Load");
-    this.setLayout(new GridLayout(1, 4));
+    this.applyBtn = new JButton();
+    this.applyBtn.setText("Apply");
+    this.setLayout(new GridLayout(2, 4));
     this.add(histogram);
     this.add(imagePreview);
+    this.add(this.commandDropdown);
     this.add(exportBtn);
     this.add(loadBtn);
+    this.add(applyBtn);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.makeVisible();
   }
@@ -56,8 +64,7 @@ public class GUIView extends JFrame implements IView {
 
   @Override
   public String getSelectedQuery() {
-    // TODO: should be getting the selected command
-    return "";
+    return String.valueOf(this.commandDropdown.getSelectedItem());
   }
 
   @Override
@@ -82,6 +89,10 @@ public class GUIView extends JFrame implements IView {
         File selectedFile = fileChooser.getSelectedFile();
         features.update(selectedFile.getAbsolutePath());
       }
+    });
+    this.applyBtn.addActionListener((event) -> {
+      String command = this.getSelectedQuery();
+      features.processImage(command);
     });
   }
 }

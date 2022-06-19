@@ -21,6 +21,13 @@ public interface Features {
   String getSelectedQuery();
 
   /**
+   * Processes the current image given the name of a command.
+   *
+   * @param cmdName the command name
+   */
+  void processImage(String cmdName);
+
+  /**
    * Exports the current image.
    */
   void exportImage(String filePath);
