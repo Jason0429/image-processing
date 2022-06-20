@@ -12,7 +12,10 @@ public class FeaturesImpl implements Features {
   private final IView view;
   private ImageInterface model;
 
-  public FeaturesImpl(IView view, ImageInterface model) {
+  public FeaturesImpl(IView view, ImageInterface model) throws IllegalArgumentException {
+    if (view == null) {
+      throw new IllegalArgumentException("View cannot be null");
+    }
     this.view = view;
     this.model = model;
   }
@@ -76,6 +79,6 @@ public class FeaturesImpl implements Features {
 
   @Override
   public void quitProgram() {
-
+    System.exit(0);
   }
 }

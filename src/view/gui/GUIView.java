@@ -22,7 +22,7 @@ public class GUIView extends JFrame implements IView {
   public GUIView() {
     this.setTitle("Image Processing");
     this.setSize(1000, 1000);
-
+    this.setResizable(true);
     Map<Color, Function<Pixel, Integer>> types = new HashMap<Color, Function<Pixel, Integer>>();
     types.put(new Color(255, 0, 0, 50), PixelReader::getRed);
     types.put(new Color(0, 255, 0, 50), PixelReader::getGreen);
@@ -40,14 +40,18 @@ public class GUIView extends JFrame implements IView {
     this.applyBtn = new JButton();
     this.applyBtn.setText("Apply");
     this.setLayout(new GridLayout(2, 4));
+    this.addComponents();
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.makeVisible();
+  }
+
+  private void addComponents() {
     this.add(histogram);
     this.add(imagePreview);
     this.add(this.commandDropdown);
     this.add(exportBtn);
     this.add(loadBtn);
     this.add(applyBtn);
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.makeVisible();
   }
 
   @Override
