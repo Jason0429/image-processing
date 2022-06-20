@@ -2,6 +2,8 @@ package view.gui;
 
 import java.awt.image.BufferedImage;
 
+import controller.gui.Features;
+
 public interface IView {
 
   void makeVisible();

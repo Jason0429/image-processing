@@ -2,14 +2,15 @@ package view.gui;
 
 import model.Pixel;
 
-import javax.swing.*;
+import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.BasicStroke;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.function.Function;
 
 public class Histogram extends JScrollPane {
@@ -28,9 +29,19 @@ public class Histogram extends JScrollPane {
     this.repaint();
   }
 
+  private void thinking() {
+    int histogramHeight = 400; // Represents pure height of histogram.
+    int histogramWidth = 256; // Represents rgb values 0-255
+
+    Map<String, Integer> values = new HashMap<>();
+
+    // Find max Integer in values.
+    // max : 400px
+    // scalar: max / 400
+  }
+
   @Override
   public void paint(Graphics g) {
-
     Graphics2D g2 = (Graphics2D) g;
     if (this.img != null) {
       int width = 1;

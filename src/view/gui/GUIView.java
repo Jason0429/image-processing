@@ -1,11 +1,15 @@
 package view.gui;
 
+import controller.gui.Features;
+import model.CommandType;
 import model.Pixel;
+import model.Utils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -30,9 +34,8 @@ public class GUIView extends JFrame implements IView {
     types.put(new Color(50, 50, 50, 50), PixelReader::getIntensity);
     this.histogram = new Histogram(types);
     this.imagePreview = new ImagePreview();
-    this.commandDropdown = new JComboBox<String>(new String[]{"red-component", "green-component",
-            "blue-component", "value-component", "luma-component", "intensity-component", "horizontal" +
-            "-flip", "vertical-flip", "brighten", "gaussian-blur", "sharpen", "sepia"});
+    this.commandDropdown = new JComboBox<String>(
+            Arrays.stream(Utils.getCommands()).map(CommandType::toString).toArray(String[]::new));
     this.exportBtn = new JButton();
     this.exportBtn.setText("Export");
     this.loadBtn = new JButton();
@@ -42,7 +45,6 @@ public class GUIView extends JFrame implements IView {
     this.setLayout(new GridLayout(2, 4));
     this.addComponents();
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.makeVisible();
   }
 
   private void addComponents() {
@@ -101,15 +103,14 @@ public class GUIView extends JFrame implements IView {
       String command = this.getSelectedQuery();
       try {
         if (command.equals("brighten")) {
-          SpinnerModel spinnerModel = new SpinnerNumberModel(10, -100, 100, 1);
+          SpinnerModel spinnerModel = new SpinnerNumberModel(10, -255, 255, 1);
           JSpinner spinner = new JSpinner(spinnerModel);
           JScrollPane scrollPane = new JScrollPane(spinner);
-          scrollPane.requestFocus();
+          scrollPane.requestFocusInWindow();
           spinner.requestFocusInWindow();
           scrollPane.setPreferredSize(new Dimension(50, 50));
           JOptionPane.showMessageDialog(this, scrollPane,
                   "Value", JOptionPane.PLAIN_MESSAGE);
-
           spinner.getValue();
           features.processImage(command, (int) spinnerModel.getValue());
         }

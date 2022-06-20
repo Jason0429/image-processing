@@ -1,10 +1,13 @@
-package view.gui;
+package controller.gui;
 
 import model.ImageInterface;
+import view.gui.GUIView;
+import view.gui.IView;
 
 public class GUIController {
 
-  public GUIController(ImageInterface model, IView view, Features features) throws IllegalArgumentException {
+  public GUIController(ImageInterface model, IView view, Features features)
+          throws IllegalArgumentException {
     if (view == null) {
       throw new IllegalArgumentException("View cannot be null");
     }
@@ -13,6 +16,7 @@ public class GUIController {
 
   public static void main(String[] args) {
     GUIView view = new GUIView();
+    view.setVisible(true);
     GUIController controller = new GUIController(null, view, new FeaturesImpl(view, null));
   }
 }

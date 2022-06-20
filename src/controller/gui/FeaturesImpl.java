@@ -1,9 +1,10 @@
-package view.gui;
+package controller.gui;
 
 import controller.exporter.ImageExporter;
 import controller.loader.ImageLoader;
 import model.ImageInterface;
 import model.commands.*;
+import view.gui.IView;
 
 import java.util.HashMap;
 import java.util.Map;

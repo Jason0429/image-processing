@@ -3,9 +3,9 @@ package view;
 import controller.loader.ImageLoader;
 import org.junit.Before;
 import org.junit.Test;
-import view.gui.Features;
-import view.gui.FeaturesImpl;
-import view.gui.GUIController;
+import controller.gui.Features;
+import controller.gui.FeaturesImpl;
+import controller.gui.GUIController;
 import view.gui.GUIView;
 
 import static org.junit.Assert.assertEquals;
