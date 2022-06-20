@@ -1,6 +1,5 @@
 package view.gui;
 
-import controller.loader.ImageLoader;
 import model.ImageInterface;
 
 public class GUIController {
