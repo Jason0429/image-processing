@@ -1,9 +1,8 @@
 package view.gui;
 
-import model.ImageInterface;
 import model.Pixel;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,9 +12,10 @@ import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.function.Function;
 
-public class Histogram extends JPanel {
+public class Histogram extends JScrollPane {
   private final Map<Color, Function<Pixel, Integer>> types;
   private BufferedImage img;
+  private final int HEIGHT = 400;
 
   public Histogram(Map<Color, Function<Pixel, Integer>> types) {
     this.types = types;
@@ -55,7 +55,9 @@ public class Histogram extends JPanel {
         }
         for (int i = 0; i < 256; i++) {
           int value = frequency.getOrDefault(i, 0);
-          g2.draw(new Line2D.Float(i * width, 200, i * width, Math.max(200 - value, 0)));
+          g2.draw(new Line2D.Float(i * width, this.HEIGHT, i * width,
+                  Math.max(this.HEIGHT - value, 0)
+          ));
         }
       }
     } else {

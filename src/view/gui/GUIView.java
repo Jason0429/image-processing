@@ -1,7 +1,5 @@
 package view.gui;
 
-import controller.query.*;
-import model.ImageInterface;
 import model.Pixel;
 
 import javax.swing.*;
@@ -26,10 +24,10 @@ public class GUIView extends JFrame implements IView {
     this.setSize(1000, 1000);
 
     Map<Color, Function<Pixel, Integer>> types = new HashMap<Color, Function<Pixel, Integer>>();
-    types.put(Color.red, PixelReader::getRed);
-    types.put(Color.green, PixelReader::getGreen);
-    types.put(Color.blue, PixelReader::getBlue);
-    types.put(Color.gray, PixelReader::getIntensity);
+    types.put(new Color(255, 0, 0, 50), PixelReader::getRed);
+    types.put(new Color(0, 255, 0, 50), PixelReader::getGreen);
+    types.put(new Color(0, 0, 255, 50), PixelReader::getBlue);
+    types.put(new Color(50, 50, 50, 50), PixelReader::getIntensity);
     this.histogram = new Histogram(types);
     this.imagePreview = new ImagePreview();
     this.commandDropdown = new JComboBox<String>(new String[]{"red-component", "green-component",
@@ -97,7 +95,24 @@ public class GUIView extends JFrame implements IView {
     });
     this.applyBtn.addActionListener((event) -> {
       String command = this.getSelectedQuery();
-      features.processImage(command);
+      try {
+        if (command.equals("brighten")) {
+          SpinnerModel spinnerModel = new SpinnerNumberModel(10, -100, 100, 1);
+          JSpinner spinner = new JSpinner(spinnerModel);
+          JScrollPane scrollPane = new JScrollPane(spinner);
+          scrollPane.requestFocus();
+          spinner.requestFocusInWindow();
+          scrollPane.setPreferredSize(new Dimension(50, 50));
+          JOptionPane.showMessageDialog(this, scrollPane,
+                  "Value", JOptionPane.PLAIN_MESSAGE);
+
+          spinner.getValue();
+          features.processImage(command, (int) spinnerModel.getValue());
+        }
+        features.processImage(command);
+      } catch (IllegalArgumentException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+      }
     });
   }
 }

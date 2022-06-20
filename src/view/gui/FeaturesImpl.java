@@ -29,17 +29,15 @@ public class FeaturesImpl implements Features {
   }
 
   @Override
-  public String getSelectedQuery() {
-    return this.view.getSelectedQuery();
-  }
-
-  @Override
   public void exportImage(String filePath) throws IllegalArgumentException {
-    ImageExporter.export(model, filePath);
+    if (this.model == null) {
+      throw new IllegalArgumentException("No image loaded!");
+    }
+    ImageExporter.export(this.model, filePath);
   }
 
   @Override
-  public void processImage(String cmdName) {
+  public void processImage(String cmdName) throws IllegalArgumentException {
     Map<String, ImageProcessingCommand> commandMap = new HashMap<String, ImageProcessingCommand>();
     commandMap.put("red-component", new RedComponentGreyscaleCommand());
     commandMap.put("green-component", new GreenComponentGreyscaleCommand());
@@ -49,14 +47,27 @@ public class FeaturesImpl implements Features {
     commandMap.put("intensity-component", new IntensityComponentGreyscaleCommand());
     commandMap.put("horizontal-flip", new FlipHorizontalCommand());
     commandMap.put("vertical-flip", new FlipVerticalCommand());
-    // TODO: Need to figure out how to add this increment value
     commandMap.put("brighten", new BrightenCommand(1));
     commandMap.put("greyscale", new LumaProcessingCommand());
     commandMap.put("gaussian-blur", new GaussianBlurCommand());
     commandMap.put("sharpen", new SharpenCommand());
     commandMap.put("sepia", new SepiaProcessingCommand());
-
     ImageProcessingCommand cmd = commandMap.getOrDefault(cmdName, null);
+    this.process(cmd);
+  }
+
+  @Override
+  public void processImage(String cmdName, int value) throws IllegalArgumentException {
+    Map<String, ImageProcessingCommand> commandMap = new HashMap<String, ImageProcessingCommand>();
+    commandMap.put("brighten", new BrightenCommand(value));
+    ImageProcessingCommand cmd = commandMap.getOrDefault(cmdName, null);
+    this.process(cmd);
+  }
+
+  private void process(ImageProcessingCommand cmd) throws IllegalArgumentException {
+    if (this.model == null) {
+      throw new IllegalArgumentException("No image loaded!");
+    }
     if (cmd != null) {
       this.model = cmd.process(this.model);
       this.view.update(ImageExporter.convertBuffered(this.model));
