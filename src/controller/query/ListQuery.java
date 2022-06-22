@@ -1,14 +1,14 @@
 package controller.query;
 
 import model.ImageProcessingModel;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the list query command.
  */
 public class ListQuery extends AbstractQueryCommand {
 
-  public ListQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public ListQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

@@ -5,21 +5,21 @@ import org.junit.Before;
 import org.junit.Test;
 import controller.gui.Features;
 import controller.gui.FeaturesImpl;
-import controller.gui.GUIController;
-import view.gui.GUIView;
+import controller.gui.ImageProcessingGUIControllerImpl;
+import view.gui.ImageProcessingGUIViewImpl;
 
 import static org.junit.Assert.assertEquals;
 
-public class GUIViewTest {
-  private GUIView view;
+public class ImageProcessingGUIViewImplTest {
+  private ImageProcessingGUIViewImpl view;
   private Features features;
-  private GUIController controller;
+  private ImageProcessingGUIControllerImpl controller;
 
   @Before
   public void init() {
-    this.view = new GUIView();
+    this.view = new ImageProcessingGUIViewImpl();
     this.features = new FeaturesImpl(this.view, null);
-    this.controller = new GUIController(null, view, this.features);
+    this.controller = new ImageProcessingGUIControllerImpl(null, view, this.features);
   }
 
   // test apply with empty image

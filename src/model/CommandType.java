@@ -9,6 +9,7 @@ public enum CommandType {
   BLUE_COMPONENT("blue-component"),
   VALUE_COMPONENT("value-component"),
   LUMA_COMPONENT("luma-component"),
+  GREYSCALE("greyscale"),
   INTENSITY_COMPONENT("intensity-component"),
   HORIZONTAL_FLIP("horizontal-flip"),
   VERTICAL_FLIP("vertical-flip"),

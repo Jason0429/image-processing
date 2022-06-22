@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.GaussianBlurCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the gaussian blur query command.
  */
 public class GaussianBlurQuery extends AbstractQueryCommand {
 
-  public GaussianBlurQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public GaussianBlurQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

@@ -5,10 +5,12 @@ import org.junit.Test;
 import java.io.StringReader;
 
 import controller.mocks.MockImageProcessingModel;
+import controller.text.ImageProcessingController;
+import controller.text.ImageProcessingControllerImpl;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
+import view.text.ImageProcessingTextTextViewImpl;
 import view.text.ImageProcessingTextView;
-import view.text.ImageProcessingView;
 
 import static org.junit.Assert.assertEquals;
 
@@ -26,7 +28,7 @@ public class ImageProcessingControllerImplTest {
     Appendable output = new StringBuilder();
 
     ImageProcessingModel model = new ImageProcessingModelImpl();
-    ImageProcessingView view = new ImageProcessingTextView(output);
+    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl(output);
     ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, input);
     controller.start();
     assertEquals(expectedOutput, output.toString());
@@ -34,7 +36,7 @@ public class ImageProcessingControllerImplTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorNullModel() {
-    ImageProcessingView view = new ImageProcessingTextView();
+    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
     ImageProcessingController controller = new ImageProcessingControllerImpl(null, view);
   }
 
@@ -51,7 +53,7 @@ public class ImageProcessingControllerImplTest {
             "Quitting Image Processing...\n";
     ImageProcessingModel model = new ImageProcessingModelImpl();
     Appendable out = new StringBuilder();
-    ImageProcessingView view = new ImageProcessingTextView(out);
+    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl(out);
     Readable in = new StringReader("q\n");
     ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, in);
     controller.start();
@@ -60,7 +62,7 @@ public class ImageProcessingControllerImplTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorSpecifiedReadableNullModel() {
-    ImageProcessingView view = new ImageProcessingTextView();
+    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
     Readable in = new StringReader("");
     ImageProcessingController controller = new ImageProcessingControllerImpl(null, view, in);
   }
@@ -75,7 +77,7 @@ public class ImageProcessingControllerImplTest {
   @Test(expected = IllegalArgumentException.class)
   public void testConstructorSpecifiedReadableNullReadable() {
     ImageProcessingModel model = new ImageProcessingModelImpl();
-    ImageProcessingView view = new ImageProcessingTextView();
+    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
     ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, null);
   }
 
@@ -87,7 +89,7 @@ public class ImageProcessingControllerImplTest {
             + "list\n"
             + "q\n");
     ImageProcessingModel model = new MockImageProcessingModel(log);
-    ImageProcessingView view = new ImageProcessingTextView();
+    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
     ImageProcessingController controller = new ImageProcessingControllerImpl(model, view, in);
     controller.start();
     assertEquals("Store Image: test\nGet Image: test\n" +

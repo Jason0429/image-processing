@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.SharpenCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the sharpen query command.
  */
 public class SharpenQuery extends AbstractQueryCommand {
 
-  public SharpenQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public SharpenQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

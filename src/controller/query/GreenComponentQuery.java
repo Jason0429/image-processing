@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.GreenComponentGreyscaleCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the green component query command.
  */
 public class GreenComponentQuery extends AbstractQueryCommand {
 
-  public GreenComponentQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public GreenComponentQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

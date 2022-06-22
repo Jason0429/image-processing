@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.LumaProcessingCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the luma component query command.
  */
 public class LumaQuery extends AbstractQueryCommand {
 
-  public LumaQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public LumaQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

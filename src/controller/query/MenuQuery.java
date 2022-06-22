@@ -1,14 +1,14 @@
 package controller.query;
 
 import model.ImageProcessingModel;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the menu query command.
  */
 public class MenuQuery extends AbstractQueryCommand {
 
-  public MenuQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public MenuQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

@@ -1,9 +1,9 @@
-import controller.ImageProcessingControllerImpl;
+import controller.text.ImageProcessingControllerImpl;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
+import view.text.ImageProcessingTextTextViewImpl;
 import view.text.ImageProcessingTextView;
-import view.text.ImageProcessingView;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -29,7 +29,7 @@ public class ImageProcessor {
             : new InputStreamReader(System.in);
 
     ImageProcessingModel model = new ImageProcessingModelImpl();
-    ImageProcessingView view = new ImageProcessingTextView();
+    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
     ImageProcessingControllerImpl controller = new ImageProcessingControllerImpl(model, view, in);
     controller.start();
   }

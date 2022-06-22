@@ -3,14 +3,14 @@ package controller.query;
 import controller.loader.ImageLoader;
 import model.ImageInterface;
 import model.ImageProcessingModel;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the load query command.
  */
 public class LoadQuery extends AbstractQueryCommand {
 
-  public LoadQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public LoadQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

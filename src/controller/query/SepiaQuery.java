@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.SepiaProcessingCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the sepia query command.
  */
 public class SepiaQuery extends AbstractQueryCommand {
 
-  public SepiaQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public SepiaQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.IntensityComponentGreyscaleCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the intensity query command.
  */
 public class IntensityQuery extends AbstractQueryCommand {
 
-  public IntensityQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public IntensityQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

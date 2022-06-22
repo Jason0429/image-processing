@@ -1,6 +1,6 @@
 package model.commands;
 
-import controller.ImageFilter;
+import controller.transformation.ImageFilter;
 import model.ImageInterface;
 
 /**

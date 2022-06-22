@@ -1,6 +1,8 @@
 package view.gui;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
 import java.awt.image.BufferedImage;
 
 public class ImagePreview extends JScrollPane {

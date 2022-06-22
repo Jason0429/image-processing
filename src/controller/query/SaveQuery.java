@@ -3,14 +3,14 @@ package controller.query;
 import controller.exporter.ImageExporter;
 import model.ImageInterface;
 import model.ImageProcessingModel;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the save query command.
  */
 public class SaveQuery extends AbstractQueryCommand {
 
-  public SaveQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public SaveQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

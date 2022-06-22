@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.FlipHorizontalCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the flip horizontal query command.
  */
 public class FlipHorizontalQuery extends AbstractQueryCommand {
 
-  public FlipHorizontalQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public FlipHorizontalQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

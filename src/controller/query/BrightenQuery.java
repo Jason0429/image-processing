@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.BrightenCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the brighten query command.
  */
 public class BrightenQuery extends AbstractQueryCommand {
 
-  public BrightenQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public BrightenQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

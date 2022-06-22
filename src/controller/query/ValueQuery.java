@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.ValueComponentGreyscaleCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the value component query command.
  */
 public class ValueQuery extends AbstractQueryCommand {
 
-  public ValueQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public ValueQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

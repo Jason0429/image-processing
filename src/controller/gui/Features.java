@@ -1,7 +1,5 @@
 package controller.gui;
 
-import model.ImageInterface;
-
 public interface Features {
 
   /**

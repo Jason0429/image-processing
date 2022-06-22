@@ -1,4 +1,4 @@
-package controller;
+package controller.transformation;
 
 import model.Image;
 import model.ImageInterface;

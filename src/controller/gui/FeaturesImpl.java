@@ -4,16 +4,16 @@ import controller.exporter.ImageExporter;
 import controller.loader.ImageLoader;
 import model.ImageInterface;
 import model.commands.*;
-import view.gui.IView;
+import view.gui.ImageProcessingGUIView;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class FeaturesImpl implements Features {
-  private final IView view;
+  private final ImageProcessingGUIView view;
   private ImageInterface model;
 
-  public FeaturesImpl(IView view, ImageInterface model) throws IllegalArgumentException {
+  public FeaturesImpl(ImageProcessingGUIView view, ImageInterface model) throws IllegalArgumentException {
     if (view == null) {
       throw new IllegalArgumentException("View cannot be null");
     }
@@ -29,7 +29,7 @@ public class FeaturesImpl implements Features {
   @Override
   public void update(String imgPath) throws IllegalArgumentException {
     this.model = ImageLoader.load(imgPath);
-    this.view.update(ImageExporter.convertBuffered(this.model));
+    this.view.updateImagePreview(ImageExporter.convertBuffered(this.model));
   }
 
   @Override
@@ -74,7 +74,7 @@ public class FeaturesImpl implements Features {
     }
     if (cmd != null) {
       this.model = cmd.process(this.model);
-      this.view.update(ImageExporter.convertBuffered(this.model));
+      this.view.updateImagePreview(ImageExporter.convertBuffered(this.model));
     }
   }
 

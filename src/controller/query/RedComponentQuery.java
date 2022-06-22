@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.RedComponentGreyscaleCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the red component query command.
  */
 public class RedComponentQuery extends AbstractQueryCommand {
 
-  public RedComponentQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public RedComponentQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 

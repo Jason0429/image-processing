@@ -4,14 +4,14 @@ import java.io.IOException;
 
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the abstract class for an image processing query command.
  */
 public abstract class AbstractQueryCommand implements QueryCommand {
   protected ImageProcessingModel model;
-  protected ImageProcessingView view;
+  protected ImageProcessingTextView view;
 
   /**
    * Constructs an abstract query command.
@@ -20,7 +20,7 @@ public abstract class AbstractQueryCommand implements QueryCommand {
    * @param view  the image processing view responsible for rendering output.
    */
   public AbstractQueryCommand(
-          ImageProcessingModel model, ImageProcessingView view) {
+          ImageProcessingModel model, ImageProcessingTextView view) {
     this.model = model;
     this.view = view;
   }

@@ -1,4 +1,4 @@
-package controller;
+package controller.text;
 
 import controller.query.BlueComponentQuery;
 import controller.query.BrightenQuery;
@@ -20,7 +20,7 @@ import controller.query.SharpenQuery;
 import controller.query.ValueQuery;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,7 +34,7 @@ import java.util.Scanner;
  */
 public class ImageProcessingControllerImpl implements ImageProcessingController {
   private final ImageProcessingModel model;
-  private final ImageProcessingView view;
+  private final ImageProcessingTextView view;
   private final Readable readable;
   private final Map<String, QueryCommand> queries;
   private boolean quit;
@@ -46,7 +46,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param model the model to be used in the controller.
    * @param view  the view to be used in the controller.
    */
-  public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view) {
+  public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingTextView view) {
     this(model, view, new InputStreamReader(System.in));
   }
 
@@ -59,7 +59,7 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param readable the readable that the controller will use to take in input.
    * @throws IllegalArgumentException if any argument is null.
    */
-  public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingView view,
+  public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingTextView view,
                                        Readable readable) throws IllegalArgumentException {
     if (model == null || view == null || readable == null) {
       throw new IllegalArgumentException(ExceptionMessage.NULL_VALUES.toString());

@@ -3,14 +3,14 @@ package controller.query;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.commands.BlueComponentGreyscaleCommand;
-import view.text.ImageProcessingView;
+import view.text.ImageProcessingTextView;
 
 /**
  * Represents the blue component query command.
  */
 public class BlueComponentQuery extends AbstractQueryCommand {
 
-  public BlueComponentQuery(ImageProcessingModel model, ImageProcessingView view) {
+  public BlueComponentQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
 
