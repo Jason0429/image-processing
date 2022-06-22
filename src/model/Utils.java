@@ -92,7 +92,7 @@ public final class Utils {
     return types;
   }
 
-  public static BufferedImage convertBuffered(ImageInterface image) {
+  public static BufferedImage getBufferedImage(ImageInterface image) {
     BufferedImage img = new BufferedImage(image.getWidth(),
             image.getHeight(), BufferedImage.TYPE_INT_ARGB);
     for (int row = 0; row < image.getHeight(); row++) {

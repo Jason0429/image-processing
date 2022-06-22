@@ -1,25 +1,34 @@
 package controller.gui;
 
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
+
 import controller.exporter.ImageExporter;
 import controller.loader.ImageLoader;
+import model.CommandType;
+import model.ExceptionMessage;
 import model.ImageInterface;
 import model.Utils;
 import model.commands.*;
 import view.gui.ImageProcessingGUIView;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class FeaturesImpl implements Features {
-  private final ImageProcessingGUIView view;
   private ImageInterface model;
+  private final ImageProcessingGUIView view;
 
-  public FeaturesImpl(ImageProcessingGUIView view, ImageInterface model) throws IllegalArgumentException {
+  public FeaturesImpl(ImageInterface model, ImageProcessingGUIView view)
+          throws IllegalArgumentException {
     if (view == null) {
-      throw new IllegalArgumentException("View cannot be null");
+      throw new IllegalArgumentException(String.format(
+              ExceptionMessage.SPECIFIC_NULL_ARGUMENT.toString(), "View"));
     }
-    this.view = view;
     this.model = model;
+    this.view = view;
+  }
+
+  public FeaturesImpl(ImageProcessingGUIView view) {
+    this(null, view);
   }
 
   @Override
@@ -28,59 +37,55 @@ public class FeaturesImpl implements Features {
   }
 
   @Override
-  public void update(String imgPath) throws IllegalArgumentException {
-    this.model = ImageLoader.load(imgPath);
-    this.view.updateImagePreview(Utils.convertBuffered(this.model));
+  public void load() {
+    String loadFilePath = this.view.chooseLoadLocation();
+    if (loadFilePath == null) {
+      return;
+    }
+    try {
+      this.model = ImageLoader.load(loadFilePath);
+      BufferedImage bufferedLoadedImage = Utils.getBufferedImage(this.model);
+      this.view.updateImagePreview(bufferedLoadedImage);
+    } catch (IllegalArgumentException e) {
+      this.view.showError(e.getMessage());
+    }
   }
 
   @Override
-  public void exportImage(String filePath) throws IllegalArgumentException {
+  public void save() {
     if (this.model == null) {
-      throw new IllegalArgumentException("No image loaded!");
+      this.view.showError("No image loaded.");
+      return;
     }
-    ImageExporter.export(this.model, filePath);
+    String exportFilePath = this.view.chooseExportLocation();
+    if (exportFilePath == null) {
+      return;
+    }
+    try {
+      ImageExporter.export(this.model, exportFilePath);
+    } catch (IllegalArgumentException e) {
+      this.view.showError(e.getMessage());
+    }
   }
 
   @Override
-  public void processImage(String cmdName) throws IllegalArgumentException {
-    Map<String, ImageProcessingCommand> commandMap = new HashMap<String, ImageProcessingCommand>();
-    commandMap.put("red-component", new RedComponentGreyscaleCommand());
-    commandMap.put("green-component", new GreenComponentGreyscaleCommand());
-    commandMap.put("blue-component", new BlueComponentGreyscaleCommand());
-    commandMap.put("value-component", new ValueComponentGreyscaleCommand());
-    commandMap.put("luma-component", new LumaProcessingCommand());
-    commandMap.put("intensity-component", new IntensityComponentGreyscaleCommand());
-    commandMap.put("horizontal-flip", new FlipHorizontalCommand());
-    commandMap.put("vertical-flip", new FlipVerticalCommand());
-    commandMap.put("brighten", new BrightenCommand(1));
-    commandMap.put("greyscale", new LumaProcessingCommand());
-    commandMap.put("gaussian-blur", new GaussianBlurCommand());
-    commandMap.put("sharpen", new SharpenCommand());
-    commandMap.put("sepia", new SepiaProcessingCommand());
-    ImageProcessingCommand cmd = commandMap.getOrDefault(cmdName, null);
-    this.process(cmd);
-  }
-
-  @Override
-  public void processImage(String cmdName, int value) throws IllegalArgumentException {
-    Map<String, ImageProcessingCommand> commandMap = new HashMap<String, ImageProcessingCommand>();
-    commandMap.put("brighten", new BrightenCommand(value));
-    ImageProcessingCommand cmd = commandMap.getOrDefault(cmdName, null);
-    this.process(cmd);
-  }
-
-  private void process(ImageProcessingCommand cmd) throws IllegalArgumentException {
+  public void apply() {
     if (this.model == null) {
-      throw new IllegalArgumentException("No image loaded!");
+      this.view.showError("No image loaded.");
+      return;
     }
-    if (cmd != null) {
-      this.model = cmd.process(this.model);
-      this.view.updateImagePreview(Utils.convertBuffered(this.model));
+    String query = this.view.getSelectedQuery();
+    if (query.equals(CommandType.BRIGHTEN.toString())) {
+      int value = this.view.askForIntegerValue(10, -255, 255, 1);
+      System.out.println("value = " + value);
+      this.model = new BrightenCommand(value).process(this.model);
+      this.view.updateImagePreview(Utils.getBufferedImage(this.model));
+    } else {
+      ImageProcessingCommand cmd = Utils.getCommandMap().getOrDefault(query, null);
+      if (cmd != null) {
+        this.model = cmd.process(this.model);
+        this.view.updateImagePreview(Utils.getBufferedImage(this.model));
+      }
     }
-  }
-
-  @Override
-  public void quitProgram() {
-    System.exit(0);
   }
 }

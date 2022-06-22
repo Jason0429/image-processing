@@ -1,15 +1,24 @@
 package view.gui;
 
-import controller.gui.Features;
 import model.CommandType;
 import model.Utils;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.JScrollPane;
+import javax.swing.SpinnerNumberModel;
+import java.awt.GridLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Arrays;
+import java.util.prefs.Preferences;
 
 public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessingGUIView {
   private final Histogram histogram;
@@ -22,7 +31,7 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
 
   public ImageProcessingGUIViewImpl() {
     super("Image Processing");
-    this.setSize(1000, 1000);
+    this.setSize(1000, 800);
     this.setLayout(new GridLayout(2, 4));
     this.setResizable(true);
 
@@ -87,10 +96,13 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
 
   @Override
   public String chooseExportLocation() {
-    JFileChooser fileChooser = new JFileChooser();
+    Preferences prefs = Preferences.userRoot().node(getClass().getName());
+    JFileChooser fileChooser = new JFileChooser(prefs.get("LAST_USED_FOLDER",
+            new File(".").getAbsolutePath()));
     fileChooser.setDialogTitle("Choose a save location");
     int returnValue = fileChooser.showSaveDialog(null);
     if (returnValue == JFileChooser.APPROVE_OPTION) {
+      prefs.put("LAST_USED_FOLDER", fileChooser.getSelectedFile().getParent());
       return fileChooser.getSelectedFile().getAbsolutePath();
     }
     return null;
@@ -98,10 +110,13 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
 
   @Override
   public String chooseLoadLocation() {
-    JFileChooser fileChooser = new JFileChooser();
+    Preferences prefs = Preferences.userRoot().node(getClass().getName());
+    JFileChooser fileChooser = new JFileChooser(prefs.get("LAST_USED_FOLDER",
+            new File(".").getAbsolutePath()));
     fileChooser.setDialogTitle("Choose an image to load");
     int returnValue = fileChooser.showOpenDialog(null);
     if (returnValue == JFileChooser.APPROVE_OPTION) {
+      prefs.put("LAST_USED_FOLDER", fileChooser.getSelectedFile().getParent());
       return fileChooser.getSelectedFile().getAbsolutePath();
     }
     return null;
@@ -109,57 +124,8 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
 
   @Override
   public void showError(String message) {
-    JOptionPane.showMessageDialog(null, message);
+    JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
   }
-
-//  @Override
-//  public void addFeatures(Features features) {
-//    this.exportBtn.addActionListener((event) -> {
-//      JFileChooser fileChooser = new JFileChooser();
-//      fileChooser.setDialogTitle("Choose a save location");
-//      int returnValue = fileChooser.showSaveDialog(null);
-//      if (returnValue == JFileChooser.APPROVE_OPTION) {
-//        File selectedFile = fileChooser.getSelectedFile();
-//        try {
-//          features.exportImage(selectedFile.getAbsolutePath());
-//        } catch (IllegalArgumentException e) {
-//          JOptionPane.showMessageDialog(null, e.getMessage());
-//        }
-//      }
-//    });
-//    this.loadBtn.addActionListener((event) -> {
-//      JFileChooser fileChooser = new JFileChooser();
-//      int returnValue = fileChooser.showOpenDialog(null);
-//      if (returnValue == JFileChooser.APPROVE_OPTION) {
-//        File selectedFile = fileChooser.getSelectedFile();
-//        try {
-//          features.update(selectedFile.getAbsolutePath());
-//        } catch (IllegalArgumentException e) {
-//          JOptionPane.showMessageDialog(null, e.getMessage());
-//        }
-//      }
-//    });
-//    this.applyBtn.addActionListener((event) -> {
-//      String command = this.getSelectedQuery();
-//      try {
-//        if (command.equals("brighten")) {
-//          SpinnerModel spinnerModel = new SpinnerNumberModel(10, -255, 255, 1);
-//          JSpinner spinner = new JSpinner(spinnerModel);
-//          JScrollPane scrollPane = new JScrollPane(spinner);
-//          scrollPane.requestFocusInWindow();
-//          spinner.requestFocusInWindow();
-//          scrollPane.setPreferredSize(new Dimension(50, 50));
-//          JOptionPane.showMessageDialog(this, scrollPane,
-//                  "Value", JOptionPane.PLAIN_MESSAGE);
-//          spinner.getValue();
-//          features.processImage(command, (int) spinnerModel.getValue());
-//        }
-//        features.processImage(command);
-//      } catch (IllegalArgumentException e) {
-//        JOptionPane.showMessageDialog(null, e.getMessage());
-//      }
-//    });
-//  }
 
   @Override
   public int askForIntegerValue(int defaultValue, int min, int max, int increment) {

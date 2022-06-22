@@ -3,6 +3,7 @@ package view.gui;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+
 import java.awt.image.BufferedImage;
 
 public class ImagePreview extends JScrollPane {
@@ -14,7 +15,7 @@ public class ImagePreview extends JScrollPane {
     this.setViewportView(this.label);
   }
 
-  public void updateImage(BufferedImage img) {
-    this.label.setIcon(new ImageIcon(img));
+  public void updateImage(BufferedImage image) {
+    this.label.setIcon(new ImageIcon(image));
   }
 }

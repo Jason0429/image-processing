@@ -1,14 +1,12 @@
 package controller.gui;
 
-import java.awt.event.ActionListener;
-
 /**
  * This interface contains the methods for the GUI controller that handles processing images.
  */
-public interface ImageProcessingGUIController extends ActionListener {
+public interface ImageProcessingGUIController {
 
   /**
-   * Starts the image processing program.
+   * Starts the image processing GUI program.
    */
   void start() throws IllegalStateException;
 }

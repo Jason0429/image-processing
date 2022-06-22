@@ -16,12 +16,11 @@ public interface ImageProcessingGUIView {
 
   String getSelectedQuery();
 
-  String chooseExportLocation(); // or null if not APPROVE_OPTION
+  String chooseExportLocation();
 
   String chooseLoadLocation();
+
   int askForIntegerValue(int defaultValue, int min, int max, int increment);
 
   void showError(String message);
-
-//  void addFeatures(Features features);
 }

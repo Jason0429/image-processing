@@ -45,10 +45,13 @@ public class Histogram extends JScrollPane {
     for (Map.Entry<Color, Function<Pixel, Integer>> entry : this.types.entrySet()) {
       Color color = entry.getKey();
       Function<Pixel, Integer> type = entry.getValue();
+
       g2.setColor(color);
+
       Map<Integer, Integer> frequency = this.getPixelTypeFrequency(type);
 //      frequency.forEach((key, value) -> System.out.println(key + " " + value));
       int maxFreq = Collections.max(frequency.values());
+      System.out.println("maxFreq = " + maxFreq);
       double scalar = maxFreq > this.HEIGHT ? 400.0 / maxFreq : 1;
 
 //      System.out.println("Image width: " + this.img.getWidth());
