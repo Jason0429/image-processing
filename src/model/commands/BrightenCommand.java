@@ -31,12 +31,12 @@ public class BrightenCommand
               Math.max(pixel.getRed() + this.increment, 0),
               Math.max(pixel.getGreen() + this.increment, 0),
               Math.max(pixel.getBlue() + this.increment, 0),
-              Math.max(pixel.getAlpha() + this.increment, 0));
+              pixel.getAlpha());
     }
     return new Pixel(pixel.getMaxValue(),
             Math.min(pixel.getRed() + this.increment, pixel.getMaxValue()),
             Math.min(pixel.getGreen() + this.increment, pixel.getMaxValue()),
             Math.min(pixel.getBlue() + this.increment, pixel.getMaxValue()),
-            Math.min(pixel.getAlpha() + this.increment, 0));
+            pixel.getAlpha());
   }
 }
