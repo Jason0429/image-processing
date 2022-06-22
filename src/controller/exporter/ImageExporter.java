@@ -40,18 +40,4 @@ public final class ImageExporter {
     }
     exporter.export();
   }
-
-  public static BufferedImage convertBuffered(ImageInterface image) {
-    BufferedImage img = new BufferedImage(image.getWidth(),
-            image.getHeight(), BufferedImage.TYPE_INT_ARGB);
-    for (int row = 0; row < image.getHeight(); row++) {
-      for (int col = 0; col < image.getWidth(); col++) {
-        Pixel currentPixel = image.getPixelAt(row, col);
-        int rgb = new Color(currentPixel.getRed(), currentPixel.getGreen(),
-                currentPixel.getBlue(), currentPixel.getAlpha()).getRGB();
-        img.setRGB(col, row, rgb);
-      }
-    }
-    return img;
-  }
 }

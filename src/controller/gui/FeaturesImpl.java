@@ -3,6 +3,7 @@ package controller.gui;
 import controller.exporter.ImageExporter;
 import controller.loader.ImageLoader;
 import model.ImageInterface;
+import model.Utils;
 import model.commands.*;
 import view.gui.ImageProcessingGUIView;
 
@@ -29,7 +30,7 @@ public class FeaturesImpl implements Features {
   @Override
   public void update(String imgPath) throws IllegalArgumentException {
     this.model = ImageLoader.load(imgPath);
-    this.view.updateImagePreview(ImageExporter.convertBuffered(this.model));
+    this.view.updateImagePreview(Utils.convertBuffered(this.model));
   }
 
   @Override
@@ -74,7 +75,7 @@ public class FeaturesImpl implements Features {
     }
     if (cmd != null) {
       this.model = cmd.process(this.model);
-      this.view.updateImagePreview(ImageExporter.convertBuffered(this.model));
+      this.view.updateImagePreview(Utils.convertBuffered(this.model));
     }
   }
 
