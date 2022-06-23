@@ -29,10 +29,9 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
   private final JButton loadBtn;
   private final JButton applyBtn;
 
-
   public ImageProcessingGUIViewImpl() {
     super("Image Processing");
-    this.setSize(1000, 800);
+    this.setSize(1000, 1000);
     this.setLayout(new GridLayout(2, 4));
     this.setResizable(true);
 
