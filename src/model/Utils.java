@@ -33,20 +33,21 @@ public final class Utils {
    * @return all dropdown commands.
    */
   public static CommandType[] getDropdownCommands() {
-    return new CommandType[] {
-      CommandType.RED_COMPONENT,
-      CommandType.GREEN_COMPONENT,
-      CommandType.BLUE_COMPONENT,
-      CommandType.VALUE_COMPONENT,
-      CommandType.LUMA_COMPONENT,
-      CommandType.GREYSCALE,
-      CommandType.INTENSITY_COMPONENT,
-      CommandType.HORIZONTAL_FLIP,
-      CommandType.VERTICAL_FLIP,
-      CommandType.BRIGHTEN,
-      CommandType.GAUSSIAN_BLUR,
-      CommandType.SHARPEN,
-      CommandType.SEPIA,
+    return new CommandType[]{
+            CommandType.RED_COMPONENT,
+            CommandType.GREEN_COMPONENT,
+            CommandType.BLUE_COMPONENT,
+            CommandType.VALUE_COMPONENT,
+            CommandType.LUMA_COMPONENT,
+            CommandType.GREYSCALE,
+            CommandType.INTENSITY_COMPONENT,
+            CommandType.HORIZONTAL_FLIP,
+            CommandType.VERTICAL_FLIP,
+            CommandType.BRIGHTEN,
+            CommandType.GAUSSIAN_BLUR,
+            CommandType.SHARPEN,
+            CommandType.SEPIA,
+            CommandType.DOWNSCALE
     };
   }
 
@@ -61,7 +62,6 @@ public final class Utils {
             new IntensityComponentGreyscaleCommand());
     commandMap.put(CommandType.HORIZONTAL_FLIP.toString(), new FlipHorizontalCommand());
     commandMap.put(CommandType.VERTICAL_FLIP.toString(), new FlipVerticalCommand());
-    commandMap.put(CommandType.BRIGHTEN.toString(), new BrightenCommand(1));
     commandMap.put(CommandType.GREYSCALE.toString(), new LumaProcessingCommand());
     commandMap.put(CommandType.GAUSSIAN_BLUR.toString(), new GaussianBlurCommand());
     commandMap.put(CommandType.SHARPEN.toString(), new SharpenCommand());

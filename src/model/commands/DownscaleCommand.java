@@ -15,7 +15,7 @@ public class DownscaleCommand implements ImageProcessingCommand {
 
   @Override
   public ImageInterface process(ImageInterface img) throws IllegalArgumentException {
-    if (this.height >= img.getHeight() || this.width >= img.getWidth()) {
+    if (this.height > img.getHeight() || this.width > img.getWidth()) {
       throw new IllegalArgumentException("Dimensions must be smaller to be downsized");
     }
     Pixel[][] scaledPixelMatrix = new Pixel[this.height][this.width];
