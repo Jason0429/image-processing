@@ -1,24 +1,7 @@
 package controller.text;
 
 import controller.ImageProcessingController;
-import controller.query.BlueComponentQuery;
-import controller.query.BrightenQuery;
-import controller.query.FlipHorizontalQuery;
-import controller.query.FlipVerticalQuery;
-import controller.query.GaussianBlurQuery;
-import controller.query.GreenComponentQuery;
-import controller.query.IntensityQuery;
-import controller.query.ListQuery;
-import controller.query.LoadQuery;
-import controller.query.LumaQuery;
-import controller.query.MenuQuery;
-import controller.query.QueryCommand;
-import controller.query.QuitQuery;
-import controller.query.RedComponentQuery;
-import controller.query.SaveQuery;
-import controller.query.SepiaQuery;
-import controller.query.SharpenQuery;
-import controller.query.ValueQuery;
+import controller.query.*;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import view.text.ImageProcessingTextView;
@@ -92,6 +75,7 @@ public class ImageProcessingTextControllerImpl implements ImageProcessingControl
     this.queries.put("gaussian-blur", new GaussianBlurQuery(model, view));
     this.queries.put("sharpen", new SharpenQuery(model, view));
     this.queries.put("sepia", new SepiaQuery(model, view));
+    this.queries.put("mask", new ImageMaskQuery(model, view));
     this.queries.put("quit", new QuitQuery(model, view, () -> this.quit = true));
     this.queries.put("q", new QuitQuery(model, view, () -> this.quit = true));
 
