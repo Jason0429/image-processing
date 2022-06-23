@@ -1,11 +1,9 @@
 package controller.query;
 
-import controller.loader.ImageLoader;
 import model.ExceptionMessage;
 import model.ImageInterface;
 import model.ImageProcessingModel;
 import model.Utils;
-import model.commands.BlueComponentGreyscaleCommand;
 import model.commands.BrightenCommand;
 import model.commands.ImageMaskCommand;
 import model.commands.ImageProcessingCommand;
