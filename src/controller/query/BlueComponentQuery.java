@@ -10,6 +10,12 @@ import view.text.ImageProcessingTextView;
  */
 public class BlueComponentQuery extends AbstractQueryCommand {
 
+  /**
+   * Constructs a new blue component query.
+   *
+   * @param model the model
+   * @param view  the view
+   */
   public BlueComponentQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
   }
