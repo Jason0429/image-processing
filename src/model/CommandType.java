@@ -16,7 +16,8 @@ public enum CommandType {
   BRIGHTEN("brighten"),
   GAUSSIAN_BLUR("gaussian-blur"),
   SHARPEN("sharpen"),
-  SEPIA("sepia");
+  SEPIA("sepia"),
+  DOWNSCALE("downscale");
 
   private final String command;
 
@@ -25,7 +26,16 @@ public enum CommandType {
   }
 
   @Override
-    public String toString() {
-      return this.command;
+  public String toString() {
+    return this.command;
+  }
+
+  public static CommandType fromString(String cmd) throws IllegalArgumentException {
+    for (CommandType c : CommandType.values()) {
+      if (c.toString().equals(cmd)) {
+        return c;
+      }
+    }
+    throw new IllegalArgumentException("Command not found");
   }
 }

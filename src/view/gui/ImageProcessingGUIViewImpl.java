@@ -122,14 +122,15 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
   }
 
   @Override
-  public int askForIntegerValue(int defaultValue, int min, int max, int increment) {
+  public int askForIntegerValue(String valueName, int defaultValue, int min, int max,
+                                int increment) {
     SpinnerModel spinnerModel = new SpinnerNumberModel(defaultValue, min, max, increment);
     JSpinner spinner = new JSpinner(spinnerModel);
     JScrollPane scrollPane = new JScrollPane(spinner);
     scrollPane.requestFocusInWindow();
     spinner.requestFocusInWindow();
     scrollPane.setPreferredSize(new Dimension(50, 50));
-    JOptionPane.showMessageDialog(this, scrollPane, "Enter Value", JOptionPane.PLAIN_MESSAGE);
+    JOptionPane.showMessageDialog(this, scrollPane, valueName, JOptionPane.PLAIN_MESSAGE);
     spinner.getValue();
     return (int) spinnerModel.getValue();
   }

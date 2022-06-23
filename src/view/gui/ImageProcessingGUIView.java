@@ -18,7 +18,7 @@ public interface ImageProcessingGUIView {
 
   String chooseLoadLocation();
 
-  int askForIntegerValue(int defaultValue, int min, int max, int increment);
+  int askForIntegerValue(String valueName, int defaultValue, int min, int max, int increment);
 
   void showError(String message);
 

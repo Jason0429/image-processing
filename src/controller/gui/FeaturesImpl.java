@@ -72,17 +72,26 @@ public class FeaturesImpl implements Features {
       return;
     }
     String query = this.view.getSelectedQuery();
-    if (query.equals(CommandType.BRIGHTEN.toString())) {
-      int value = this.view.askForIntegerValue(10, -255, 255, 1);
-      System.out.println("value = " + value);
-      this.model = new BrightenCommand(value).process(this.model);
-      this.view.updateImagePreview(Utils.getBufferedImage(this.model));
-    } else {
-      ImageProcessingCommand cmd = Utils.getCommandMap().getOrDefault(query, null);
-      if (cmd != null) {
-        this.model = cmd.process(this.model);
+
+    switch (CommandType.fromString(query)) {
+      case BRIGHTEN:
+        int value = this.view.askForIntegerValue("Brighten", 10, -255, 255, 1);
+        System.out.println("value = " + value);
+        this.model = new BrightenCommand(value).process(this.model);
         this.view.updateImagePreview(Utils.getBufferedImage(this.model));
-      }
+      case DOWNSCALE:
+        int newHeight = this.view.askForIntegerValue("New Height", this.model.getHeight(), 0,
+                this.model.getHeight(), 1);
+        int newWidth = this.view.askForIntegerValue("New Width", this.model.getWidth(), 0,
+                this.model.getWidth(), 1);
+        this.model = new DownscaleCommand(newHeight, newWidth).process(this.model);
+        this.view.updateImagePreview(Utils.getBufferedImage(this.model));
+      default:
+        ImageProcessingCommand cmd = Utils.getCommandMap().getOrDefault(query, null);
+        if (cmd != null) {
+          this.model = cmd.process(this.model);
+          this.view.updateImagePreview(Utils.getBufferedImage(this.model));
+        }
     }
   }
 }
