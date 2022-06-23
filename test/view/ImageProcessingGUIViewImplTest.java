@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import controller.gui.Features;
 import controller.gui.FeaturesImpl;
-import controller.gui.ImageProcessingGUIControllerImpl;
 
 import static org.junit.Assert.assertEquals;
 

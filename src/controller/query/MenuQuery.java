@@ -30,6 +30,7 @@ public class MenuQuery extends AbstractQueryCommand {
     this.writeMessage("brighten [image-name] [dest-image-name] [increment]\n");
     this.writeMessage("gaussian-blur [image-name] [dest-image-name]\n");
     this.writeMessage("sharpen [image-name] [dest-image-name]\n");
+    this.writeMessage("mask [image-name] [dest-image-name] [mask-name] [command] [command-args]");
     this.writeMessage("quit/q (quit the program)\n");
   }
 }
