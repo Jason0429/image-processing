@@ -61,6 +61,19 @@ public abstract class AbstractQueryCommand implements QueryCommand {
   }
 
   /**
+   * Throws an exception if the query length is not correct.
+   *
+   * @param length the set number of allowed tokens in the query.
+   * @throws IllegalArgumentException if the query length does not equal the given length.
+   */
+  protected void checkQueryLengthGreaterEqual(String[] query, int length)
+          throws IllegalArgumentException {
+    if (query.length < length) {
+      throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
+    }
+  }
+
+  /**
    * Executes the command associated with this query.
    *
    * @param query the query to be processed.

@@ -65,21 +65,10 @@ public class ImageMaskQuery extends AbstractQueryCommand implements QueryCommand
     if (processedImage != null) {
       this.model.storeImage(processedImageName, processedImage);
       this.writeMessage(
-              String.format("Successfully applied mask with filter %s and stored as: " + processedImageName + ".\n", filter));
+              String.format("Successfully applied mask with filter %s and stored as: "
+                      + processedImageName + ".\n", filter));
     } else {
       throw new IllegalArgumentException("Failed to apply mask");
-    }
-  }
-
-  /**
-   * Throws an exception if the query length is not correct.
-   *
-   * @param length the set number of allowed tokens in the query.
-   * @throws IllegalArgumentException if the query length does not equal the given length.
-   */
-  private void checkQueryLengthGreaterEqual(String[] query, int length) throws IllegalArgumentException {
-    if (query.length < length) {
-      throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
     }
   }
 }
