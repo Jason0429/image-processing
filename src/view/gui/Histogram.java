@@ -51,8 +51,9 @@ public class Histogram extends JScrollPane {
       Map<Integer, Integer> frequency = this.getPixelTypeFrequency(type);
 //      frequency.forEach((key, value) -> System.out.println(key + " " + value));
       int maxFreq = Collections.max(frequency.values());
-      System.out.println("maxFreq = " + maxFreq);
-      double scalar = maxFreq > this.HEIGHT ? 400.0 / maxFreq : 1;
+      int minFreq = Collections.min(frequency.values());
+
+//      double scalar = maxFreq > this.HEIGHT ? 400.0 / maxFreq : 1;
 
 //      System.out.println("Image width: " + this.img.getWidth());
 //      System.out.println("Image height: " + this.img.getHeight());
@@ -62,8 +63,9 @@ public class Histogram extends JScrollPane {
         int value = frequency.getOrDefault(i, 0);
         int x1 = i * strokeWidth;
         int x2 = i * strokeWidth;
-//        int y2 = Math.max(this.HEIGHT - value, 0);
-        int y2 = this.HEIGHT - value;
+        int normalizedValue = (int) (((double) (value - minFreq) / (maxFreq - minFreq))
+                * this.HEIGHT);
+        int y2 = Math.max(this.HEIGHT - normalizedValue, 0);
         g2.draw(new Line2D.Float(x1, this.HEIGHT, x2, y2));
       }
     }
@@ -74,6 +76,10 @@ public class Histogram extends JScrollPane {
     for (int row = 0; row < img.getHeight(); row++) {
       for (int col = 0; col < img.getWidth(); col++) {
         Color rgb = new Color(img.getRGB(col, row), true);
+        // Ignore transparent pixels.
+        if (rgb.getAlpha() == 0) {
+          continue;
+        }
         Pixel pixel = new Pixel(255, rgb.getRed(), rgb.getGreen(),
                 rgb.getBlue(), rgb.getAlpha());
         int value = type.apply(pixel);
