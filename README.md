@@ -1,6 +1,14 @@
 # Image Processing by Jason & Elvin
 
-This is a program that processes .ppm, .bmp, .png, and .jpeg files and has the ability to load, manipulate, and export images.
+This is a program that processes .ppm, .bmp, .png, and .jpeg files and has the ability to load,
+manipulate, and export images.
+
+## <u>Changes for Assignment 6</u>
+
+* `Downscaling`
+    * A new command was created to handle downscaling whose constructor took in two dimensions for
+      the new image. To accommodate the two inputs, a new case was added in our switch statement
+      in the `Features` implementation to request the user to provide the new dimensions.
 
 ## <u>Updates</u>
 
