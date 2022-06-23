@@ -1,7 +1,12 @@
+import controller.ImageProcessingController;
+import controller.gui.FeaturesImpl;
+import controller.gui.ImageProcessingGUIControllerImpl;
 import controller.text.ImageProcessingTextControllerImpl;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
+import view.gui.ImageProcessingGUIView;
+import view.gui.ImageProcessingGUIViewImpl;
 import view.text.ImageProcessingTextTextViewImpl;
 import view.text.ImageProcessingTextView;
 
@@ -22,16 +27,29 @@ public class ImageProcessor {
    *
    * @param args possible command line arguments including:
    *             [script-file-path] a file containing commands to run the program.
+   * @throws IllegalArgumentException if invalid parameters are provided.
    */
-  public static void main(String[] args) {
-    Readable in = args.length == 1
-            ? ImageProcessor.loadScript(args[0])
-            : new InputStreamReader(System.in);
-
-    ImageProcessingModel model = new ImageProcessingModelImpl();
-    ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
-    ImageProcessingTextControllerImpl controller = new ImageProcessingTextControllerImpl(model, view, in);
-    controller.start();
+  public static void main(String[] args) throws IllegalArgumentException {
+    if (args.length == 0) {
+      ImageProcessingGUIView view = new ImageProcessingGUIViewImpl();
+      ImageProcessingController controller = new ImageProcessingGUIControllerImpl(
+              new FeaturesImpl(view));
+      controller.start();
+    } else if (args.length == 1 && args[0].equals("-text")) {
+      Readable in = new InputStreamReader(System.in);
+      ImageProcessingModel model = new ImageProcessingModelImpl();
+      ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
+      ImageProcessingController controller = new ImageProcessingTextControllerImpl(model, view, in);
+      controller.start();
+    } else if (args.length == 2 && args[0].equals("-file")) {
+      Readable in = ImageProcessor.loadScript(args[1]);
+      ImageProcessingModel model = new ImageProcessingModelImpl();
+      ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
+      ImageProcessingController controller = new ImageProcessingTextControllerImpl(model, view, in);
+      controller.start();
+    } else {
+      throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
+    }
   }
 
   /**

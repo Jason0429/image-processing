@@ -17,7 +17,6 @@ import java.util.function.Function;
 public class Histogram extends JScrollPane {
   private final Map<Color, Function<Pixel, Integer>> types;
   private BufferedImage img;
-  private final int HEIGHT = 400;
 
   public Histogram(Map<Color, Function<Pixel, Integer>> types) {
     this.types = types;
@@ -40,6 +39,7 @@ public class Histogram extends JScrollPane {
     }
 
     int strokeWidth = 1;
+    int height = 400;
     g2.setStroke(new BasicStroke(strokeWidth));
 
     for (Map.Entry<Color, Function<Pixel, Integer>> entry : this.types.entrySet()) {
@@ -49,24 +49,16 @@ public class Histogram extends JScrollPane {
       g2.setColor(color);
 
       Map<Integer, Integer> frequency = this.getPixelTypeFrequency(type);
-//      frequency.forEach((key, value) -> System.out.println(key + " " + value));
       int maxFreq = Collections.max(frequency.values());
       int minFreq = Collections.min(frequency.values());
-
-//      double scalar = maxFreq > this.HEIGHT ? 400.0 / maxFreq : 1;
-
-//      System.out.println("Image width: " + this.img.getWidth());
-//      System.out.println("Image height: " + this.img.getHeight());
-//      System.out.println("Scalar: " + scalar);
 
       for (int i = 0; i < 256; i++) {
         int value = frequency.getOrDefault(i, 0);
         int x1 = i * strokeWidth;
         int x2 = i * strokeWidth;
-        int normalizedValue = (int) (((double) (value - minFreq) / (maxFreq - minFreq))
-                * this.HEIGHT);
-        int y2 = Math.max(this.HEIGHT - normalizedValue, 0);
-        g2.draw(new Line2D.Float(x1, this.HEIGHT, x2, y2));
+        int normalizedValue = (int) (((double) (value - minFreq) / (maxFreq - minFreq)) * height);
+        int y2 = Math.max(height - normalizedValue, 0);
+        g2.draw(new Line2D.Float(x1, height, x2, y2));
       }
     }
   }
