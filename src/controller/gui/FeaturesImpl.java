@@ -1,8 +1,6 @@
 package controller.gui;
 
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
 
 import controller.exporter.ImageExporter;
 import controller.loader.ImageLoader;
@@ -79,6 +77,7 @@ public class FeaturesImpl implements Features {
         System.out.println("value = " + value);
         this.model = new BrightenCommand(value).process(this.model);
         this.view.updateImagePreview(Utils.getBufferedImage(this.model));
+        break;
       case DOWNSCALE:
         int newHeight = this.view.askForIntegerValue("New Height", this.model.getHeight(), 0,
                 this.model.getHeight(), 1);
@@ -86,6 +85,7 @@ public class FeaturesImpl implements Features {
                 this.model.getWidth(), 1);
         this.model = new DownscaleCommand(newHeight, newWidth).process(this.model);
         this.view.updateImagePreview(Utils.getBufferedImage(this.model));
+        break;
       default:
         ImageProcessingCommand cmd = Utils.getCommandMap().getOrDefault(query, null);
         if (cmd != null) {
