@@ -4,10 +4,19 @@ import model.Image;
 import model.ImageInterface;
 import model.Pixel;
 
+/**
+ * Represents a command that downscales images.
+ */
 public class DownscaleCommand implements ImageProcessingCommand {
   private final int height;
   private final int width;
 
+  /**
+   * Create a new downscale image command.
+   *
+   * @param height the desired height of the image
+   * @param width  the desired width of the image
+   */
   public DownscaleCommand(int height, int width) {
     this.height = height;
     this.width = width;
@@ -36,13 +45,17 @@ public class DownscaleCommand implements ImageProcessingCommand {
                 (int) Math.ceil(scaledRow),
                 (int) Math.floor(scaledCol));
         int scaledRed =
-                (topLeft.getRed() + bottomRight.getRed() + topRight.getRed() + bottomLeft.getRed()) / 4;
+                (topLeft.getRed() + bottomRight.getRed()
+                        + topRight.getRed() + bottomLeft.getRed()) / 4;
         int scaledGreen =
-                (topLeft.getGreen() + bottomRight.getGreen() + topRight.getGreen() + bottomLeft.getGreen()) / 4;
+                (topLeft.getGreen() + bottomRight.getGreen()
+                        + topRight.getGreen() + bottomLeft.getGreen()) / 4;
         int scaledBlue =
-                (topLeft.getBlue() + bottomRight.getBlue() + topRight.getBlue() + bottomLeft.getBlue()) / 4;
+                (topLeft.getBlue() + bottomRight.getBlue()
+                        + topRight.getBlue() + bottomLeft.getBlue()) / 4;
         int scaledAlpha =
-                (topLeft.getAlpha() + bottomRight.getAlpha() + topRight.getAlpha() + bottomLeft.getAlpha()) / 4;
+                (topLeft.getAlpha() + bottomRight.getAlpha()
+                        + topRight.getAlpha() + bottomLeft.getAlpha()) / 4;
         scaledPixelMatrix[row][col] = new Pixel(img.getMaxValue(), scaledRed, scaledGreen,
                 scaledBlue, scaledAlpha);
       }

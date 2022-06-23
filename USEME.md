@@ -30,4 +30,6 @@ Options:
 
 `sharpen` [`image-name`] [`dest-image-name`]
 
+`mask` [`image-name`] [`dest-image-name`] [`mask-name`] [`command`] [`...command-args`]
+
 `quit`/`q` (quit the program)

@@ -1,8 +1,33 @@
 # Image Processing by Jason & Elvin
 
-This is a program that processes .ppm, .bmp, .png, and .jpeg files and has the ability to load, manipulate, and export images.
+This is a program that processes .ppm, .bmp, .png, and .jpeg files and has the ability to load,
+manipulate, and export images.
 
-## <u>Updates</u>
+## <u>Changes for Assignment 6</u>
+
+* `ImageProcessingGUIController`
+    * We created a new controller dedicated to the GUI since the models used were different as the
+      GUI version doesn't need to track multiple images at a time.
+    * The MVC for the GUI also utilizes features, whose methods are called via callbacks in the
+      view.
+* `ImageProcessingGUIView`
+    * The GUI view is based on Swing and makes use of features which get passed via action
+      listeners to each component in the view.
+    * We also created dedicated components for the histogram and the preview.
+
+* `Downscaling`
+    * A new command was created to handle downscaling whose constructor took in two dimensions for
+      the new image. To accommodate the two inputs, a new case was added in our switch statement
+      in the `Features` implementation to request the user to provide the new dimensions.
+    * This features is only available through the GUI.
+* `Partial Image Processing`
+    * We created a new `ImageMaskCommand` to give users the ability to specify a mask and only
+      alter a specific portion of an image. This new command falls under the
+      `ImageProcessingCommand` interface and can only be called through the text-based program.
+    * The mask must exactly match the dimensions of the image to be masked, and only the black
+      areas in the mask will be altered in the final image.
+
+## <u>Changes for Assignment 5</u>
 
 ### Model
 
@@ -53,6 +78,8 @@ This is a program that processes .ppm, .bmp, .png, and .jpeg files and has the a
 * You can call `menu` to get a list of all possible actions to perform.
 * You can call `list` to get a list of all the names of current images loaded/processed in the
   program.
+
+### Example Queries
 
 * `load res/test3x4.ppm test`
 * `red-component test test-red`

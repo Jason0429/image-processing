@@ -9,9 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.BasicStroke;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
-import java.util.Collections;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
 import java.util.function.Function;
 
 public class Histogram extends JScrollPane {
@@ -42,23 +40,30 @@ public class Histogram extends JScrollPane {
     int height = 400;
     g2.setStroke(new BasicStroke(strokeWidth));
 
+    Map<Color, Map<Integer, Integer>> mapLists = new HashMap<>();
+    int minFreq = 0;
+    int maxFreq = 0;
+
     for (Map.Entry<Color, Function<Pixel, Integer>> entry : this.types.entrySet()) {
       Color color = entry.getKey();
       Function<Pixel, Integer> type = entry.getValue();
-
-      g2.setColor(color);
-
       Map<Integer, Integer> frequency = this.getPixelTypeFrequency(type);
-      int maxFreq = Collections.max(frequency.values());
-      int minFreq = Collections.min(frequency.values());
+      mapLists.put(color, frequency);
+      maxFreq = Collections.max(frequency.values());
+    }
 
-      for (int i = 0; i < 256; i++) {
-        int value = frequency.getOrDefault(i, 0);
+    for (Map.Entry<Color, Map<Integer, Integer>> colorMap : mapLists.entrySet()) {
+      Color color = colorMap.getKey();
+      g2.setColor(color);
+      for (int i = 1; i < 256; i++) {
+        int valuePrev = colorMap.getValue().getOrDefault(i - 1, 0);
+        int value = colorMap.getValue().getOrDefault(i, 0);
         int x1 = i * strokeWidth;
-        int x2 = i * strokeWidth;
-        int normalizedValue = (int) (((double) (value - minFreq) / (maxFreq - minFreq)) * height);
+        int normalizedValuePrev = (int) (((double) valuePrev / maxFreq) * height);
+        int normalizedValue = (int) (((double) value / maxFreq) * height);
+        int y2Prev = Math.max(height - normalizedValuePrev, 0);
         int y2 = Math.max(height - normalizedValue, 0);
-        g2.draw(new Line2D.Float(x1, height, x2, y2));
+        g2.draw(new Line2D.Float(x1 - 1, y2Prev, x1, y2));
       }
     }
   }
@@ -73,7 +78,7 @@ public class Histogram extends JScrollPane {
           continue;
         }
         Pixel pixel = new Pixel(255, rgb.getRed(), rgb.getGreen(),
-                rgb.getBlue(), rgb.getAlpha());
+            rgb.getBlue(), rgb.getAlpha());
         int value = type.apply(pixel);
         if (frequency.containsKey(value)) {
           frequency.put(value, frequency.get(value) + 1);
