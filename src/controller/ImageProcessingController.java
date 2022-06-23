@@ -1,4 +1,4 @@
-package controller.text;
+package controller;
 
 /**
  * This interface contains the methods for the controller for image processing which handles

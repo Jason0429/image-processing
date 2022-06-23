@@ -1,5 +1,6 @@
 package controller.text;
 
+import controller.ImageProcessingController;
 import controller.query.BlueComponentQuery;
 import controller.query.BrightenQuery;
 import controller.query.FlipHorizontalQuery;
@@ -32,7 +33,7 @@ import java.util.Scanner;
  * This class represents the controller that handles interactions for the image
  * processing program.
  */
-public class ImageProcessingControllerImpl implements ImageProcessingController {
+public class ImageProcessingTextControllerImpl implements ImageProcessingController {
   private final ImageProcessingModel model;
   private final ImageProcessingTextView view;
   private final Readable readable;
@@ -46,7 +47,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param model the model to be used in the controller.
    * @param view  the view to be used in the controller.
    */
-  public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingTextView view) {
+  public ImageProcessingTextControllerImpl(ImageProcessingModel model,
+                                           ImageProcessingTextView view) {
     this(model, view, new InputStreamReader(System.in));
   }
 
@@ -59,8 +61,8 @@ public class ImageProcessingControllerImpl implements ImageProcessingController 
    * @param readable the readable that the controller will use to take in input.
    * @throws IllegalArgumentException if any argument is null.
    */
-  public ImageProcessingControllerImpl(ImageProcessingModel model, ImageProcessingTextView view,
-                                       Readable readable) throws IllegalArgumentException {
+  public ImageProcessingTextControllerImpl(ImageProcessingModel model, ImageProcessingTextView view,
+                                           Readable readable) throws IllegalArgumentException {
     if (model == null || view == null || readable == null) {
       throw new IllegalArgumentException(ExceptionMessage.NULL_VALUES.toString());
     }

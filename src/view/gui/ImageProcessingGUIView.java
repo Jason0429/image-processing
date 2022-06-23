@@ -12,8 +12,6 @@ public interface ImageProcessingGUIView {
 
   void updateImagePreview(BufferedImage img);
 
-  void setListener(ActionListener listener);
-
   String getSelectedQuery();
 
   String chooseExportLocation();
@@ -23,4 +21,6 @@ public interface ImageProcessingGUIView {
   int askForIntegerValue(int defaultValue, int min, int max, int increment);
 
   void showError(String message);
+
+  void addFeatures(Features features);
 }

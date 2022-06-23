@@ -1,4 +1,4 @@
-import controller.text.ImageProcessingControllerImpl;
+import controller.text.ImageProcessingTextControllerImpl;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
@@ -30,7 +30,7 @@ public class ImageProcessor {
 
     ImageProcessingModel model = new ImageProcessingModelImpl();
     ImageProcessingTextView view = new ImageProcessingTextTextViewImpl();
-    ImageProcessingControllerImpl controller = new ImageProcessingControllerImpl(model, view, in);
+    ImageProcessingTextControllerImpl controller = new ImageProcessingTextControllerImpl(model, view, in);
     controller.start();
   }
 

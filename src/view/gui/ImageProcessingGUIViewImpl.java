@@ -1,5 +1,6 @@
 package view.gui;
 
+import controller.gui.Features;
 import model.CommandType;
 import model.Utils;
 
@@ -83,13 +84,6 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
   }
 
   @Override
-  public void setListener(ActionListener listener) {
-    this.exportBtn.addActionListener(listener);
-    this.loadBtn.addActionListener(listener);
-    this.applyBtn.addActionListener(listener);
-  }
-
-  @Override
   public String getSelectedQuery() {
     return String.valueOf(this.commandDropdown.getSelectedItem());
   }
@@ -138,5 +132,12 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
     JOptionPane.showMessageDialog(this, scrollPane, "Enter Value", JOptionPane.PLAIN_MESSAGE);
     spinner.getValue();
     return (int) spinnerModel.getValue();
+  }
+
+  @Override
+  public void addFeatures(Features features) {
+    this.loadBtn.addActionListener((event) -> features.load());
+    this.exportBtn.addActionListener((event) -> features.save());
+    this.applyBtn.addActionListener((event) -> features.apply());
   }
 }

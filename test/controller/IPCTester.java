@@ -2,8 +2,7 @@ package controller;
 
 import java.io.StringReader;
 
-import controller.text.ImageProcessingController;
-import controller.text.ImageProcessingControllerImpl;
+import controller.text.ImageProcessingTextControllerImpl;
 import model.ImageProcessingModel;
 import view.text.ImageProcessingTextTextViewImpl;
 
@@ -56,7 +55,7 @@ public class IPCTester {
 
     StringReader input = new StringReader(fakeInput.toString());
     StringBuilder actualOutput = new StringBuilder();
-    ImageProcessingController controller = new ImageProcessingControllerImpl(
+    ImageProcessingController controller = new ImageProcessingTextControllerImpl(
             model, new ImageProcessingTextTextViewImpl(actualOutput), input);
     controller.start();
     assertEquals(expectedOutput.toString(), actualOutput.toString());

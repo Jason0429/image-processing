@@ -17,18 +17,15 @@ public class FeaturesImpl implements Features {
   private ImageInterface model;
   private final ImageProcessingGUIView view;
 
-  public FeaturesImpl(ImageInterface model, ImageProcessingGUIView view)
+  public FeaturesImpl(ImageProcessingGUIView view)
           throws IllegalArgumentException {
     if (view == null) {
       throw new IllegalArgumentException(String.format(
               ExceptionMessage.SPECIFIC_NULL_ARGUMENT.toString(), "View"));
     }
-    this.model = model;
+    this.model = null;
     this.view = view;
-  }
-
-  public FeaturesImpl(ImageProcessingGUIView view) {
-    this(null, view);
+    view.addFeatures(this);
   }
 
   @Override
