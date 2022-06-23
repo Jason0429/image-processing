@@ -70,6 +70,8 @@ public class ControllerMenuTest {
             IPCTester.prints("brighten [image-name] [dest-image-name] [increment]"),
             IPCTester.prints("gaussian-blur [image-name] [dest-image-name]"),
             IPCTester.prints("sharpen [image-name] [dest-image-name]"),
+            IPCTester.prints("mask [image-name] [dest-image-name] [mask-name] [command] " +
+                    "[command-args]"),
             IPCTester.prints("quit/q (quit the program)"),
             IPCTester.inputs("q"),
             IPCTester.prints("Quitting Image Processing...")));
