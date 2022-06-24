@@ -4,18 +4,18 @@ import controller.gui.Features;
 import model.CommandType;
 import model.Utils;
 
-import javax.swing.JFrame;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
-import javax.swing.JScrollPane;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JScrollPane;
+import javax.swing.SpinnerModel;
+
 import java.awt.GridLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Arrays;

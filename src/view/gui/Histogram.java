@@ -3,10 +3,8 @@ package view.gui;
 import model.Pixel;
 
 import javax.swing.JScrollPane;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.BasicStroke;
+
+import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -32,17 +30,22 @@ public class Histogram extends JScrollPane {
     Graphics2D g2 = (Graphics2D) g;
 
     if (this.img == null) {
+      g2.setColor(Color.BLACK);
       g2.drawString("No image loaded!", 100, 100);
       return;
     }
 
     int strokeWidth = 1;
     int height = 400;
+    int minFreq = 0;
+    int maxFreq = 0;
+    int leftPadding = 50;
+    int topPadding = 20;
+    int bottomPadding = 50;
+
     g2.setStroke(new BasicStroke(strokeWidth));
 
     Map<Color, Map<Integer, Integer>> mapLists = new HashMap<>();
-    int minFreq = 0;
-    int maxFreq = 0;
 
     for (Map.Entry<Color, Function<Pixel, Integer>> entry : this.types.entrySet()) {
       Color color = entry.getKey();
@@ -58,14 +61,23 @@ public class Histogram extends JScrollPane {
       for (int i = 1; i < 256; i++) {
         int valuePrev = colorMap.getValue().getOrDefault(i - 1, 0);
         int value = colorMap.getValue().getOrDefault(i, 0);
-        int x1 = i * strokeWidth;
+        int x1 = i * strokeWidth + leftPadding;
         int normalizedValuePrev = (int) (((double) valuePrev / maxFreq) * height);
         int normalizedValue = (int) (((double) value / maxFreq) * height);
-        int y2Prev = Math.max(height - normalizedValuePrev, 0);
-        int y2 = Math.max(height - normalizedValue, 0);
+        int y2Prev = Math.max(height - normalizedValuePrev, 0) + topPadding;
+        int y2 = Math.max(height - normalizedValue, 0) + topPadding;
         g2.draw(new Line2D.Float(x1 - 1, y2Prev, x1, y2));
       }
     }
+
+    g2.setColor(Color.BLACK);
+    g2.draw(new Line2D.Float(leftPadding, height + topPadding, leftPadding, topPadding));
+    g2.draw(new Line2D.Float(leftPadding, height + topPadding, 255 + leftPadding,
+            height + topPadding));
+    g2.drawString(minFreq + "", leftPadding - ((minFreq + "").length() * 11), height + topPadding);
+    g2.drawString(maxFreq + "", leftPadding - ((maxFreq + "").length() * 11), topPadding);
+    g2.drawString(0 + "", leftPadding, height + topPadding + 13);
+    g2.drawString(255 + "", 255 + leftPadding, height + topPadding + 13);
   }
 
   private Map<Integer, Integer> getPixelTypeFrequency(Function<Pixel, Integer> type) {
