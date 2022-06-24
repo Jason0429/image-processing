@@ -1,5 +1,6 @@
 package controller.query;
 
+import model.CommandType;
 import model.ExceptionMessage;
 import model.ImageInterface;
 import model.ImageProcessingModel;
@@ -44,34 +45,31 @@ public class ImageMaskQuery extends AbstractQueryCommand {
       throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
     }
 
-    switch (commandType) {
-      case "brighten":
-        if (filterArgs.length != 1) {
-          throw new IllegalArgumentException("Invalid parameters specified for brighten");
-        }
-        try {
-          int value = Integer.parseInt(filterArgs[0]);
-          ImageInterface maskImage = this.model.getImage(maskImageName);
-          ImageInterface sourceImage = this.model.getImage(sourceImageName);
-          ImageInterface destImage = new ImageMaskCommand(maskImage,
-                  new BrightenCommand(value)).process(sourceImage);
-          this.model.storeImage(destImageName, destImage);
-        } catch (NumberFormatException e) {
-          throw new IllegalArgumentException("Brighten value must be an integer");
-        } catch (IllegalArgumentException e) {
-          throw new IllegalArgumentException("Failed to apply mask.");
-        }
-        break;
-      default:
-        try {
-          ImageInterface maskImage = this.model.getImage(maskImageName);
-          ImageInterface sourceImage = this.model.getImage(sourceImageName);
-          ImageInterface destImage = new ImageMaskCommand(maskImage, cmd).process(sourceImage);
-          this.model.storeImage(destImageName, destImage);
-        } catch (IllegalArgumentException e) {
-          throw new IllegalArgumentException("Failed to apply mask.");
-        }
-        break;
+    if (commandType.equals(CommandType.BRIGHTEN.toString())) {
+      if (filterArgs.length != 1) {
+        throw new IllegalArgumentException("Invalid parameters specified for brighten");
+      }
+      try {
+        int value = Integer.parseInt(filterArgs[0]);
+        ImageInterface maskImage = this.model.getImage(maskImageName);
+        ImageInterface sourceImage = this.model.getImage(sourceImageName);
+        ImageInterface destImage = new ImageMaskCommand(maskImage,
+                new BrightenCommand(value)).process(sourceImage);
+        this.model.storeImage(destImageName, destImage);
+      } catch (NumberFormatException e) {
+        throw new IllegalArgumentException("Brighten value must be an integer");
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException("Failed to apply mask.");
+      }
+    } else {
+      try {
+        ImageInterface maskImage = this.model.getImage(maskImageName);
+        ImageInterface sourceImage = this.model.getImage(sourceImageName);
+        ImageInterface destImage = new ImageMaskCommand(maskImage, cmd).process(sourceImage);
+        this.model.storeImage(destImageName, destImage);
+      } catch (IllegalArgumentException e) {
+        throw new IllegalArgumentException("Failed to apply mask.");
+      }
     }
 
     this.writeMessage(String.format("Successfully applied mask with filter %s and stored as: "

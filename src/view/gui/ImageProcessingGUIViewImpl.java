@@ -37,7 +37,7 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
 
     this.histogram = new Histogram(Utils.getTypes());
     this.imagePreview = new ImagePreview();
-    this.commandDropdown = new JComboBox<String>(Arrays.stream(Utils.getCommands())
+    this.commandDropdown = new JComboBox<String>(Arrays.stream(CommandType.values())
             .map(CommandType::toString).toArray(String[]::new));
     this.exportBtn = new JButton();
     this.loadBtn = new JButton();

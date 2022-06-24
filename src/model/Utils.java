@@ -67,6 +67,7 @@ public final class Utils {
     commandMap.put(CommandType.HORIZONTAL_FLIP.toString(), new FlipHorizontalCommand());
     commandMap.put(CommandType.VERTICAL_FLIP.toString(), new FlipVerticalCommand());
     commandMap.put(CommandType.GREYSCALE.toString(), new LumaProcessingCommand());
+    commandMap.put(CommandType.BRIGHTEN.toString(), new LumaProcessingCommand());
     commandMap.put(CommandType.GAUSSIAN_BLUR.toString(), new GaussianBlurCommand());
     commandMap.put(CommandType.SHARPEN.toString(), new SharpenCommand());
     commandMap.put(CommandType.SEPIA.toString(), new SepiaProcessingCommand());
@@ -90,20 +91,12 @@ public final class Utils {
             new IntensityComponentGreyscaleCommand());
     commandMap.put(CommandType.HORIZONTAL_FLIP.toString(), new FlipHorizontalCommand());
     commandMap.put(CommandType.VERTICAL_FLIP.toString(), new FlipVerticalCommand());
+    commandMap.put(CommandType.BRIGHTEN.toString(), new FlipVerticalCommand());
     commandMap.put(CommandType.GREYSCALE.toString(), new LumaProcessingCommand());
     commandMap.put(CommandType.GAUSSIAN_BLUR.toString(), new GaussianBlurCommand());
     commandMap.put(CommandType.SHARPEN.toString(), new SharpenCommand());
     commandMap.put(CommandType.SEPIA.toString(), new SepiaProcessingCommand());
     return commandMap;
-  }
-
-  /**
-   * Returns all commands in {@code CommandType} enum.
-   *
-   * @return all commands.
-   */
-  public static CommandType[] getCommands() {
-    return CommandType.values();
   }
 
   /**
