@@ -16,7 +16,8 @@ public class ImageMaskCommand implements ImageProcessingCommand {
 
   @Override
   public ImageInterface process(ImageInterface img) throws IllegalArgumentException {
-    if (this.maskImage.getWidth() != img.getWidth() || this.maskImage.getHeight() != img.getHeight()) {
+    if (this.maskImage.getWidth() != img.getWidth()
+            || this.maskImage.getHeight() != img.getHeight()) {
       throw new IllegalArgumentException("Image dimensions must match mask dimensions");
     }
     Pixel[][] maskedPixelMatrix = new Pixel[img.getHeight()][img.getWidth()];

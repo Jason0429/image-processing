@@ -87,7 +87,7 @@ public class FeaturesImpl implements Features {
         this.view.updateImagePreview(Utils.getBufferedImage(this.model));
         break;
       default:
-        ImageProcessingCommand cmd = Utils.getCommandMap().getOrDefault(query, null);
+        ImageProcessingCommand cmd = Utils.getGUICommandMap().getOrDefault(query, null);
         if (cmd != null) {
           this.model = cmd.process(this.model);
           this.view.updateImagePreview(Utils.getBufferedImage(this.model));

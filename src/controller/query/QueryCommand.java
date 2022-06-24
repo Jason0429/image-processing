@@ -11,4 +11,6 @@ public interface QueryCommand {
    * @param query the query to be processed.
    */
   void execute(String[] query);
+
+  int getProperQueryLength();
 }

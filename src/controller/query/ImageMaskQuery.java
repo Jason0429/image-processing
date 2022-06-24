@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * Represents the image mask query command.
  */
-public class ImageMaskQuery extends AbstractQueryCommand implements QueryCommand {
+public class ImageMaskQuery extends AbstractQueryCommand {
 
   private final Map<String, ImageProcessingCommand> cmdMap;
 
@@ -27,48 +27,54 @@ public class ImageMaskQuery extends AbstractQueryCommand implements QueryCommand
    */
   public ImageMaskQuery(ImageProcessingModel model, ImageProcessingTextView view) {
     super(model, view);
-    this.cmdMap = Utils.getCommandMap();
+    this.cmdMap = Utils.getTextViewCommandMap();
   }
 
   @Override
   protected void executeCommand(String[] query) throws IllegalArgumentException {
-    // needs to take in mask location, filter type, and filter args if any
-    // mask image-name new-image-name mask-location filter args
-    this.checkQueryLengthGreaterEqual(query, 5);
-    String unprocessedImageName = query[1];
-    String processedImageName = query[2];
-    String maskName = query[3];
-    String filter = query[4];
-    String[] filterArgs = Arrays.copyOfRange(query, 5, query.length);
+    String commandType = query[0];
+    String sourceImageName = query[1];
+    String maskImageName = query[2];
+    String destImageName = query[3];
+    String[] filterArgs = Arrays.copyOfRange(query, 4, query.length);
 
-    ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);
-    ImageInterface maskImage = this.model.getImage(maskName);
-    ImageInterface processedImage;
+    ImageProcessingCommand cmd = this.cmdMap.getOrDefault(commandType, null);
 
-    if (filter.equals("brighten")) {
-      if (filterArgs.length != 1) {
-        throw new IllegalArgumentException("Invalid parameters specified for brighten");
-      } else {
-        int value = Integer.parseInt(filterArgs[0]);
-        processedImage = new ImageMaskCommand(maskImage,
-                new BrightenCommand(value)).process(unprocessedImage);
-      }
-    } else {
-      ImageProcessingCommand cmd = this.cmdMap.getOrDefault(filter, null);
-      if (cmd != null) {
-        processedImage = new ImageMaskCommand(maskImage,
-                cmd).process(unprocessedImage);
-      } else {
-        throw new IllegalArgumentException("Invalid command specified");
-      }
+    if (cmd == null) {
+      throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
     }
-    if (processedImage != null) {
-      this.model.storeImage(processedImageName, processedImage);
-      this.writeMessage(
-              String.format("Successfully applied mask with filter %s and stored as: "
-                      + processedImageName + ".\n", filter));
-    } else {
-      throw new IllegalArgumentException("Failed to apply mask");
+
+    switch (commandType) {
+      case "brighten":
+        if (filterArgs.length != 1) {
+          throw new IllegalArgumentException("Invalid parameters specified for brighten");
+        }
+        try {
+          int value = Integer.parseInt(filterArgs[0]);
+          ImageInterface maskImage = this.model.getImage(maskImageName);
+          ImageInterface sourceImage = this.model.getImage(sourceImageName);
+          ImageInterface destImage = new ImageMaskCommand(maskImage,
+                  new BrightenCommand(value)).process(sourceImage);
+          this.model.storeImage(destImageName, destImage);
+        } catch (NumberFormatException e) {
+          throw new IllegalArgumentException("Brighten value must be an integer");
+        } catch (IllegalArgumentException e) {
+          throw new IllegalArgumentException("Failed to apply mask.");
+        }
+        break;
+      default:
+        try {
+          ImageInterface maskImage = this.model.getImage(maskImageName);
+          ImageInterface sourceImage = this.model.getImage(sourceImageName);
+          ImageInterface destImage = new ImageMaskCommand(maskImage, cmd).process(sourceImage);
+          this.model.storeImage(destImageName, destImage);
+        } catch (IllegalArgumentException e) {
+          throw new IllegalArgumentException("Failed to apply mask.");
+        }
+        break;
     }
+
+    this.writeMessage(String.format("Successfully applied mask with filter %s and stored as: "
+            + destImageName + ".\n", commandType));
   }
 }

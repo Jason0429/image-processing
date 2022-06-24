@@ -16,7 +16,7 @@ public class SaveQuery extends AbstractQueryCommand {
 
   @Override
   protected void executeCommand(String[] query) throws IllegalArgumentException {
-    this.checkQueryLength(query, 3);
+    this.checkQueryLength(query, this.getProperQueryLength());
     String filePath = query[1];
     String imageName = query[2];
     ImageInterface imageToExport = this.model.getImage(imageName);

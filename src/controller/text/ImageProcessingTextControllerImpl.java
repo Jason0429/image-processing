@@ -2,6 +2,7 @@ package controller.text;
 
 import controller.ImageProcessingController;
 import controller.query.*;
+import model.CommandType;
 import model.ExceptionMessage;
 import model.ImageProcessingModel;
 import view.text.ImageProcessingTextView;
@@ -62,22 +63,32 @@ public class ImageProcessingTextControllerImpl implements ImageProcessingControl
     this.queries.put("list", new ListQuery(model, view));
     this.queries.put("load", new LoadQuery(model, view));
     this.queries.put("save", new SaveQuery(model, view));
-    this.queries.put("red-component", new RedComponentQuery(model, view));
-    this.queries.put("green-component", new GreenComponentQuery(model, view));
-    this.queries.put("blue-component", new BlueComponentQuery(model, view));
-    this.queries.put("value-component", new ValueQuery(model, view));
-    this.queries.put("luma-component", new LumaQuery(model, view));
-    this.queries.put("intensity-component", new IntensityQuery(model, view));
-    this.queries.put("horizontal-flip", new FlipHorizontalQuery(model, view));
-    this.queries.put("vertical-flip", new FlipVerticalQuery(model, view));
-    this.queries.put("brighten", new BrightenQuery(model, view));
-    this.queries.put("greyscale", new LumaQuery(model, view));
-    this.queries.put("gaussian-blur", new GaussianBlurQuery(model, view));
-    this.queries.put("sharpen", new SharpenQuery(model, view));
-    this.queries.put("sepia", new SepiaQuery(model, view));
-    this.queries.put("mask", new ImageMaskQuery(model, view));
     this.queries.put("quit", new QuitQuery(model, view, () -> this.quit = true));
     this.queries.put("q", new QuitQuery(model, view, () -> this.quit = true));
+    this.queries.put(CommandType.RED_COMPONENT.toString(), new CheckMaskDecorator(
+            new RedComponentQuery(model, view), model, view));
+    this.queries.put(CommandType.GREEN_COMPONENT.toString(), new CheckMaskDecorator(
+            new GreenComponentQuery(model, view), model, view));
+    this.queries.put(CommandType.BLUE_COMPONENT.toString(), new CheckMaskDecorator(
+            new BlueComponentQuery(model, view), model, view));
+    this.queries.put(CommandType.VALUE_COMPONENT.toString(), new CheckMaskDecorator(
+            new ValueQuery(model, view), model, view));
+    this.queries.put(CommandType.LUMA_COMPONENT.toString(), new CheckMaskDecorator(
+            new LumaQuery(model, view), model, view));
+    this.queries.put(CommandType.INTENSITY_COMPONENT.toString(), new CheckMaskDecorator(
+            new IntensityQuery(model, view), model, view));
+    this.queries.put(CommandType.BRIGHTEN.toString(), new CheckMaskDecorator(
+            new BrightenQuery(model, view), model, view));
+    this.queries.put(CommandType.GREYSCALE.toString(), new CheckMaskDecorator(
+            new LumaQuery(model, view), model, view));
+    this.queries.put(CommandType.GAUSSIAN_BLUR.toString(), new CheckMaskDecorator(
+            new GaussianBlurQuery(model, view), model, view));
+    this.queries.put(CommandType.SHARPEN.toString(), new CheckMaskDecorator(
+            new SharpenQuery(model, view), model, view));
+    this.queries.put(CommandType.SEPIA.toString(), new CheckMaskDecorator(
+            new SepiaQuery(model, view), model, view));
+    this.queries.put(CommandType.HORIZONTAL_FLIP.toString(), new FlipHorizontalQuery(model, view));
+    this.queries.put(CommandType.VERTICAL_FLIP.toString(), new FlipVerticalQuery(model, view));
 
     Scanner sc = new Scanner(this.readable);
 

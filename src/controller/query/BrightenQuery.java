@@ -16,7 +16,7 @@ public class BrightenQuery extends AbstractQueryCommand {
 
   @Override
   protected void executeCommand(String[] query) throws IllegalArgumentException {
-    this.checkQueryLength(query, 4);
+    this.checkQueryLength(query, this.getProperQueryLength());
     String unprocessedImageName = query[1];
     String processedImageName = query[2];
     try {
@@ -29,5 +29,10 @@ public class BrightenQuery extends AbstractQueryCommand {
     } catch (NumberFormatException e) {
       throw new IllegalArgumentException("Invalid parameters specified, please try again.");
     }
+  }
+
+  @Override
+  public int getProperQueryLength() {
+    return 4;
   }
 }

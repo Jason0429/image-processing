@@ -34,6 +34,11 @@ public abstract class AbstractQueryCommand implements QueryCommand {
     }
   }
 
+  @Override
+  public int getProperQueryLength() {
+    return 3;
+  }
+
   /**
    * Wrapper method for rendering message to view.
    *
@@ -56,19 +61,6 @@ public abstract class AbstractQueryCommand implements QueryCommand {
    */
   protected void checkQueryLength(String[] query, int length) throws IllegalArgumentException {
     if (query.length != length) {
-      throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
-    }
-  }
-
-  /**
-   * Throws an exception if the query length is not correct.
-   *
-   * @param length the set number of allowed tokens in the query.
-   * @throws IllegalArgumentException if the query length does not equal the given length.
-   */
-  protected void checkQueryLengthGreaterEqual(String[] query, int length)
-          throws IllegalArgumentException {
-    if (query.length < length) {
       throw new IllegalArgumentException(ExceptionMessage.INVALID_COMMAND_PARAMETERS.toString());
     }
   }

@@ -16,7 +16,7 @@ public class IntensityQuery extends AbstractQueryCommand {
 
   @Override
   protected void executeCommand(String[] query) throws IllegalArgumentException {
-    this.checkQueryLength(query, 3);
+    this.checkQueryLength(query, this.getProperQueryLength());
     String unprocessedImageName = query[1];
     String processedImageName = query[2];
     ImageInterface unprocessedImage = this.model.getImage(unprocessedImageName);

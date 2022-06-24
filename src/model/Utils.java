@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.function.Function;
 
 import model.commands.BlueComponentGreyscaleCommand;
-import model.commands.BrightenCommand;
 import model.commands.FlipHorizontalCommand;
 import model.commands.FlipVerticalCommand;
 import model.commands.GaussianBlurCommand;
@@ -51,7 +50,36 @@ public final class Utils {
     };
   }
 
-  public static Map<String, ImageProcessingCommand> getCommandMap() {
+  /**
+   * Returns the command mappings for GUI program.
+   *
+   * @return the command name to command mappings as a {@code Map}.
+   */
+  public static Map<String, ImageProcessingCommand> getGUICommandMap() {
+    Map<String, ImageProcessingCommand> commandMap = new HashMap<String, ImageProcessingCommand>();
+    commandMap.put(CommandType.RED_COMPONENT.toString(), new RedComponentGreyscaleCommand());
+    commandMap.put(CommandType.GREEN_COMPONENT.toString(), new GreenComponentGreyscaleCommand());
+    commandMap.put(CommandType.BLUE_COMPONENT.toString(), new BlueComponentGreyscaleCommand());
+    commandMap.put(CommandType.VALUE_COMPONENT.toString(), new ValueComponentGreyscaleCommand());
+    commandMap.put(CommandType.LUMA_COMPONENT.toString(), new LumaProcessingCommand());
+    commandMap.put(CommandType.INTENSITY_COMPONENT.toString(),
+            new IntensityComponentGreyscaleCommand());
+    commandMap.put(CommandType.HORIZONTAL_FLIP.toString(), new FlipHorizontalCommand());
+    commandMap.put(CommandType.VERTICAL_FLIP.toString(), new FlipVerticalCommand());
+    commandMap.put(CommandType.GREYSCALE.toString(), new LumaProcessingCommand());
+    commandMap.put(CommandType.GAUSSIAN_BLUR.toString(), new GaussianBlurCommand());
+    commandMap.put(CommandType.SHARPEN.toString(), new SharpenCommand());
+    commandMap.put(CommandType.SEPIA.toString(), new SepiaProcessingCommand());
+    commandMap.put(CommandType.DOWNSCALE.toString(), new SepiaProcessingCommand());
+    return commandMap;
+  }
+
+  /**
+   * Returns the command mappings for text view program.
+   *
+   * @return the command name to command mappings as a {@code Map}.
+   */
+  public static Map<String, ImageProcessingCommand> getTextViewCommandMap() {
     Map<String, ImageProcessingCommand> commandMap = new HashMap<String, ImageProcessingCommand>();
     commandMap.put(CommandType.RED_COMPONENT.toString(), new RedComponentGreyscaleCommand());
     commandMap.put(CommandType.GREEN_COMPONENT.toString(), new GreenComponentGreyscaleCommand());
