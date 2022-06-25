@@ -1,11 +1,9 @@
 package controller.exporter;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import model.ExceptionMessage;
 import model.ImageInterface;
-import model.Pixel;
 
 /**
  * Represents the class that exports {@code ImageInterface} objects to image
@@ -22,7 +20,7 @@ public final class ImageExporter {
    */
   public static void export(ImageInterface image, String filePath) throws IllegalArgumentException {
     String fileExtension = filePath.substring(filePath.lastIndexOf('.') + 1);
-    ImageExporterInterface exporter = null;
+    ImageExporterInterface exporter;
     switch (fileExtension) {
       case "ppm":
         exporter = new PPMExporter(image, filePath);

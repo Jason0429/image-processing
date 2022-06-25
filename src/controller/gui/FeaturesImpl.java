@@ -8,13 +8,24 @@ import model.CommandType;
 import model.ExceptionMessage;
 import model.ImageInterface;
 import model.Utils;
-import model.commands.*;
+import model.commands.BrightenCommand;
+import model.commands.DownscaleCommand;
+import model.commands.ImageProcessingCommand;
 import view.gui.ImageProcessingGUIView;
 
+/**
+ * Implementation of the Features interface for the GUI view.
+ */
 public class FeaturesImpl implements Features {
   private ImageInterface model;
   private final ImageProcessingGUIView view;
 
+  /**
+   * Construct a new features implementation.
+   *
+   * @param view view to receive the features
+   * @throws IllegalArgumentException if the view is null
+   */
   public FeaturesImpl(ImageProcessingGUIView view)
           throws IllegalArgumentException {
     if (view == null) {
