@@ -120,17 +120,6 @@ public class ImageProcessingGUIViewImplTest {
             ImageLoader.load("res/test-brighten-gui.ppm"));
   }
 
-  // test apply brighten darken, export, and compare to actual brighten darken
-  // TODO: test
-  @Test
-  public void testApplyBrightenDark() {
-//    this.features.update("res/test3x4.ppm");
-//    this.features.processImage("brighten", -10);
-//    this.features.exportImage("res/test-darken-gui.ppm");
-//    assertEquals(ImageLoader.load("res/test-darken.ppm"),
-//            ImageLoader.load("res/test-darken-gui.ppm"));
-  }
-
   // test apply flip, export, and compare to actual flip
   @Test
   public void testApplyFlipHorizontal() {
