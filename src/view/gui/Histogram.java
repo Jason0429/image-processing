@@ -5,7 +5,6 @@ import model.Pixel;
 import javax.swing.JScrollPane;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.function.Function;
@@ -66,14 +65,13 @@ public class Histogram extends JScrollPane {
         int normalizedValue = (int) (((double) value / maxFreq) * height);
         int y2Prev = Math.max(height - normalizedValuePrev, 0) + topPadding;
         int y2 = Math.max(height - normalizedValue, 0) + topPadding;
-        g2.draw(new Line2D.Float(x1 - 1, y2Prev, x1, y2));
+        g2.drawLine(x1 - 1, y2Prev, x1, y2);
       }
     }
 
     g2.setColor(Color.BLACK);
-    g2.draw(new Line2D.Float(leftPadding, height + topPadding, leftPadding, topPadding));
-    g2.draw(new Line2D.Float(leftPadding, height + topPadding, 255 + leftPadding,
-            height + topPadding));
+    g2.drawLine(leftPadding, height + topPadding, leftPadding, topPadding);
+    g2.drawLine(leftPadding, height + topPadding, 255 + leftPadding, height + topPadding);
     g2.drawString(minFreq + "", leftPadding - ((minFreq + "").length() * 11), height + topPadding);
     g2.drawString(maxFreq + "", leftPadding - ((maxFreq + "").length() * 11), topPadding);
     g2.drawString(0 + "", leftPadding, height + topPadding + 13);
@@ -90,7 +88,7 @@ public class Histogram extends JScrollPane {
           continue;
         }
         Pixel pixel = new Pixel(255, rgb.getRed(), rgb.getGreen(),
-            rgb.getBlue(), rgb.getAlpha());
+                rgb.getBlue(), rgb.getAlpha());
         int value = type.apply(pixel);
         if (frequency.containsKey(value)) {
           frequency.put(value, frequency.get(value) + 1);

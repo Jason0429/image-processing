@@ -44,7 +44,6 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
     this.applyBtn = new JButton();
 
     this.setButtonTexts();
-    this.setActionCommands();
     this.addComponents();
 
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,12 +62,6 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
     this.exportBtn.setText("Export");
     this.loadBtn.setText("Load");
     this.applyBtn.setText("Apply");
-  }
-
-  private void setActionCommands() {
-    this.exportBtn.setActionCommand("save");
-    this.loadBtn.setActionCommand("load");
-    this.applyBtn.setActionCommand("apply");
   }
 
   @Override

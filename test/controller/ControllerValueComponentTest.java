@@ -84,7 +84,7 @@ public class ControllerValueComponentTest {
             IPCTester.inputs("load res/test3x4.ppm test"),
             IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("value-component test test-value extra"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
+            IPCTester.prints("Failed to apply mask."),
             IPCTester.inputs("q"),
             IPCTester.prints("Quitting Image Processing...")));
   }

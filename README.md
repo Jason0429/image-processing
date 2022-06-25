@@ -14,6 +14,8 @@ manipulate, and export images.
     * The GUI view is based on Swing and makes use of features which get passed via action
       listeners to each component in the view.
     * We also created dedicated components for the histogram and the preview.
+    * The GUI view follows a different interface than that of the text-based user interface so we
+      made a new interface for the GUI view specifically.
 * `Features`
     * A features interface handles the available features for the GUI interface that serves as the
       middleman between the controller and view.

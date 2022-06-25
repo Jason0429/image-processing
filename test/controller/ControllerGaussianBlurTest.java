@@ -2,6 +2,7 @@ package controller;
 
 import model.ImageProcessingModel;
 import model.ImageProcessingModelImpl;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -78,7 +79,7 @@ public class ControllerGaussianBlurTest {
             IPCTester.inputs("load res/test3x4.ppm test"),
             IPCTester.prints("Successfully stored res/test3x4.ppm as: test."),
             IPCTester.inputs("gaussian-blur test test-gaussian extra"),
-            IPCTester.prints("Invalid parameters specified, please try again."),
+            IPCTester.prints("Failed to apply mask."),
             IPCTester.inputs("q"),
             IPCTester.prints("Quitting Image Processing...")));
   }
