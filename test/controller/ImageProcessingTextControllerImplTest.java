@@ -21,14 +21,15 @@ public class ImageProcessingTextControllerImplTest {
   @Test
   public void testConstructor() {
     Readable input = new StringReader("q\n");
-    String expectedOutput = "*** Image Processing Program ***\n" +
-            "Enter a command to start.\n" +
-            "Quitting Image Processing...\n";
+    String expectedOutput = "*** Image Processing Program ***\n"
+            + "Enter a command to start.\n"
+            + "Quitting Image Processing...\n";
     Appendable output = new StringBuilder();
 
     ImageProcessingModel model = new ImageProcessingModelImpl();
     ImageProcessingTextView view = new ImageProcessingTextViewImpl(output);
-    ImageProcessingController controller = new ImageProcessingTextControllerImpl(model, view, input);
+    ImageProcessingController controller = new ImageProcessingTextControllerImpl(
+            model, view, input);
     controller.start();
     assertEquals(expectedOutput, output.toString());
   }

@@ -9,6 +9,9 @@ import controller.gui.FeaturesImpl;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for {@code ImageProcessingGUIViewImpl}.
+ */
 public class ImageProcessingGUIViewImplTest {
   private MockGUIView view;
   private Features features;

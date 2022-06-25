@@ -17,6 +17,11 @@ public class MockGUIView implements ImageProcessingGUIView {
   private final Appendable log;
   private BufferedImage img;
 
+  /**
+   * Constructs a mock gui view given an {@code Appendable}.
+   *
+   * @param log the appendable.
+   */
   public MockGUIView(Appendable log) {
     this.commandType = null;
     this.exportLocation = null;
@@ -39,7 +44,7 @@ public class MockGUIView implements ImageProcessingGUIView {
 
   @Override
   public void makeVisible() {
-
+    // do nothing.
   }
 
   @Override
@@ -63,7 +68,8 @@ public class MockGUIView implements ImageProcessingGUIView {
   }
 
   @Override
-  public int askForIntegerValue(String valueName, int defaultValue, int min, int max, int increment) {
+  public int askForIntegerValue(String valueName, int defaultValue,
+                                int min, int max, int increment) {
     switch (valueName) {
       case "Brighten":
         return 10;
@@ -85,6 +91,6 @@ public class MockGUIView implements ImageProcessingGUIView {
 
   @Override
   public void addFeatures(Features features) {
-
+    // do nothing.
   }
 }

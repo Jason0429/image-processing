@@ -33,20 +33,20 @@ public final class Utils {
    */
   public static CommandType[] getDropdownCommands() {
     return new CommandType[]{
-            CommandType.RED_COMPONENT,
-            CommandType.GREEN_COMPONENT,
-            CommandType.BLUE_COMPONENT,
-            CommandType.VALUE_COMPONENT,
-            CommandType.LUMA_COMPONENT,
-            CommandType.GREYSCALE,
-            CommandType.INTENSITY_COMPONENT,
-            CommandType.HORIZONTAL_FLIP,
-            CommandType.VERTICAL_FLIP,
-            CommandType.BRIGHTEN,
-            CommandType.GAUSSIAN_BLUR,
-            CommandType.SHARPEN,
-            CommandType.SEPIA,
-            CommandType.DOWNSCALE
+      CommandType.RED_COMPONENT,
+      CommandType.GREEN_COMPONENT,
+      CommandType.BLUE_COMPONENT,
+      CommandType.VALUE_COMPONENT,
+      CommandType.LUMA_COMPONENT,
+      CommandType.GREYSCALE,
+      CommandType.INTENSITY_COMPONENT,
+      CommandType.HORIZONTAL_FLIP,
+      CommandType.VERTICAL_FLIP,
+      CommandType.BRIGHTEN,
+      CommandType.GAUSSIAN_BLUR,
+      CommandType.SHARPEN,
+      CommandType.SEPIA,
+      CommandType.DOWNSCALE
     };
   }
 

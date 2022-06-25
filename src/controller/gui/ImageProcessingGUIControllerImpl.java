@@ -1,20 +1,20 @@
 package controller.gui;
 
 import controller.ImageProcessingController;
-import view.gui.ImageProcessingGUIViewImpl;
 
+/**
+ * Represents the controller class for GUI user-interface of the program.
+ */
 public class ImageProcessingGUIControllerImpl implements ImageProcessingController {
   private final Features features;
 
+  /**
+   * Constructs a GUI controller given a set of features.
+   *
+   * @param features the available features to be used in the program.
+   */
   public ImageProcessingGUIControllerImpl(Features features) {
     this.features = features;
-  }
-
-  public static void main(String[] args) {
-    ImageProcessingGUIViewImpl view = new ImageProcessingGUIViewImpl();
-    Features features = new FeaturesImpl(view);
-    ImageProcessingGUIControllerImpl controller = new ImageProcessingGUIControllerImpl(features);
-    controller.start();
   }
 
   @Override

@@ -3,13 +3,15 @@ package model;
 import org.junit.Test;
 
 import controller.loader.ImageLoader;
-import model.commands.DownscaleCommand;
 import model.commands.ImageMaskCommand;
 import model.commands.ImageProcessingCommand;
 import model.commands.SepiaProcessingCommand;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for {@code ImageMaskCommand}.
+ */
 public class ImageMaskCommandTest {
   @Test
   public void process() {

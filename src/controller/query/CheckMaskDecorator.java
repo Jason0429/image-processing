@@ -5,7 +5,7 @@ import model.ImageProcessingModel;
 import view.text.ImageProcessingTextView;
 
 /**
- * Decorator for QueryCommands that checks if a mask is being used.
+ * Decorator for {@code }QueryCommand} that checks if a mask is being used.
  */
 public class CheckMaskDecorator implements QueryCommand {
   private final QueryCommand delegate;
@@ -13,7 +13,7 @@ public class CheckMaskDecorator implements QueryCommand {
   private final ImageProcessingTextView view;
 
   /**
-   * Construct a new check mask decorator
+   * Construct a new check mask decorator.
    *
    * @param delegate the command to be used
    * @param model    the model

@@ -7,6 +7,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Tests for {@code DownscaleCommand}.
+ */
 public class DownscaleCommandTest extends AbstractProcessingCommandTest {
 
   @Test
