@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import controller.query.QueryCommand;
+import controller.query.RedComponentQuery;
 import model.commands.BlueComponentGreyscaleCommand;
 import model.commands.FlipHorizontalCommand;
 import model.commands.FlipVerticalCommand;

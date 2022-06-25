@@ -4,7 +4,7 @@ import java.io.StringReader;
 
 import controller.text.ImageProcessingTextControllerImpl;
 import model.ImageProcessingModel;
-import view.text.ImageProcessingTextTextViewImpl;
+import view.text.ImageProcessingTextViewImpl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -56,7 +56,7 @@ public class IPCTester {
     StringReader input = new StringReader(fakeInput.toString());
     StringBuilder actualOutput = new StringBuilder();
     ImageProcessingController controller = new ImageProcessingTextControllerImpl(
-            model, new ImageProcessingTextTextViewImpl(actualOutput), input);
+            model, new ImageProcessingTextViewImpl(actualOutput), input);
     controller.start();
     assertEquals(expectedOutput.toString(), actualOutput.toString());
     return true;
