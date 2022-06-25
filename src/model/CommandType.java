@@ -30,6 +30,13 @@ public enum CommandType {
     return this.command;
   }
 
+  /**
+   * Returns the command type of the string.
+   *
+   * @param cmd the string command
+   * @return the representative {@code CommandType}
+   * @throws IllegalArgumentException if the string is not a valid command
+   */
   public static CommandType fromString(String cmd) throws IllegalArgumentException {
     for (CommandType c : CommandType.values()) {
       if (c.toString().equals(cmd)) {

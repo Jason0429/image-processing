@@ -21,6 +21,9 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.prefs.Preferences;
 
+/**
+ * Implementation of the GUI view for the Image Processing Program.
+ */
 public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessingGUIView {
   private final Histogram histogram;
   private final ImagePreview imagePreview;
@@ -29,6 +32,9 @@ public class ImageProcessingGUIViewImpl extends JFrame implements ImageProcessin
   private final JButton loadBtn;
   private final JButton applyBtn;
 
+  /**
+   * Constructs a new ImageProcessingGUIView.
+   */
   public ImageProcessingGUIViewImpl() {
     super("Image Processing");
     this.setSize(1000, 1000);

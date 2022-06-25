@@ -4,20 +4,38 @@ import model.Pixel;
 
 import javax.swing.JScrollPane;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.BasicStroke;
 import java.awt.image.BufferedImage;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Collections;
 import java.util.function.Function;
 
+/**
+ * Represents a histogram component for the GUI.
+ */
 public class Histogram extends JScrollPane {
   private final Map<Color, Function<Pixel, Integer>> types;
   private BufferedImage img;
 
+  /**
+   * Constructs a new histogram.
+   *
+   * @param types mapping of colors to their respective function to get their type from pixels
+   */
   public Histogram(Map<Color, Function<Pixel, Integer>> types) {
     this.types = types;
     this.img = null;
   }
 
+  /**
+   * Updates the histogram using a new image.
+   *
+   * @param img the image to be used
+   */
   public void updateImage(BufferedImage img) {
     this.img = img;
     this.invalidate();

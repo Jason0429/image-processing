@@ -5,10 +5,19 @@ import model.Image;
 import model.ImageInterface;
 import model.Pixel;
 
+/**
+ * Represents a command to apply a mask over an image and process it.
+ */
 public class ImageMaskCommand implements ImageProcessingCommand {
   private final ImageInterface maskImage;
   private final ImageProcessingCommand cmd;
 
+  /**
+   * Construct a new image mask command.
+   *
+   * @param maskImage the mask
+   * @param cmd       the command to be applied
+   */
   public ImageMaskCommand(ImageInterface maskImage,
                           ImageProcessingCommand cmd) {
     if (maskImage == null || cmd == null) {

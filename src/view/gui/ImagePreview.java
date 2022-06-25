@@ -6,9 +6,15 @@ import javax.swing.JLabel;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Represents a component for the image preview.
+ */
 public class ImagePreview extends JScrollPane {
   private final JLabel label;
 
+  /**
+   * Construct a new image preview.
+   */
   public ImagePreview() {
     ImageIcon icon = new ImageIcon();
     this.label = new JLabel(icon);

@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import controller.query.QueryCommand;
-import controller.query.RedComponentQuery;
 import model.commands.BlueComponentGreyscaleCommand;
 import model.commands.FlipHorizontalCommand;
 import model.commands.FlipVerticalCommand;
@@ -115,6 +113,12 @@ public final class Utils {
     return types;
   }
 
+  /**
+   * Converts an image to its BufferedImage.
+   *
+   * @param image image to be converted
+   * @return BufferedImage version of the image
+   */
   public static BufferedImage getBufferedImage(ImageInterface image) {
     BufferedImage img = new BufferedImage(image.getWidth(),
             image.getHeight(), BufferedImage.TYPE_INT_ARGB);

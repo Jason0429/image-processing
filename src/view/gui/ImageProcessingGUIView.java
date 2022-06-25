@@ -1,11 +1,12 @@
 package view.gui;
 
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import controller.gui.Features;
 
+/**
+ * Contains the methods required for an image processing GUI view.
+ */
 public interface ImageProcessingGUIView {
 
   void makeVisible();
