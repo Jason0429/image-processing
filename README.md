@@ -14,7 +14,9 @@ manipulate, and export images.
     * The GUI view is based on Swing and makes use of features which get passed via action
       listeners to each component in the view.
     * We also created dedicated components for the histogram and the preview.
-
+* `Features`
+    * A features interface handles the available features for the GUI interface that serves as the
+      middleman between the controller and view.
 * `Downscaling`
     * A new command was created to handle downscaling whose constructor took in two dimensions for
       the new image. To accommodate the two inputs, a new case was added in our switch statement
@@ -26,6 +28,11 @@ manipulate, and export images.
       `ImageProcessingCommand` interface and can only be called through the text-based program.
     * The mask must exactly match the dimensions of the image to be masked, and only the black
       areas in the mask will be altered in the final image.
+* `CheckMaskDecorator`
+    * We created a decorator for our queries that support masking.
+      This way, we can minimize changing much code by simply using composition to take in the
+      existing query into the decorator and checking if the argument lengths match a normal query
+      usage or a mask query usage.
 
 ## <u>Changes for Assignment 5</u>
 

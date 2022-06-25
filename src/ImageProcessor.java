@@ -66,6 +66,7 @@ public class ImageProcessor {
       while (sc.hasNextLine()) {
         sb.append(sc.nextLine()).append("\n");
       }
+      sb.append("q");
       return new StringReader(sb.toString());
     } catch (FileNotFoundException e) {
       throw new RuntimeException(ExceptionMessage.INVALID_FILE_PATH.toString());
