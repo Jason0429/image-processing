@@ -1,7 +1,6 @@
 package model.commands;
 
 import model.ImageInterface;
-import model.Pixel;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
