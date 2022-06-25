@@ -3,9 +3,7 @@ package controller;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.loader.ImageLoader;
 import controller.query.CheckMaskDecorator;
-import controller.query.MenuQuery;
 import controller.query.QueryCommand;
 import controller.query.SepiaQuery;
 import model.ImageInterface;
@@ -17,6 +15,9 @@ import view.text.ImageProcessingTextView;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Tests for {@code CheckMaskDecorator}.
+ */
 public class CheckMaskDecoratorTest {
   private ImageProcessingModel model;
   private ImageProcessingTextView view;
