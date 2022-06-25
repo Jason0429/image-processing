@@ -1,5 +1,6 @@
 package model.commands;
 
+import model.ExceptionMessage;
 import model.Image;
 import model.ImageInterface;
 import model.Pixel;
@@ -10,6 +11,9 @@ public class ImageMaskCommand implements ImageProcessingCommand {
 
   public ImageMaskCommand(ImageInterface maskImage,
                           ImageProcessingCommand cmd) {
+    if (maskImage == null || cmd == null) {
+      throw new IllegalArgumentException(ExceptionMessage.NULL_VALUES.toString());
+    }
     this.maskImage = maskImage;
     this.cmd = cmd;
   }

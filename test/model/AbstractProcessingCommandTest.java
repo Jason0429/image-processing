@@ -1,7 +1,8 @@
-package model.commands;
+package model;
 
 import controller.loader.ImageLoader;
-import model.ImageInterface;
+import model.commands.BlueComponentGreyscaleCommand;
+import model.commands.ImageProcessingCommand;
 
 import org.junit.Before;
 import org.junit.Test;

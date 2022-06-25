@@ -1,6 +1,8 @@
-package model.commands;
+package model;
 
-import model.ImageInterface;
+import model.commands.DownscaleCommand;
+import model.commands.ImageProcessingCommand;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
