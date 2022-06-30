@@ -13,6 +13,27 @@ greyscale test test-greyscale
 gaussian-blur test test-gaussian
 sharpen test test-sharpen
 sepia test test-sepia
+
+load res/mario.png mario
+load res/mario-head-mask.png mask
+red-component mario mask mario-red-mask
+green-component mario mask mario-green-mask
+blue-component mario mask mario-blue-mask
+value-component mario mask mario-value-mask
+luma-component mario mask mario-luma-mask
+greyscale mario mask mario-greyscale-mask
+intensity-component mario mask mario-intensity-mask
+gaussian-blur mario mask mario-blur-mask
+
+save res/mario-red-mask.png mario-red-mask
+save res/mario-green-mask.png mario-green-mask
+save res/mario-blue-mask.png mario-blue-mask
+save res/mario-value-mask.png mario-value-mask
+save res/mario-luma-mask.png mario-luma-mask
+save res/mario-greyscale-mask.png mario-greyscale-mask
+save res/mario-intensity-mask.png mario-intensity-mask
+save res/mario-blur-mask.png mario-blur-mask
+
 save test-red.ppm test-red
 save test-green.ppm test-green
 save test-blue.ppm test-blue
